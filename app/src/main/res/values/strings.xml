@@ -6,4 +6,10 @@
     карту необходимо заполнить
     основные данные
     </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    // Нижнее меню
+    <string name="main_bottom_menu">Главная</string>
+    <string name="profile_bottom_menu">Профиль</string>
+    <string name="settings_bottom_menu">Настройки</string>
 </resources>
