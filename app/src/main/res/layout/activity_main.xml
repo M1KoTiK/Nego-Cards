@@ -7,10 +7,18 @@
     android:background="@color/black18"
     tools:context=".MainActivity">
 
+    <me.ibrahimsn.lib.SmoothBottomBar
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:backgroundColor="@color/black18"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_navigation_bar" />
+
     <ScrollView
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/bottomBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -78,12 +86,6 @@
                 android:ems="10"
                 android:hint="Дата рождения"
                 android:inputType="date" />
-            <me.ibrahimsn.lib.SmoothBottomBar
-                android:id="@+id/bottomBar"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                app:backgroundColor="@color/black18"
-                app:menu="@menu/bottom_navigation_bar"/>
         </LinearLayout>
 
     </ScrollView>
