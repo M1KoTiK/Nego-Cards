@@ -12,9 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         app:backgroundColor="@color/black18"
-        app:textSize="15dp"
+        app:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/bottom_navigation_bar" />
+        app:menu="@menu/bottom_navigation_bar"
+        app:iconSize="24dp"/>
 
     <fragment
         android:id="@+id/fragmentContainerView"

@@ -1,20 +1,42 @@
 package com.example.negocards.fragments.pages
 
+import android.content.ContentValues.TAG
+import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidmads.library.qrgenearator.QRGContents
+import androidmads.library.qrgenearator.QRGEncoder
+import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.negocards.R
+import com.example.negocards.databinding.FragmentMainPageBinding
+import com.example.negocards.model.QR.QRCreator
+
 
 class MainPageFragment : Fragment() {
+    private lateinit var navController: NavController
+    private var binding: FragmentMainPageBinding? = null
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = FragmentMainPageBinding.inflate(inflater,container,false)
+        return binding!!.root
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main_page, container, false)
+        var text = """
+            Развести в одном стакане минеральной воды без газа положив под нее теплую грелку
+        """.trimIndent()
+        var QRC = QRCreator()
+        binding?.imageView?.setImageBitmap(QRC.getQRCToBitmap(text))
+        navController = binding?.root?.findNavController()!!
+        binding?.button2?.setOnClickListener {
+            navController.navigate(R.id.scannerPageFragment)
+        }
     }
 }
