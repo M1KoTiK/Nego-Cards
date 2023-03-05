@@ -10,6 +10,13 @@
     <androidx.camera.view.PreviewView
         android:id="@+id/preview_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:id="@+id/tvScannedData"
+            android:layout_width="wrap_content"
+            android:layout_height="111dp"
+            android:text="TextView" />
+    </androidx.camera.view.PreviewView>
 
 </FrameLayout>
