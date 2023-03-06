@@ -1,6 +1,7 @@
 package com.example.negocards.fragments.pages
 
 import android.Manifest
+import android.R
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -9,7 +10,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.camera.core.CameraSelector
-import androidx.camera.core.CameraSelector.LENS_FACING_BACK
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
 import androidx.camera.core.Preview
@@ -18,6 +18,7 @@ import androidx.camera.view.PreviewView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import com.example.negocards.CameraXViewModel
 import com.example.negocards.databinding.FragmentScannerPageBinding
@@ -54,6 +55,11 @@ class ScannerPageFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupCamera()
     }
+
+    override fun onStop() {
+        super.onStop()
+
+    }
     private fun setupCamera() {
         previewView = binding?.previewView
         cameraSelector = CameraSelector.Builder().requireLensFacing(lensFacing).build()
@@ -87,12 +93,10 @@ class ScannerPageFragment : Fragment() {
         if (previewUseCase != null) {
             cameraProvider!!.unbind(previewUseCase)
         }
-
         previewUseCase = Preview.Builder()
             .setTargetRotation(previewView!!.display.rotation)
             .build()
         previewUseCase!!.setSurfaceProvider(previewView!!.surfaceProvider)
-
         try {
 
             cameraProvider!!.bindToLifecycle(
@@ -163,10 +167,11 @@ class ScannerPageFragment : Fragment() {
 
                     val rawValue = barcode.rawValue
 
-                    binding?.tvScannedData?.text = barcode.rawValue
+                     binding?.tvScannedData?.text = barcode.rawValue
 
                     val valueType = barcode.valueType
                     // See API reference for complete list of supported types
+                    /*
                     when (valueType) {
                         Barcode.TYPE_WIFI -> {
                             val ssid = barcode.wifi!!.ssid
@@ -181,7 +186,7 @@ class ScannerPageFragment : Fragment() {
 
                             binding?.tvScannedData?.text = "Title: " + title + "\nURL: " + url
                         }
-                    }
+                     */
                 }
             }
             .addOnFailureListener {

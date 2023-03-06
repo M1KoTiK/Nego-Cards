@@ -12,12 +12,80 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Добавлены библиотеки cameraX и MLKIT.&#10;Добавлен переход к фрагменту со сканером по кнопке">
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Сканер теперь работает">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/negocards/fragments/pages/QRCViewPageFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/logoaddqrc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/logoscanqrc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_field.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_preview.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_qrc_view_page.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/negocards/CameraXViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/negocards/CameraXViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBootomBar/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBootomBar/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBootomBar/consumer-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBootomBar/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBootomBar/src/androidTest/java/com/example/smoothbootombar/ExampleInstrumentedTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBootomBar/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBootomBar/src/test/java/com/example/smoothbootombar/ExampleUnitTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBar/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBar/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBar/consumer-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBar/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBar/src/androidTest/java/com/example/smoothbottombar/ExampleInstrumentedTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBar/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBar/src/test/java/com/example/smoothbottombar/ExampleUnitTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/androidTest/java/me/ibrahimsn/smoothbottombar/ExampleInstrumentedTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/java/me/ibrahimsn/smoothbottombar/FirstFragment.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/java/me/ibrahimsn/smoothbottombar/FourthFragment.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/java/me/ibrahimsn/smoothbottombar/MainActivity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/java/me/ibrahimsn/smoothbottombar/SecondFragment.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/java/me/ibrahimsn/smoothbottombar/ThirdFragment.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/drawable/ic_dashboard_white_24dp.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/drawable/ic_home_white_24dp.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/drawable/ic_multiline_chart_white_24dp.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/drawable/ic_person_outline_white_24dp.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/drawable/ic_store_white_24dp.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/layout/activity_main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/layout/fragment_first.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/layout/fragment_fourth.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/layout/fragment_second.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/layout/fragment_third.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/menu/another_menu.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/menu/menu_bottom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/navigation/nav_graph.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/values-ar/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/values/colors.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/values/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/main/res/values/styles.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmoothBottomBarLib/src/test/java/me/ibrahimsn/smoothbottombar/ExampleUnitTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/negocards/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/negocards/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/negocards/fragments/pages/MainPageFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/negocards/fragments/pages/MainPageFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/negocards/fragments/pages/ScannerPageFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/negocards/fragments/pages/ScannerPageFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/negocards/model/QR/QRCreator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/negocards/model/QR/QRCreator.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_main_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_main_page.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_scanner_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_scanner_page.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,11 +98,30 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="NegoCards" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="navigationResourceFile" />
         <option value="Kotlin Class" />
+        <option value="layoutResourceFile" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -222,7 +309,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678045071039</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Сканер теперь работает">
+      <created>1678050133773</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1678050133774</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -244,6 +338,7 @@
     <MESSAGE value="Добавлены нужные фрагменты" />
     <MESSAGE value="Переходы между экранами через нижнее меню" />
     <MESSAGE value="Добавлены библиотеки cameraX и MLKIT.&#10;Добавлен переход к фрагменту со сканером по кнопке" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавлены библиотеки cameraX и MLKIT.&#10;Добавлен переход к фрагменту со сканером по кнопке" />
+    <MESSAGE value="Сканер теперь работает" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сканер теперь работает" />
   </component>
 </project>

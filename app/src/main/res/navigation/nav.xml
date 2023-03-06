@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav"
-    app:startDestination="@id/profileFragment">
+    app:startDestination="@id/mainPageFragment">
 
     <fragment
         android:id="@+id/profileFragment"
@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_mainPageFragment_to_scannerPageFragment"
             app:destination="@id/scannerPageFragment" />
+        <action
+            android:id="@+id/action_mainPageFragment_to_QRCViewPageFragment"
+            app:destination="@id/QRCViewPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -29,4 +32,9 @@
         android:name="com.example.negocards.fragments.pages.ScannerPageFragment"
         android:label="fragment_scanner_page"
         tools:layout="@layout/fragment_scanner_page" />
+    <fragment
+        android:id="@+id/QRCViewPageFragment"
+        android:name="com.example.negocards.fragments.pages.QRCViewPageFragment"
+        android:label="fragment_qrc_view_page"
+        tools:layout="@layout/fragment_qrc_view_page" />
 </navigation>

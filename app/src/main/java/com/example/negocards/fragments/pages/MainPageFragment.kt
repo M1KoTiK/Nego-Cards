@@ -17,6 +17,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.negocards.R
 import com.example.negocards.databinding.FragmentMainPageBinding
 import com.example.negocards.model.QR.QRCreator
+import me.ibrahimsn.lib.SmoothBottomBar
 
 
 class MainPageFragment : Fragment() {
@@ -28,15 +29,12 @@ class MainPageFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        var text = """
-            Развести в одном стакане минеральной воды без газа положив под нее теплую грелку
-        """.trimIndent()
-        var QRC = QRCreator()
-        binding?.imageView?.setImageBitmap(QRC.getQRCToBitmap(text))
         navController = binding?.root?.findNavController()!!
         binding?.button2?.setOnClickListener {
             navController.navigate(R.id.scannerPageFragment)
+        }
+        binding?.button3?.setOnClickListener {
+            navController.navigate(R.id.QRCViewPageFragment)
         }
     }
 }
