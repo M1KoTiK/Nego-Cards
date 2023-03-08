@@ -31,14 +31,15 @@
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="25dp"
                 app:counterTextColor="@color/white">
 
                 <AutoCompleteTextView
                     android:id="@+id/autoCompleteTextView"
-                    android:layout_width="250dp"
+                    android:layout_width="275dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/rounded_field"
+                    android:background="@drawable/rounded_popupmenu"
                     android:inputType="none"
                     android:textSize="18sp"
                     android:text="Холст" />

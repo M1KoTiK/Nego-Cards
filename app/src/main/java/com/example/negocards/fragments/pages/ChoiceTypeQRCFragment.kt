@@ -21,37 +21,13 @@ class ChoiceTypeQRCFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    override fun onResume() {
+        super.onResume()
         val types = resources.getStringArray(R.array.type_qrc)
         val arrayAdapter = ArrayAdapter(requireActivity(),R.layout.dropdown_item,types)
         binding?.autoCompleteTextView?.setAdapter(arrayAdapter)
-    }
-
-    private fun showMenu(view: View){
-        val popupMenu = PopupMenu(requireActivity(), view)
-        popupMenu.setOnMenuItemClickListener { item ->
-            when (item.itemId){
-                R.id.CanvasType -> {
-                    Toast.makeText(requireActivity(), "Canvas", Toast.LENGTH_SHORT).show()
-                    true
-                }
-                R.id.TextType -> {
-                    Toast.makeText(requireActivity(), "Text", Toast.LENGTH_SHORT).show()
-                    true
-                }
-                else -> false
-            }
-        }
-        popupMenu.inflate(R.menu.card_type_menu)
-        try {
-            popupMenu.setForceShowIcon(true)
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                popupMenu.menu.setGroupDividerEnabled(true)
-            }
-        } catch (e: Exception){
-            Log.e("Main", "Error showing menu icons.", e)
-        } finally {
-            popupMenu.show()
-        }
     }
 }
 
