@@ -34,7 +34,7 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="25dp"
                 app:counterTextColor="@color/white">
-
+//
                 <AutoCompleteTextView
                     android:id="@+id/autoCompleteTextView"
                     android:layout_width="275dp"
