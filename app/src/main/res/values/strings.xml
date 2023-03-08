@@ -11,5 +11,16 @@
     // Нижнее меню
     <string name="main_bottom_menu">Главная</string>
     <string name="profile_bottom_menu">Профиль</string>
-    <string name="settings_bottom_menu">Настройки</string>
+    <string name="settings_bottom_menu">Отладка</string>
+    <string name="how_create_qrc">
+    Чтобы создать QR-код вам
+    необходимо выбрать
+    его конечный тип
+    </string>
+
+    <string-array name="type_qrc">
+        <item>Холст</item>
+        <item>Teкст</item>
+        <item>В разработке</item>
+    </string-array>
 </resources>

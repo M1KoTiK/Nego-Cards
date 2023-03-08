@@ -26,4 +26,14 @@
         <item name="android:layout_width">280dp</item>
         <item name="android:layout_height">60dp</item>
     </style>
+
+    <style name="MenuTextStyle">
+    <item name="android:textColor">@color/black18</item>
+    <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="CustomPopupBackground" parent="Widget.AppCompat.Light.ListView.DropDown">
+        <item name="android:popupBackground">@drawable/rounded_popupmenu</item>
+    </style>
+
 </resources>

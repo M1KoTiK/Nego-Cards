@@ -21,6 +21,9 @@
         <action
             android:id="@+id/action_mainPageFragment_to_QRCViewPageFragment"
             app:destination="@id/QRCViewPageFragment" />
+        <action
+            android:id="@+id/action_mainPageFragment_to_choiceTypeQRCFragment"
+            app:destination="@id/choiceTypeQRCFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -37,4 +40,9 @@
         android:name="com.example.negocards.fragments.pages.QRCViewPageFragment"
         android:label="fragment_qrc_view_page"
         tools:layout="@layout/fragment_qrc_view_page" />
+    <fragment
+        android:id="@+id/choiceTypeQRCFragment"
+        android:name="com.example.negocards.fragments.pages.ChoiceTypeQRCFragment"
+        android:label="fragment_choice_type_qrc"
+        tools:layout="@layout/fragment_choice_type_qrc" />
 </navigation>

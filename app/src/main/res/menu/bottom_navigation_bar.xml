@@ -4,7 +4,7 @@
     <item
         android:id="@+id/profileFragment"
         android:title="@string/profile_bottom_menu"
-        android:icon="@drawable/logotrue"/>
+        android:icon="@drawable/iconprofile"/>
 
     <item
         android:id="@+id/mainPageFragment"
@@ -14,7 +14,8 @@
     <item
         android:id="@+id/settingsFragment"
         android:title="@string/settings_bottom_menu"
-        android:icon="@drawable/logotrue"/>
+        android:icon="@drawable/iconsettings"/>
+
 
 
 </menu>

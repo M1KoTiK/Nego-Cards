@@ -34,7 +34,7 @@ class MainPageFragment : Fragment() {
             navController.navigate(R.id.scannerPageFragment)
         }
         binding?.button3?.setOnClickListener {
-            navController.navigate(R.id.QRCViewPageFragment)
+            navController.navigate(R.id.choiceTypeQRCFragment)
         }
     }
 }
