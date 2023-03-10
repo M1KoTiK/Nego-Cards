@@ -23,4 +23,10 @@
         <item>Teкст</item>
         <item>В разработке</item>
     </string-array>
+
+    <string-array name="type_text_qrc">
+        <item>Просто текст</item>
+        <item>Ссылка</item>
+        <item>Вай-фай</item>
+    </string-array>
 </resources>

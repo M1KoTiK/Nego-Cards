@@ -12,6 +12,6 @@ class QRCreator {
         val qrgEncoder = QRGEncoder(data, null, QRGContents.Type.TEXT, 1000)
         qrgEncoder.colorBlack = Color.BLACK
         qrgEncoder.colorWhite = Color.WHITE
-        return qrgEncoder.getBitmap(10)
+        return qrgEncoder.getBitmap(2)
     }
 }

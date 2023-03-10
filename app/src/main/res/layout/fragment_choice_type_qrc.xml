@@ -27,10 +27,9 @@
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="25dp"
             app:counterTextColor="@color/white">
-            //
 
             <AutoCompleteTextView
                 android:id="@+id/autoCompleteTextView"
@@ -41,12 +40,6 @@
                 android:text="Холст"
                 android:textSize="18sp" />
 
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Button" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.fragment.app.FragmentContainerView
@@ -54,6 +47,8 @@
             android:name="com.example.negocards.fragments.choiceParametersForQR.ChoiceParametersForCardFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
             app:navGraph="@navigation/nav"
             tools:layout="@layout/fragment_choice_parameters_for_card" />
 

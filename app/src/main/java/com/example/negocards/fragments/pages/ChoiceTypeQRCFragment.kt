@@ -21,7 +21,6 @@ import com.example.negocards.fragments.choiceParametersForQR.ChoiceParametersFor
 class ChoiceTypeQRCFragment : Fragment() {
     val START_PAGE_POSITION = 0
     private var selectedItemPosition : Int = START_PAGE_POSITION
-    private lateinit var navController: NavController
     private var binding: FragmentChoiceTypeQrcBinding? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentChoiceTypeQrcBinding.inflate(inflater,container,false)
@@ -39,15 +38,10 @@ class ChoiceTypeQRCFragment : Fragment() {
         val types = resources.getStringArray(R.array.type_qrc)
         val arrayAdapter = ArrayAdapter(requireActivity(),R.layout.dropdown_item,types)
         binding?.autoCompleteTextView?.setAdapter(arrayAdapter)
-        binding?.button4?.setOnClickListener {
-
-
-        }
         binding?.autoCompleteTextView?.onItemClickListener = AdapterView.OnItemClickListener { parent, _, position, id ->
             if(selectedItemPosition != position){
                 selectedItemPosition = position
-                Toast.makeText(requireActivity(), "Selected: $position", Toast.LENGTH_SHORT).show()
-
+                //Toast.makeText(requireActivity(), "Selected: $position", Toast.LENGTH_SHORT).show()
                 when(position){
                     0->{
                         replaceFragment(ChoiceParametersForCardFragment())
@@ -55,18 +49,12 @@ class ChoiceTypeQRCFragment : Fragment() {
                     1->{
                         replaceFragment(ChoiceParametersForTextFragment())
                     }
-
-
                 }
 
             }
-
-
             //Получение текстового представления
             //val selectedItem = parent.getItemAtPosition(position).toString()
-
         }
-
     }
     private fun replaceFragment(fragment: Fragment){
         val transaction = childFragmentManager.beginTransaction().apply {
@@ -75,5 +63,6 @@ class ChoiceTypeQRCFragment : Fragment() {
         }
     }
 }
+
 
 
