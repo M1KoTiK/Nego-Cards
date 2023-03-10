@@ -12,13 +12,18 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Много чего добавил">
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Добаален экран с выбором типа QRC из выпадающего меню&#10;//EmptyCommit">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/negocards/fragments/choiceParametersForQR/ChoiceParametersForTextFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_choice_parameters_for_text.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/negocards/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/negocards/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/negocards/fragments/choiceParametersForQR/ChoiceParametersForCard.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/negocards/fragments/choiceParametersForQR/ChoiceParametersForCardFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/negocards/fragments/pages/ChoiceTypeQRCFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/negocards/fragments/pages/ChoiceTypeQRCFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_field.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_field.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dropdown_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dropdown_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_choice_parameters_for_card.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_choice_parameters_for_card.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_choice_type_qrc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_choice_type_qrc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav_choice_parameters_for_qr.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,10 +57,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Class" />
-        <option value="navigationResourceFile" />
         <option value="resourceFile" />
         <option value="valueResourceFile" />
         <option value="layoutResourceFile" />
+        <option value="navigationResourceFile" />
       </list>
     </option>
   </component>
@@ -267,7 +272,21 @@
       <option name="project" value="LOCAL" />
       <updated>1678316896882</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Добаален экран с выбором типа QRC из выпадающего меню">
+      <created>1678318615651</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1678318615651</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Добаален экран с выбором типа QRC из выпадающего меню&#10;//EmptyCommit">
+      <created>1678318686676</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1678318686676</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -292,6 +311,8 @@
     <MESSAGE value="Сканер теперь работает" />
     <MESSAGE value="- Добавил возвращение к начальному фрагменту при повторном нажатии на пункт меню. &#10;- Добавлены иконки для выбора сканера и создания qr-кода&#10;- Добавлено закругление для сканера" />
     <MESSAGE value="Много чего добавил" />
-    <option name="LAST_COMMIT_MESSAGE" value="Много чего добавил" />
+    <MESSAGE value="Добаален экран с выбором типа QRC из выпадающего меню" />
+    <MESSAGE value="Добаален экран с выбором типа QRC из выпадающего меню&#10;//EmptyCommit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добаален экран с выбором типа QRC из выпадающего меню&#10;//EmptyCommit" />
   </component>
 </project>

@@ -45,4 +45,14 @@
         android:name="com.example.negocards.fragments.pages.ChoiceTypeQRCFragment"
         android:label="fragment_choice_type_qrc"
         tools:layout="@layout/fragment_choice_type_qrc" />
+    <fragment
+        android:id="@+id/choiceParametersForCardFragment"
+        android:name="com.example.negocards.fragments.choiceParametersForQR.ChoiceParametersForCardFragment"
+        android:label="fragment_choice_parameters_for_card"
+        tools:layout="@layout/fragment_choice_parameters_for_card" />
+    <fragment
+        android:id="@+id/choiceParametersForTextFragment"
+        android:name="com.example.negocards.fragments.choiceParametersForQR.ChoiceParametersForTextFragment"
+        android:label="fragment_choice_parameters_for_text"
+        tools:layout="@layout/fragment_choice_parameters_for_text" />
 </navigation>

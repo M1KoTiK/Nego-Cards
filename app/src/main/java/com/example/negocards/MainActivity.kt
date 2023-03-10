@@ -38,6 +38,6 @@ class MainActivity : AppCompatActivity() {
             navController.navigate(currentId)
         }
         //binding.bottomBar.setupWithNavController(navController)
-    }
+    }   
 
 }
