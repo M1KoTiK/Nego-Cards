@@ -20,10 +20,10 @@ import m1k.kotik.negocards.model.QR.QRCreator
 
 class ChoiceParametersForTextFragment : Fragment() {
     //надо не забыть убрать говнецо))
-    val START_PAGE_POSITION = 2
+    val START_PAGE_POSITION = 0
     lateinit var navController : NavController
     private var selectedItemPosition : Int = START_PAGE_POSITION
-    private var currentFragment : IParamsQRC = ParamsLocation()
+    private var currentFragment : IParamsQRC = ParamsText()
     private var binding: FragmentChoiceParametersForTextBinding? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentChoiceParametersForTextBinding.inflate(inflater,container,false)
@@ -32,7 +32,7 @@ class ChoiceParametersForTextFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = binding?.root?.findNavController()!!
-        replaceFragment(ParamsLocation())
+        replaceFragment(currentFragment)
         startCheckedQRCValue()
 
         /*
@@ -85,11 +85,16 @@ class ChoiceParametersForTextFragment : Fragment() {
             var QRC = QRCreator()
             while(true){
                 activity?.runOnUiThread{
+                    if(!QRCValueIsNull()){
                     val bitmapimage = QRC.getQRCToBitmap(currentFragment.QRCValue)
-                    binding?.imageView?.setImageBitmap(bitmapimage)
+                    binding?.imageView?.setImageBitmap(bitmapimage)}
                 }
                 Thread.sleep(100)
             }
         }.start()
+    }
+    fun QRCValueIsNull():Boolean{
+        if(currentFragment.QRCValue.trim().isEmpty()) return true
+        return false
     }
 }

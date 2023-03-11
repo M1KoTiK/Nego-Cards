@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.choiceParametersForQR.parametersForText.ParamsLocation">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editTextTextPersonName9"
+            style="@style/RoundedEditText"
+            android:ems="10"
+            android:layout_gravity="center_horizontal"
+            android:hint="Введите ширину"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName10"
+            style="@style/RoundedEditText"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:layout_marginTop="20dp"
+            android:hint="Введите долготу"
+            android:inputType="textPersonName" />
+    </LinearLayout>
+
+</FrameLayout>

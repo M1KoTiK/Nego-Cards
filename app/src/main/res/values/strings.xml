@@ -27,6 +27,6 @@
     <string-array name="type_text_qrc">
         <item>Просто текст</item>
         <item>Ссылка</item>
-        <item>Вай-фай</item>
+        <item>Местоположение</item>
     </string-array>
 </resources>
