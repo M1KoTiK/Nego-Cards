@@ -1,9 +1,7 @@
-package com.example.negocards.model.QR
+package m1k.kotik.negocards.model.QR
 
-import android.content.ContentValues
 import android.graphics.Bitmap
 import android.graphics.Color
-import android.util.Log
 import androidmads.library.qrgenearator.QRGContents
 import androidmads.library.qrgenearator.QRGEncoder
 

@@ -1,4 +1,4 @@
-package com.example.negocards
+package m1k.kotik.negocards
 
 import android.app.Application
 import android.util.Log

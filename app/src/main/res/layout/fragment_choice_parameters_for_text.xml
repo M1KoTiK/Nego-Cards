@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black18"
-    tools:context=".fragments.choiceParametersForQR.ChoiceParametersForTextFragment">
+    android:background="@color/black18">
 
 
     <LinearLayout
@@ -31,5 +30,23 @@
                 android:textSize="18sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragmentContainerView3"
+            android:layout_marginTop="20dp"
+            android:name="m1k.kotik.negocards.fragments.choiceParametersForQR.parametersForText.ParamsText"
+            android:layout_width="match_parent"
+            app:navGraph="@navigation/nav"
+            android:layout_height="wrap_content"
+            tools:layout="@layout/fragment_params_text"/>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="250dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="250dp"
+            app:srcCompat="@drawable/placeholder" />
+
     </LinearLayout>
 </FrameLayout>

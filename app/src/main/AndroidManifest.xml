@@ -14,7 +14,7 @@
         android:theme="@style/Theme.NegoCards"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name="m1k.kotik.negocards.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustNothing" >

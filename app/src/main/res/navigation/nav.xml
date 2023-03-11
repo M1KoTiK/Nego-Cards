@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.negocards.fragments.pages.ProfileFragment"
+        android:name="m1k.kotik.negocards.fragments.pages.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/mainPageFragment"
-        android:name="com.example.negocards.fragments.pages.MainPageFragment"
+        android:name="m1k.kotik.negocards.fragments.pages.MainPageFragment"
         android:label="fragment_main_page"
         tools:layout="@layout/fragment_main_page" >
         <action
@@ -27,32 +27,37 @@
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.negocards.fragments.pages.SettingsFragment"
+        android:name="m1k.kotik.negocards.fragments.pages.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/scannerPageFragment"
-        android:name="com.example.negocards.fragments.pages.ScannerPageFragment"
+        android:name="m1k.kotik.negocards.fragments.pages.ScannerPageFragment"
         android:label="fragment_scanner_page"
         tools:layout="@layout/fragment_scanner_page" />
     <fragment
         android:id="@+id/QRCViewPageFragment"
-        android:name="com.example.negocards.fragments.pages.QRCViewPageFragment"
+        android:name="m1k.kotik.negocards.fragments.pages.QRCViewPageFragment"
         android:label="fragment_qrc_view_page"
         tools:layout="@layout/fragment_qrc_view_page" />
     <fragment
         android:id="@+id/choiceTypeQRCFragment"
-        android:name="com.example.negocards.fragments.pages.ChoiceTypeQRCFragment"
+        android:name="m1k.kotik.negocards.fragments.pages.ChoiceTypeQRCFragment"
         android:label="fragment_choice_type_qrc"
         tools:layout="@layout/fragment_choice_type_qrc" />
     <fragment
         android:id="@+id/choiceParametersForCardFragment"
-        android:name="com.example.negocards.fragments.choiceParametersForQR.ChoiceParametersForCardFragment"
+        android:name="m1k.kotik.negocards.fragments.choiceParametersForQR.ChoiceParametersForCardFragment"
         android:label="fragment_choice_parameters_for_card"
         tools:layout="@layout/fragment_choice_parameters_for_card" />
     <fragment
         android:id="@+id/choiceParametersForTextFragment"
-        android:name="com.example.negocards.fragments.choiceParametersForQR.ChoiceParametersForTextFragment"
+        android:name="m1k.kotik.negocards.fragments.choiceParametersForQR.ChoiceParametersForTextFragment"
         android:label="fragment_choice_parameters_for_text"
         tools:layout="@layout/fragment_choice_parameters_for_text" />
+    <fragment
+        android:id="@+id/paramsText"
+        android:name="m1k.kotik.negocards.fragments.choiceParametersForQR.parametersForText.ParamsText"
+        android:label="fragment_params_text"
+        tools:layout="@layout/fragment_params_text" />
 </navigation>

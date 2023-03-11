@@ -1,4 +1,4 @@
-package com.example.negocards.fragments.pages
+package m1k.kotik.negocards.fragments.pages
 
 import android.os.Bundle
 import android.text.Editable
@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.negocards.databinding.FragmentQrcViewPageBinding
-import com.example.negocards.model.QR.QRCreator
+import m1k.kotik.negocards.databinding.FragmentQrcViewPageBinding
+import m1k.kotik.negocards.model.QR.QRCreator
 
 
 class QRCViewPageFragment : Fragment() {

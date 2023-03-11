@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black18"
-    tools:context=".fragments.choiceParametersForQR.ChoiceParametersForCardFragment">
+    android:background="@color/black18">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,7 +17,6 @@
             android:layout_width="250dp"
             android:layout_height="45dp"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
             android:ems="10"
             android:hint="Введите ширину"
             android:inputType="textPersonName" />

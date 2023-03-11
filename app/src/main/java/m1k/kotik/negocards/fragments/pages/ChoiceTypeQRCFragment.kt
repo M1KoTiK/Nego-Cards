@@ -1,25 +1,25 @@
-package com.example.negocards.fragments.pages
+package m1k.kotik.negocards.fragments.pages
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.*
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Toast
-import androidx.annotation.IdRes
+import android.widget.EditText
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.NavHostFragment.findNavController
-import com.example.negocards.R
-import com.example.negocards.databinding.FragmentChoiceTypeQrcBinding
-import com.example.negocards.fragments.choiceParametersForQR.ChoiceParametersForCardFragment
-import com.example.negocards.fragments.choiceParametersForQR.ChoiceParametersForTextFragment
+import m1k.kotik.negocards.R
+import m1k.kotik.negocards.databinding.FragmentChoiceTypeQrcBinding
+import m1k.kotik.negocards.fragments.choiceParametersForQR.ChoiceParametersForCardFragment
+import m1k.kotik.negocards.fragments.choiceParametersForQR.ChoiceParametersForTextFragment
+import m1k.kotik.negocards.fragments.choiceParametersForQR.parametersForText.ParamsLocation
+import m1k.kotik.negocards.fragments.choiceParametersForQR.parametersForText.ParamsText
+import m1k.kotik.negocards.model.IParamsQRC
+import m1k.kotik.negocards.model.QR.QRCreator
 
 
 class ChoiceTypeQRCFragment : Fragment() {
-    val START_PAGE_POSITION = 0
+    val START_PAGE_POSITION : Int = 0
     private var selectedItemPosition : Int = START_PAGE_POSITION
     private var binding: FragmentChoiceTypeQrcBinding? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

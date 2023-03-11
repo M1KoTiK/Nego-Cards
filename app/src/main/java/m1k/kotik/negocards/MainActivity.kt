@@ -1,16 +1,11 @@
-package com.example.negocards
+package m1k.kotik.negocards
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.PopupMenu
-import android.widget.Toast
-import androidx.appcompat.view.menu.MenuBuilder
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.ui.setupActionBarWithNavController
-import com.example.negocards.databinding.ActivityMainBinding
+import m1k.kotik.negocards.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController

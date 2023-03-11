@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black18"
-    tools:context=".fragments.pages.ChoiceTypeQRCFragment">
+    android:background="@color/black18">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,10 +40,17 @@
                 android:textSize="18sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
+        <View
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/inpField"/>
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragmentContainerForChoiceTypeQRC"
-            android:name="com.example.negocards.fragments.choiceParametersForQR.ChoiceParametersForCardFragment"
+            android:name="m1k.kotik.negocards.fragments.choiceParametersForQR.ChoiceParametersForCardFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

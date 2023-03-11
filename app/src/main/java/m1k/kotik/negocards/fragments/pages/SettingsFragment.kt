@@ -1,11 +1,11 @@
-package com.example.negocards.fragments.pages
+package m1k.kotik.negocards.fragments.pages
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.negocards.R
+import m1k.kotik.negocards.R
 
 class SettingsFragment : Fragment() {
     override fun onCreateView(
