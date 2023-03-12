@@ -13,23 +13,26 @@
 
         <EditText
             android:id="@+id/editTextTextPersonName5"
-            style="@style/RoundedEditText"
-            android:layout_width="250dp"
-            android:layout_height="45dp"
+            style="@style/RoundedEditTextSmall"
             android:layout_gravity="center"
             android:ems="10"
             android:hint="Введите ширину"
             android:inputType="textPersonName" />
         <EditText
             android:id="@+id/editTextTextPersonName6"
-            style="@style/RoundedEditText"
-            android:layout_width="250dp"
-            android:layout_height="45dp"
+            style="@style/RoundedEditTextSmall"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:ems="10"
             android:hint="Введите длину"
             android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/button4"
+            style="@style/RoundedButton"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Продолжить" />
 
     </LinearLayout>
 </FrameLayout>

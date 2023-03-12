@@ -60,4 +60,15 @@
         android:name="m1k.kotik.negocards.fragments.choiceParametersForQR.parametersForText.ParamsText"
         android:label="fragment_params_text"
         tools:layout="@layout/fragment_params_text" />
+    <fragment
+        android:id="@+id/createCanvasQRCFragment"
+        android:name="m1k.kotik.negocards.fragments.pages.CreateCanvasQRCFragment"
+        android:label="fragment_create_canvas_q_r_c"
+        tools:layout="@layout/fragment_create_canvas_q_r_c" />
+    <fragment
+        android:id="@+id/canvasViewFragment"
+        android:name="m1k.kotik.negocards.fragments.CanvasViewFragment"
+        android:label="fragment_canvas_view"
+        tools:layout="@layout/fragment_canvas_view" />
+    <fragment android:id="@+id/placeholder" />
 </navigation>

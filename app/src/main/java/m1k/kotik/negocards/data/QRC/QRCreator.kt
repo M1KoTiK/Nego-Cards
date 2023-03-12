@@ -1,4 +1,4 @@
-package m1k.kotik.negocards.model.QR
+package m1k.kotik.negocards.data.QRC
 
 import android.graphics.Bitmap
 import android.graphics.Color

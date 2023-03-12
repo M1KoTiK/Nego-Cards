@@ -17,17 +17,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="25dp"
             app:counterTextColor="@color/white">
 
             <AutoCompleteTextView
                 android:id="@+id/autoCompleteTextView"
                 android:layout_width="275dp"
-                android:layout_height="50dp"
-                android:background="@drawable/rounded_popupmenu"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_height="40dp"
+                android:background="@drawable/rounded_edittext"
                 android:inputType="none"
                 android:text="Просто текст"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -42,10 +43,10 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="250dp"
-            android:layout_marginTop="20dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_gravity="center_horizontal"
-            android:layout_height="250dp"
+            android:layout_marginTop="20dp"
             app:srcCompat="@drawable/placeholder" />
 
     </LinearLayout>

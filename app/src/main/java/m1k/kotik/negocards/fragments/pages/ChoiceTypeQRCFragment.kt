@@ -1,21 +1,14 @@
 package m1k.kotik.negocards.fragments.pages
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.*
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.EditText
 import androidx.fragment.app.Fragment
 import m1k.kotik.negocards.R
 import m1k.kotik.negocards.databinding.FragmentChoiceTypeQrcBinding
 import m1k.kotik.negocards.fragments.choiceParametersForQR.ChoiceParametersForCardFragment
 import m1k.kotik.negocards.fragments.choiceParametersForQR.ChoiceParametersForTextFragment
-import m1k.kotik.negocards.fragments.choiceParametersForQR.parametersForText.ParamsLocation
-import m1k.kotik.negocards.fragments.choiceParametersForQR.parametersForText.ParamsText
-import m1k.kotik.negocards.model.IParamsQRC
-import m1k.kotik.negocards.model.QR.QRCreator
 
 
 class ChoiceTypeQRCFragment : Fragment() {

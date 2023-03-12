@@ -8,7 +8,7 @@
     <EditText
         android:id="@+id/editTextTextPersonName7"
         android:ems="10"
-        style="@style/RoundedEditText"
+        style="@style/RoundedEditTextSmall"
         android:layout_gravity="center_horizontal"
         android:inputType="textPersonName"
         android:hint="Введите текст"/>

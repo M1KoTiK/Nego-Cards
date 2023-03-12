@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         //setupActionBarWithNavController(navController)
         setupSmoothBottomMenu()
     }
+
     private fun setupSmoothBottomMenu() {
         val popupMenu = PopupMenu(this, null)
         popupMenu.inflate(R.menu.bottom_navigation_bar)
@@ -25,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         //val menu = MenuBuilder(applicationContext)
         //menuInflater.inflate(R.menu.bottom_navigation_bar,menu)
 
-        binding.bottomBar.setupWithNavController(menu,navController)
+        binding.bottomBar.setupWithNavController(menu, navController)
         binding.bottomBar.onItemReselected = {
             val currentIndex = binding?.bottomBar.itemActiveIndex
             val currentMenuItem = menu.getItem(currentIndex)
@@ -33,6 +34,6 @@ class MainActivity : AppCompatActivity() {
             navController.navigate(currentId)
         }
         //binding.bottomBar.setupWithNavController(navController)
-    }   
+    }
 
 }

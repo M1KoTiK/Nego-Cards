@@ -7,7 +7,7 @@
 
     <EditText
         android:id="@+id/editTextTextPersonName8"
-        style="@style/RoundedEditText"
+        style="@style/RoundedEditTextSmall"
         android:layout_gravity="center_horizontal"
         android:ems="10"
         android:hint="Введите ссылку"
