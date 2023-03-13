@@ -3,9 +3,11 @@ package m1k.kotik.negocards.view
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
-import android.view.MotionEvent
 import android.view.View
 import m1k.kotik.negocards.data.canvas_qrc.model.*
+import m1k.kotik.negocards.data.canvas_qrc.model.shapes.ArcShape
+import m1k.kotik.negocards.data.canvas_qrc.model.shapes.QadrilShape
+import m1k.kotik.negocards.data.canvas_qrc.model.shapes.RectRShape
 
 open class CanvasView(context: Context, attrs: AttributeSet) : View(context, attrs) {
     private val paint: Paint = Paint()
@@ -30,81 +32,75 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
         for(obj in objects_){
             when(obj.typeObj){
                 ObjectType.Text ->{
-                   val txObj =  obj as TextObject
+                   obj as TextObject
                     paint.apply {
-                        color = txObj.color
+                        color = obj.color
                         style = Paint.Style.FILL
                         isAntiAlias = true
-                        textSize = txObj.fontSize.toFloat()
+                        textSize = obj.fontSize.toFloat()
                     }
-                    canvas?.drawText(txObj.text,txObj.posX.toFloat(),txObj.posY.toFloat(),paint)
+                    canvas?.drawText(obj.text,obj.posX.toFloat(),obj.posY.toFloat(),paint)
                 }
                 ObjectType.Image->{
 
                 }
                 ObjectType.Shape->{
-                    val shObj =  obj as ShapeObject
+                    obj as ShapeObject
                     paint.apply {
-                        color = shObj.color
+                        color = obj.color
                         style = Paint.Style.FILL
                         strokeWidth= 5F
                         isAntiAlias = true
                         isDither = true
                     }
-                    when(shObj.shapeType){
+                    when(obj.shapeType){
                         ShapeType.Rect->{
-                            canvas?.drawRect(shObj.posX.toFloat(),
-                                shObj.posY + shObj.height.toFloat(),
-                                shObj.posX + shObj.width.toFloat(),
-                                shObj.posY.toFloat(),
+                            canvas?.drawRect(obj.posX.toFloat(),
+                                obj.posY + obj.height.toFloat(),
+                                obj.posX + obj.width.toFloat(),
+                                obj.posY.toFloat(),
                                 paint
                             )
                         }
                         ShapeType.Oval->{
-                            canvas?.drawOval(shObj.posX.toFloat(),
-                                shObj.posY + shObj.height.toFloat(),
-                                shObj.posX + shObj.width.toFloat(),
-                                shObj.posY.toFloat(),
+
+                            canvas?.drawOval(obj.posX.toFloat(),
+                                obj.posY + obj.height.toFloat(),
+                                obj.posX + obj.width.toFloat(),
+                                obj.posY.toFloat(),
                                 paint)
                         }
                         ShapeType.Arc->{
-                            canvas?.drawArc(shObj.posX.toFloat(),
-                                shObj.posY.toFloat(),
-                                shObj.posX + shObj.width.toFloat(),
-                                shObj.posY+ shObj.height.toFloat(),
-                                shObj.leftCorner.toFloat(),
-                                shObj.rightCorner.toFloat(),
-                                true,
+                            obj as ArcShape
+                            canvas?.drawArc(obj.posX.toFloat(),
+                                obj.posY.toFloat(),
+                                obj.posX + obj.width.toFloat(),
+                                obj.posY+ obj.height.toFloat(),
+                                obj.startAngle.toFloat(),
+                                obj.sweepAngle.toFloat(),
+                                obj.useCenter,
                                 paint
                                 )
                         }
                         ShapeType.RectRound->{
-                            canvas?.drawRoundRect(shObj.posX.toFloat(),
-                                shObj.posY.toFloat(),
-                                shObj.posX + shObj.width.toFloat(),
-                                shObj.posY+ shObj.height.toFloat(),
-                                shObj.leftCorner.toFloat(),
-                                shObj.rightCorner.toFloat(),
-                                paint
-                            )
-                        }
-                        ShapeType.RectF->{
-                            canvas?.drawRoundRect(shObj.posX.toFloat(),
-                                shObj.posY.toFloat(),
-                                200F,
-                                shObj.posY+ shObj.height.toFloat(),
-                                shObj.leftCorner.toFloat(),
-                                shObj.rightCorner.toFloat(),
+                            obj as RectRShape
+                            canvas?.drawRoundRect(obj.posX.toFloat(),
+                                obj.posY.toFloat(),
+                                obj.posX + obj.width.toFloat(),
+                                obj.posY+ obj.height.toFloat(),
+                                obj.leftCorner.toFloat(),
+                                obj.rightCorner.toFloat(),
                                 paint
                             )
                         }
                         ShapeType.Quadril->{
+                            obj as QadrilShape
                             drawQuadrilateral(canvas,paint,
-                                shObj.posX,shObj.posY,
-                                shObj.bottomLeftX, shObj.bottomLeftY,
-                                shObj.topLeftX, shObj.topLeftY,
-                                shObj.bottomRightX, shObj.bottomRightY,
-                                shObj.topRightX, shObj.topRightY
+                                obj.posX,obj.posY,
+                                obj.bottomLeftX, obj.bottomLeftY,
+                                obj.topLeftX, obj.topLeftY,
+                                obj.bottomRightX, obj.bottomRightY,
+                                obj.topRightX, obj.topRightY
                             )
                         }
                     }

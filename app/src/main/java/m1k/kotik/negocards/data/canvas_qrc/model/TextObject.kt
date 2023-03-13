@@ -11,5 +11,8 @@ class TextObject(
     posX: Int,
     posY: Int
 ) : CanvasObject(ObjectType.Text, 0, 0, posX, posY) {
+    override fun encode(): String {
+        TODO("Not yet implemented")
+    }
 
 }

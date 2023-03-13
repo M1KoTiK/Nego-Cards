@@ -7,6 +7,7 @@ enum class ObjectType(val tag: String) {
     Reference("ref")
 }
 
+
 abstract class CanvasObject(
     val typeObj: ObjectType,
     val width: Int,
@@ -14,5 +15,5 @@ abstract class CanvasObject(
     val posX: Int,
     val posY: Int,
 ) {
-
+    open abstract fun encode():String
 }
