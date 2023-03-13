@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import m1k.kotik.negocards.data.canvas_qrc.model.*
 import m1k.kotik.negocards.data.canvas_qrc.model.shapes.QadrilShape
+import m1k.kotik.negocards.data.canvas_qrc.model.shapes.RectRShape
 import m1k.kotik.negocards.databinding.FragmentCreateCanvasQRCBinding
 
 class CreateCanvasQRCFragment : Fragment() {
@@ -17,17 +18,16 @@ class CreateCanvasQRCFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val testObj = TextObject("Пайс", "FF181818", 200,180,250)
         val cObj = mutableListOf<CanvasObject>(
-            TextObject("Пайсикет",-181818, 40,300,250),
-            TextObject("text2",-243434, 60,200,420),
+            testObj
         )
         binding?.button5?.setOnClickListener {
             binding?.view?.setCanvasObjects(cObj)
             binding?.view?.invalidate()
         }
         binding?.textView3?.setOnClickListener {
-            val sh = ShapeObject(ShapeType.Line,200,100,100,200)
-            binding?.textView3?.text = sh.encode()
+            binding?.textView3?.text = testObj.encode()
         }
 
     }

@@ -26,6 +26,8 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
         paint.apply {
             style = Paint.Style.FILL
             color = Color.WHITE
+            isAntiAlias = true
+            isDither = true
         }
         val rect = RectF(0f,0f,canvas?.width?.toFloat()!!,canvas?.height?.toFloat()!!)
         canvas?.drawRoundRect(rect,25f,25f,paint)
@@ -34,9 +36,10 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
                 ObjectType.Text ->{
                    obj as TextObject
                     paint.apply {
-                        color = obj.color
+                        color = Color.parseColor("#${obj.color}")
                         style = Paint.Style.FILL
                         isAntiAlias = true
+                        isDither = true
                         textSize = obj.fontSize.toFloat()
                     }
                     canvas?.drawText(obj.text,obj.posX.toFloat(),obj.posY.toFloat(),paint)
@@ -47,7 +50,7 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
                 ObjectType.Shape->{
                     obj as ShapeObject
                     paint.apply {
-                        color = obj.color
+                        color = Color.parseColor("#${obj.color}")
                         style = Paint.Style.FILL
                         strokeWidth= 5F
                         isAntiAlias = true

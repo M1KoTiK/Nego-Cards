@@ -18,7 +18,7 @@ class QadrilShape (
     posY: Int = 0,
     width: Int = 0,
     height: Int = 0,
-    color: Int = Color.BLACK,
+    color: String = "FF181818",
     style: Style
     ) : ShapeObject(ShapeType.Quadril,bottomLeftX,bottomLeftY, width, height,color,style) {
 

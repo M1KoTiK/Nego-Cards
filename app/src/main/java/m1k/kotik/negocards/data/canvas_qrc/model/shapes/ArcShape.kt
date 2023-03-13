@@ -27,7 +27,7 @@ class ArcShape(
     posY: Int = 0,
     width: Int = 0,
     height: Int = 0,
-    color: Int = Color.BLACK,
+    color: String = "FF181818",
     style: Style
 ) : ShapeObject(ShapeType.Arc, posX, posY, width, height,color,style) {
 
