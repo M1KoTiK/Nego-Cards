@@ -3,7 +3,7 @@ package m1k.kotik.negocards.data.canvas_qrc.model.shapes
 import android.graphics.Color
 import android.graphics.Paint.Style
 import m1k.kotik.negocards.data.canvas_qrc.model.ShapeObject
-import m1k.kotik.negocards.data.canvas_qrc.model.ShapeType
+import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject.ObjectType.Shape
 
 class QadrilShape (
     val bottomLeftX: Int = 0,
@@ -20,7 +20,7 @@ class QadrilShape (
     height: Int = 0,
     color: String = "FF181818",
     style: Style
-    ) : ShapeObject(ShapeType.Quadril,bottomLeftX,bottomLeftY, width, height,color,style) {
+    ) : ShapeObject(Shape.Quadril(),bottomLeftX,bottomLeftY, width, height,color,style) {
 
 
 }

@@ -3,8 +3,13 @@ package m1k.kotik.negocards.view
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
+import android.view.MotionEvent
 import android.view.View
 import m1k.kotik.negocards.data.canvas_qrc.model.*
+import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject
+import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject.ObjectType.Text
+import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject.ObjectType
+import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject.ObjectType.Shape
 import m1k.kotik.negocards.data.canvas_qrc.model.shapes.ArcShape
 import m1k.kotik.negocards.data.canvas_qrc.model.shapes.QadrilShape
 import m1k.kotik.negocards.data.canvas_qrc.model.shapes.RectRShape
@@ -33,7 +38,7 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
         canvas?.drawRoundRect(rect,25f,25f,paint)
         for(obj in objects_){
             when(obj.typeObj){
-                ObjectType.Text ->{
+                is Text->{
                    obj as TextObject
                     paint.apply {
                         color = Color.parseColor("#${obj.color}")
@@ -44,10 +49,7 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
                     }
                     canvas?.drawText(obj.text,obj.posX.toFloat(),obj.posY.toFloat(),paint)
                 }
-                ObjectType.Image->{
-
-                }
-                ObjectType.Shape->{
+                is Shape->{
                     obj as ShapeObject
                     paint.apply {
                         color = Color.parseColor("#${obj.color}")
@@ -57,7 +59,7 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
                         isDither = true
                     }
                     when(obj.shapeType){
-                        ShapeType.Rect->{
+                        is Shape.RectR->{
                             canvas?.drawRect(obj.posX.toFloat(),
                                 obj.posY + obj.height.toFloat(),
                                 obj.posX + obj.width.toFloat(),
@@ -65,7 +67,7 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
                                 paint
                             )
                         }
-                        ShapeType.Oval->{
+                        is Shape.Oval->{
 
                             canvas?.drawOval(obj.posX.toFloat(),
                                 obj.posY + obj.height.toFloat(),
@@ -73,7 +75,7 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
                                 obj.posY.toFloat(),
                                 paint)
                         }
-                        ShapeType.Arc->{
+                        is Shape.Arc->{
                             obj as ArcShape
                             canvas?.drawArc(obj.posX.toFloat(),
                                 obj.posY.toFloat(),
@@ -85,7 +87,7 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
                                 paint
                                 )
                         }
-                        ShapeType.RectRound->{
+                        is Shape.RectR->{
                             obj as RectRShape
                             canvas?.drawRoundRect(obj.posX.toFloat(),
                                 obj.posY.toFloat(),
@@ -96,7 +98,7 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
                                 paint
                             )
                         }
-                        ShapeType.Quadril->{
+                        is Shape.Quadril->{
                             obj as QadrilShape
                             drawQuadrilateral(canvas,paint,
                                 obj.posX,obj.posY,
@@ -110,6 +112,11 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
                 }
             }
         }
+    }
+
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        return super.onTouchEvent(event)
+        
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {

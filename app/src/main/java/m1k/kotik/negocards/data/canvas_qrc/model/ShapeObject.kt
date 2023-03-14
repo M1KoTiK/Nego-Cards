@@ -14,79 +14,26 @@ enum class ShapeType(val tag: String) {
 }
 
 open class ShapeObject(
-    val shapeType: ShapeType,
+    var shapeType: ObjectType.Shape,
     posX: Int = 0,
     posY: Int = 0,
     width: Int = 0,
     height: Int = 0,
-    val color:  String = "FF181818",
+    color:  String = "FF181818",
     val style: Paint.Style = Paint.Style.FILL,
 
-) : CanvasObject(ObjectType.Shape, width, height, posX, posY) {
+    ) : CanvasObject(ObjectType.Shape(), width, height, posX, posY,color) {
 
-    override fun encode(): String {
-        var encodeStr: String = ""
-        val shapeTag = enumValues<ShapeValueTag>()
-        for (shTag in shapeTag) {
-            if(shTag.shField(this).toDoubleOrNull() != null){
-                encodeStr += "${shTag.tag}${shTag.shField(this)}"
-            }
-            else{
-                encodeStr += "${shTag.tag}\"${shTag.shField(this)}\""
-            }
-
-        }
-        encodeStr = encodeStr.lowercase()
-        return encodeStr
-
-    }
-    enum class ShapeValueTag(val tag: String,val obligatory: Boolean = true) {
-        ShapeType("st"){
-            override fun shField(shObj: ShapeObject?): String {
-                return shObj?.shapeType?.tag.toString()
-            }
-        },
-        Color("cl"){
-            override fun shField(shObj: ShapeObject?): String {
-                return shObj?.color.toString()
-            }
-                   },
-        Style("sl"){
-            override fun shField(shObj: ShapeObject?): String {
-                return shObj?.style.toString()
-            }
-        },
-        PosX("x"){
-            override fun shField(shObj: ShapeObject?): String {
-                return shObj?.posX.toString()
-            }
-                 },
-        PosY("y"){
-            override fun shField(shObj: ShapeObject?): String {
-                return shObj?.posY.toString()
-            }
-                 },
-        Width("w"){
-            override fun shField(shObj: ShapeObject?): String {
-                return shObj?.width.toString()
-            }
-                  },
-        Height("h") {
-            override fun shField(shObj: ShapeObject?): String {
-                return shObj?.height.toString()
-            }
-        };
-        abstract fun shField(shObj: ShapeObject?): String
-    }
 
     override fun decode(encodeString: String): CanvasObject {
         var textTag = ""
         var canvasObject: CanvasObject
+        canvasObject = ShapeObject(ObjectType.Shape.Arc())
         for (char in encodeString){
             while(char!='\"' && char.toString().toDoubleOrNull()==null){
-                textTag ++
-            }
 
+            }
         }
+        return canvasObject
     }
 }

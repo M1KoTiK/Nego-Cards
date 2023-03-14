@@ -3,7 +3,7 @@ package m1k.kotik.negocards.data.canvas_qrc.model.shapes
 import android.graphics.Color
 import android.graphics.Paint.Style
 import m1k.kotik.negocards.data.canvas_qrc.model.ShapeObject
-import m1k.kotik.negocards.data.canvas_qrc.model.ShapeType
+import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject.ObjectType.Shape
 
 enum class ArcShapeValueTag (val tag: String) {
     ShapeType("st"),
@@ -29,6 +29,6 @@ class ArcShape(
     height: Int = 0,
     color: String = "FF181818",
     style: Style
-) : ShapeObject(ShapeType.Arc, posX, posY, width, height,color,style) {
+) : ShapeObject(Shape.Arc(), posX, posY, width, height,color,style) {
 
 }
