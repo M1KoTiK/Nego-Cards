@@ -5,14 +5,7 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
-import m1k.kotik.negocards.data.canvas_qrc.model.*
 import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject
-import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject.ObjectType.Text
-import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject.ObjectType
-import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject.ObjectType.Shape
-import m1k.kotik.negocards.data.canvas_qrc.model.shapes.ArcShape
-import m1k.kotik.negocards.data.canvas_qrc.model.shapes.QadrilShape
-import m1k.kotik.negocards.data.canvas_qrc.model.shapes.RectRShape
 
 open class CanvasView(context: Context, attrs: AttributeSet) : View(context, attrs) {
     private val paint: Paint = Paint()
@@ -37,81 +30,9 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
         val rect = RectF(0f,0f,canvas?.width?.toFloat()!!,canvas?.height?.toFloat()!!)
         canvas?.drawRoundRect(rect,25f,25f,paint)
         for(obj in objects_){
-            when(obj.typeObj){
-                is Text->{
-                   obj as TextObject
-                    paint.apply {
-                        color = Color.parseColor("#${obj.color}")
-                        style = Paint.Style.FILL
-                        isAntiAlias = true
-                        isDither = true
-                        textSize = obj.fontSize.toFloat()
-                    }
-                    canvas?.drawText(obj.text,obj.posX.toFloat(),obj.posY.toFloat(),paint)
-                }
-                is Shape->{
-                    obj as ShapeObject
-                    paint.apply {
-                        color = Color.parseColor("#${obj.color}")
-                        style = Paint.Style.FILL
-                        strokeWidth= 5F
-                        isAntiAlias = true
-                        isDither = true
-                    }
-                    when(obj.shapeType){
-                        is Shape.RectR->{
-                            canvas?.drawRect(obj.posX.toFloat(),
-                                obj.posY + obj.height.toFloat(),
-                                obj.posX + obj.width.toFloat(),
-                                obj.posY.toFloat(),
-                                paint
-                            )
-                        }
-                        is Shape.Oval->{
-
-                            canvas?.drawOval(obj.posX.toFloat(),
-                                obj.posY + obj.height.toFloat(),
-                                obj.posX + obj.width.toFloat(),
-                                obj.posY.toFloat(),
-                                paint)
-                        }
-                        is Shape.Arc->{
-                            obj as ArcShape
-                            canvas?.drawArc(obj.posX.toFloat(),
-                                obj.posY.toFloat(),
-                                obj.posX + obj.width.toFloat(),
-                                obj.posY+ obj.height.toFloat(),
-                                obj.startAngle.toFloat(),
-                                obj.sweepAngle.toFloat(),
-                                obj.useCenter,
-                                paint
-                                )
-                        }
-                        is Shape.RectR->{
-                            obj as RectRShape
-                            canvas?.drawRoundRect(obj.posX.toFloat(),
-                                obj.posY.toFloat(),
-                                obj.posX + obj.width.toFloat(),
-                                obj.posY+ obj.height.toFloat(),
-                                obj.leftCorner.toFloat(),
-                                obj.rightCorner.toFloat(),
-                                paint
-                            )
-                        }
-                        is Shape.Quadril->{
-                            obj as QadrilShape
-                            drawQuadrilateral(canvas,paint,
-                                obj.posX,obj.posY,
-                                obj.bottomLeftX, obj.bottomLeftY,
-                                obj.topLeftX, obj.topLeftY,
-                                obj.bottomRightX, obj.bottomRightY,
-                                obj.topRightX, obj.topRightY
-                            )
-                        }
-                    }
-                }
-            }
+            canvas?.let { obj.draw(it) }
         }
+
     }
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {

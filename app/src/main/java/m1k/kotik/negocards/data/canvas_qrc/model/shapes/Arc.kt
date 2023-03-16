@@ -1,24 +1,11 @@
 package m1k.kotik.negocards.data.canvas_qrc.model.shapes
 
-import android.graphics.Color
+import android.graphics.Canvas
+import android.graphics.Paint
 import android.graphics.Paint.Style
 import m1k.kotik.negocards.data.canvas_qrc.model.ShapeObject
 import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject.ObjectType.Shape
-
-enum class ArcShapeValueTag (val tag: String) {
-    ShapeType("st"),
-    Color("cl"),
-    Style("sl"),
-    PosX("x"),
-    PosY("y"),
-    Width("w"),
-    Height("h"),
-    StartAngle("sa"),
-    SweepAngle("ea"),
-    UseCenter("uc")
-}
-
-class ArcShape(
+class Arc(
     var startAngle: Int,
     var sweepAngle: Int,
     val useCenter:Boolean,
@@ -30,5 +17,10 @@ class ArcShape(
     color: String = "FF181818",
     style: Style
 ) : ShapeObject(Shape.Arc(), posX, posY, width, height,color,style) {
+    override fun draw(canvas: Canvas) {
+        canvas.drawArc(posX.toFloat(),posY.toFloat(),posX+width.toFloat(),posY+height.toFloat(),startAngle.toFloat(),sweepAngle.toFloat(),useCenter, Paint().also {
+            it.color = this.getParseColor()
+            it.style = this.style})
+    }
 
 }
