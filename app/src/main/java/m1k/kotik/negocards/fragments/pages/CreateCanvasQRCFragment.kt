@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import m1k.kotik.negocards.data.canvas_qrc.model.*
+import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject.Tag
 import m1k.kotik.negocards.data.canvas_qrc.model.shapes.RectR
 import m1k.kotik.negocards.databinding.FragmentCreateCanvasQRCBinding
 
@@ -17,11 +18,10 @@ class CreateCanvasQRCFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val testObj = TextObject("Пайс",60 ,"FF181818" ,180,250)
+        val testObj = TextObject("Пайс",60 ,"FF181818" ,180,250,Tag.Style.Fill())
         val cObj = mutableListOf<CanvasObject>(
-            TextObject("Пайс",60 ,"FF181818" ,180,250),
-            TextObject("Пайс",60 ,"FF909090" ,300,450),
-            TextObject()
+            TextObject("Пайс",60 ,"FF181818" ,180,250, Tag.Style.Stroke()),
+            TextObject("Пайс",60 ,"FF909090" ,300,450,Tag.Style.Fill()),
         )
         binding?.button5?.setOnClickListener {
             binding?.view?.setCanvasObjects(cObj)

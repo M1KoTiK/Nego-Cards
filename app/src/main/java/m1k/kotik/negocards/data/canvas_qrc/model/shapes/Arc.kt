@@ -15,12 +15,12 @@ class Arc(
     width: Int = 0,
     height: Int = 0,
     color: String = "FF181818",
-    style: Style
+    style: Tag.Style
 ) : ShapeObject(Shape.Arc(), posX, posY, width, height,color,style) {
     override fun draw(canvas: Canvas) {
         canvas.drawArc(posX.toFloat(),posY.toFloat(),posX+width.toFloat(),posY+height.toFloat(),startAngle.toFloat(),sweepAngle.toFloat(),useCenter, Paint().also {
             it.color = this.getParseColor()
-            it.style = this.style})
+            it.style = this.style.sType})
     }
 
 }

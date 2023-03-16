@@ -14,30 +14,7 @@ abstract class CanvasObject(
     var style: Tag.Style
 ) {
     abstract fun draw(canvas: Canvas)
-    fun getParseColor(): Int {
-        return parseColor("#$color")
-    }
-    open fun encode():String{
-        var encodeStr: String = ""
-        for (txTag in this.typeObj.listTag) {
-            var field = txTag.getField(this)
-            if(field.toString() == txTag.default.toString()){
-                encodeStr += "${txTag.tag}\"\""
-            }
-            else{
-                if(field.toString().toDoubleOrNull() != null){
-                    encodeStr += "${txTag.tag}${field.toString()}"
-                }
-                else{
-                    encodeStr += "${txTag.tag}\"${field.toString()}\""
-                }
-            }
 
-
-        }
-        encodeStr = encodeStr.lowercase()
-        return encodeStr
-    }
     sealed class ObjectType {
         abstract val tag: String
         open var listTag = listOf<Tag>(
@@ -46,7 +23,8 @@ abstract class CanvasObject(
             Tag.Height(),
             Tag.PosX(),
             Tag.PosY(),
-            Tag.Color()
+            Tag.Color(),
+            Tag.Style()
         )
         class Text : ObjectType() {
             override val tag: String get() = "tx"
@@ -209,6 +187,7 @@ abstract class CanvasObject(
         }
 
         open class Style :Tag() {
+            open val sType: Paint.Style = Paint.Style.FILL
             override val tag: String
                 get() = "s"
             override val default: String get() = Style.Fill().tag
@@ -218,8 +197,39 @@ abstract class CanvasObject(
             override fun getField(canvasObject: CanvasObject): Any {
                 return canvasObject.style.tag
             }
-            class Fill : Style() { override val tag: String get() = "sf" }
-            class Stroke : Style() { override val tag: String get() = "ss" }
+            class Fill : Style() {
+                override val tag: String get() = "sf"
+                override val sType: Paint.Style = Paint.Style.FILL
+
+            }
+            class Stroke : Style() {
+                override val tag: String get() = "ss"
+                override val sType: Paint.Style = Paint.Style.STROKE
+
+            }
         }
+    }
+    fun getParseColor(): Int {
+        return parseColor("#$color")
+    }
+
+    open fun encode():String{
+        var encodeStr: String = ""
+        for (txTag in this.typeObj.listTag) {
+            var field = txTag.getField(this)
+            if(field.toString() == txTag.default.toString()){
+                encodeStr += "${txTag.tag}\"\""
+            }
+            else{
+                if(field.toString().toDoubleOrNull() != null){
+                    encodeStr += "${txTag.tag}${field.toString()}"
+                }
+                else{
+                    encodeStr += "${txTag.tag}\"${field.toString()}\""
+                }
+            }
+        }
+        encodeStr = encodeStr.lowercase()
+        return encodeStr
     }
 }

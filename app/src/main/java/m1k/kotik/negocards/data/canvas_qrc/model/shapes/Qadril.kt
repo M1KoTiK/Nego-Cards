@@ -19,7 +19,7 @@ class Qadril (
     width: Int = 0,
     height: Int = 0,
     color: String = "FF181818",
-    style: Style
+    style: Tag.Style
     ) : ShapeObject(Shape.Quadril(),bottomLeftX,bottomLeftY, width, height,color,style) {
     override fun draw(canvas: Canvas) {
         TODO("Not yet implemented")

@@ -11,7 +11,7 @@ open class ShapeObject(
     width: Int = 0,
     height: Int = 0,
     color:  String = "FF181818",
-    style: Paint.Style = Paint.Style.FILL,
+    style: Tag.Style,
 
     ) : CanvasObject(ObjectType.Shape(), width, height, posX, posY,color,style) {
 

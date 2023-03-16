@@ -15,7 +15,7 @@ class RectR (
     width: Int ,
     height: Int,
     color: String,
-    style: Paint.Style  = Paint.Style.FILL
+    style: Tag.Style
 ) : ShapeObject(Shape.RectR(), posX, posY, width, height,color,style) {
     override fun draw(canvas: Canvas) {
         canvas.drawRoundRect(posX.toFloat(),posY.toFloat(),posX+width.toFloat(),posY+height.toFloat(),leftCorner.toFloat(),rightCorner.toFloat(), Paint().apply {

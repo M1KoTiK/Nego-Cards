@@ -10,8 +10,9 @@ class TextObject(
     var fontSize: Int,
     color: String,
     posX: Int,
-    posY: Int
-) : CanvasObject(ObjectType.Text(), (fontSize*text.length), fontSize,posX, posY,color) {
+    posY: Int,
+    style: Tag.Style
+) : CanvasObject(ObjectType.Text(), (fontSize*text.length), fontSize,posX, posY,color,style) {
     override fun draw(canvas: Canvas) {
         canvas.drawText(text, posX.toFloat(),posY.toFloat(),Paint().also {
             it.color = this.getParseColor()
