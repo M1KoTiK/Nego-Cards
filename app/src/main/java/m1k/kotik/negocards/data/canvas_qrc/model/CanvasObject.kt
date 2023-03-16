@@ -3,6 +3,7 @@ package m1k.kotik.negocards.data.canvas_qrc.model
 import android.graphics.*
 import android.graphics.Color.parseColor
 import android.text.TextWatcher
+import m1k.kotik.negocards.data.canvas_qrc.model.shapes.ArcShape
 
 /*enum class ObjectType {
     Text,
@@ -25,7 +26,7 @@ abstract class CanvasObject(
     open fun encode():String{
         var encodeStr: String = ""
         for (txTag in this.typeObj.listTag) {
-            if(txTag.getField(this).toDoubleOrNull() != null){
+            if(txTag.getField(this).toString().toDoubleOrNull() != null){
                 encodeStr += "${txTag.tag}${txTag.getField(this)}"
             }
             else{
@@ -38,6 +39,9 @@ abstract class CanvasObject(
     }
     sealed class ObjectType {
         abstract val tag: String
+        fun Draw(canvas :Canvas) {
+
+        }
         open var listTag = listOf<Tag>(
             Tag.ObjType(),
             Tag.Width(),
@@ -55,10 +59,9 @@ abstract class CanvasObject(
             override val tag: String get() = "sh"
             override var listTag: List<Tag> =
                 super.listTag + listOf(Tag.ShapeType())
+
             class RectR: Shape(){
                 override  val tag: String get()= "rr"
-                override var listTag: List<Tag> =
-                    super.listTag + listOf()
             }
             class Quadril: Shape(){
                 override val tag: String get() = "qd"
@@ -78,7 +81,7 @@ abstract class CanvasObject(
         abstract val tag: String
         open val obligatory: Boolean = true
         abstract fun setField(canvasObject: CanvasObject, value:Any)
-        abstract fun getField(canvasObject: CanvasObject):String
+        abstract fun getField(canvasObject: CanvasObject):Any
         class ObjType: Tag() {
             override val tag: String get() = "ot"
             override fun setField(canvasObject: CanvasObject, value: Any) {
@@ -102,7 +105,7 @@ abstract class CanvasObject(
             override fun setField(canvasObject: CanvasObject, value: Any) {
                 canvasObject.height = value.toString().toInt()
             }
-            override fun getField(canvasObject: CanvasObject): String {
+            override fun getField(canvasObject: CanvasObject): Any {
                 return canvasObject.height.toString()
             }
         }
@@ -169,15 +172,41 @@ abstract class CanvasObject(
                 return canvasObject.shapeType.tag.toString()
             }
         }
-    }
-    companion object{
-    /*
+        class StartAngle : Tag(){
+            override val tag: String
+                get() = "sg"
+            override fun setField(canvasObject: CanvasObject, value: Any) {
+                canvasObject as ArcShape
+                canvasObject.startAngle = value.toString().toInt()
+            }
+            override fun getField(canvasObject: CanvasObject): String {
+                canvasObject as ArcShape
+                return  canvasObject.startAngle.toString()
+            }
+
+        }
+        class SweepAngle : Tag(){
+            override val tag: String
+                get() = "sa"
+
+            override fun setField(canvasObject: CanvasObject, value: Any) {
+                canvasObject as ArcShape
+                canvasObject.sweepAngle = value.toString().toInt()
+            }
+
+            override fun getField(canvasObject: CanvasObject): String {
+                canvasObject as ArcShape
+                return canvasObject.sweepAngle.toString()
+            }
+        }
+        companion object {
+        /*
         fun decode(encodeString: String):CanvasObject{
             val obj: CanvasObject
 
             return obj
         }
         */
+        }
     }
-
 }

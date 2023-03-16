@@ -25,13 +25,12 @@ open class ShapeObject(
     ) : CanvasObject(ObjectType.Shape(), width, height, posX, posY,color) {
 
 
-    override fun decode(encodeString: String): CanvasObject {
+    fun decode(encodeString: String): CanvasObject {
         var textTag = ""
         var canvasObject: CanvasObject
         canvasObject = ShapeObject(ObjectType.Shape.Arc())
         for (char in encodeString){
             while(char!='\"' && char.toString().toDoubleOrNull()==null){
-
             }
         }
         return canvasObject

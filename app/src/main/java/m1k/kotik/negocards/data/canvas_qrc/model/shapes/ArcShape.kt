@@ -19,8 +19,8 @@ enum class ArcShapeValueTag (val tag: String) {
 }
 
 class ArcShape(
-    val startAngle: Int,
-    val sweepAngle: Int,
+    var startAngle: Int,
+    var sweepAngle: Int,
     val useCenter:Boolean,
 
     posX: Int = 0,
