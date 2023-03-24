@@ -1,9 +1,9 @@
 package m1k.kotik.negocards.data.canvas_qrc.model
 
-import m1k.kotik.negocards.data.canvas_qrc.model.shapes.RectR
+import m1k.kotik.negocards.data.canvas_qrc.model.shapes.RectRShape
 
 class CanvasModel(
-    val canvasAsShape: RectR,
+    val canvasAsShape: RectRShape,
     val canvasObject: MutableList<CanvasObject>
 ) {
     fun encode(): String{

@@ -5,9 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import m1k.kotik.negocards.data.canvas_qrc.model.*
 import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject.Tag
-import m1k.kotik.negocards.data.canvas_qrc.model.shapes.RectR
+import m1k.kotik.negocards.data.canvas_qrc.model.shapes.RectShape
 import m1k.kotik.negocards.databinding.FragmentCreateCanvasQRCBinding
 
 class CreateCanvasQRCFragment : Fragment() {
@@ -18,22 +19,20 @@ class CreateCanvasQRCFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val testObj = TextObject("Пайс",60 ,"FF181818" ,180,250,Tag.Style.Fill())
-        val cObj = mutableListOf<CanvasObject>(
-            TextObject("Пайс",60 ,"FF181818" ,180,250, Tag.Style.Stroke()),
-            TextObject("Пайс",60 ,"FF909090" ,300,450,Tag.Style.Fill()),
-        )
+        val testObj = TextObject("jopa",50,"FF181818",200,100,Tag.Style.Fill())
+        val cObj = mutableListOf<CanvasObject>()
+        cObj.add(testObj)
         binding?.button5?.setOnClickListener {
+            cObj.clear()
+            try {
+                testObj.applyCode(binding?.textView3?.text.toString())
+                cObj.add(testObj)
+            }
+            catch(e:Exception){
+                Toast.makeText(requireActivity(),e.message,Toast.LENGTH_SHORT).show()
+            }
             binding?.view?.setCanvasObjects(cObj)
             binding?.view?.invalidate()
         }
-        binding?.textView3?.setOnClickListener {
-            var c :String = ""
-            for(co in cObj) {
-                c = c+ co.encode()
-            }
-            binding?.textView3?.setText(c)
-        }
-
     }
 }

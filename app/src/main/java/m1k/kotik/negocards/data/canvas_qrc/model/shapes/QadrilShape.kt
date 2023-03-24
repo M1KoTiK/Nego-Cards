@@ -1,11 +1,10 @@
 package m1k.kotik.negocards.data.canvas_qrc.model.shapes
 
 import android.graphics.Canvas
-import android.graphics.Paint.Style
 import m1k.kotik.negocards.data.canvas_qrc.model.ShapeObject
 import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject.ObjectType.Shape
 
-class Qadril (
+class QadrilShape (
     val bottomLeftX: Int = 0,
     val bottomLeftY: Int = 0,
     val topLeftX: Int = 0,

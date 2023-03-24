@@ -12,13 +12,22 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="убрал стремны свитч кейс или по котлиновски вхен (when)">
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Пофиксил style tag">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/shapes/OvalShape.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/shapes/RectShape.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/CanvasModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/CanvasModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/CanvasObject.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/CanvasObject.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/ShapeObject.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/ShapeObject.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/TextObject.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/TextObject.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/shapes/Arc.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/shapes/Arc.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/shapes/RectR.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/shapes/RectR.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/shapes/Arc.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/shapes/ArcShape.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/shapes/Oval.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/shapes/Qadril.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/shapes/QadrilShape.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/shapes/Rect.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/shapes/RectR.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/shapes/RectRShape.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/CreateCanvasQRCFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/CreateCanvasQRCFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_create_canvas_q_r_c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_create_canvas_q_r_c.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -380,7 +389,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678998741886</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Пофиксил style tag">
+      <created>1679000187115</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1679000187115</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -395,7 +411,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="*Добавлены зависимости и библиотеки*&#10;-SmoothBar&#10;-ViewBinding" />
     <MESSAGE value="Наконец-то исправлен гит репозиторий :3" />
     <MESSAGE value="Нижняя панель теперь на своем месте" />
     <MESSAGE value="Добавлены нужные фрагменты" />
@@ -420,6 +435,32 @@
     <MESSAGE value="Исправлена модель CanvasObject" />
     <MESSAGE value="непонятный коммит" />
     <MESSAGE value="убрал стремны свитч кейс или по котлиновски вхен (when)" />
-    <option name="LAST_COMMIT_MESSAGE" value="убрал стремны свитч кейс или по котлиновски вхен (when)" />
+    <MESSAGE value="Пофиксил style tag" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пофиксил style tag" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/CanvasObject.kt</url>
+          <line>36</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/CanvasObject.kt</url>
+          <line>341</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject$Tag$Text" memberName="obligatory" />
+        <PinnedItemInfo parentTag="m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject$Tag$Text" memberName="tag" />
+        <PinnedItemInfo parentTag="m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject$Tag$Text" memberName="default" />
+        <PinnedItemInfo parentTag="m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject$Companion" memberName="searchableListObjectType" />
+        <PinnedItemInfo parentTag="m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject$Companion" memberName="shadow$_monitor_" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

@@ -1,9 +1,10 @@
 package m1k.kotik.negocards.data.canvas_qrc.model
 
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
-import java.util.*
+import m1k.kotik.negocards.data.canvas_qrc.model.shapes.QadrilShape
+import m1k.kotik.negocards.data.canvas_qrc.model.shapes.RectShape
+
 open class ShapeObject(
     var shapeType: ObjectType.Shape,
     posX: Int = 0,
@@ -14,9 +15,20 @@ open class ShapeObject(
     style: Tag.Style,
 
     ) : CanvasObject(ObjectType.Shape(), width, height, posX, posY,color,style) {
-
+    constructor(): this(
+        ObjectType.Shape.Rect(),
+        50,
+        50,
+        0,
+        0,
+        "FF181818",
+        Tag.Style.Fill())
 
     override fun draw(canvas: Canvas) {
-        TODO("Not yet implemented")
+        canvas.drawRect(posX.toFloat(),posY.toFloat(),posX+width.toFloat(),posY+height.toFloat(),
+            Paint().also{
+                it.color =  this.getParseColor()
+                it.style = this.style.sType
+            })
     }
 }

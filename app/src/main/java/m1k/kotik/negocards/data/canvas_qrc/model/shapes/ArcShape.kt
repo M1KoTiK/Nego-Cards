@@ -2,10 +2,9 @@ package m1k.kotik.negocards.data.canvas_qrc.model.shapes
 
 import android.graphics.Canvas
 import android.graphics.Paint
-import android.graphics.Paint.Style
 import m1k.kotik.negocards.data.canvas_qrc.model.ShapeObject
 import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject.ObjectType.Shape
-class Arc(
+class ArcShape(
     var startAngle: Int,
     var sweepAngle: Int,
     val useCenter:Boolean,
