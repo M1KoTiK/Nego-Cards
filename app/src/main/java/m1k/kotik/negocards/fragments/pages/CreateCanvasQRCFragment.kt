@@ -1,6 +1,8 @@
 package m1k.kotik.negocards.fragments.pages
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -19,20 +21,28 @@ class CreateCanvasQRCFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val testObj = TextObject("jopa",50,"FF181818",200,100,Tag.Style.Fill())
+        val testObj = RectShape(200,200,200,200,"FF181818",Tag.Style.Fill())
         val cObj = mutableListOf<CanvasObject>()
         cObj.add(testObj)
         binding?.button5?.setOnClickListener {
-            cObj.clear()
-            try {
-                testObj.applyCode(binding?.textView3?.text.toString())
-                cObj.add(testObj)
-            }
-            catch(e:Exception){
-                Toast.makeText(requireActivity(),e.message,Toast.LENGTH_SHORT).show()
-            }
             binding?.view?.setCanvasObjects(cObj)
             binding?.view?.invalidate()
         }
+        binding?.textView3?.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {
+                cObj.clear()
+                try {
+                    testObj.applyCode(binding?.textView3?.text.toString())
+                    cObj.add(testObj)
+                }
+                catch(e:Exception){
+                    Toast.makeText(requireActivity(),e.message,Toast.LENGTH_SHORT).show()
+                }
+                binding?.view?.setCanvasObjects(cObj)
+                binding?.view?.invalidate()
+            }
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+        })
     }
 }

@@ -298,12 +298,15 @@ abstract class CanvasObject(
 
 //Дополнительный функционал
     fun getParseColor(): Int {
+        if(color.length !=8){
+            return parseColor("#FFFFFFFF")
+        }
         return parseColor("#$color")
     }
 
 
     companion object{
-        const val STR_CONTAINS = "\""
+        const val STR_CONTAINS = '\"'
         const val SEPARATOR_SYMBOL = ';'
         var searchableListObjectType = listOf<ObjectType>(
             ObjectType.Text(),
@@ -314,13 +317,29 @@ abstract class CanvasObject(
             ObjectType.Shape.Oval()
         )
         fun SplitValuesAndTags(code: String):MutableMap<String,Any>{
+            var code = code.filter { !it.isWhitespace() }
             var index: Int = 0
             var tagToValue = mutableMapOf<String,Any>()
-            // локальная функция
+            var tag: String =""
+            // локальные функции
+
+            fun scanQuotes():Boolean{
+                var summ: Int = 0
+                for(char in code){
+                    if(char == STR_CONTAINS) {
+                        summ++
+                    }
+                }
+                if(summ%2==0){
+                    return true
+                }
+                return false
+            }
+
             fun scanValue(itInQuotes: Boolean): Any{
                 var value:String=""
                 if(itInQuotes){
-                    while (code[index].toString() != STR_CONTAINS && index < code.length){
+                    while (code[index] != STR_CONTAINS && index < code.length){
                         value += code[index]
                         index ++
                     }
@@ -335,28 +354,36 @@ abstract class CanvasObject(
                         }
                         index ++
                     }
-                    return value
                 }
+                return value
             }
             //работа функции
-            var tag: String =""
-            while(index +1 < code.length){
-                if (code[index].toString() == STR_CONTAINS){
-                    index++
-                    tagToValue[tag] = scanValue(true)
-                    tag = ""
-                    continue
+            if(!scanQuotes()){
+                return tagToValue
+            }
+            try {
+                while(index +1 < code.length){
+                    if (code[index] == STR_CONTAINS){
+                        index++
+                        tagToValue[tag] = scanValue(true)
+                        tag = ""
+                        continue
+                    }
+                    else if (code[index].toString().toDoubleOrNull()!= null){
+                        tagToValue[tag] = scanValue(false)
+                        tag = ""
+                        continue
+                    }
+                    tag += code[index]
+                    index ++
+                        continue
                 }
-                else if (code[index].toString().toDoubleOrNull()!= null){
-                    tagToValue[tag] = scanValue(false)
-                    tag = ""
-                    continue
-                }
-                tag += code[index]
-                index ++
-                    continue
+            }
+            catch (e: Exception){
+
             }
             return tagToValue
+
         }
         //------------------------
         //Декодер
