@@ -2,7 +2,6 @@ package m1k.kotik.negocards.data.canvas_qrc.model.shapes
 
 import android.graphics.Canvas
 import android.graphics.Paint
-import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject
 import m1k.kotik.negocards.data.canvas_qrc.model.ShapeObject
 
 class RectShape(posX: Int,
@@ -10,8 +9,8 @@ class RectShape(posX: Int,
                 width: Int,
                 height: Int,
                 color: String,
-                style: Tag.Style) :ShapeObject(
-    ObjectType.Shape.Rect(),
+                style: CanvasObjectSerializationTag.Style) :ShapeObject(
+    CanvasObjectType.Shape.Rect(),
     posX,
     posY,
     width,

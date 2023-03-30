@@ -5,11 +5,15 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
+import android.widget.Toast
 import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject
+import m1k.kotik.negocards.data.canvas_qrc.model.TextObject
+import m1k.kotik.negocards.data.canvas_qrc.model.shapes.RectShape
 
 open class CanvasView(context: Context, attrs: AttributeSet) : View(context, attrs) {
     private val paint: Paint = Paint()
-    private lateinit var mainCanvas : Canvas
+    //var mDetector: GestureDetectorCompat = GestureDetectorCompat(context,context)
+    lateinit var mainCanvas: Canvas
     val objects: List<CanvasObject>
         get() = objects_
 
@@ -18,9 +22,15 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
     fun setCanvasObjects(objects: List<CanvasObject>) {
         objects_ = objects.toMutableList()
     }
-
+    fun clearCanvasObject(){
+        objects_.clear()
+    }
+    fun addCanvasObjects(canvasObject: CanvasObject) {
+        objects_.add(canvasObject)
+    }
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
+        mainCanvas = canvas!!
         paint.apply {
             style = Paint.Style.FILL
             color = Color.WHITE
@@ -35,9 +45,38 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
 
     }
 
+    override fun setOnTouchListener(l: OnTouchListener?) {
+        super.setOnTouchListener(l)
+    }
+    var selectedObject: CanvasObject? = null
     override fun onTouchEvent(event: MotionEvent?): Boolean {
-        return super.onTouchEvent(event)
-        
+        val x = event!!.x.toInt()
+        val y = event.y.toInt()
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+            }
+            MotionEvent.ACTION_UP -> {
+                for (obj in objects_) {
+                    if (obj.isSelected(x, y)) {
+                        obj.posX = x
+                        obj.posY = y
+                        selectedObject = obj
+                        Toast.makeText(context, "${obj.type.tag}", Toast.LENGTH_SHORT).show()
+                        break
+                    } else {
+                        selectedObject = null
+                    }
+                }
+            }
+                MotionEvent.ACTION_MOVE ->{
+                    if (selectedObject != null) {
+                        selectedObject?.posX = x
+                        selectedObject?.posY = y
+                        this.invalidate()
+                    }
+                }
+            }
+        return true
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -54,11 +93,13 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
         path.close();
         canvas.drawPath(path, paint);
     }
-    fun drawQuadrilateral(canvas: Canvas, paint: Paint, x:Int, y:Int,
-                          bottomLeftX: Int, bottomLeftY: Int,
-                          topLeftX: Int, topLeftY: Int,
-                          bottomRightX: Int, bottomRightY: Int,
-                          topRightX: Int, topRightY: Int) {
+    fun drawQuadrilateral(
+        canvas: Canvas, paint: Paint, x: Int, y: Int,
+        bottomLeftX: Int, bottomLeftY: Int,
+        topLeftX: Int, topLeftY: Int,
+        bottomRightX: Int, bottomRightY: Int,
+        topRightX: Int, topRightY: Int,
+    ) {
 
         val path: Path = Path()
         path.moveTo(x.toFloat(), y.toFloat()) // Top

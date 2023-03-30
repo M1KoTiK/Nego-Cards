@@ -10,8 +10,8 @@ class OvalShape {
                 width: Int ,
                 height: Int,
                 color: String,
-                style: Tag.Style) : ShapeObject(
-        ObjectType.Shape.Rect(),
+                style: CanvasObjectSerializationTag.Style) : ShapeObject(
+        CanvasObjectType.Shape.Rect(),
         posX,
         posY,
         width,

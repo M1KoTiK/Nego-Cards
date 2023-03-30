@@ -10,15 +10,15 @@ class TextObject(
     color: String,
     posX: Int,
     posY: Int,
-    style: Tag.Style
-) : CanvasObject(ObjectType.Text(), (fontSize*text.length), fontSize,posX, posY,color,style) {
+    style: CanvasObjectSerializationTag.Style
+) : CanvasObject(CanvasObjectType.Text(), ((fontSize+10)*text.length), (fontSize* 1.5).toInt(),posX, posY,color,style) {
     constructor(): this(
-        Tag.Text().default,
-        Tag.FontSize().default,
-        Tag.Color().default,
-        Tag.PosX().default,
-        Tag.PosY().default,
-        Tag.Style.Fill())
+        CanvasObjectSerializationTag.Text().default,
+        CanvasObjectSerializationTag.FontSize().default,
+        CanvasObjectSerializationTag.Color().default,
+        CanvasObjectSerializationTag.PosX.default,
+        CanvasObjectSerializationTag.PosY().default,
+        CanvasObjectSerializationTag.Style.Fill())
 
     override fun draw(canvas: Canvas) {
         canvas.drawText(text, posX.toFloat(),posY.toFloat(),Paint().also {

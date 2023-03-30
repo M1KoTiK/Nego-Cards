@@ -3,7 +3,7 @@ package m1k.kotik.negocards.data.canvas_qrc.model.shapes
 import android.graphics.Canvas
 import android.graphics.Paint
 import m1k.kotik.negocards.data.canvas_qrc.model.ShapeObject
-import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject.ObjectType.Shape
+import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject.CanvasObjectType.Shape
 class ArcShape(
     var startAngle: Int,
     var sweepAngle: Int,
@@ -14,7 +14,7 @@ class ArcShape(
     width: Int = 0,
     height: Int = 0,
     color: String = "FF181818",
-    style: Tag.Style
+    style: CanvasObjectSerializationTag.Style
 ) : ShapeObject(Shape.Arc(), posX, posY, width, height,color,style) {
     override fun draw(canvas: Canvas) {
         canvas.drawArc(posX.toFloat(),posY.toFloat(),posX+width.toFloat(),posY+height.toFloat(),startAngle.toFloat(),sweepAngle.toFloat(),useCenter, Paint().also {

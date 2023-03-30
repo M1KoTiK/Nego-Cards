@@ -2,7 +2,7 @@ package m1k.kotik.negocards.data.canvas_qrc.model.shapes
 
 import android.graphics.Canvas
 import m1k.kotik.negocards.data.canvas_qrc.model.ShapeObject
-import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject.ObjectType.Shape
+import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject.CanvasObjectType.Shape
 
 class QadrilShape (
     val bottomLeftX: Int = 0,
@@ -18,7 +18,7 @@ class QadrilShape (
     width: Int = 0,
     height: Int = 0,
     color: String = "FF181818",
-    style: Tag.Style
+    style: CanvasObjectSerializationTag.Style
     ) : ShapeObject(Shape.Quadril(),bottomLeftX,bottomLeftY, width, height,color,style) {
     override fun draw(canvas: Canvas) {
         TODO("Not yet implemented")
