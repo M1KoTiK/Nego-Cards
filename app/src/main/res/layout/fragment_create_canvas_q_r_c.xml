@@ -17,14 +17,14 @@
             android:layout_height="75dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/button6"
                 style="@style/RoundedButton"
-                android:layout_width="70dp"
-                android:layout_height="60dp"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
                 android:text="+"
                 android:textSize="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -34,9 +34,9 @@
             <Button
                 android:id="@+id/button7"
                 style="@style/RoundedButton"
-                android:layout_width="70dp"
-                android:layout_height="60dp"
-                android:text="+"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:text="//"
                 android:textSize="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

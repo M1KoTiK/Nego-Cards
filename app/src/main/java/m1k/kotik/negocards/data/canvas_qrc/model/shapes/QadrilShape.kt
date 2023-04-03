@@ -1,6 +1,8 @@
 package m1k.kotik.negocards.data.canvas_qrc.model.shapes
 
 import android.graphics.Canvas
+import android.graphics.Paint
+import android.graphics.Path
 import m1k.kotik.negocards.data.canvas_qrc.model.ShapeObject
 import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject.CanvasObjectType.Shape
 
@@ -21,8 +23,15 @@ class QadrilShape (
     style: CanvasObjectSerializationTag.Style
     ) : ShapeObject(Shape.Quadril(),bottomLeftX,bottomLeftY, width, height,color,style) {
     override fun draw(canvas: Canvas) {
-        TODO("Not yet implemented")
+        val path: Path = Path()
+        path.moveTo(posX.toFloat(), posY.toFloat()) // Top
+        path.lineTo(bottomLeftX.toFloat(), bottomLeftY.toFloat())
+        path.lineTo(topLeftX.toFloat(), topLeftY.toFloat())
+        path.lineTo(topRightX.toFloat(), topRightY.toFloat())
+        path.lineTo(bottomRightX.toFloat(), bottomRightY.toFloat())
+        path.close();
+        canvas.drawPath(path, Paint().also {
+            it.color = this.getParseColor()
+            it.style = this.style.sType})
+        }
     }
-
-
-}

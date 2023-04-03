@@ -2,6 +2,8 @@ package m1k.kotik.negocards.data.canvas_qrc.model
 
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.graphics.Rect
+import kotlin.math.abs
 
 
 class TextObject(
@@ -11,7 +13,13 @@ class TextObject(
     posX: Int,
     posY: Int,
     style: CanvasObjectSerializationTag.Style
-) : CanvasObject(CanvasObjectType.Text(), ((fontSize+10)*text.length), (fontSize* 1.5).toInt(),posX, posY,color,style) {
+) : CanvasObject(CanvasObjectType.Text(),
+    Paint().also{ it.textSize = fontSize.toFloat() }.measureText(text).toInt(),
+    abs(Paint().also{ it.textSize = fontSize.toFloat() }.fontMetrics.top).toInt(),
+    posX,
+    posY,
+    color,
+    style) {
     constructor(): this(
         CanvasObjectSerializationTag.Text().default,
         CanvasObjectSerializationTag.FontSize().default,
@@ -25,5 +33,12 @@ class TextObject(
             it.color = this.getParseColor()
             it.textSize = this.fontSize.toFloat()
         })
+    }
+
+    override fun isSelected(x: Int, y: Int): Boolean {
+        if(x>posX && x < posX+width&& y > posY-height && y < posY){
+            return true
+        }
+        return false
     }
 }

@@ -2,6 +2,7 @@ package m1k.kotik.negocards.view
 
 import android.content.Context
 import android.graphics.*
+import android.graphics.Color.parseColor
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
@@ -21,12 +22,15 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
 
     fun setCanvasObjects(objects: List<CanvasObject>) {
         objects_ = objects.toMutableList()
+        this.invalidate()
     }
     fun clearCanvasObject(){
         objects_.clear()
+        this.invalidate()
     }
     fun addCanvasObjects(canvasObject: CanvasObject) {
         objects_.add(canvasObject)
+        this.invalidate()
     }
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
@@ -58,23 +62,22 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
             MotionEvent.ACTION_UP -> {
                 for (obj in objects_) {
                     if (obj.isSelected(x, y)) {
-                        obj.posX = x
-                        obj.posY = y
                         selectedObject = obj
-                        Toast.makeText(context, "${obj.type.tag}", Toast.LENGTH_SHORT).show()
+                        this.invalidate()
+                        Toast.makeText(context, "${obj.type.visibleName}", Toast.LENGTH_SHORT).show()
                         break
                     } else {
                         selectedObject = null
                     }
                 }
             }
-                MotionEvent.ACTION_MOVE ->{
-                    if (selectedObject != null) {
-                        selectedObject?.posX = x
-                        selectedObject?.posY = y
-                        this.invalidate()
-                    }
+            MotionEvent.ACTION_MOVE ->{
+                if(selectedObject != null){
+                    selectedObject!!.posX = x - selectedObject!!.width/2
+                    selectedObject!!.posY = y + selectedObject!!.height/2
+                    this.invalidate()
                 }
+            }
             }
         return true
     }

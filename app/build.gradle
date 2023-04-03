@@ -36,6 +36,9 @@ android {
 }
 
 dependencies {
+    //Splash Screen
+    implementation("androidx.core:core-splashscreen:1.0.0")
+
     var camerax_version = "1.0.2"
 
     // ViewModel and LiveData
@@ -51,8 +54,9 @@ dependencies {
     implementation("androidx.camera:camera-lifecycle:${camerax_version}")
     // CameraX View class
     implementation("androidx.camera:camera-view:1.0.0-alpha30")
-
+    //QRC Generator
     implementation 'com.github.androidmads:QRGenerator:1.0.1'
+    //Bottom Navigation Bar
     implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.9'
 
     implementation 'androidx.core:core-ktx:1.7.0'

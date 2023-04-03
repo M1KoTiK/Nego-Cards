@@ -2,6 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.NegoCards" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Primary brand color. -->
+        <item name="android:windowSplashScreenBackground" tools:targetApi="s">@color/black18</item>
         <item name="colorPrimary">@color/black18</item>
         <item name="colorPrimaryVariant">@color/black18</item>
         <item name="colorOnPrimary">@color/white</item>

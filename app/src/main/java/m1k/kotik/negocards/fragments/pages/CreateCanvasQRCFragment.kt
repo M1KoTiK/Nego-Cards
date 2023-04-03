@@ -23,19 +23,13 @@ import m1k.kotik.negocards.fragments.choiceParametersForQR.ChoiceParametersForTe
 class CreateCanvasQRCFragment : Fragment() {
     private var selectedItemPosition : Int = -1
     private var binding: FragmentCreateCanvasQRCBinding? = null
-    val cObj = mutableListOf<CanvasObject>()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentCreateCanvasQRCBinding.inflate(inflater,container,false)
         return binding!!.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val testObj = RectShape(200,200,200,200,"FF181818",CanvasObjectSerializationTag.Style.Fill())
-        cObj.add(testObj)
-
         binding?.button5?.setOnClickListener {
-            binding?.view?.setCanvasObjects(cObj)
             binding?.view?.invalidate()
         }
 
@@ -53,12 +47,17 @@ class CreateCanvasQRCFragment : Fragment() {
             val addObject: Button = popupView.findViewById(R.id.buttonAddObject)
             val autoCompleteObjectTypes: AutoCompleteTextView = popupView.findViewById(R.id.ChoiceObjectType)
             addObject.setOnClickListener {
-                Toast.makeText(requireActivity(), "mmmm",Toast.LENGTH_SHORT).show()
-                if(selectedItemPosition >0){
+                if(selectedItemPosition >=0){
                     val selectedItem = typesObject[selectedItemPosition]
+                    Toast.makeText(requireActivity(), "Selected: ${selectedItemPosition} Count= ${binding?.view?.objects?.size}", Toast.LENGTH_SHORT).show()
                     for (type in searchableListCanvasObjectTypes) {
-                        if (selectedItem == type.visibleName)
-                            type.classType
+                        if (selectedItem == type.visibleName){
+
+                            binding?.view?.addCanvasObjects(type.classType)
+                            binding?.view?.invalidate()
+                            selectedItemPosition = -1
+                        }
+
                     }
                 }
             }
@@ -76,9 +75,6 @@ class CreateCanvasQRCFragment : Fragment() {
                     //Toast.makeText(requireActivity(), "Selected: $position", Toast.LENGTH_SHORT).show()
                     for (type in searchableListCanvasObjectTypes){
                         if (type.visibleName == selectedItem){
-                            cObj.add(type.classType)
-                            binding?.view?.setCanvasObjects(cObj)
-                            binding?.view?.invalidate()
 
                         }
                     }
@@ -89,15 +85,15 @@ class CreateCanvasQRCFragment : Fragment() {
 
         binding?.textView3?.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {
-                cObj.clear()
+                //cObj.clear()
                 try {
-                    testObj.applyCode(binding?.textView3?.text.toString())
-                    cObj.add(testObj)
+                   // testObj.applyCode(binding?.textView3?.text.toString())
+                    //cObj.add(testObj)
                 }
                 catch(e:Exception){
                     Toast.makeText(requireActivity(),e.message,Toast.LENGTH_SHORT).show()
                 }
-                binding?.view?.setCanvasObjects(cObj)
+               // binding?.view?.setCanvasObjects(cObj)
                 binding?.view?.invalidate()
             }
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}

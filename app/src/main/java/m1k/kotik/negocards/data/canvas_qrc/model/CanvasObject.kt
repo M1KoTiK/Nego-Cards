@@ -19,7 +19,7 @@ abstract class CanvasObject(
     abstract fun draw(canvas: Canvas)
 
     open fun isSelected(x: Int, y: Int):Boolean{
-        if(x>posX && x < posX+width && y >posY && y < posY+height){
+        if(x>posX && x < posX+width&& y > posY && y < posY+height){
             return true
         }
         return false
@@ -124,7 +124,7 @@ abstract class CanvasObject(
     }
 
     object WidthTag : CanvasObjectSerializationTag() {
-        override val default: Int get() = 0
+        override val default: Int get() = 100
         override val name: String get() = "w"
         override val visiblePropertyName: String get() = "Ширина"
         override fun setField(canvasObject: CanvasObject, value: Any) {
@@ -137,7 +137,7 @@ abstract class CanvasObject(
     }
 
     object Height : CanvasObjectSerializationTag() {
-        override val default: Int get() = 0
+        override val default: Int get() = 100
         override val name: String get() = "h"
         override val visiblePropertyName: String get() = "Высота"
         override fun setField(canvasObject: CanvasObject, value: Any) {
@@ -150,7 +150,7 @@ abstract class CanvasObject(
     }
 
     object PosX : CanvasObjectSerializationTag() {
-        override val default: Int get() = 50
+        override val default: Int get() = 150
         override val name: String get() = "x"
         override val visiblePropertyName: String get() = "Позиция x"
         override fun setField(canvasObject: CanvasObject, value: Any) {
@@ -163,7 +163,7 @@ abstract class CanvasObject(
     }
 
         class PosY: CanvasObjectSerializationTag(){
-            override val default: Int get() = 50
+            override val default: Int get() = 250
             override val name: String get() = "y"
             override val visiblePropertyName: String get() = "Позиция y"
             override fun setField(canvasObject: CanvasObject, value: Any) {
