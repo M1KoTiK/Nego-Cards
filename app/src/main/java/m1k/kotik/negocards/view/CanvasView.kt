@@ -58,26 +58,23 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
         val y = event.y.toInt()
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-            }
-            MotionEvent.ACTION_UP -> {
                 for (obj in objects_) {
                     if (obj.isSelected(x, y)) {
                         selectedObject = obj
-                        this.invalidate()
-                        Toast.makeText(context, "${obj.type.visibleName}", Toast.LENGTH_SHORT).show()
                         break
-                    } else {
-                        selectedObject = null
                     }
                 }
             }
-            MotionEvent.ACTION_MOVE ->{
-                if(selectedObject != null){
-                    selectedObject!!.posX = x - selectedObject!!.width/2
-                    selectedObject!!.posY = y + selectedObject!!.height/2
-                    this.invalidate()
-                }
+            MotionEvent.ACTION_UP -> {
+                selectedObject = null
             }
+            MotionEvent.ACTION_MOVE -> {
+                    if (selectedObject != null) {
+                        selectedObject!!.posX = x - selectedObject!!.width / 2
+                        selectedObject!!.posY = y + selectedObject!!.height / 2
+                        this.invalidate()
+                    }
+                }
             }
         return true
     }
