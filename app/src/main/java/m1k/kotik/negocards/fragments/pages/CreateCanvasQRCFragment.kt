@@ -37,6 +37,7 @@ class CreateCanvasQRCFragment : Fragment() {
         }
 
         binding?.button6?.setOnClickListener {
+            selectedItemPosition = -1
             val inflater = context?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             val popupView: View = inflater.inflate(R.layout.add_canvas_object_popup, null)
             val popupWindow = PopupWindow()

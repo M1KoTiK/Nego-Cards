@@ -21,11 +21,11 @@ class TextObject(
     color,
     style) {
     constructor(): this(
-        CanvasObjectSerializationTag.Text().default,
+        CanvasObjectSerializationTag.Text.default,
         CanvasObjectSerializationTag.FontSize().default,
-        CanvasObjectSerializationTag.Color().default,
+        CanvasObjectSerializationTag.Color.default,
         CanvasObjectSerializationTag.PosX.default,
-        CanvasObjectSerializationTag.PosY().default,
+        CanvasObjectSerializationTag.PosY.default,
         CanvasObjectSerializationTag.Style.Fill())
 
     override fun draw(canvas: Canvas) {

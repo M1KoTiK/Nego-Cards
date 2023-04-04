@@ -20,17 +20,20 @@ class RectShape(
     color,
     style){
     constructor(): this(
-        100,
-        100,
-        100,100,
-        "FF181818",
-        CanvasObjectSerializationTag.Style.Fill())
+        CanvasObjectSerializationTag.PosX.default,
+        CanvasObjectSerializationTag.PosY.default,
+        CanvasObjectSerializationTag.WidthTag.default,
+        CanvasObjectSerializationTag.Height.default,
+        CanvasObjectSerializationTag.Color.default,
+        CanvasObjectSerializationTag.Style().default)
 
     override fun draw(canvas: Canvas) {
-        canvas.drawRect(posX.toFloat() ,posY.toFloat()+ height, posX+width.toFloat(),posY+height.toFloat(),
+        canvas.drawRect(posX.toFloat(),posY.toFloat()+height.toFloat(),posX+width.toFloat(),posY.toFloat(),
             Paint().also{
-            it.color =  this.getParseColor()
-            it.style = this.style.sType
+                it.color =  this.getParseColor()
+                it.style = this.style.sType
+                it.isAntiAlias = true
+                it.isDither = true
         })
     }
 

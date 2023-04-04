@@ -3,7 +3,9 @@ package m1k.kotik.negocards.data.canvas_qrc.model
 import android.graphics.*
 import android.graphics.Color.parseColor
 import m1k.kotik.negocards.data.canvas_qrc.model.shapes.ArcShape
+import m1k.kotik.negocards.data.canvas_qrc.model.shapes.OvalShape
 import m1k.kotik.negocards.data.canvas_qrc.model.shapes.RectRShape
+import m1k.kotik.negocards.data.canvas_qrc.model.shapes.RectShape
 
 abstract class CanvasObject(
     var type: CanvasObjectType,
@@ -70,8 +72,8 @@ abstract class CanvasObject(
         CanvasObjectSerializationTag.WidthTag,
         CanvasObjectSerializationTag.Height,
         CanvasObjectSerializationTag.PosX,
-        CanvasObjectSerializationTag.PosY(),
-        CanvasObjectSerializationTag.Color(),
+        CanvasObjectSerializationTag.PosY,
+        CanvasObjectSerializationTag.Color,
         CanvasObjectSerializationTag.Style())
 
         class Text: CanvasObjectType() {
@@ -79,7 +81,7 @@ abstract class CanvasObject(
             override val classType: CanvasObject get() = TextObject()
             override val visibleName: String get() = "Текст"
             override val listTag: List<CanvasObjectSerializationTag>
-                get() = super.listTag + listOf(CanvasObjectSerializationTag.Text(),CanvasObjectSerializationTag.FontSize())
+                get() = super.listTag + listOf(CanvasObjectSerializationTag.Text,CanvasObjectSerializationTag.FontSize())
         }
         open class Shape: CanvasObjectType(){
             override val tag: String get() = "sh"
@@ -92,25 +94,33 @@ abstract class CanvasObject(
             class RectR: Shape() {
                 override  val tag: String get()= "rr"
                 override val isSubsection: Boolean get() = false
+                override val visibleName: String get() = "Капсула"
                 override val classType: CanvasObject get() = RectRShape()
                 override var listTag: List<CanvasObjectSerializationTag> =
-                    super.listTag + listOf(CanvasObjectSerializationTag.LeftCorner(),CanvasObjectSerializationTag.RightCorner())
+                    super.listTag + listOf(CanvasObjectSerializationTag.LeftCorner,CanvasObjectSerializationTag.RightCorner)
             }
             class Quadril: Shape() {
                 override val isSubsection: Boolean get() = false
+                override val visibleName: String get() = "Четырехугольник"
                 override val tag: String get() = "qd"
             }
             class Arc: Shape() {
                 override val isSubsection: Boolean get() = false
                 override val tag: String get() = "ac"
+                override val classType: CanvasObject get() = ArcShape()
+                override val visibleName: String get() = "Арка"
             }
             class Rect: Shape(){
                 override val isSubsection: Boolean get() = false
                 override val tag: String get() = "rc"
+                override val classType: CanvasObject get() = RectShape()
+                override val visibleName: String get() = "Квадрат"
             }
             class Oval: Shape(){
                 override val isSubsection: Boolean get() = false
                 override val tag: String get() = "ov"
+                override val classType: CanvasObject get() = OvalShape()
+                override val visibleName: String get() = "Овал"
             }
         }
     }
@@ -165,7 +175,7 @@ abstract class CanvasObject(
     }
 
     object PosX : CanvasObjectSerializationTag() {
-        override val default: Int get() = 150
+        override val default: Int get() = 50
         override val name: String get() = "x"
         override val visiblePropertyName: String get() = "Позиция x"
         override fun setField(canvasObject: CanvasObject, value: Any) {
@@ -177,43 +187,46 @@ abstract class CanvasObject(
         }
     }
 
-        class PosY: CanvasObjectSerializationTag(){
-            override val default: Int get() = 250
-            override val name: String get() = "y"
-            override val visiblePropertyName: String get() = "Позиция y"
-            override fun setField(canvasObject: CanvasObject, value: Any) {
-                canvasObject.posY = value.toString().toInt()
-            }
-            override fun getField(canvasObject: CanvasObject): String {
-                return canvasObject.posY.toString()
-            }
+    object PosY : CanvasObjectSerializationTag() {
+        override val default: Int get() = 50
+        override val name: String get() = "y"
+        override val visiblePropertyName: String get() = "Позиция y"
+        override fun setField(canvasObject: CanvasObject, value: Any) {
+            canvasObject.posY = value.toString().toInt()
         }
 
-        class Text: CanvasObjectSerializationTag(){
-            override val default: String get() = "text"
-            override val name: String get() = "t"
-            override val visiblePropertyName: String get() = "Текст"
-            override fun setField(canvasObject: CanvasObject, value: Any) {
-                canvasObject as TextObject
-                canvasObject.text = value.toString()
-            }
-            override fun getField(canvasObject: CanvasObject): String {
-                canvasObject as TextObject
-                return canvasObject.text.toString()
-            }
+        override fun getField(canvasObject: CanvasObject): String {
+            return canvasObject.posY.toString()
+        }
+    }
+
+    object Text : CanvasObjectSerializationTag() {
+        override val default: String get() = "text"
+        override val name: String get() = "t"
+        override val visiblePropertyName: String get() = "Текст"
+        override fun setField(canvasObject: CanvasObject, value: Any) {
+            canvasObject as TextObject
+            canvasObject.text = value.toString()
         }
 
-        class Color: CanvasObjectSerializationTag(){
-            override val default: String get() = "FF181818"
-            override val name: String get() = "cl"
-            override val visiblePropertyName: String get() = "Цвет"
-            override fun setField(canvasObject: CanvasObject, value: Any) {
-                canvasObject.color = value.toString()
-            }
-            override fun getField(canvasObject: CanvasObject): String {
-                return canvasObject.color.toString()
-            }
+        override fun getField(canvasObject: CanvasObject): String {
+            canvasObject as TextObject
+            return canvasObject.text.toString()
         }
+    }
+
+    object Color : CanvasObjectSerializationTag() {
+        override val default: String get() = "FF181818"
+        override val name: String get() = "cl"
+        override val visiblePropertyName: String get() = "Цвет"
+        override fun setField(canvasObject: CanvasObject, value: Any) {
+            canvasObject.color = value.toString()
+        }
+
+        override fun getField(canvasObject: CanvasObject): String {
+            return canvasObject.color.toString()
+        }
+    }
 
         class FontSize: CanvasObjectSerializationTag(){
             override val default: Int get() = 100
@@ -242,70 +255,89 @@ abstract class CanvasObject(
                 return canvasObject.shapeType.tag.toString()
             }
         }
-        class StartAngle : CanvasObjectSerializationTag(){
-            override val default: Int get() = 45
-            override val name: String get() = "sg"
-            override val visiblePropertyName: String get() = "Начальный угол"
-            override fun setField(canvasObject: CanvasObject, value: Any) {
-                canvasObject as ArcShape
-                canvasObject.startAngle = value.toString().toInt()
-            }
-            override fun getField(canvasObject: CanvasObject): String {
-                canvasObject as ArcShape
-                return  canvasObject.startAngle.toString()
-            }
 
+    object StartAngle : CanvasObjectSerializationTag() {
+        override val default: Int get() = 45
+        override val name: String get() = "sg"
+        override val visiblePropertyName: String get() = "Начальный угол"
+        override fun setField(canvasObject: CanvasObject, value: Any) {
+            canvasObject as ArcShape
+            canvasObject.startAngle = value.toString().toInt()
         }
 
-        class SweepAngle : CanvasObjectSerializationTag() {
-            override val default: Int get() = 270
-            override val name: String get() = "sa"
-            override val visiblePropertyName: String get() = "Конечный угол"
-            override fun setField(canvasObject: CanvasObject, value: Any) {
-                canvasObject as ArcShape
-                canvasObject.sweepAngle = value.toString().toInt()
-            }
-            override fun getField(canvasObject: CanvasObject): String {
-                canvasObject as ArcShape
-                return canvasObject.sweepAngle.toString()
-            }
+        override fun getField(canvasObject: CanvasObject): String {
+            canvasObject as ArcShape
+            return canvasObject.startAngle.toString()
         }
 
-        class LeftCorner: CanvasObjectSerializationTag(){
-            override val default: String get() = "15"
-            override val name: String get() = "lc"
-            override val visiblePropertyName: String get() = "Закругление слева"
-            override fun setField(canvasObject: CanvasObject, value: Any) {
-                canvasObject as RectRShape
-                canvasObject.leftCorner = value.toString().toInt()
-            }
-            override fun getField(canvasObject: CanvasObject): Any {
-                canvasObject as RectRShape
-                return canvasObject.leftCorner.toString()
-            }
+    }
 
+    object SweepAngle : CanvasObjectSerializationTag() {
+        override val default: Int get() = 270
+        override val name: String get() = "sa"
+        override val visiblePropertyName: String get() = "Конечный угол"
+        override fun setField(canvasObject: CanvasObject, value: Any) {
+            canvasObject as ArcShape
+            canvasObject.sweepAngle = value.toString().toInt()
         }
 
-        class RightCorner: CanvasObjectSerializationTag(){
-            override val default: String get() = "15"
-            override val name: String get() = "rc"
-            override val visiblePropertyName: String get() = "Закругление справа"
-            override fun setField(canvasObject: CanvasObject, value: Any) {
-                canvasObject as RectRShape
-                canvasObject.rightCorner = value.toString().toInt()
-            }
-            override fun getField(canvasObject: CanvasObject): Any {
-                canvasObject as RectRShape
-                return canvasObject.rightCorner.toString()
-            }
-
+        override fun getField(canvasObject: CanvasObject): String {
+            canvasObject as ArcShape
+            return canvasObject.sweepAngle.toString()
         }
+    }
+    object UseCenter : CanvasObjectSerializationTag() {
+        override val default: Boolean get() = true
+        override val name: String get() = "uc"
+        override val visiblePropertyName: String get() = "Использовать центр"
+        override fun setField(canvasObject: CanvasObject, value: Any) {
+            canvasObject as ArcShape
+            canvasObject.useCenter = value as Boolean
+        }
+
+        override fun getField(canvasObject: CanvasObject): String {
+            canvasObject as ArcShape
+            return canvasObject.useCenter.toString()
+        }
+    }
+
+    object LeftCorner : CanvasObjectSerializationTag() {
+        override val default: Int get() = 25
+        override val name: String get() = "lc"
+        override val visiblePropertyName: String get() = "Закругление слева"
+        override fun setField(canvasObject: CanvasObject, value: Any) {
+            canvasObject as RectRShape
+            canvasObject.leftCorner = value.toString().toInt()
+        }
+
+        override fun getField(canvasObject: CanvasObject): Any {
+            canvasObject as RectRShape
+            return canvasObject.leftCorner.toString()
+        }
+
+    }
+
+    object RightCorner : CanvasObjectSerializationTag() {
+        override val default: Int get() = 25
+        override val name: String get() = "rc"
+        override val visiblePropertyName: String get() = "Закругление справа"
+        override fun setField(canvasObject: CanvasObject, value: Any) {
+            canvasObject as RectRShape
+            canvasObject.rightCorner = value.toString().toInt()
+        }
+
+        override fun getField(canvasObject: CanvasObject): Any {
+            canvasObject as RectRShape
+            return canvasObject.rightCorner.toString()
+        }
+
+    }
 
         open class Style :CanvasObjectSerializationTag() {
             open val sType: Paint.Style = Paint.Style.FILL
             override val name: String get() = "s"
             override val visiblePropertyName: String get() = "Стиль"
-            override val default: String get() = Style.Fill().name
+            override val default: Style get() = Fill()
             override fun setField(canvasObject: CanvasObject, value: Any) {
                 canvasObject.style = value as Style
             }

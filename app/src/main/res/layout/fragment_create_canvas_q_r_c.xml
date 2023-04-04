@@ -53,15 +53,18 @@
         <Button
             android:id="@+id/button5"
             android:layout_width="300dp"
+            android:layout_marginTop="25dp"
             android:layout_gravity="center_horizontal"
             style="@style/RoundedButton"
-            android:text="MMM" />
+            android:text="Обновить" />
 
-        <EditText
+        <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:layout_gravity="center_horizontal"
+            android:text="Вывод QREncode"
+            android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="24sp" />
 
