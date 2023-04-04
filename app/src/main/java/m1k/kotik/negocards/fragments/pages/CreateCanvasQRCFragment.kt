@@ -14,10 +14,13 @@ import m1k.kotik.negocards.R
 import m1k.kotik.negocards.data.canvas_qrc.model.*
 import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject.CanvasObjectSerializationTag
 import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject.Companion.searchableListCanvasObjectTypes
+import m1k.kotik.negocards.data.canvas_qrc.model.shapes.ArcShape
+import m1k.kotik.negocards.data.canvas_qrc.model.shapes.RectRShape
 import m1k.kotik.negocards.data.canvas_qrc.model.shapes.RectShape
 import m1k.kotik.negocards.databinding.FragmentCreateCanvasQRCBinding
 import m1k.kotik.negocards.fragments.choiceParametersForQR.ChoiceParametersForCardFragment
 import m1k.kotik.negocards.fragments.choiceParametersForQR.ChoiceParametersForTextFragment
+import java.lang.ref.ReferenceQueue
 
 
 class CreateCanvasQRCFragment : Fragment() {
@@ -30,7 +33,7 @@ class CreateCanvasQRCFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding?.button5?.setOnClickListener {
-            binding?.view?.invalidate()
+            //Кнопка под холстом
         }
 
         binding?.button6?.setOnClickListener {
@@ -75,7 +78,7 @@ class CreateCanvasQRCFragment : Fragment() {
                     //Toast.makeText(requireActivity(), "Selected: $position", Toast.LENGTH_SHORT).show()
                     for (type in searchableListCanvasObjectTypes){
                         if (type.visibleName == selectedItem){
-
+                            //Действие при выборе пункта выпадающего списка
                         }
                     }
                 }

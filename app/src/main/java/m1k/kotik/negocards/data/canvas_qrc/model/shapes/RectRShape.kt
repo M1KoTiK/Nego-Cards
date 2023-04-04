@@ -9,7 +9,6 @@ import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject.CanvasObjectType.S
 class RectRShape (
     var leftCorner: Int,
     var rightCorner: Int,
-
     posX: Int,
     posY: Int,
     width: Int,

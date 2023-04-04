@@ -24,6 +24,10 @@ abstract class CanvasObject(
         }
         return false
     }
+    open fun move(x: Int,y: Int){
+        this.posX = x - this.width / 2
+        this.posY = y - this.height / 2
+    }
     open fun encode():String{
         var code: String = ""
         for (objTag in this.type.listTag) {
@@ -87,16 +91,27 @@ abstract class CanvasObject(
 
             class RectR: Shape() {
                 override  val tag: String get()= "rr"
+                override val isSubsection: Boolean get() = false
                 override val classType: CanvasObject get() = RectRShape()
                 override var listTag: List<CanvasObjectSerializationTag> =
                     super.listTag + listOf(CanvasObjectSerializationTag.LeftCorner(),CanvasObjectSerializationTag.RightCorner())
             }
             class Quadril: Shape() {
+                override val isSubsection: Boolean get() = false
                 override val tag: String get() = "qd"
             }
-            class Arc: Shape() { override val tag: String get() = "ac" }
-            class Rect: Shape(){ override val tag: String get() = "rc" }
-            class Oval: Shape(){ override val tag: String get() = "ov" }
+            class Arc: Shape() {
+                override val isSubsection: Boolean get() = false
+                override val tag: String get() = "ac"
+            }
+            class Rect: Shape(){
+                override val isSubsection: Boolean get() = false
+                override val tag: String get() = "rc"
+            }
+            class Oval: Shape(){
+                override val isSubsection: Boolean get() = false
+                override val tag: String get() = "ov"
+            }
         }
     }
 

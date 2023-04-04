@@ -69,9 +69,8 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
                 selectedObject = null
             }
             MotionEvent.ACTION_MOVE -> {
-                    if (selectedObject != null) {
-                        selectedObject!!.posX = x - selectedObject!!.width / 2
-                        selectedObject!!.posY = y + selectedObject!!.height / 2
+                    if (selectedObject != null && x>0 && y>0 && x< this.width && y < this.height) {
+                        selectedObject!!.move(x,y)
                         this.invalidate()
                     }
                 }
