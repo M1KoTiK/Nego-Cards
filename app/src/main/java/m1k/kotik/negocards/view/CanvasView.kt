@@ -1,25 +1,27 @@
 package m1k.kotik.negocards.view
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.*
+import android.graphics.Color.parseColor
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
+import android.widget.Toast
 import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject
-import m1k.kotik.negocards.data.canvas_qrc.model.PointModel
-import m1k.kotik.negocards.data.canvas_qrc.model.shapes.RectShape
+import m1k.kotik.negocards.data.canvas_qrc.model.shapes.RectRShape
+
 
 open class CanvasView(context: Context, attrs: AttributeSet) : View(context, attrs) {
     private val paint: Paint = Paint()
     //var mDetector: GestureDetectorCompat = GestureDetectorCompat(context,context)
     val objects: List<CanvasObject>
         get() = objects_
-    var STROKE_GAP_WIDTH = 30
-    var STROKE_GAP_HEIGHT = 30
-    var STROKE_GAP_POSX = STROKE_GAP_WIDTH/2
-    var STROKE_GAP_POSY = STROKE_GAP_HEIGHT/2
+    private var GAP_WIDTH = 30
+    private var GAP_HEIGHT = 30
+    private var GAP_POSX = GAP_WIDTH/2
+    private var GAP_POSY = GAP_HEIGHT/2
     protected var objects_: MutableList<CanvasObject> = mutableListOf()
-
     fun setCanvasObjects(objects: List<CanvasObject>) {
         objects_ = objects.toMutableList()
         this.invalidate()
@@ -32,92 +34,176 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
         objects_.add(canvasObject)
         this.invalidate()
     }
+    @SuppressLint("DrawAllocation")
     override fun onDraw(canvas: Canvas?) {
         fun selectObject(canvasObject: CanvasObject, canvas: Canvas) {
-            val myPath: Array<PointModel> = arrayOf<PointModel>(
-                PointModel(canvasObject.centerX - canvasObject.width/2 -STROKE_GAP_POSX,
-                    canvasObject.centerY - canvasObject.height/2 - STROKE_GAP_POSY ),
-                PointModel(200, 200),
-                PointModel(200, 400),
-                PointModel(400, 400)
-            )
-
-
-            RectShape(canvasObject.centerX - canvasObject.width/2 -STROKE_GAP_POSX,
-                canvasObject.centerY - canvasObject.height/2 - STROKE_GAP_POSY,
-                canvasObject.width + STROKE_GAP_WIDTH,
-                canvasObject.height + STROKE_GAP_HEIGHT,
-                "905954E1",
-                CanvasObject.CanvasObjectSerializationTag.Style.Stroke(),
-                12).draw(canvas)
+            super.onDraw(canvas)
+            val paintSelect = Paint().also {
+                it.strokeWidth = 10f
+                it.style = Paint.Style.STROKE
+                it.isAntiAlias = true
+                it.color = parseColor("#905954E1")
+            }
+            val dashPaintEdit = Paint().also {
+                it.strokeWidth = 10f
+                it.style = Paint.Style.STROKE
+                it.isAntiAlias = true
+                it.pathEffect = DashPathEffect(floatArrayOf(10f,10f),5f)
+                it.color = parseColor("#90E10473")
+            }
+            try {
+                if (canvasObject.selectedCount == 1) {
+                    RectRShape(
+                        20,
+                        20,
+                        canvasObject.centerX - canvasObject.width / 2 - GAP_POSX,
+                        canvasObject.centerY - canvasObject.height / 2 - GAP_POSY,
+                        canvasObject.width + GAP_WIDTH,
+                        canvasObject.height + GAP_HEIGHT,
+                        "905954E1",
+                        CanvasObject.CanvasObjectSerializationTag.Style.Stroke()).drawRectRWithCustomPaint(
+                        canvas,
+                        paintSelect)
+                }
+                if (canvasObject.selectedCount > 1) {
+                    RectRShape(
+                        20,
+                        20,
+                        canvasObject.centerX - canvasObject.width / 2 - GAP_POSX,
+                        canvasObject.centerY - canvasObject.height / 2 - GAP_POSY,
+                        canvasObject.width + GAP_WIDTH,
+                        canvasObject.height + GAP_HEIGHT,
+                        "905954E1",
+                        CanvasObject.CanvasObjectSerializationTag.Style.Stroke()).drawRectRWithCustomPaint(
+                        canvas,
+                        dashPaintEdit)
+                }
+            }
+            catch (e:Exception){
+                Toast.makeText(context,e.message,Toast.LENGTH_SHORT).show()
+            }
             this.invalidate()
         }
-        super.onDraw(canvas)
+
         paint.apply {
             style = Paint.Style.FILL
             color = Color.WHITE
             isAntiAlias = true
             isDither = true
         }
-        val rect = RectF(0f,0f,canvas?.width?.toFloat()!!,canvas?.height?.toFloat()!!)
+        val rect = RectF(0f,0f, width.toFloat(), height.toFloat())
         canvas?.drawRoundRect(rect,25f,25f,paint)
         for(obj in objects_){
             canvas?.let {
-            if(obj.isSelected){
-                selectObject(obj, canvas)
-            }
                 obj.draw(it)
             }
         }
-        fun selectObject(canvasObject: CanvasObject) {
-            RectShape(canvasObject.posX,
-                canvasObject.posY+20,
-                canvasObject.width+20,
-                canvasObject.height+20,
-                "FF",
-                CanvasObject.CanvasObjectSerializationTag.Style.Stroke()).draw(canvas)
+        if(selectedObject!=null){
+            selectObject(selectedObject!!, canvas!!)
+            if(selectedObject!!.selectedCount>1){
+                //Toast.makeText(context,"${selectedObject!!.type.visibleName} ${selectedObject!!.selectedCount}", Toast.LENGTH_SHORT).show()
+            }
         }
-
     }
-
+    open fun onPressEmpty(){
+        currentSelectedObjects.clear()
+        clearSelectInAllObjects()
+    }
     override fun setOnTouchListener(l: OnTouchListener?) {
         super.setOnTouchListener(l)
     }
-    private fun ClearSelected(){
+    private var currentSelectedObjects: MutableList<CanvasObject> = mutableListOf()
+    private fun clearSelectInAllObjects(){
         for (obj in objects_) {
-            obj.isSelected = false
+            obj.selectedCount=0
+
         }
     }
-    var selectedObject: CanvasObject? = null
+    private fun clearSelectInSelectedObjects(){
+        for (obj in currentSelectedObjects) {
+            obj.selectedCount=0
+        }
+    }
+
+    private val selectedObject: CanvasObject?
+    get(){
+        if(currentSelectedObjects.isNotEmpty()){
+            return currentSelectedObjects[0]
+        }
+        return null
+    }
+
+    class DoubleClickChecker(private val delay:Int, private val onDoubleClick: ()->Unit){
+        var clickTime = arrayListOf<Long>()
+        fun click(){
+            if(clickTime.count() >2){
+                clickTime.clear()
+            }
+            clickTime.add(System.currentTimeMillis())
+            if(clickTime.count() == 2){
+                if(clickTime[1] - clickTime[0] < delay)
+                onDoubleClick.invoke()
+            }
+        }
+    }
+    val doubleClickChecker = DoubleClickChecker(100){
+        if(selectedObject!=null){
+            selectedObject!!.selectedCount = 2
+        }
+    }
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         val x = event!!.x.toInt()
         val y = event.y.toInt()
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-                ClearSelected()
+                currentSelectedObjects.clear()
                 for (obj in objects_) {
                     if (obj.isCursorHoveredOver(x, y)) {
-                        selectedObject = obj
-                        obj.isSelected=true
+                        obj.selectedCount++
+                        currentSelectedObjects.add(obj)
                         this.invalidate()
-                        break
+                    }
+                    else{
+                        obj.selectedCount = 0
                     }
                 }
-
+                if(currentSelectedObjects.isEmpty()){
+                    onPressEmpty()
+                }
             }
             MotionEvent.ACTION_UP -> {
             }
             MotionEvent.ACTION_MOVE -> {
-                for (obj in objects_)
-                {
-                    if (obj.isSelected &&
-                        x > obj.width/2 &&
-                        y > obj.height/2 &&
-                        x < this.width - obj.width/2 &&
-                        y < this.height - obj.height/2)
+                if(selectedObject!=null)
+                {   if(selectedObject!!.selectedCount > 1)
                     {
-                        obj.move(x,y)
-                        this.invalidate()
+                        if( x < selectedObject!!.posX + selectedObject!!.width + 80 &&
+                            x > selectedObject!!.posX + selectedObject!!.width - 80){
+                            selectedObject!!.width = kotlin.math.abs(x - selectedObject!!.posX)
+                            this.invalidate()
+                        }
+                    }
+                    else if(selectedObject!!.selectedCount == 1)
+                    {
+                        if (selectedObject!!.isSelected &&
+                            x > selectedObject!!.width/2 &&
+                            y > selectedObject!!.height/2 &&
+                            x < this.width - selectedObject!!.width/2 &&
+                            y < this.height - selectedObject!!.height/2)
+                        {
+                            selectedObject!!.move(x, y)
+                            this.invalidate()
+                        }
+                        else if(y > selectedObject!!.height/2 &&  y < this.height - selectedObject!!.height/2)
+                        {
+                            //selectedObject!!.move(selectedObject!!.centerX,y)
+                            this.invalidate()
+                        }
+                        else if (x > selectedObject!!.width/2 &&  x < this.width - selectedObject!!.width/2)
+                        {
+                            //selectedObject!!.move(x, selectedObject!!.centerY)
+                            this.invalidate()
+                        }
                     }
                 }
             }

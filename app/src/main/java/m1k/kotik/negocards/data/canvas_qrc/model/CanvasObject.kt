@@ -16,7 +16,23 @@ abstract class CanvasObject(
     var color: String,
     var style: CanvasObjectSerializationTag.Style,
 ) {
-    var isSelected: Boolean = false
+
+    var isSelected: Boolean get() {
+        if(selectedCount>0){
+            return true
+        }
+        return false
+    }
+        set(value) {
+            if(value == true){
+                selectedCount = 1
+            }
+            else{
+                selectedCount = 0
+            }
+        }
+
+    var selectedCount = 0
     open val centerX: Int get() = this.posX + this.width/2
     open val centerY: Int get() = this.posY + this.height/2
 
@@ -32,6 +48,7 @@ abstract class CanvasObject(
         this.posX = x - this.width / 2
         this.posY = y - this.height / 2
     }
+
     open fun encode():String{
         var code: String = ""
         for (objTag in this.type.listTag) {
@@ -373,8 +390,7 @@ abstract class CanvasObject(
             canvasObject as ShapeObject
             return canvasObject.strokeWidth.toString()
         }
-
-    }
+        }
     }
 
 //Дополнительный функционал

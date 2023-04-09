@@ -1,6 +1,7 @@
 package m1k.kotik.negocards.data.canvas_qrc.model
 
 import android.graphics.Canvas
+import android.graphics.ComposePathEffect
 import android.graphics.Paint
 
 open class ShapeObject(
@@ -11,7 +12,8 @@ open class ShapeObject(
     height: Int = 0,
     color:  String = "FF181818",
     style: CanvasObjectSerializationTag.Style,
-    var strokeWidth: Int = CanvasObject.CanvasObjectSerializationTag.StrokeWidth.default
+    var strokeWidth: Int = CanvasObject.CanvasObjectSerializationTag.StrokeWidth.default,
+    var pathEffect: Int = CanvasObject.CanvasObjectSerializationTag.StrokeWidth.default
 
     ) : CanvasObject(CanvasObjectType.Shape(), width, height, posX, posY,color,style) {
     constructor(): this(

@@ -14,8 +14,9 @@ class RectRShape (
     width: Int,
     height: Int,
     color: String,
-    style: CanvasObjectSerializationTag.Style
-) : ShapeObject(Shape.RectR(), posX, posY, width, height,color,style) {
+    style: CanvasObjectSerializationTag.Style,
+    strokeWidth: Int = CanvasObjectSerializationTag.StrokeWidth.default
+) : ShapeObject(Shape.RectR(), posX, posY, width, height,color,style,strokeWidth) {
     constructor(): this(
         CanvasObjectSerializationTag.LeftCorner.default,
         CanvasObjectSerializationTag.RightCorner.default,
@@ -32,6 +33,13 @@ class RectRShape (
             it.isAntiAlias = true
             it.isDither = true
         })
+    }
+    fun drawRectRWithCustomPaint(canvas: Canvas,paint: Paint){
+        canvas.drawRoundRect(posX.toFloat(),posY.toFloat(),
+            posX+width.toFloat(),posY+height.toFloat(),
+            leftCorner.toFloat(),
+            rightCorner.toFloat(),
+            paint)
     }
 
 }
