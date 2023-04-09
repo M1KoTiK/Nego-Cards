@@ -11,6 +11,7 @@ open class ShapeObject(
     height: Int = 0,
     color:  String = "FF181818",
     style: CanvasObjectSerializationTag.Style,
+    var strokeWidth: Int = CanvasObject.CanvasObjectSerializationTag.StrokeWidth.default
 
     ) : CanvasObject(CanvasObjectType.Shape(), width, height, posX, posY,color,style) {
     constructor(): this(
@@ -20,13 +21,21 @@ open class ShapeObject(
         0,
         0,
         "FF181818",
-        CanvasObjectSerializationTag.Style.Fill())
-
+        CanvasObjectSerializationTag.Style.Fill(),
+    )
+    open val objectPaint: Paint = Paint().also {
+        it.isDither = true
+        it.isAntiAlias = true
+        it.color =  this.getParseColor()
+        it.style = this.style.sType
+        it.strokeWidth = this.strokeWidth.toFloat()
+    }
     override fun draw(canvas: Canvas) {
-        canvas.drawRect(posX.toFloat(),posY.toFloat(),posX+width.toFloat(),posY+height.toFloat(),
-            Paint().also{
-                it.color =  this.getParseColor()
-                it.style = this.style.sType
-            })
+        canvas.drawRect(
+            posX.toFloat(),
+            posY.toFloat(),
+            posX+width.toFloat(),
+            posY+height.toFloat(),
+            objectPaint)
     }
 }

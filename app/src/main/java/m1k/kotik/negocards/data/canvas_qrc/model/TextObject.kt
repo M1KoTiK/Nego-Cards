@@ -15,7 +15,7 @@ class TextObject(
     style: CanvasObjectSerializationTag.Style
 ) : CanvasObject(CanvasObjectType.Text(),
     Paint().also{ it.textSize = fontSize.toFloat() }.measureText(text).toInt(),
-    abs(Paint().also{ it.textSize = fontSize.toFloat() }.fontMetrics.top).toInt(),
+    abs(Paint().also{ it.textSize = fontSize.toFloat() }.fontMetrics.ascent).toInt(),
     posX,
     posY,
     color,
@@ -35,7 +35,9 @@ class TextObject(
         })
     }
 
-    override fun isSelected(x: Int, y: Int): Boolean {
+    override val centerY: Int get() = posY - height/2
+
+    override fun isCursorHoveredOver(x: Int, y: Int): Boolean {
         if(x>posX && x < posX+width&& y > posY-height && y < posY){
             return true
         }

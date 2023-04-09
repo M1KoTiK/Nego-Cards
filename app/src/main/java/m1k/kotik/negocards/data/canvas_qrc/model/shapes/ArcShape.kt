@@ -27,12 +27,15 @@ class ArcShape(
         CanvasObjectSerializationTag.Color.default,
         CanvasObjectSerializationTag.Style.Fill())
     override fun draw(canvas: Canvas) {
-        canvas.drawArc(posX.toFloat(),posY.toFloat(),posX+width.toFloat(),posY+height.toFloat(),startAngle.toFloat(),sweepAngle.toFloat(),useCenter, Paint().also {
-            it.color = this.getParseColor()
-            it.style = this.style.sType
-            it.isAntiAlias = true
-            it.isDither = true
-        })
+        canvas.drawArc(
+            posX.toFloat(),
+            posY.toFloat(),
+            posX+width.toFloat(),
+            posY+height.toFloat(),
+            startAngle.toFloat(),
+            sweepAngle.toFloat(),
+            useCenter,
+            objectPaint)
     }
 
 }

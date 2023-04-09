@@ -15,12 +15,14 @@ abstract class CanvasObject(
     var posY: Int,
     var color: String,
     var style: CanvasObjectSerializationTag.Style,
-    open val centerX: Int = (posX + width)/2,
-    open val centerY: Int = (posY+ height)/2
 ) {
+    var isSelected: Boolean = false
+    open val centerX: Int get() = this.posX + this.width/2
+    open val centerY: Int get() = this.posY + this.height/2
+
     abstract fun draw(canvas: Canvas)
 
-    open fun isSelected(x: Int, y: Int):Boolean{
+    open fun isCursorHoveredOver(x: Int, y: Int):Boolean{
         if(x>posX && x < posX+width&& y > posY && y < posY+height){
             return true
         }
@@ -357,6 +359,22 @@ abstract class CanvasObject(
 
             }
         }
+
+    object StrokeWidth: CanvasObjectSerializationTag() {
+        override val default: Int get() = 7
+        override val name: String get() = "sw"
+        override val visiblePropertyName: String get() = "Ширина обводки"
+        override fun setField(canvasObject: CanvasObject, value: Any) {
+            canvasObject as ShapeObject
+            canvasObject.strokeWidth = value.toString().toInt()
+        }
+
+        override fun getField(canvasObject: CanvasObject): Any {
+            canvasObject as ShapeObject
+            return canvasObject.strokeWidth.toString()
+        }
+
+    }
     }
 
 //Дополнительный функционал

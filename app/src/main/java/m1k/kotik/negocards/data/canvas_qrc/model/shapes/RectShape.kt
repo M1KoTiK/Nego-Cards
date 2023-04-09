@@ -10,7 +10,8 @@ class RectShape(
     width: Int,
     height: Int,
     color: String,
-    style: CanvasObjectSerializationTag.Style
+    style: CanvasObjectSerializationTag.Style,
+    strokeWidth: Int = CanvasObjectSerializationTag.StrokeWidth.default
 ) :ShapeObject(
     CanvasObjectType.Shape.Rect(),
     posX,
@@ -18,23 +19,27 @@ class RectShape(
     width,
     height,
     color,
-    style){
+    style,
+    strokeWidth
+    ){
     constructor(): this(
         CanvasObjectSerializationTag.PosX.default,
         CanvasObjectSerializationTag.PosY.default,
         CanvasObjectSerializationTag.WidthTag.default,
         CanvasObjectSerializationTag.Height.default,
         CanvasObjectSerializationTag.Color.default,
-        CanvasObjectSerializationTag.Style().default)
+        CanvasObjectSerializationTag.Style().default,
+        CanvasObjectSerializationTag.StrokeWidth.default
+    )
 
     override fun draw(canvas: Canvas) {
-        canvas.drawRect(posX.toFloat(),posY.toFloat()+height.toFloat(),posX+width.toFloat(),posY.toFloat(),
-            Paint().also{
-                it.color =  this.getParseColor()
-                it.style = this.style.sType
-                it.isAntiAlias = true
-                it.isDither = true
-        })
+        canvas.drawRect(
+            posX.toFloat(),
+            posY.toFloat()+height.toFloat(),
+            posX+width.toFloat(),
+            posY.toFloat(),
+            objectPaint)
+
     }
 
 }

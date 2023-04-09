@@ -2,22 +2,22 @@ package m1k.kotik.negocards.view
 
 import android.content.Context
 import android.graphics.*
-import android.graphics.Color.parseColor
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
-import android.widget.Toast
 import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject
-import m1k.kotik.negocards.data.canvas_qrc.model.TextObject
+import m1k.kotik.negocards.data.canvas_qrc.model.PointModel
 import m1k.kotik.negocards.data.canvas_qrc.model.shapes.RectShape
 
 open class CanvasView(context: Context, attrs: AttributeSet) : View(context, attrs) {
     private val paint: Paint = Paint()
     //var mDetector: GestureDetectorCompat = GestureDetectorCompat(context,context)
-    lateinit var mainCanvas: Canvas
     val objects: List<CanvasObject>
         get() = objects_
-
+    var STROKE_GAP_WIDTH = 30
+    var STROKE_GAP_HEIGHT = 30
+    var STROKE_GAP_POSX = STROKE_GAP_WIDTH/2
+    var STROKE_GAP_POSY = STROKE_GAP_HEIGHT/2
     protected var objects_: MutableList<CanvasObject> = mutableListOf()
 
     fun setCanvasObjects(objects: List<CanvasObject>) {
@@ -33,8 +33,26 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
         this.invalidate()
     }
     override fun onDraw(canvas: Canvas?) {
+        fun selectObject(canvasObject: CanvasObject, canvas: Canvas) {
+            val myPath: Array<PointModel> = arrayOf<PointModel>(
+                PointModel(canvasObject.centerX - canvasObject.width/2 -STROKE_GAP_POSX,
+                    canvasObject.centerY - canvasObject.height/2 - STROKE_GAP_POSY ),
+                PointModel(200, 200),
+                PointModel(200, 400),
+                PointModel(400, 400)
+            )
+
+
+            RectShape(canvasObject.centerX - canvasObject.width/2 -STROKE_GAP_POSX,
+                canvasObject.centerY - canvasObject.height/2 - STROKE_GAP_POSY,
+                canvasObject.width + STROKE_GAP_WIDTH,
+                canvasObject.height + STROKE_GAP_HEIGHT,
+                "905954E1",
+                CanvasObject.CanvasObjectSerializationTag.Style.Stroke(),
+                12).draw(canvas)
+            this.invalidate()
+        }
         super.onDraw(canvas)
-        mainCanvas = canvas!!
         paint.apply {
             style = Paint.Style.FILL
             color = Color.WHITE
@@ -44,7 +62,20 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
         val rect = RectF(0f,0f,canvas?.width?.toFloat()!!,canvas?.height?.toFloat()!!)
         canvas?.drawRoundRect(rect,25f,25f,paint)
         for(obj in objects_){
-            canvas?.let { obj.draw(it) }
+            canvas?.let {
+            if(obj.isSelected){
+                selectObject(obj, canvas)
+            }
+                obj.draw(it)
+            }
+        }
+        fun selectObject(canvasObject: CanvasObject) {
+            RectShape(canvasObject.posX,
+                canvasObject.posY+20,
+                canvasObject.width+20,
+                canvasObject.height+20,
+                "FF",
+                CanvasObject.CanvasObjectSerializationTag.Style.Stroke()).draw(canvas)
         }
 
     }
@@ -52,31 +83,48 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
     override fun setOnTouchListener(l: OnTouchListener?) {
         super.setOnTouchListener(l)
     }
+    private fun ClearSelected(){
+        for (obj in objects_) {
+            obj.isSelected = false
+        }
+    }
     var selectedObject: CanvasObject? = null
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         val x = event!!.x.toInt()
         val y = event.y.toInt()
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
+                ClearSelected()
                 for (obj in objects_) {
-                    if (obj.isSelected(x, y)) {
+                    if (obj.isCursorHoveredOver(x, y)) {
                         selectedObject = obj
+                        obj.isSelected=true
+                        this.invalidate()
                         break
                     }
                 }
+
             }
             MotionEvent.ACTION_UP -> {
-                selectedObject = null
             }
             MotionEvent.ACTION_MOVE -> {
-                    if (selectedObject != null && x>0 && y>0 && x< this.width && y < this.height) {
-                        selectedObject!!.move(x,y)
+                for (obj in objects_)
+                {
+                    if (obj.isSelected &&
+                        x > obj.width/2 &&
+                        y > obj.height/2 &&
+                        x < this.width - obj.width/2 &&
+                        y < this.height - obj.height/2)
+                    {
+                        obj.move(x,y)
                         this.invalidate()
                     }
                 }
             }
+        }
         return true
     }
+
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
