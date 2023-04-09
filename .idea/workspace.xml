@@ -12,7 +12,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Теперь можно добавлять любые объекты и двигать их">
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Добавил выделение объектов синей обводкой">
       <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/PointModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -447,7 +447,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680602982394</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Добавил выделение объектов синей обводкой">
+      <created>1681022796854</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1681022796854</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -462,7 +469,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добаален экран с выбором типа QRC из выпадающего меню" />
     <MESSAGE value="Добаален экран с выбором типа QRC из выпадающего меню&#10;//EmptyCommit" />
     <MESSAGE value="Работает переключение между фрагментами через выпадающий список (Ура!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!)" />
     <MESSAGE value="Добавил содержимого на фрагменты с выбором параметров и немного почистил код)" />
@@ -487,7 +493,8 @@
     <MESSAGE value="Исправил перетаскивание" />
     <MESSAGE value="Добавил функцию для правильного движения разных объектов" />
     <MESSAGE value="Теперь можно добавлять любые объекты и двигать их" />
-    <option name="LAST_COMMIT_MESSAGE" value="Теперь можно добавлять любые объекты и двигать их" />
+    <MESSAGE value="Добавил выделение объектов синей обводкой" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил выделение объектов синей обводкой" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
