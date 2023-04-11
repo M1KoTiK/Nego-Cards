@@ -12,12 +12,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Добавил выделение объектов синей обводкой">
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Теперь есть два режима выделения синей обводкой и красной">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/DoublecClickChecker.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/CanvasObject.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/CanvasObject.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/ShapeObject.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/ShapeObject.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/shapes/RectRShape.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/shapes/RectRShape.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/CanvasView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/CanvasView.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,6 +54,7 @@
         <option value="layoutResourceFile" />
         <option value="resourceFile" />
         <option value="valueResourceFile" />
+        <option value="Kotlin Interface" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -457,7 +457,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681022861991</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Теперь есть два режима выделения синей обводкой и красной">
+      <created>1681065712116</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1681065712116</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -472,7 +479,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добаален экран с выбором типа QRC из выпадающего меню&#10;//EmptyCommit" />
     <MESSAGE value="Работает переключение между фрагментами через выпадающий список (Ура!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!)" />
     <MESSAGE value="Добавил содержимого на фрагменты с выбором параметров и немного почистил код)" />
     <MESSAGE value="Переименовал пакеты)" />
@@ -497,9 +503,19 @@
     <MESSAGE value="Добавил функцию для правильного движения разных объектов" />
     <MESSAGE value="Теперь можно добавлять любые объекты и двигать их" />
     <MESSAGE value="Добавил выделение объектов синей обводкой" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил выделение объектов синей обводкой" />
+    <MESSAGE value="Теперь есть два режима выделения синей обводкой и красной" />
+    <option name="LAST_COMMIT_MESSAGE" value="Теперь есть два режима выделения синей обводкой и красной" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/DoublecClickChecker.kt</url>
+          <line>7</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject$Tag$Text" memberName="obligatory" />
@@ -510,5 +526,10 @@
         <PinnedItemInfo parentTag="m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject$Companion" memberName="shadow$_monitor_" />
       </pinned-members>
     </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="AndroidRunConfigurationType">
+        <watch expression="firstClick" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

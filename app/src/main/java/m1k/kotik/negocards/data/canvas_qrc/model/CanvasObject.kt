@@ -16,23 +16,22 @@ abstract class CanvasObject(
     var color: String,
     var style: CanvasObjectSerializationTag.Style,
 ) {
-
-    var isSelected: Boolean get() {
-        if(selectedCount>0){
-            return true
-        }
-        return false
-    }
+    var isSelectMode: Boolean = false
         set(value) {
-            if(value == true){
-                selectedCount = 1
+            if (value == true){
+                isEditMode = false
             }
-            else{
-                selectedCount = 0
-            }
+            field = value
         }
 
-    var selectedCount = 0
+    var isEditMode: Boolean = false
+        set(value) {
+            if (value == true){
+                isSelectMode = false
+            }
+            field = value
+        }
+
     open val centerX: Int get() = this.posX + this.width/2
     open val centerY: Int get() = this.posY + this.height/2
 
