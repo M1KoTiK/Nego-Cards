@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import m1k.kotik.negocards.R
@@ -27,7 +28,17 @@ class ChoiceParametersForCardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController = binding?.root?.findNavController()!!
         binding?.button4?.setOnClickListener {
-            navController.navigate(R.id.createCanvasQRCFragment)
+            if(binding?.editTextTextPersonName5?.text?.toString()?.toIntOrNull() != null &&
+                binding?.editTextTextPersonName6?.text?.toString()?.toIntOrNull() != null)
+            {
+            val bundle = Bundle()
+            bundle.putInt("width",binding?.editTextTextPersonName5?.text.toString().toInt())
+            bundle.putInt("height",binding?.editTextTextPersonName6?.text.toString().toInt())
+            navController.navigate(R.id.createCanvasQRCFragment, bundle)
+            }
+            else{
+                Toast.makeText(requireActivity(),"Что-то заполнено неправильно",Toast.LENGTH_SHORT).show()
+            }
 
         }
     }

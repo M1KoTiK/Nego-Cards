@@ -4,34 +4,30 @@ import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.*
 import androidx.fragment.app.Fragment
 import m1k.kotik.negocards.R
 import m1k.kotik.negocards.data.canvas_qrc.model.*
-import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject.CanvasObjectSerializationTag
 import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject.Companion.searchableListCanvasObjectTypes
-import m1k.kotik.negocards.data.canvas_qrc.model.shapes.ArcShape
-import m1k.kotik.negocards.data.canvas_qrc.model.shapes.RectRShape
-import m1k.kotik.negocards.data.canvas_qrc.model.shapes.RectShape
 import m1k.kotik.negocards.databinding.FragmentCreateCanvasQRCBinding
-import m1k.kotik.negocards.fragments.choiceParametersForQR.ChoiceParametersForCardFragment
-import m1k.kotik.negocards.fragments.choiceParametersForQR.ChoiceParametersForTextFragment
-import java.lang.ref.ReferenceQueue
+import m1k.kotik.negocards.fragments.utils_fragment.IOnBackPressedListener
 
 
-class CreateCanvasQRCFragment : Fragment() {
+class CreateCanvasQRCFragment : Fragment(), IOnBackPressedListener {
     private var selectedItemPosition : Int = -1
     private var binding: FragmentCreateCanvasQRCBinding? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentCreateCanvasQRCBinding.inflate(inflater,container,false)
         return binding!!.root
+
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val bundle: Bundle = this.requireArguments()
+        binding?.view?.changeViewSize(bundle.getInt("width"),bundle.getInt("height"))
+        binding?.view?.requestLayout()
         binding?.button5?.setOnClickListener {
             //Кнопка под холстом
         }
@@ -103,5 +99,9 @@ class CreateCanvasQRCFragment : Fragment() {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
         })
+    }
+
+    override fun onBackPressed() {
+        Toast.makeText(requireActivity(),"backpressed", Toast.LENGTH_SHORT).show()
     }
 }

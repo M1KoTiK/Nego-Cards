@@ -49,7 +49,11 @@
         android:id="@+id/choiceParametersForCardFragment"
         android:name="m1k.kotik.negocards.fragments.choiceParametersForQR.ChoiceParametersForCardFragment"
         android:label="fragment_choice_parameters_for_card"
-        tools:layout="@layout/fragment_choice_parameters_for_card" />
+        tools:layout="@layout/fragment_choice_parameters_for_card" >
+        <action
+            android:id="@+id/action_choiceParametersForCardFragment_to_createCanvasQRCFragment"
+            app:destination="@id/createCanvasQRCFragment" />
+    </fragment>
     <fragment
         android:id="@+id/choiceParametersForTextFragment"
         android:name="m1k.kotik.negocards.fragments.choiceParametersForQR.ChoiceParametersForTextFragment"

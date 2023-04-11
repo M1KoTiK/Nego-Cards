@@ -9,6 +9,7 @@ import m1k.kotik.negocards.R
 import m1k.kotik.negocards.databinding.FragmentChoiceTypeQrcBinding
 import m1k.kotik.negocards.fragments.choiceParametersForQR.ChoiceParametersForCardFragment
 import m1k.kotik.negocards.fragments.choiceParametersForQR.ChoiceParametersForTextFragment
+import m1k.kotik.negocards.fragments.utils_fragment.PlaceholderFragment
 
 
 class ChoiceTypeQRCFragment : Fragment() {
@@ -41,6 +42,9 @@ class ChoiceTypeQRCFragment : Fragment() {
                     }
                     1->{
                         replaceFragment(ChoiceParametersForTextFragment())
+                    }
+                    2->{
+                        replaceFragment(PlaceholderFragment())
                     }
                 }
 

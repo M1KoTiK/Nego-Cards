@@ -15,6 +15,8 @@ import m1k.kotik.negocards.data.canvas_qrc.model.shapes.RectRShape
 
 open class CanvasView(context: Context, attrs: AttributeSet) : View(context, attrs) {
     private val paint: Paint = Paint()
+    private var canvasViewWidth = 900
+    private var canvasViewHeight = 600
     //var mDetector: GestureDetectorCompat = GestureDetectorCompat(context,context)
     val objects: List<CanvasObject>
         get() = objects_
@@ -31,9 +33,15 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
         objects_.clear()
         this.invalidate()
     }
+
     fun addCanvasObjects(canvasObject: CanvasObject) {
         objects_.add(canvasObject)
         this.invalidate()
+    }
+    fun changeViewSize(width:Int,height:Int){
+        canvasViewWidth = width
+        canvasViewHeight = height
+        requestLayout()
     }
     @SuppressLint("DrawAllocation")
     override fun onDraw(canvas: Canvas?) {
@@ -218,7 +226,7 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-        setMeasuredDimension(900,600)
+        setMeasuredDimension(canvasViewWidth,canvasViewHeight)
     }
     fun drawTriangle(canvas: Canvas, paint: Paint, x:Int, y:Int, width:Int) {
         val halfWidth : Int = width / 2
