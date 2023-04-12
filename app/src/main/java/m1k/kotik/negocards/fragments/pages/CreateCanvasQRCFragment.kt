@@ -51,18 +51,15 @@ class CreateCanvasQRCFragment : Fragment(), IOnBackPressedListener {
         }
         binding?.buttonplus?.setOnClickListener {
             selectedItemPosition = -1
-            val inflater = context?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val popupView: View = inflater.inflate(R.layout.add_canvas_object_popup, null)
-            val popupWindow = PopupWindow()
-            popupWindow.isOutsideTouchable = true;
-            popupWindow.isFocusable = true;
-            popupWindow.contentView = popupView
-            popupWindow.height = 800
-            popupWindow.width = 800
-            popupWindow.showAtLocation(popupView, Gravity.TOP or Gravity.LEFT,20,300)
+            val popWindow= m1k.kotik.negocards.data.canvas_qrc.model.popup_windows.PopupWindow()
+            popWindow.setup(
+                requireActivity(),
+                R.layout.add_canvas_object_popup,
+            700, 700)
+            popWindow.show(20,300,Gravity.TOP or Gravity.LEFT)
             val typesObject: MutableList<String> = mutableListOf()
-            val addObject: Button = popupView.findViewById(R.id.buttonAddObject)
-            val autoCompleteObjectTypes: AutoCompleteTextView = popupView.findViewById(R.id.ChoiceObjectType)
+            val addObject: Button = popWindow.popupView!!.findViewById(R.id.buttonAddObject)
+            val autoCompleteObjectTypes: AutoCompleteTextView = popWindow.popupView!!.findViewById(R.id.ChoiceObjectType)
             addObject.setOnClickListener {
                 if(selectedItemPosition >=0){
                     val selectedItem = typesObject[selectedItemPosition]
@@ -76,7 +73,7 @@ class CreateCanvasQRCFragment : Fragment(), IOnBackPressedListener {
                         }
                     }
                 }
-                popupWindow.dismiss()
+                popWindow.close()
             }
             for (type in searchableListCanvasObjectTypes){
                 if(!type.isSubsection) {
