@@ -24,6 +24,7 @@ class ChoiceParametersForCardFragment : Fragment() {
         return binding!!.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = binding?.root?.findNavController()!!

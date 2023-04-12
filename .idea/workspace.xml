@@ -12,19 +12,19 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Даблклик теперь работает">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/utils_fragment/IOnBackPressedListener.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/utils_fragment/PlaceholderFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_placeholder.xml" afterDir="false" />
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Теперь можно задавать размеры канваса">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/grayminus.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/minus.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/resource__.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/color_picker_popup.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/DoublecClickChecker.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/DoublecClickChecker.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/choiceParametersForQR/ChoiceParametersForCardFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/choiceParametersForQR/ChoiceParametersForCardFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/ChoiceTypeQRCFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/ChoiceTypeQRCFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/CreateCanvasQRCFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/CreateCanvasQRCFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/CanvasView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/CanvasView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_choice_type_qrc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_choice_type_qrc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/add_canvas_object_popup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/add_canvas_object_popup.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_create_canvas_q_r_c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_create_canvas_q_r_c.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,9 +60,9 @@
         <option value="navigationResourceFile" />
         <option value="resourceFile" />
         <option value="valueResourceFile" />
-        <option value="Kotlin Interface" />
-        <option value="layoutResourceFile" />
         <option value="Kotlin Class" />
+        <option value="layoutResourceFile" />
+        <option value="Kotlin Interface" />
       </list>
     </option>
   </component>
@@ -480,7 +480,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681227148603</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Теперь можно задавать размеры канваса">
+      <created>1681234311053</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1681234311053</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -495,7 +502,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добавил содержимого на фрагменты с выбором параметров и немного почистил код)" />
     <MESSAGE value="Переименовал пакеты)" />
     <MESSAGE value="Добавил интерфес для обработки данных с QRC, но страницы пока что неправильно сделаны, чтобы проводить тестирование" />
     <MESSAGE value="Почистил код" />
@@ -520,7 +526,8 @@
     <MESSAGE value="Добавил выделение объектов синей обводкой" />
     <MESSAGE value="Теперь есть два режима выделения синей обводкой и красной" />
     <MESSAGE value="Даблклик теперь работает" />
-    <option name="LAST_COMMIT_MESSAGE" value="Даблклик теперь работает" />
+    <MESSAGE value="Теперь можно задавать размеры канваса" />
+    <option name="LAST_COMMIT_MESSAGE" value="Теперь можно задавать размеры канваса" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

@@ -6,6 +6,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.*
 import android.widget.*
+import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.Fragment
 import m1k.kotik.negocards.R
 import m1k.kotik.negocards.data.canvas_qrc.model.*
@@ -26,13 +27,29 @@ class CreateCanvasQRCFragment : Fragment(), IOnBackPressedListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val bundle: Bundle = this.requireArguments()
+        binding?.textView3?.text = ""
         binding?.view?.changeViewSize(bundle.getInt("width"),bundle.getInt("height"))
         binding?.view?.requestLayout()
-        binding?.button5?.setOnClickListener {
-            //Кнопка под холстом
+        binding?.view?.onCurrentSelectedObjectChange = {
+            if(binding?.view?.currentSelectedObject!=null){
+                val selectedObject = binding?.view?.currentSelectedObject
+                binding?.buttonminus?.setImageResource(R.drawable.minus)
+                binding?.textView3?.text = selectedObject!!.encode()
+            }
+            else{
+                binding?.buttonminus?.setImageResource(R.drawable.grayminus)
+                binding?.textView3?.text = ""
+            }
         }
-
-        binding?.button6?.setOnClickListener {
+        binding?.buttonminus?.setOnClickListener {
+            if(binding?.view?.currentSelectedObject!=null) {
+                binding?.view?.currentSelectedObject!!.isSelectMode = false
+                binding?.view?.currentSelectedObject!!.isEditMode = false
+                binding?.view?.deleteSelectedObject()
+                binding?.view?.invalidate()
+            }
+        }
+        binding?.buttonplus?.setOnClickListener {
             selectedItemPosition = -1
             val inflater = context?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             val popupView: View = inflater.inflate(R.layout.add_canvas_object_popup, null)
@@ -57,9 +74,9 @@ class CreateCanvasQRCFragment : Fragment(), IOnBackPressedListener {
                             binding?.view?.invalidate()
                             selectedItemPosition = -1
                         }
-
                     }
                 }
+                popupWindow.dismiss()
             }
             for (type in searchableListCanvasObjectTypes){
                 if(!type.isSubsection) {

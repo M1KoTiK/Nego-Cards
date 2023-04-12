@@ -1,6 +1,6 @@
 package m1k.kotik.negocards.data.canvas_qrc.model
 
-class DoublecClickChecker(private val delay: Long , val OnDoubleClickAction: ()->Unit) {
+class DoubleClickChecker(private val delay: Long , val OnDoubleClickAction: ()->Unit) {
     private val listClickTime = mutableListOf<Long>()
     private fun check(){
         if(listClickTime[1]-listClickTime[0] < delay )
@@ -13,7 +13,7 @@ class DoublecClickChecker(private val delay: Long , val OnDoubleClickAction: ()-
             listClickTime[0] = listClickTime[1]
         }
     }
-    public fun click(){
+    fun click(){
         if(listClickTime.count() < 2){
             listClickTime.add(System.currentTimeMillis())
             if(listClickTime.count()==2){

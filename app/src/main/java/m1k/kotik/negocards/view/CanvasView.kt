@@ -8,12 +8,15 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.launch
 import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject
-import m1k.kotik.negocards.data.canvas_qrc.model.DoublecClickChecker
+import m1k.kotik.negocards.data.canvas_qrc.model.DoubleClickChecker
 import m1k.kotik.negocards.data.canvas_qrc.model.shapes.RectRShape
 
 
-open class CanvasView(context: Context, attrs: AttributeSet) : View(context, attrs) {
+open class CanvasView(context: Context, attrs: AttributeSet) : View(context, attrs){
     private val paint: Paint = Paint()
     private var canvasViewWidth = 900
     private var canvasViewHeight = 600
@@ -25,15 +28,24 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
     private var GAP_POSX = GAP_WIDTH/2
     private var GAP_POSY = GAP_HEIGHT/2
     protected var objects_: MutableList<CanvasObject> = mutableListOf()
+
+    var onCurrentSelectedObjectChange: ()->Unit = {}
+
+
     fun setCanvasObjects(objects: List<CanvasObject>) {
         objects_ = objects.toMutableList()
         this.invalidate()
     }
+
     fun clearCanvasObject(){
         objects_.clear()
         this.invalidate()
     }
-
+    fun deleteSelectedObject(){
+        objects_.remove(currentSelectedObject)
+        listCurrentSelectedObjects.clear()
+        onCurrentSelectedObjectChange.invoke()
+    }
     fun addCanvasObjects(canvasObject: CanvasObject) {
         objects_.add(canvasObject)
         this.invalidate()
@@ -128,6 +140,7 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
     private var listCurrentSelectedObjects: MutableList<CanvasObject> = mutableListOf()
 
     private fun clearSelectInAllObjects(){
+        onCurrentSelectedObjectChange.invoke()
         for (obj in objects_) {
             obj.isSelectMode = false
             obj.isEditMode = false
@@ -135,12 +148,13 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
         }
     }
     private fun clearSelectInSelectedObjects(){
+        onCurrentSelectedObjectChange.invoke()
         for (obj in listCurrentSelectedObjects) {
             obj.isSelectMode = false
             obj.isEditMode = false
         }
     }
-    private val currentSelectedObject: CanvasObject?
+    val currentSelectedObject: CanvasObject?
         get(){
             if(listCurrentSelectedObjects.isNotEmpty()){
                 return listCurrentSelectedObjects[0]
@@ -158,7 +172,7 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
             }
         }
     }
-    val doubleClickChecker = DoublecClickChecker(200){
+    private val doubleClickChecker = DoubleClickChecker(200){
         currentSelectedObject!!.isEditMode = true
     }
     override fun onTouchEvent(event: MotionEvent?): Boolean {
@@ -176,6 +190,7 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
                     {
                         onEmptySelected()
                     }
+                onCurrentSelectedObjectChange.invoke()
                 this.invalidate()
             }
             MotionEvent.ACTION_UP -> {
@@ -216,6 +231,7 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
                         }
                     }
                 }
+                onCurrentSelectedObjectChange.invoke()
             }
         }
         return true
