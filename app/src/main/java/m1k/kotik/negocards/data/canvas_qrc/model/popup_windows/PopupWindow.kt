@@ -5,7 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.PopupWindow
 
-class PopupWindow: IPopupWindow {
+abstract class PopupWindow: IPopupWindow {
+    var context:Context? = null
     var  root: PopupWindow? = null
     var  popupView: View? = null
     override fun setup(
@@ -15,16 +16,19 @@ class PopupWindow: IPopupWindow {
         width: Int,
         isOutsideTouchable: Boolean,
         isFocusable: Boolean) {
+        this.context = context
         val newPopupWindow = PopupWindow()
-        popupView = inflate(context,layoutRes)
+        popupView = inflate(layoutRes)
         newPopupWindow.isOutsideTouchable = isOutsideTouchable
         newPopupWindow.isFocusable = isFocusable
         newPopupWindow.contentView = popupView
         newPopupWindow.height = height
         newPopupWindow.width = width
         root = newPopupWindow
+        onCreate()
     }
-    private fun inflate(context: Context, layoutRes: Int): View {
+    abstract fun onCreate()
+    private fun inflate(layoutRes: Int): View {
         val inflater = context?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         return inflater.inflate(layoutRes, null)
     }

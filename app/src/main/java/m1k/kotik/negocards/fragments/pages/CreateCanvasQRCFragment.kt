@@ -51,49 +51,19 @@ class CreateCanvasQRCFragment : Fragment(), IOnBackPressedListener {
         }
         binding?.buttonplus?.setOnClickListener {
             selectedItemPosition = -1
-            val popWindow= m1k.kotik.negocards.data.canvas_qrc.model.popup_windows.PopupWindow()
-            popWindow.setup(
-                requireActivity(),
-                R.layout.add_canvas_object_popup,
-            700, 700)
-            popWindow.show(20,300,Gravity.TOP or Gravity.LEFT)
-            val typesObject: MutableList<String> = mutableListOf()
-            val addObject: Button = popWindow.popupView!!.findViewById(R.id.buttonAddObject)
-            val autoCompleteObjectTypes: AutoCompleteTextView = popWindow.popupView!!.findViewById(R.id.ChoiceObjectType)
-            addObject.setOnClickListener {
-                if(selectedItemPosition >=0){
-                    val selectedItem = typesObject[selectedItemPosition]
-                    Toast.makeText(requireActivity(), "Selected: ${selectedItemPosition} Count= ${binding?.view?.objects?.size}", Toast.LENGTH_SHORT).show()
-                    for (type in searchableListCanvasObjectTypes) {
-                        if (selectedItem == type.visibleName){
+            val addCanvasObjectPopupWindow =
+                m1k.kotik.negocards.data.canvas_qrc.model.popup_windows.AddCanvasObjectPopupWindow(
+                    {
+                        binding?.view?.addCanvasObjects(it.classType)
+                        binding?.view?.invalidate()
+                    },
+                    {
 
-                            binding?.view?.addCanvasObjects(type.classType)
-                            binding?.view?.invalidate()
-                            selectedItemPosition = -1
-                        }
-                    }
-                }
-                popWindow.close()
-            }
-            for (type in searchableListCanvasObjectTypes){
-                if(!type.isSubsection) {
-                    typesObject.add(type.visibleName)
-                }
-            }
-            val arrayAdapter = ArrayAdapter(requireActivity(),R.layout.dropdown_item,typesObject)
-            autoCompleteObjectTypes.setAdapter(arrayAdapter)
-            autoCompleteObjectTypes.onItemClickListener = AdapterView.OnItemClickListener { parent, _, position, id ->
-                if(selectedItemPosition != position){
-                    selectedItemPosition = position
-                    val selectedItem = parent.getItemAtPosition(position).toString()
-                    //Toast.makeText(requireActivity(), "Selected: $position", Toast.LENGTH_SHORT).show()
-                    for (type in searchableListCanvasObjectTypes){
-                        if (type.visibleName == selectedItem){
-                            //Действие при выборе пункта выпадающего списка
-                        }
-                    }
-                }
-            }
+                    })
+            addCanvasObjectPopupWindow.setup(
+                requireActivity(),
+                700, 700)
+            addCanvasObjectPopupWindow.show(20, 300, Gravity.TOP or Gravity.LEFT)
         }
 
 

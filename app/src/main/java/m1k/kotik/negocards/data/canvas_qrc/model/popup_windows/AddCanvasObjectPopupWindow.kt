@@ -1,0 +1,54 @@
+package m1k.kotik.negocards.data.canvas_qrc.model.popup_windows
+
+import android.content.Context
+import android.view.View
+import android.widget.*
+import m1k.kotik.negocards.R
+import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject
+
+class AddCanvasObjectPopupWindow(var onAddCanvasObject: (CanvasObject.CanvasObjectType)->Unit, var onChangeSelectedObject: ()->Unit): PopupWindow()  {
+    var selectedItemPosition = -1
+    fun setup(context: Context,
+              height:Int,
+              width:Int,
+              isOutsideTouchable: Boolean = true,
+              isFocusable: Boolean = true){
+        super.setup(context,R.layout.add_canvas_object_popup,height,width,isOutsideTouchable,isFocusable)
+    }
+
+    override fun onCreate() {
+        val typesObject: MutableList<String> = mutableListOf()
+        val addObject: Button = this.popupView!!.findViewById(R.id.buttonAddObject)
+        val autoCompleteObjectTypes: AutoCompleteTextView = this.popupView!!.findViewById(R.id.ChoiceObjectType)
+        addObject.setOnClickListener {
+            if(selectedItemPosition >=0){
+                val selectedItem = typesObject[selectedItemPosition]
+                for (type in CanvasObject.searchableListCanvasObjectTypes) {
+                    if (selectedItem == type.visibleName){
+                        onAddCanvasObject.invoke(type)
+                        selectedItemPosition = -1
+                    }
+                }
+            }
+            this.close()
+        }
+        for (type in CanvasObject.searchableListCanvasObjectTypes){
+            if(!type.isSubsection) {
+                typesObject.add(type.visibleName)
+            }
+        }
+        val arrayAdapter = ArrayAdapter(this.context!!,R.layout.dropdown_item,typesObject)
+        autoCompleteObjectTypes.setAdapter(arrayAdapter)
+        autoCompleteObjectTypes.onItemClickListener = AdapterView.OnItemClickListener { parent, _, position, id ->
+            if(selectedItemPosition != position){
+                selectedItemPosition = position
+                val selectedItem = parent.getItemAtPosition(position).toString()
+                for (type in CanvasObject.searchableListCanvasObjectTypes){
+                    if (type.visibleName == selectedItem){
+                        onChangeSelectedObject.invoke()
+                    }
+                }
+            }
+        }
+    }
+}
