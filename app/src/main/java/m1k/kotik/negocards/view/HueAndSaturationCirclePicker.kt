@@ -27,7 +27,7 @@ class HueAndSaturationCirclePicker (context: Context, attrs: AttributeSet) : Vie
     private var naturalDistance:Double? = null
 
     private var colorPointer :ShapeObject = RectRShape(10,10,0,0,60,60,"AA181818",
-        CanvasObject.CanvasObjectSerializationTag.Style.Stroke(),5 )
+        CanvasObject.CanvasObjectSerializationTag.Style.Stroke(),5)
 
     val circleRadius:Double  get(){
         return (height/2).toDouble()
@@ -98,11 +98,17 @@ class HueAndSaturationCirclePicker (context: Context, attrs: AttributeSet) : Vie
         myIcon!!.setBounds(circleX,circleY,circleWidth,circleHeight)
         myIcon.draw(canvas!!)
         if(colorPointerX!= null && colorPointerY!=null){
-           colorPointer.draw(canvas)
+            colorPointer.color = CanvasObject.CanvasObjectSerializationTag.Color.default
+            colorPointer.style = CanvasObject.CanvasObjectSerializationTag.Style.Stroke()
+            colorPointer.draw(canvas)
+            if(selectedColor !=null) {
+                colorPointer.style = CanvasObject.CanvasObjectSerializationTag.Style.Fill()
+                colorPointer.color = getHexString(selectedColor!!)
+                colorPointer.draw(canvas)
+            }
 
         }
-        if(selectedColor!=null){
-        TextObject(selectedHue.toString(),70, getHexString(selectedColor!!),50,50,CanvasObject.CanvasObjectSerializationTag.Style.Fill()).draw(canvas) }
+
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {

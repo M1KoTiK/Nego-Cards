@@ -1,10 +1,14 @@
 package m1k.kotik.negocards.fragments.pages
 
+import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.*
 import android.widget.*
 import androidx.fragment.app.Fragment
@@ -13,6 +17,12 @@ import m1k.kotik.negocards.data.canvas_qrc.model.*
 import m1k.kotik.negocards.data.canvas_qrc.model.popup_windows.ColorPickerPopupWindow
 import m1k.kotik.negocards.databinding.FragmentCreateCanvasQRCBinding
 import m1k.kotik.negocards.fragments.utils_fragment.IOnBackPressedListener
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+import java.io.OutputStream
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class CreateCanvasQRCFragment : Fragment(), IOnBackPressedListener {
@@ -36,6 +46,7 @@ class CreateCanvasQRCFragment : Fragment(), IOnBackPressedListener {
                 val selectedObject = binding?.view?.currentSelectedObject
                 binding?.buttonminus?.setImageResource(R.drawable.minus)
                 binding?.textView3?.text = selectedObject!!.encode()
+                //binding?.button5?.
                 binding?.button5?.setImageResource(R.drawable.painticon)
             }
             else{
@@ -76,7 +87,6 @@ class CreateCanvasQRCFragment : Fragment(), IOnBackPressedListener {
             val selectedObject = binding?.view?.currentSelectedObject
             if(selectedObject!=null) {
                 val clp = ColorPickerPopupWindow {
-                    Toast.makeText(context,"${getHexString(it)}",Toast.LENGTH_SHORT).show()
                     selectedObject.color = getHexString(it)
                     binding?.view?.invalidate()
                 }
@@ -84,6 +94,49 @@ class CreateCanvasQRCFragment : Fragment(), IOnBackPressedListener {
                 clp.show(50, 1250, Gravity.TOP or Gravity.LEFT)
             }
         }
+        fun saveImage(imgBitmap : Bitmap) : Uri {
+
+            // create filename from timestamp
+            val timeStamp : String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+            val fileName : String = "image_${timeStamp}.jpg"
+
+            // get app image directory
+            val storagePath : String = Environment.getExternalStorageDirectory().toString() + "/" + Environment.DIRECTORY_DCIM + "/" + "NegoCards";
+            val storageDir = File("$storagePath")
+            if(!storageDir.exists()) {
+                Log.i("TAG", "Directory is newly created")
+                storageDir.mkdirs()
+            }
+            if (storageDir.exists()) {
+                Log.i("TAG", "Directory is available")
+            }
+
+            // Save image to storage
+            val imageFile = File(storageDir,fileName)
+            Log.i("TAG", "File created with path ${imageFile.absolutePath}")
+            try {
+                val fOut = FileOutputStream(imageFile)
+                imgBitmap.compress(Bitmap.CompressFormat.JPEG, 50, fOut)
+                fOut.flush()
+                fOut.close()
+                Log.i("TAG", "Image file created.")
+            } catch (e: IOException) {
+                e.printStackTrace()
+                Log.i("TAG", "Image file not success.")
+            }
+
+            // Parse the gallery image url to uri
+            return Uri.parse(imageFile.absolutePath)
+        }
+
+        binding?.buttonPalochki?.setOnClickListener {
+            // Save the image in external storage and get the uri
+            Toast.makeText(context, "1234", Toast.LENGTH_SHORT).show()
+            saveImage(binding?.view?.myBitmap!!)
+            // Display the external storage saved image in image view
+
+        }
+
 
         binding?.textView3?.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {

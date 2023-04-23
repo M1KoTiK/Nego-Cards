@@ -9,11 +9,9 @@ class CanvasEditor(context: Context, attrs: AttributeSet) : CanvasView(context, 
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
-
     }
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         return super.onTouchEvent(event)
-
     }
 }

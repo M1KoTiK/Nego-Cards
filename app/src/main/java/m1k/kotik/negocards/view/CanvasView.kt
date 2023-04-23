@@ -5,62 +5,69 @@ import android.content.Context
 import android.graphics.*
 import android.graphics.Color.parseColor
 import android.util.AttributeSet
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
-import androidx.core.content.res.ResourcesCompat
-import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.launch
-import m1k.kotik.negocards.R
 import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject
+import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject.CanvasObjectSerializationTag.Height
 import m1k.kotik.negocards.data.canvas_qrc.model.DoubleClickChecker
 import m1k.kotik.negocards.data.canvas_qrc.model.shapes.RectRShape
+import kotlin.math.abs
+import kotlin.math.max
 
 
-open class CanvasView(context: Context, attrs: AttributeSet) : View(context, attrs){
+open class CanvasView(context: Context, attrs: AttributeSet) : View(context, attrs) {
     private val paint: Paint = Paint()
     private var canvasViewWidth = 900
     private var canvasViewHeight = 600
+
     //var mDetector: GestureDetectorCompat = GestureDetectorCompat(context,context)
     val objects: List<CanvasObject>
         get() = objects_
+
     private var GAP_WIDTH = 30
     private var GAP_HEIGHT = 30
-    private var GAP_POSX = GAP_WIDTH/2
-    private var GAP_POSY = GAP_HEIGHT/2
+    private var GAP_POSX = GAP_WIDTH / 2
+    private var GAP_POSY = GAP_HEIGHT / 2
     protected var objects_: MutableList<CanvasObject> = mutableListOf()
 
-    var onCurrentSelectedObjectChange: ()->Unit = {}
+    var onCurrentSelectedObjectChange: () -> Unit = {}
 
+    var canvas: Canvas? = null
+    var myBitmap: Bitmap? = null
 
     fun setCanvasObjects(objects: List<CanvasObject>) {
         objects_ = objects.toMutableList()
         this.invalidate()
     }
 
-    fun clearCanvasObject(){
+    fun clearCanvasObject() {
         objects_.clear()
         this.invalidate()
     }
-    fun deleteSelectedObject(){
+
+    fun deleteSelectedObject() {
         objects_.remove(currentSelectedObject)
         listCurrentSelectedObjects.clear()
         onCurrentSelectedObjectChange.invoke()
     }
+
     fun addCanvasObjects(canvasObject: CanvasObject) {
         objects_.add(canvasObject)
         this.invalidate()
     }
-    fun changeViewSize(width:Int,height:Int){
+
+    fun changeViewSize(width: Int, height: Int) {
         canvasViewWidth = width
         canvasViewHeight = height
         requestLayout()
     }
+
     @SuppressLint("DrawAllocation")
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
-
+        this.canvas = canvas
         fun selectObject(canvasObject: CanvasObject, canvas: Canvas) {
             val paintSelect = Paint().also {
                 it.strokeWidth = 10f
@@ -72,7 +79,7 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
                 it.strokeWidth = 10f
                 it.style = Paint.Style.STROKE
                 it.isAntiAlias = true
-                it.pathEffect = DashPathEffect(floatArrayOf(10f,10f),5f)
+                it.pathEffect = DashPathEffect(floatArrayOf(10f, 10f), 5f)
                 it.color = parseColor("#90E10473")
             }
             try {
@@ -102,47 +109,46 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
                         canvas,
                         dashPaintEdit)
                 }
-            }
-            catch (e:Exception){
-                Toast.makeText(context,e.message,Toast.LENGTH_SHORT).show()
+            } catch (e: Exception) {
+                Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
             }
             this.invalidate()
         }
 
-        paint.apply{
+        paint.apply {
             style = Paint.Style.FILL
             color = Color.WHITE
             isAntiAlias = true
             isDither = true
         }
-        val rect = RectF(0f,0f, width.toFloat(), height.toFloat())
-        canvas?.drawRoundRect(rect,25f,25f,paint)
-        for(obj in objects_)
-        {
+        val rect = RectF(0f, 0f, width.toFloat(), height.toFloat())
+        canvas?.drawRoundRect(rect, 25f, 25f, paint)
+        for (obj in objects_) {
             canvas?.let {
                 obj.draw(it)
             }
         }
-        if(currentSelectedObject!=null)
-        {
+        if (currentSelectedObject != null) {
             selectObject(currentSelectedObject!!, canvas!!)
-            if(currentSelectedObject!!.isEditMode)
-            {
+            if (currentSelectedObject!!.isEditMode) {
                 //Toast.makeText(context,"${selectedObject!!.type.visibleName} ${selectedObject!!.selectedCount}", Toast.LENGTH_SHORT).show()
             }
         }
     }
-    open fun onEmptySelected(){
+
+    open fun onEmptySelected() {
         clearSelectInAllObjects()
         listCurrentSelectedObjects.clear()
 
     }
+
     override fun setOnTouchListener(l: OnTouchListener?) {
         super.setOnTouchListener(l)
     }
+
     private var listCurrentSelectedObjects: MutableList<CanvasObject> = mutableListOf()
 
-    private fun clearSelectInAllObjects(){
+    private fun clearSelectInAllObjects() {
         onCurrentSelectedObjectChange.invoke()
         for (obj in objects_) {
             obj.isSelectMode = false
@@ -150,105 +156,109 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
 
         }
     }
-    private fun clearSelectInSelectedObjects(){
+
+    private fun clearSelectInSelectedObjects() {
         onCurrentSelectedObjectChange.invoke()
         for (obj in listCurrentSelectedObjects) {
             obj.isSelectMode = false
             obj.isEditMode = false
         }
     }
+
     val currentSelectedObject: CanvasObject?
-        get(){
-            if(listCurrentSelectedObjects.isNotEmpty()){
+        get() {
+            if (listCurrentSelectedObjects.isNotEmpty()) {
                 return listCurrentSelectedObjects[0]
             }
             return null
         }
 
-    private fun findSelectedObject(x: Int,y: Int){
+    private fun findSelectedObject(x: Int, y: Int) {
         listCurrentSelectedObjects.clear()
-        for (obj in objects_)
-        {
-            if (obj.isCursorHoveredOver(x, y))
-            {
+        for (obj in objects_) {
+            if (obj.isCursorHoveredOver(x, y)) {
                 listCurrentSelectedObjects.add(obj)
             }
         }
     }
-    private val doubleClickChecker = DoubleClickChecker(200){
+
+    private val doubleClickChecker = DoubleClickChecker(200) {
         currentSelectedObject!!.isEditMode = true
     }
+    private var startX: Int = 0
+    private var startY: Int = 0
+    private var transformInitialWidth: Int = 0
+    private var transformInitialHeight: Int = 0
     override fun onTouchEvent(event: MotionEvent?): Boolean {
-
-        val x = event!!.x.toInt()
+        event ?: return true
+        val x = event.x.toInt()
         val y = event.y.toInt()
+        val deltaX = x - startX
+        val deltaY = y - startY
+
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-                    findSelectedObject(x,y)
-                    if(listCurrentSelectedObjects.isNotEmpty()) {
-                        currentSelectedObject!!.isSelectMode = true
-                        doubleClickChecker.click()
-                    }
-                    if(listCurrentSelectedObjects.isEmpty())
-                    {
-                        onEmptySelected()
-                    }
+                startX = event.x.toInt()
+                startY = event.y.toInt()
+                val selectedObject = currentSelectedObject
+                if (selectedObject?.isEditMode == true){
+                    transformInitialWidth = selectedObject.width
+                    transformInitialHeight = selectedObject.height
+                }
+                findSelectedObject(x, y)
+                if (listCurrentSelectedObjects.isNotEmpty()) {
+                    currentSelectedObject!!.isSelectMode = true
+                    doubleClickChecker.click()
+                }
+                if (listCurrentSelectedObjects.isEmpty()) {
+                    onEmptySelected()
+                }
                 onCurrentSelectedObjectChange.invoke()
                 this.invalidate()
             }
             MotionEvent.ACTION_UP -> {
             }
             MotionEvent.ACTION_MOVE -> {
-                if(currentSelectedObject!=null) {
-                    if (currentSelectedObject!!.isEditMode)
-                    {
-                        //Действия с объектами при режиме редактирования
-                        if (x < currentSelectedObject!!.posX + currentSelectedObject!!.width + 80 &&
-                            x > currentSelectedObject!!.posX + currentSelectedObject!!.width - 80
-                        ) {
-                            currentSelectedObject!!.width = kotlin.math.abs(x - currentSelectedObject!!.posX)
-                            this.invalidate()
-                        }
-                    }
-                    else if(currentSelectedObject!!.isSelectMode)
-                    {
+                val selectedObject = currentSelectedObject
+                if (selectedObject != null) {
+                    if (selectedObject.isEditMode) {
+                        //Действия с объектами при режиме трансформации
+                        selectedObject.width = max(transformInitialWidth + deltaX, MIN_OBJECT_SIZE)
+                        selectedObject.height = max(transformInitialHeight + deltaY, MIN_OBJECT_SIZE)
+//
+                    } else if (selectedObject.isSelectMode) {
                         //Действия с объектами при режиме перемещения
                         if (
-                            x > currentSelectedObject!!.width/2 &&
-                            y > currentSelectedObject!!.height/2 &&
-                            x < this.width - currentSelectedObject!!.width/2 &&
-                            y < this.height - currentSelectedObject!!.height/2)
-                        {
+                            x > currentSelectedObject!!.width / 2 &&
+                            y > currentSelectedObject!!.height / 2 &&
+                            x < this.width - currentSelectedObject!!.width / 2 &&
+                            y < this.height - currentSelectedObject!!.height / 2
+                        ) {
                             currentSelectedObject!!.move(x, y)
-                            this.invalidate()
-                        }
-                        else if(y > currentSelectedObject!!.height/2 &&  y < this.height - currentSelectedObject!!.height/2)
-                        {
-                            currentSelectedObject!!.move(currentSelectedObject!!.centerX,y)
-                            this.invalidate()
-                        }
-                        else if (x > currentSelectedObject!!.width/2 &&  x < this.width - currentSelectedObject!!.width/2)
-                        {
+                        } else if (y > currentSelectedObject!!.height / 2 && y < this.height - currentSelectedObject!!.height / 2) {
+                            currentSelectedObject!!.move(currentSelectedObject!!.centerX, y)
+                        } else if (x > currentSelectedObject!!.width / 2 && x < this.width - currentSelectedObject!!.width / 2) {
                             currentSelectedObject!!.move(x, currentSelectedObject!!.centerY)
-                            this.invalidate()
+
                         }
                     }
                 }
+                this.invalidate()
                 onCurrentSelectedObjectChange.invoke()
             }
         }
         return true
     }
 
-
-
-
+    @SuppressLint("DrawAllocation")
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-        setMeasuredDimension(canvasViewWidth,canvasViewHeight)
+        setMeasuredDimension(canvasViewWidth, canvasViewHeight)
     }
-    fun drawTriangle(canvas: Canvas, paint: Paint, x:Int, y:Int, width:Int) {
-        val halfWidth : Int = width / 2
+
+
+    fun drawTriangle(canvas: Canvas, paint: Paint, x: Int, y: Int, width: Int) {
+        val halfWidth: Int = width / 2
         val path: Path = Path()
         path.moveTo(x.toFloat(), (y - halfWidth).toFloat()) // Top
         path.lineTo((x - halfWidth).toFloat(), (y + halfWidth).toFloat()); // Bottom left
@@ -257,6 +267,7 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
         path.close();
         canvas.drawPath(path, paint);
     }
+
     fun drawQuadrilateral(
         canvas: Canvas, paint: Paint, x: Int, y: Int,
         bottomLeftX: Int, bottomLeftY: Int,
@@ -273,5 +284,9 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
         path.lineTo(bottomRightX.toFloat(), bottomRightY.toFloat())
         path.close();
         canvas.drawPath(path, paint);
+    }
+
+    companion object {
+        const val MIN_OBJECT_SIZE: Int = 30
     }
 }
