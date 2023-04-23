@@ -12,14 +12,12 @@ import m1k.kotik.negocards.R
 import m1k.kotik.negocards.data.canvas_qrc.model.*
 import m1k.kotik.negocards.data.canvas_qrc.model.shapes.RectRShape
 import java.lang.Math.*
-import kotlin.math.atan
 
 class HueAndSaturationCirclePicker (context: Context, attrs: AttributeSet) : View(context, attrs) {
     var selectedHue:Float? = null
     var selectedSaturation:Float? = null
-    var onColorSelected: ((hue:Int,saturation:Int) -> Unit)? = null
-
-    private var selectedColor:Int? = null
+    var onHueAndSaturationChange: ((hue:Float, saturation:Float) -> Unit)? = null
+    var selectedColor:Int? = null
     private var colorPointerX:Int? = null
     private var colorPointerY:Int? = null
     private var circleHeight = 600
@@ -33,6 +31,12 @@ class HueAndSaturationCirclePicker (context: Context, attrs: AttributeSet) : Vie
 
     val circleRadius:Double  get(){
         return (height/2).toDouble()
+    }
+    fun getHex():String?{
+        if(selectedColor!=null){
+           return getHexString(selectedColor!!)
+        }
+        return null
     }
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         fun calculate(){
@@ -72,6 +76,9 @@ class HueAndSaturationCirclePicker (context: Context, attrs: AttributeSet) : Vie
             MotionEvent.ACTION_UP->{
 
             }
+        }
+        if(onHueAndSaturationChange!=null && selectedHue!=null && selectedSaturation!=null){
+            onHueAndSaturationChange!!.invoke(selectedHue!!,selectedSaturation!!)
         }
         calculate()
         this.invalidate()

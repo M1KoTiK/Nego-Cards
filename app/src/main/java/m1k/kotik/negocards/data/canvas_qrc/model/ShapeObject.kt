@@ -24,7 +24,8 @@ open class ShapeObject(
         CanvasObjectSerializationTag.Style.Fill(),
     )
 
-    open val objectPaint: Paint = Paint().also {
+    open val objectPaint: Paint
+    get() = Paint().also {
         it.isDither = true
         it.isAntiAlias = true
         it.color =  this.getParseColor()

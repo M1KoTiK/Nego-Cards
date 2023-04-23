@@ -32,16 +32,21 @@ class CreateCanvasQRCFragment : Fragment(), IOnBackPressedListener {
         binding?.view?.requestLayout()
         binding?.view?.onCurrentSelectedObjectChange = {
             if(binding?.view?.currentSelectedObject!=null){
+                //**Когда выбран хотя бы один объект на канвасе
                 val selectedObject = binding?.view?.currentSelectedObject
                 binding?.buttonminus?.setImageResource(R.drawable.minus)
                 binding?.textView3?.text = selectedObject!!.encode()
+                binding?.button5?.setImageResource(R.drawable.painticon)
             }
             else{
+                //**Когда не выбран не один объект на канвасе
+                binding?.button5?.setImageResource(R.drawable.paintgrayicon)
                 binding?.buttonminus?.setImageResource(R.drawable.grayminus)
                 binding?.textView3?.text = ""
             }
         }
         binding?.buttonminus?.setOnClickListener {
+            //нажатие кнопки удаления
             if(binding?.view?.currentSelectedObject!=null) {
                 binding?.view?.currentSelectedObject!!.isSelectMode = false
                 binding?.view?.currentSelectedObject!!.isEditMode = false
@@ -50,6 +55,7 @@ class CreateCanvasQRCFragment : Fragment(), IOnBackPressedListener {
             }
         }
         binding?.buttonplus?.setOnClickListener {
+            //нажатие кнопки добавления
             selectedItemPosition = -1
             val addCanvasObjectPopupWindow =
                 m1k.kotik.negocards.data.canvas_qrc.model.popup_windows.AddCanvasObjectPopupWindow(
@@ -66,9 +72,17 @@ class CreateCanvasQRCFragment : Fragment(), IOnBackPressedListener {
             addCanvasObjectPopupWindow.show(20, 300, Gravity.TOP or Gravity.LEFT)
         }
         binding?.button5?.setOnClickListener {
-            val clp = ColorPickerPopupWindow()
-            clp.setup(requireActivity(),900,700)
-            clp.show(50, 1250, Gravity.TOP or Gravity.LEFT)
+            //Нажатие кнопки выбора цвета
+            val selectedObject = binding?.view?.currentSelectedObject
+            if(selectedObject!=null) {
+                val clp = ColorPickerPopupWindow {
+                    Toast.makeText(context,"${getHexString(it)}",Toast.LENGTH_SHORT).show()
+                    selectedObject.color = getHexString(it)
+                    binding?.view?.invalidate()
+                }
+                clp.setup(requireActivity(), 900, 700)
+                clp.show(50, 1250, Gravity.TOP or Gravity.LEFT)
+            }
         }
 
         binding?.textView3?.addTextChangedListener(object : TextWatcher {

@@ -2,8 +2,11 @@ package m1k.kotik.negocards.data.canvas_qrc.model
 
 import android.graphics.Color
 
-fun getHexString(color:Int): String {
-    return String.format("#%08X", -0x1 and color)
+fun getHexString(color:Int,addHash:Boolean = false): String {
+    if (addHash) {
+        return "#" + Integer.toHexString(color)
+    }
+    return Integer.toHexString(color)
 }
 fun  parseColorFromString(color: String): Int {
     if(color.length !=8){
