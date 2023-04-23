@@ -393,11 +393,8 @@ abstract class CanvasObject(
     }
 
 //Дополнительный функционал
-    fun getParseColor(): Int {
-        if(color.length !=8){
-            return parseColor("#FFFFFFFF")
-        }
-        return parseColor("#$color")
+    protected fun getParseColor(): Int {
+        return parseColorFromString(color)
     }
 
 

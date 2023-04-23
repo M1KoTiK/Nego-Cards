@@ -1,8 +1,6 @@
 package m1k.kotik.negocards.data.canvas_qrc.model
 
-import android.graphics.Canvas
-import android.graphics.ComposePathEffect
-import android.graphics.Paint
+import android.graphics.*
 
 open class ShapeObject(
     var shapeType: CanvasObjectType.Shape,
@@ -25,6 +23,7 @@ open class ShapeObject(
         "FF181818",
         CanvasObjectSerializationTag.Style.Fill(),
     )
+
     open val objectPaint: Paint = Paint().also {
         it.isDither = true
         it.isAntiAlias = true
@@ -40,4 +39,5 @@ open class ShapeObject(
             posY+height.toFloat(),
             objectPaint)
     }
+
 }

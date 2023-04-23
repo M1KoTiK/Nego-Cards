@@ -5,10 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.PopupWindow
 
-abstract class PopupWindow: IPopupWindow {
+abstract class PopupWindowDefault: IPopupWindow {
     var context:Context? = null
     var  root: PopupWindow? = null
     var  popupView: View? = null
+    var x:Int? = null
+    var y:Int? = null
+    var gravity: Int? = null
+
     override fun setup(
         context: Context,
         layoutRes: Int,
@@ -35,12 +39,18 @@ abstract class PopupWindow: IPopupWindow {
 
     override fun show(x: Int, y: Int, gravity: Int) {
         if(root !=null) {
+            this.x = x
+            this.y = y
+            this.gravity = gravity
             root!!.showAtLocation(popupView, gravity, x, y)
         }
     }
 
     override fun close() {
         if(root !=null){
+            this.x = null
+            this.y = null
+            this.gravity = null
             root!!.dismiss()
         }
     }

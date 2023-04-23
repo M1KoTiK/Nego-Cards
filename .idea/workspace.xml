@@ -12,11 +12,35 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Сделал нормальный класс для работы с popupWindow">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/AddCanvasObjectPopupWindow.kt" afterDir="false" />
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="теперь цветовой круг выбирает цвет">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/ColorUtils.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/MathUtils.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/ColorPickerPopupWindow.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/IMovablePopupWindow.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/MovablePopupWindowDefault.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/ColorPicker.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/CustomSlider.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/HueAndSaturationCirclePicker.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/ValueStripePicker.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/color_circle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_concurrent_concurrent_futures_1_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.androidTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.androidTest.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.unitTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.unitTest.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/PopupWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/PopupWindow.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/CanvasObject.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/CanvasObject.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/ShapeObject.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/ShapeObject.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/AddCanvasObjectPopupWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/AddCanvasObjectPopupWindow.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/PopupWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/PopupWindowDefault.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/shapes/OvalShape.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/shapes/OvalShape.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/shapes/RectRShape.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/shapes/RectRShape.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/CreateCanvasQRCFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/CreateCanvasQRCFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/CanvasView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/CanvasView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_popup_window.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_popup_window.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/color_picker_popup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/color_picker_popup.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_create_canvas_q_r_c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_create_canvas_q_r_c.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,9 +106,13 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DEBUGGABLE_DEVICE" value="Pixel_3_XL_API_31 [emulator-5554]" />
+    <property name="DEBUGGABLE_PROCESS" value="m1k.kotik.negocards" />
+    <property name="DEBUGGER_ID" value="Auto" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="android-custom-viewC:/Users/User/.gradle/caches/modules-2/files-2.1/androidx.constraintlayout/constraintlayout/2.1.4/27e12209e529970f69bc817f349c247ef238fae7/constraintlayout-2.1.4-sources.jar!/androidx/constraintlayout/widget/ConstraintLayout.java_SELECTED" value="ConstraintLayout" />
     <property name="android-custom-viewC:/Users/User/.gradle/caches/modules-2/files-2.1/androidx.fragment/fragment/1.5.5/840b28a2f92b8b4f35c05c1c9866f3741f755871/fragment-1.5.5-sources.jar!/androidx/fragment/app/FragmentContainerView.kt_SELECTED" value="FragmentContainerView" />
     <property name="android-custom-viewC:/Users/User/.gradle/caches/modules-2/files-2.1/androidx.viewpager/viewpager/1.0.0/db045f92188b9d247d5f556866f8861ab68528f0/viewpager-1.0.0-sources.jar!/androidx/viewpager/widget/PagerTabStrip.java_SELECTED" value="PagerTabStrip" />
@@ -99,16 +127,27 @@
     <property name="android-custom-viewC:/Users/User/AppData/Local/Android/Sdk/sources/android-33/android/widget/AutoCompleteTextView.java_SELECTED" value="AutoCompleteTextView" />
     <property name="android-custom-viewC:/Users/User/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/view/CanvasEditor.kt_SELECTED" value="CanvasEditor" />
     <property name="android-custom-viewC:/Users/User/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/view/CanvasView.kt_SELECTED" value="CanvasView" />
+    <property name="android-custom-viewC:/Users/User/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/view/ColorCirclePicker.kt_SELECTED" value="ColorCirclePicker" />
+    <property name="android-custom-viewC:/Users/User/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/view/ColorPicker.kt_SELECTED" value="ColorPicker" />
+    <property name="android-custom-viewC:/Users/User/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/view/HueAndSaturationCirclePicker.kt_SELECTED" value="HueAndSaturationCirclePicker" />
+    <property name="android-custom-viewC:/Users/User/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/view/ValueStripePicker.kt_SELECTED" value="ValueStripePicker" />
     <property name="cidr.known.project.marker" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\StudioProjects\Nego-Cards\app\src\main\res\drawable" />
+      <recent name="C:\Users\User\StudioProjects\Nego-Cards\app\src\main\res\drawable-v24" />
+      <recent name="C:\Users\User\StudioProjects\Nego-Cards\app\src\main\res\layout" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\User\StudioProjects\Nego-Cards\app\src\main\res\adapters" />
     </key>
     <key name="CreateKotlinClassDialog.RecentsKey">
+      <recent name="m1k.kotik.negocards.data.canvas_qrc.model.popup_windows" />
       <recent name="m1k.kotik.negocards.model" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
@@ -500,7 +539,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681281010684</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Сделал модель для popupWindow которое добавляет элементы на канвас">
+      <created>1681283741660</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1681283741660</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -515,8 +561,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Почистил код" />
-    <MESSAGE value="Почистил код и страницы с выбором textQRC нормально работают" />
     <MESSAGE value="Добавил View для отображения холста" />
     <MESSAGE value="Добавил КВАДРИЛ!!!!" />
     <MESSAGE value="Начал делать Encoder" />
@@ -540,18 +584,11 @@
     <MESSAGE value="Теперь можно задавать размеры канваса" />
     <MESSAGE value="Добавил удаление объектов" />
     <MESSAGE value="Сделал нормальный класс для работы с popupWindow" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделал нормальный класс для работы с popupWindow" />
+    <MESSAGE value="Сделал модель для popupWindow которое добавляет элементы на канвас" />
+    <MESSAGE value="теперь цветовой круг выбирает цвет" />
+    <option name="LAST_COMMIT_MESSAGE" value="теперь цветовой круг выбирает цвет" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/CanvasObject.kt</url>
-          <line>51</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject$Tag$Text" memberName="obligatory" />
@@ -563,10 +600,5 @@
         <PinnedItemInfo parentTag="m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject$CanvasObjectSerializationTag$ObjectTypeTag" memberName="visiblePropertyName" />
       </pinned-members>
     </pin-to-top-manager>
-    <watches-manager>
-      <configuration name="AndroidRunConfigurationType">
-        <watch expression="firstClick" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>

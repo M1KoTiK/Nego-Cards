@@ -51,6 +51,23 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal" />
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp">
+
+            <Button
+                android:id="@+id/button5"
+                style="@style/RoundedButton"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"

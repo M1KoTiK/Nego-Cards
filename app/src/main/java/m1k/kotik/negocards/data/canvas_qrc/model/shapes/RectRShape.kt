@@ -27,14 +27,15 @@ class RectRShape (
         CanvasObjectSerializationTag.Color.default,
         CanvasObjectSerializationTag.Style.Fill())
     override fun draw(canvas: Canvas) {
-        canvas.drawRoundRect(posX.toFloat(),posY.toFloat(),posX+width.toFloat(),posY+height.toFloat(),leftCorner.toFloat(),rightCorner.toFloat(), Paint().also {
-            it.color = this.getParseColor()
-            it.style = this.style.sType
-            it.isAntiAlias = true
-            it.isDither = true
-        })
+        canvas.drawRoundRect(posX.toFloat(),
+            posY.toFloat(),
+            posX + width.toFloat(),
+            posY + height.toFloat(),
+            leftCorner.toFloat(),
+            rightCorner.toFloat(),
+            objectPaint)
     }
-    fun drawRectRWithCustomPaint(canvas: Canvas,paint: Paint){
+        fun drawRectRWithCustomPaint(canvas: Canvas,paint: Paint){
         canvas.drawRoundRect(posX.toFloat(),posY.toFloat(),
             posX+width.toFloat(),posY+height.toFloat(),
             leftCorner.toFloat(),

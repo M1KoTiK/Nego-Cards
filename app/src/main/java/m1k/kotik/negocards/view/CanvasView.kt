@@ -8,9 +8,11 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
+import m1k.kotik.negocards.R
 import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject
 import m1k.kotik.negocards.data.canvas_qrc.model.DoubleClickChecker
 import m1k.kotik.negocards.data.canvas_qrc.model.shapes.RectRShape
@@ -58,6 +60,7 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
     @SuppressLint("DrawAllocation")
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
+
         fun selectObject(canvasObject: CanvasObject, canvas: Canvas) {
             val paintSelect = Paint().also {
                 it.strokeWidth = 10f

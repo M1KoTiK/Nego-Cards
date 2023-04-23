@@ -1,12 +1,14 @@
 package m1k.kotik.negocards.data.canvas_qrc.model.popup_windows
 
 import android.content.Context
+import android.view.MotionEvent
 import android.view.View
 import android.widget.*
 import m1k.kotik.negocards.R
 import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject
 
-class AddCanvasObjectPopupWindow(var onAddCanvasObject: (CanvasObject.CanvasObjectType)->Unit, var onChangeSelectedObject: ()->Unit): PopupWindow()  {
+class AddCanvasObjectPopupWindow(var onAddCanvasObject: (CanvasObject.CanvasObjectType)->Unit,
+                                 var onChangeSelectedObject: ()->Unit): MovablePopupWindowDefault()  {
     var selectedItemPosition = -1
     fun setup(context: Context,
               height:Int,
@@ -14,6 +16,17 @@ class AddCanvasObjectPopupWindow(var onAddCanvasObject: (CanvasObject.CanvasObje
               isOutsideTouchable: Boolean = true,
               isFocusable: Boolean = true){
         super.setup(context,R.layout.add_canvas_object_popup,height,width,isOutsideTouchable,isFocusable)
+    }
+
+    override fun onPressUp(event: MotionEvent?) {
+    }
+
+    override fun onPressDown(event: MotionEvent?) {
+        move(event!!.x.toInt(),event!!.y.toInt())
+    }
+
+    override fun onMove(event: MotionEvent?) {
+        move(event!!.x.toInt(),event!!.y.toInt())
     }
 
     override fun onCreate() {

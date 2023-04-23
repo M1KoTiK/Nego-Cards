@@ -10,14 +10,16 @@ class OvalShape (
     width: Int,
     height: Int,
     color: String,
-    style: CanvasObjectSerializationTag.Style) : ShapeObject(
+    style: CanvasObjectSerializationTag.Style,
+    strokeWidth: Int = CanvasObjectSerializationTag.StrokeWidth.default) : ShapeObject(
         CanvasObjectType.Shape.Oval(),
         posX,
         posY,
         width,
         height,
         color,
-        style){
+        style,
+        strokeWidth){
         constructor(): this(
             CanvasObjectSerializationTag.PosX.default,
             CanvasObjectSerializationTag.PosY.default,
@@ -26,12 +28,6 @@ class OvalShape (
             CanvasObjectSerializationTag.Color.default,
             CanvasObjectSerializationTag.Style.Fill())
         override fun draw(canvas: Canvas) {
-            canvas.drawOval(posX.toFloat(),posY.toFloat(),posX+width.toFloat(),posY+height.toFloat(),
-                Paint().also{
-                    it.color =  this.getParseColor()
-                    it.style = this.style.sType
-                    it.isAntiAlias = true
-                    it.isDither = true
-                })
+            canvas.drawOval(posX.toFloat(),posY.toFloat(),posX+width.toFloat(),posY+height.toFloat(),objectPaint)
             }
         }

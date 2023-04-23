@@ -38,9 +38,9 @@ android {
 dependencies {
     //Splash Screen
     implementation("androidx.core:core-splashscreen:1.0.0")
+    implementation 'androidx.test:core-ktx:1.5.0'
 
     var camerax_version = "1.0.2"
-
     // ViewModel and LiveData
     implementation "androidx.lifecycle:lifecycle-livedata:2.4.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel:2.4.0"

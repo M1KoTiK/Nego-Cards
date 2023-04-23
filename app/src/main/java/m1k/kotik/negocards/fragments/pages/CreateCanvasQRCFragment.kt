@@ -1,16 +1,16 @@
 package m1k.kotik.negocards.fragments.pages
 
-import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.*
 import android.widget.*
-import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.Fragment
 import m1k.kotik.negocards.R
 import m1k.kotik.negocards.data.canvas_qrc.model.*
-import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject.Companion.searchableListCanvasObjectTypes
+import m1k.kotik.negocards.data.canvas_qrc.model.popup_windows.ColorPickerPopupWindow
 import m1k.kotik.negocards.databinding.FragmentCreateCanvasQRCBinding
 import m1k.kotik.negocards.fragments.utils_fragment.IOnBackPressedListener
 
@@ -65,7 +65,11 @@ class CreateCanvasQRCFragment : Fragment(), IOnBackPressedListener {
                 700, 700)
             addCanvasObjectPopupWindow.show(20, 300, Gravity.TOP or Gravity.LEFT)
         }
-
+        binding?.button5?.setOnClickListener {
+            val clp = ColorPickerPopupWindow()
+            clp.setup(requireActivity(),900,700)
+            clp.show(50, 1250, Gravity.TOP or Gravity.LEFT)
+        }
 
         binding?.textView3?.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {
