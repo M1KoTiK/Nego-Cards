@@ -13,7 +13,8 @@ class TextObject(
     posX: Int,
     posY: Int,
     style: CanvasObjectSerializationTag.Style
-) : CanvasObject(CanvasObjectType.Text(),
+) : CanvasObject(
+    CanvasObjectType.Text,
     Paint().also{ it.textSize = fontSize.toFloat() }.measureText(text).toInt(),
     abs(Paint().also{ it.textSize = fontSize.toFloat() }.fontMetrics.ascent).toInt(),
     posX,
@@ -37,6 +38,13 @@ class TextObject(
 
     override val centerY: Int get() = posY - height/2
 
+    override fun reMeasure(){
+        this.apply {
+            this.width = Paint().also{ it.textSize = fontSize.toFloat() }.measureText(text).toInt()
+            this.height = abs(Paint().also{ it.textSize = fontSize.toFloat() }.fontMetrics.ascent).toInt()
+        }
+
+    }
     override fun isCursorHoveredOver(x: Int, y: Int): Boolean {
         if(x>posX && x < posX+width&& y > posY-height && y < posY){
             return true

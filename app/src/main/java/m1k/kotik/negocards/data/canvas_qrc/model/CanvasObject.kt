@@ -18,16 +18,27 @@ abstract class CanvasObject(
 ) {
     var isSelectMode: Boolean = false
         set(value) {
-            if (value == true){
+            if (value){
                 isEditMode = false
+                isInputMode = false
             }
             field = value
         }
 
     var isEditMode: Boolean = false
         set(value) {
-            if (value == true){
+            if (value){
                 isSelectMode = false
+                isInputMode = false
+            }
+            field = value
+        }
+
+    var isInputMode: Boolean = false
+        set(value) {
+            if (value){
+                isSelectMode = false
+                isEditMode = false
             }
             field = value
         }
@@ -36,6 +47,8 @@ abstract class CanvasObject(
     open val centerY: Int get() = this.posY + this.height/2
 
     abstract fun draw(canvas: Canvas)
+    open fun reMeasure(){}
+
 
     open fun isCursorHoveredOver(x: Int, y: Int):Boolean{
         if(x>posX && x < posX+width&& y > posY && y < posY+height){
@@ -94,7 +107,7 @@ abstract class CanvasObject(
         CanvasObjectSerializationTag.Color,
         CanvasObjectSerializationTag.Style())
 
-        class Text: CanvasObjectType() {
+        object Text: CanvasObjectType() {
             override val tag: String get() = "tx"
             override val classType: CanvasObject get() = TextObject()
             override val visibleName: String get() = "Текст"
@@ -154,7 +167,7 @@ abstract class CanvasObject(
         abstract fun getField(canvasObject: CanvasObject):Any
 
     object ObjectTypeTag : CanvasObjectSerializationTag() {
-        override val default: CanvasObjectType get() = CanvasObjectType.Text()
+        override val default: CanvasObjectType get() = CanvasObjectType.Text
         override val name: String get() = "ot"
         override val visiblePropertyName: String get() = "Тип объекта"
         override fun setField(canvasObject: CanvasObject, value: Any) {
@@ -403,7 +416,7 @@ abstract class CanvasObject(
         const val SEPARATOR_SYMBOL = ';'
 
         var searchableListCanvasObjectTypes = listOf<CanvasObjectType>(
-            CanvasObjectType.Text(),
+            CanvasObjectType.Text,
             CanvasObjectType.Shape(),
             CanvasObjectType.Shape.RectR(),
             CanvasObjectType.Shape.Arc(),

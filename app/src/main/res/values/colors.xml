@@ -6,8 +6,8 @@
     <color name="black30">#303030</color>
     <color name="black20">#202020</color>
     <color name="black25">#252525</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <color name="teal_200">#181818</color>
+    <color name="teal_700">#181818</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

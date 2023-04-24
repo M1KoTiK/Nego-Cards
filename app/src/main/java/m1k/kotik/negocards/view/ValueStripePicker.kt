@@ -49,7 +49,7 @@ class ValueStripePicker(context: Context, attrs: AttributeSet) : View(context, a
     @SuppressLint("DrawAllocation")
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
-       RectRShape().drawRectRWithCustomPaint(canvas!!, Paint().also {
+       RectRShape().drawWithCustomPaint(canvas!!, Paint().also {
            it.style = Paint.Style.STROKE
            it.color = parseColor("#FF181818")
 

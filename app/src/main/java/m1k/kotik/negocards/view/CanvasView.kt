@@ -1,23 +1,44 @@
 package m1k.kotik.negocards.view
 
 import android.annotation.SuppressLint
+import android.app.Application
 import android.content.Context
 import android.graphics.*
 import android.graphics.Color.parseColor
+import android.graphics.Paint.Style
 import android.util.AttributeSet
-import android.util.Log
+import android.view.Gravity
 import android.view.MotionEvent
 import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
 import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject
-import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject.CanvasObjectSerializationTag.Height
 import m1k.kotik.negocards.data.canvas_qrc.model.DoubleClickChecker
+import m1k.kotik.negocards.data.canvas_qrc.model.TextObject
+import m1k.kotik.negocards.data.canvas_qrc.model.popup_windows.InputTextPopupWindow
 import m1k.kotik.negocards.data.canvas_qrc.model.shapes.RectRShape
-import kotlin.math.abs
 import kotlin.math.max
 
 
 open class CanvasView(context: Context, attrs: AttributeSet) : View(context, attrs) {
+    private var inpTextPopup = InputTextPopupWindow()
+    init{
+        inpTextPopup.setup(context,300,1000)
+        inpTextPopup.root!!.setOnDismissListener{
+            if(currentSelectedObject!=null){
+                currentSelectedObject!!.isSelectMode = true
+                this.invalidate()
+            }
+        }
+        inpTextPopup.onInpTextChange = {
+            if(currentSelectedObject!=null && currentSelectedObject!!.isInputMode){
+                (currentSelectedObject as TextObject).also {
+                    it.text = inpTextPopup.inpText.text.toString()
+                    it.reMeasure()
+                }
+            }
+        }
+    }
     private val paint: Paint = Paint()
     private var canvasViewWidth = 900
     private var canvasViewHeight = 600
@@ -63,51 +84,56 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
         canvasViewHeight = height
         requestLayout()
     }
+    private val strokeObject =  RectRShape()
+    private val strokeObjectPaint  = Paint().also {
+        it.isAntiAlias = true
+        it.isDither = true
+        it.strokeWidth = 10f
+        it.style = Style.STROKE
+    }
+    private val selectModeColor = "#905954E1"
+    private val editModeColor = "#90E10473"
+    private val textInputModeColor = "#205954E1"
+    private val dashEffect: DashPathEffect = DashPathEffect(floatArrayOf(10f, 10f), 5f)
 
-    @SuppressLint("DrawAllocation")
+    var mWidth = context.resources.displayMetrics.widthPixels
+    var mHeight = context.resources.displayMetrics.heightPixels
+
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
         this.canvas = canvas
+        @SuppressLint("DrawAllocation")
         fun selectObject(canvasObject: CanvasObject, canvas: Canvas) {
-            val paintSelect = Paint().also {
-                it.strokeWidth = 10f
-                it.style = Paint.Style.STROKE
-                it.isAntiAlias = true
-                it.color = parseColor("#905954E1")
-            }
-            val dashPaintEdit = Paint().also {
-                it.strokeWidth = 10f
-                it.style = Paint.Style.STROKE
-                it.isAntiAlias = true
-                it.pathEffect = DashPathEffect(floatArrayOf(10f, 10f), 5f)
-                it.color = parseColor("#90E10473")
-            }
             try {
+                strokeObject.posX = canvasObject.centerX - canvasObject.width / 2 - GAP_POSX
+                strokeObject.posY = canvasObject.centerY - canvasObject.height / 2 - GAP_POSY
+                strokeObject.width = canvasObject.width + GAP_WIDTH
+                strokeObject.height = canvasObject.height + GAP_HEIGHT
                 if (canvasObject.isSelectMode) {
-                    RectRShape(
-                        20,
-                        20,
-                        canvasObject.centerX - canvasObject.width / 2 - GAP_POSX,
-                        canvasObject.centerY - canvasObject.height / 2 - GAP_POSY,
-                        canvasObject.width + GAP_WIDTH,
-                        canvasObject.height + GAP_HEIGHT,
-                        "905954E1",
-                        CanvasObject.CanvasObjectSerializationTag.Style.Stroke()).drawRectRWithCustomPaint(
-                        canvas,
-                        paintSelect)
+                    strokeObject.drawWithCustomPaint(canvas,strokeObjectPaint.apply {
+                        this.style = Style.STROKE
+                        this.color = parseColor(selectModeColor)
+                        this.pathEffect = null
+                    })
                 }
-                if (canvasObject.isEditMode) {
-                    RectRShape(
-                        20,
-                        20,
-                        canvasObject.centerX - canvasObject.width / 2 - GAP_POSX,
-                        canvasObject.centerY - canvasObject.height / 2 - GAP_POSY,
-                        canvasObject.width + GAP_WIDTH,
-                        canvasObject.height + GAP_HEIGHT,
-                        "905954E1",
-                        CanvasObject.CanvasObjectSerializationTag.Style.Stroke()).drawRectRWithCustomPaint(
-                        canvas,
-                        dashPaintEdit)
+                else if (canvasObject.isEditMode) {
+                    strokeObject.drawWithCustomPaint(canvas, strokeObjectPaint.apply {
+                        this.style = Style.STROKE
+                        this.color = parseColor(editModeColor)
+                        this.pathEffect = dashEffect
+                    })
+                }
+                else if(canvasObject.isInputMode){
+                    strokeObject.drawWithCustomPaint(canvas, strokeObjectPaint.apply {
+                        this.color = parseColor(textInputModeColor)
+                        this.pathEffect = null
+                        this.style = Style.FILL
+                    })
+                    if(!inpTextPopup.isOpen){
+                        inpTextPopup.initText = (currentSelectedObject!! as TextObject).text
+                        inpTextPopup.show(0,-200,
+                            Gravity.CENTER_HORIZONTAL or Gravity.CENTER_VERTICAL)
+                    }
                 }
             } catch (e: Exception) {
                 Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
@@ -130,9 +156,6 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
         }
         if (currentSelectedObject != null) {
             selectObject(currentSelectedObject!!, canvas!!)
-            if (currentSelectedObject!!.isEditMode) {
-                //Toast.makeText(context,"${selectedObject!!.type.visibleName} ${selectedObject!!.selectedCount}", Toast.LENGTH_SHORT).show()
-            }
         }
     }
 
@@ -184,6 +207,9 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
 
     private val doubleClickChecker = DoubleClickChecker(200) {
         currentSelectedObject!!.isEditMode = true
+        if(currentSelectedObject!!.type == CanvasObject.CanvasObjectType.Text){
+            currentSelectedObject!!.isInputMode = true
+        }
     }
     private var startX: Int = 0
     private var startY: Int = 0
@@ -250,10 +276,10 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
         return true
     }
 
-    @SuppressLint("DrawAllocation")
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         setMeasuredDimension(canvasViewWidth, canvasViewHeight)
+
     }
 
 

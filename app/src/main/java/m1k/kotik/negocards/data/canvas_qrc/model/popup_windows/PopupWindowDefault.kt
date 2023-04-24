@@ -12,7 +12,6 @@ abstract class PopupWindowDefault: IPopupWindow {
     var x:Int? = null
     var y:Int? = null
     var gravity: Int? = null
-
     override fun setup(
         context: Context,
         layoutRes: Int,
@@ -36,8 +35,17 @@ abstract class PopupWindowDefault: IPopupWindow {
         val inflater = context?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         return inflater.inflate(layoutRes, null)
     }
+    val isOpen:Boolean
+        get(){
+            if(root == null){
+                return false
+                println("root = null")
+            }
+            return this.root!!.isShowing
+        }
 
     override fun show(x: Int, y: Int, gravity: Int) {
+
         if(root !=null) {
             this.x = x
             this.y = y

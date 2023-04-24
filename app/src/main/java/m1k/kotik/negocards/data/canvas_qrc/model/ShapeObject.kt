@@ -24,14 +24,16 @@ open class ShapeObject(
         CanvasObjectSerializationTag.Style.Fill(),
     )
 
-    open val objectPaint: Paint
-    get() = Paint().also {
+    open var objectPaint: Paint = Paint()
+        get() = Paint().also {
         it.isDither = true
         it.isAntiAlias = true
         it.color =  this.getParseColor()
         it.style = this.style.sType
         it.strokeWidth = this.strokeWidth.toFloat()
     }
+        protected set
+
     override fun draw(canvas: Canvas) {
         canvas.drawRect(
             posX.toFloat(),
@@ -39,6 +41,9 @@ open class ShapeObject(
             posX+width.toFloat(),
             posY+height.toFloat(),
             objectPaint)
+    }
+    open fun drawWithCustomPaint(canvas: Canvas, paint: Paint){
+
     }
 
 }

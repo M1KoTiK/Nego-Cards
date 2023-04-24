@@ -26,25 +26,8 @@ abstract class MovablePopupWindowDefault:PopupWindowDefault(), IMovablePopupWind
     abstract fun onPressUp(event: MotionEvent?)
     abstract fun onPressDown(event: MotionEvent?)
     abstract fun onMove(event: MotionEvent?)
-    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate() {
-        popupView!!.setOnTouchListener { v, event ->
-            when (event?.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    Toast.makeText(context,"nove", Toast.LENGTH_SHORT).show()
-                    onPressDown(event)
-                }
-                MotionEvent.ACTION_MOVE -> {
-                    Toast.makeText(context,"nove",Toast.LENGTH_SHORT).show()
-                    onMove(event)
-                }
-                MotionEvent.ACTION_UP -> {
-                    Toast.makeText(context,"nove",Toast.LENGTH_SHORT).show()
-                    onPressUp(event)
-                }
-            }
-            v?.onTouchEvent(event) ?: true
-        }
+
     }
 }
 

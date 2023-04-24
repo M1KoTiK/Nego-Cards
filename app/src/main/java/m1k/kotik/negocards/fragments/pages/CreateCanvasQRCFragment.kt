@@ -2,7 +2,9 @@ package m1k.kotik.negocards.fragments.pages
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.graphics.Bitmap
+import android.graphics.Color.parseColor
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
@@ -31,7 +33,6 @@ class CreateCanvasQRCFragment : Fragment(), IOnBackPressedListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentCreateCanvasQRCBinding.inflate(inflater,container,false)
         return binding!!.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,12 +47,11 @@ class CreateCanvasQRCFragment : Fragment(), IOnBackPressedListener {
                 val selectedObject = binding?.view?.currentSelectedObject
                 binding?.buttonminus?.setImageResource(R.drawable.minus)
                 binding?.textView3?.text = selectedObject!!.encode()
-                //binding?.button5?.
-                binding?.button5?.setImageResource(R.drawable.painticon)
+                binding?.button5?.imageTintList = ColorStateList.valueOf(0xFF000000.toInt())
             }
             else{
                 //**Когда не выбран не один объект на канвасе
-                binding?.button5?.setImageResource(R.drawable.paintgrayicon)
+                binding?.button5?.imageTintList = ColorStateList.valueOf(0xFF909090.toInt())
                 binding?.buttonminus?.setImageResource(R.drawable.grayminus)
                 binding?.textView3?.text = ""
             }
@@ -65,6 +65,7 @@ class CreateCanvasQRCFragment : Fragment(), IOnBackPressedListener {
                 binding?.view?.invalidate()
             }
         }
+
         binding?.buttonplus?.setOnClickListener {
             //нажатие кнопки добавления
             selectedItemPosition = -1

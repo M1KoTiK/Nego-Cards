@@ -35,7 +35,7 @@ class RectRShape (
             rightCorner.toFloat(),
             objectPaint)
     }
-        fun drawRectRWithCustomPaint(canvas: Canvas,paint: Paint){
+        override fun drawWithCustomPaint(canvas:Canvas, paint: Paint){
         canvas.drawRoundRect(posX.toFloat(),posY.toFloat(),
             posX+width.toFloat(),posY+height.toFloat(),
             leftCorner.toFloat(),
