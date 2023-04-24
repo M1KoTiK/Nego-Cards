@@ -51,8 +51,4 @@ class TextObject(
         }
         return false
     }
-    override fun move(x: Int,y: Int){
-        this.posX = x - this.width / 2
-        this.posY = y + this.height / 2
-    }
 }

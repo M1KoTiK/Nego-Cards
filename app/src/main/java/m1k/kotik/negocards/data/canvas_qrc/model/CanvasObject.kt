@@ -57,8 +57,8 @@ abstract class CanvasObject(
         return false
     }
     open fun move(x: Int,y: Int){
-        this.posX = x - this.width / 2
-        this.posY = y - this.height / 2
+        this.posX = x
+        this.posY = y
     }
 
     open fun encode():String{

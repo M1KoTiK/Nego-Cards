@@ -18,6 +18,7 @@ import m1k.kotik.negocards.data.canvas_qrc.model.TextObject
 import m1k.kotik.negocards.data.canvas_qrc.model.popup_windows.InputTextPopupWindow
 import m1k.kotik.negocards.data.canvas_qrc.model.shapes.RectRShape
 import kotlin.math.max
+import kotlin.math.min
 
 
 open class CanvasView(context: Context, attrs: AttributeSet) : View(context, attrs) {
@@ -215,6 +216,8 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
     private var startY: Int = 0
     private var transformInitialWidth: Int = 0
     private var transformInitialHeight: Int = 0
+    private var transformInitialPosX: Int = 0
+    private var transformInitialPosY: Int = 0
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         event ?: return true
         val x = event.x.toInt()
@@ -230,15 +233,21 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
                 if (selectedObject?.isEditMode == true){
                     transformInitialWidth = selectedObject.width
                     transformInitialHeight = selectedObject.height
+
                 }
                 findSelectedObject(x, y)
                 if (listCurrentSelectedObjects.isNotEmpty()) {
                     currentSelectedObject!!.isSelectMode = true
+                    transformInitialPosX = currentSelectedObject!!.posX
+                    transformInitialPosY = currentSelectedObject!!.posY
                     doubleClickChecker.click()
+
                 }
                 if (listCurrentSelectedObjects.isEmpty()) {
                     onEmptySelected()
                 }
+
+
                 onCurrentSelectedObjectChange.invoke()
                 this.invalidate()
             }
@@ -249,24 +258,15 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
                 if (selectedObject != null) {
                     if (selectedObject.isEditMode) {
                         //Действия с объектами при режиме трансформации
-                        selectedObject.width = max(transformInitialWidth + deltaX, MIN_OBJECT_SIZE)
-                        selectedObject.height = max(transformInitialHeight + deltaY, MIN_OBJECT_SIZE)
+                        selectedObject.width = min(max(transformInitialWidth + deltaX, MIN_OBJECT_SIZE),this.width - transformInitialPosX )
+                        selectedObject.height = min(max(transformInitialHeight + deltaY, MIN_OBJECT_SIZE), this.height - transformInitialPosY)
 //
                     } else if (selectedObject.isSelectMode) {
                         //Действия с объектами при режиме перемещения
-                        if (
-                            x > currentSelectedObject!!.width / 2 &&
-                            y > currentSelectedObject!!.height / 2 &&
-                            x < this.width - currentSelectedObject!!.width / 2 &&
-                            y < this.height - currentSelectedObject!!.height / 2
-                        ) {
-                            currentSelectedObject!!.move(x, y)
-                        } else if (y > currentSelectedObject!!.height / 2 && y < this.height - currentSelectedObject!!.height / 2) {
-                            currentSelectedObject!!.move(currentSelectedObject!!.centerX, y)
-                        } else if (x > currentSelectedObject!!.width / 2 && x < this.width - currentSelectedObject!!.width / 2) {
-                            currentSelectedObject!!.move(x, currentSelectedObject!!.centerY)
-
-                        }
+                            currentSelectedObject!!.move(
+                                max(transformInitialPosX + deltaX, MIN_OBJECT_POS),
+                                max(transformInitialPosY + deltaY, MIN_OBJECT_POS)
+                            )
                     }
                 }
                 this.invalidate()
@@ -314,5 +314,6 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
 
     companion object {
         const val MIN_OBJECT_SIZE: Int = 30
+        const val MIN_OBJECT_POS: Int = 0
     }
 }
