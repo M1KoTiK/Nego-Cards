@@ -8,7 +8,7 @@ import android.widget.Toast
 import m1k.kotik.negocards.R
 
 
-class InputTextPopupWindow : PopupWindowDefault() {
+open class InputTextPopupWindow : PopupWindowDefault() {
     lateinit var inpText : EditText
     var onInpTextChange: ()->Unit= {}
     var initText:String = ""

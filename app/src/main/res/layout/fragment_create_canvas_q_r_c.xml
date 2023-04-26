@@ -36,21 +36,22 @@
                 android:id="@+id/buttonPalochki"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
                 android:background="@drawable/rounded_popupmenu"
                 android:src="@drawable/iconpalochki"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/buttonplus"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/buttonminus"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="15dp"
+                android:layout_marginStart="25dp"
                 android:background="@drawable/rounded_popupmenu"
                 android:src="@drawable/grayminus"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/buttonplus"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

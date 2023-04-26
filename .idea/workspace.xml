@@ -12,12 +12,18 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Теперь можно изменять текст">
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Теперь объекты правильно двигаются">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/InputTextAndChangeTextSizePopupWindow.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/CanvasObject.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/CanvasObject.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/TextObject.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/TextObject.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/CardMenuPopupWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/CardMenuPopupWindow.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/InputTextPopupWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/InputTextPopupWindow.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/CreateCanvasQRCFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/CreateCanvasQRCFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/CanvasView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/CanvasView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/ValueStripePicker.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/ValueStripePicker.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/card_menu_popup_window.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/card_menu_popup_window.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/color_picker_popup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/color_picker_popup.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_create_canvas_q_r_c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_create_canvas_q_r_c.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +62,7 @@
         <option value="Kotlin Interface" />
         <option value="Kotlin Class" />
         <option value="layoutResourceFile" />
+        <option value="Kotlin Annotation" />
       </list>
     </option>
   </component>
@@ -209,13 +216,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675626606726</updated>
-    </task>
-    <task id="LOCAL-00002" summary="*Работа со стартовым экраном*&#10;-Добавлен стиль для закругленных editText&#10;-Добавлены цвета для основной темы&#10;-Добавлены поля для ввода:&#10;-- фамилия, имя, отчество, дата рождения&#10;-Добавлены изображения:&#10;-- Разные вариации логотипа&#10;&#10;*Добавлены зависимости и библиотеки*&#10;- SmoothBar&#10;- Navigation&#10;- ViewBinding">
-      <created>1675627193802</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1675627193802</updated>
     </task>
     <task id="LOCAL-00003" summary="*Работа со стартовым экраном*&#10;-Добавлен стиль для закругленных editText&#10;-Добавлены цвета для основной темы&#10;-Добавлены поля для ввода:&#10;-- фамилия, имя, отчество, дата рождения&#10;-Добавлены изображения:&#10;-- Разные вариации логотипа&#10;&#10;*Добавлены зависимости и библиотеки*&#10;- SmoothBar&#10;- Navigation&#10;- ViewBinding">
       <created>1675627221002</created>
@@ -553,7 +553,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682355966036</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Теперь объекты правильно двигаются">
+      <created>1682363405117</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1682363405117</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -568,7 +575,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Переделываю модель для объектов Canvas" />
     <MESSAGE value="Исправленна модель CanvasObject" />
     <MESSAGE value="Исправлена модель CanvasObject" />
     <MESSAGE value="непонятный коммит" />
@@ -593,15 +599,16 @@
     <MESSAGE value="колорпикер меняет цвет фигурам" />
     <MESSAGE value="Масштабирование работает правильно" />
     <MESSAGE value="Теперь можно изменять текст" />
-    <option name="LAST_COMMIT_MESSAGE" value="Теперь можно изменять текст" />
+    <MESSAGE value="Теперь объекты правильно двигаются" />
+    <option name="LAST_COMMIT_MESSAGE" value="Теперь объекты правильно двигаются" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/CanvasView.kt</url>
-          <line>266</line>
-          <option name="timeStamp" value="12" />
+          <url>file://$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/CreateCanvasQRCFragment.kt</url>
+          <line>135</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

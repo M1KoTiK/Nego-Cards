@@ -16,6 +16,7 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import m1k.kotik.negocards.R
 import m1k.kotik.negocards.data.canvas_qrc.model.*
+import m1k.kotik.negocards.data.canvas_qrc.model.popup_windows.CardMenuPopupWindow
 import m1k.kotik.negocards.data.canvas_qrc.model.popup_windows.ColorPickerPopupWindow
 import m1k.kotik.negocards.databinding.FragmentCreateCanvasQRCBinding
 import m1k.kotik.negocards.fragments.utils_fragment.IOnBackPressedListener
@@ -132,10 +133,10 @@ class CreateCanvasQRCFragment : Fragment(), IOnBackPressedListener {
 
         binding?.buttonPalochki?.setOnClickListener {
             // Save the image in external storage and get the uri
-            Toast.makeText(context, "1234", Toast.LENGTH_SHORT).show()
-            saveImage(binding?.view?.myBitmap!!)
+            val cardMenuPopupWindow = CardMenuPopupWindow()
+            cardMenuPopupWindow.setup(requireActivity(), R.layout.card_menu_popup_window, 700,750)
+            cardMenuPopupWindow.show(0,275,Gravity.TOP or Gravity.CENTER_HORIZONTAL)
             // Display the external storage saved image in image view
-
         }
 
 

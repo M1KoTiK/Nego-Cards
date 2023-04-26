@@ -238,8 +238,8 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
                 findSelectedObject(x, y)
                 if (listCurrentSelectedObjects.isNotEmpty()) {
                     currentSelectedObject!!.isSelectMode = true
-                    transformInitialPosX = currentSelectedObject!!.posX
-                    transformInitialPosY = currentSelectedObject!!.posY
+                        transformInitialPosX = currentSelectedObject!!.posX
+                        transformInitialPosY = currentSelectedObject!!.posY
                     doubleClickChecker.click()
 
                 }
