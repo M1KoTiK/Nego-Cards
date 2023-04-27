@@ -10,48 +10,47 @@ import android.view.View
 import android.widget.Toast
 import m1k.kotik.negocards.data.canvas_qrc.model.ShapeObject
 import m1k.kotik.negocards.data.canvas_qrc.model.shapes.RectRShape
+import java.math.RoundingMode
 import kotlin.math.abs
 
-abstract class CustomSlider (context: Context, attrs: AttributeSet) : View(context, attrs) {
+abstract class Slider (context: Context, attrs: AttributeSet) : View(context, attrs) {
     //OutputValues___________________________________________________________________________________
     var outValue: Float = 0F
         get() {
             try {
                 var deltaSliderValue = abs(startSliderValue) + abs(endSliderValue)
+                val stepCount = deltaSliderValue / step
+                val deltaStripeDistance = stripeObject.posX + stripeObject.width - 2 * OFFSET_POINTER - pointerObject.height
+                val distanceInStripe = deltaStripeDistance / stepCount
+                val sectionCount = ((pointerObject.posX - OFFSET_POINTER) / distanceInStripe ).toInt()
                 if(startSliderValue< 0 && endSliderValue<0){
                     deltaSliderValue = abs(abs(startSliderValue) - abs(endSliderValue))
                 }
                 if (sliderValueSequence == SliderValueSequence.Descending) {
-                    val deltaStripeDistance = stripeObject.posX + stripeObject.width - 2 * OFFSET_POINTER - pointerObject.height
-                    val stepCount = deltaSliderValue / step
-                    val distanceInStripe = deltaStripeDistance / stepCount
-                    val sectionCount = ((pointerObject.posX - OFFSET_POINTER) / distanceInStripe ).toInt()
-                    return (startSliderValue - step * sectionCount)
+                    field = (startSliderValue - step * sectionCount)
                 }
                 else if(sliderValueSequence == SliderValueSequence.Ascending) {
-                    val deltaStripeDistance = stripeObject.posX + stripeObject.width - 2 * OFFSET_POINTER - pointerObject.height
-                    val stepCount = deltaSliderValue / step
-                    val distanceInStripe = deltaStripeDistance / stepCount
-                    val sectionCount = ((pointerObject.posX - OFFSET_POINTER) / distanceInStripe ).toInt()
-                    return (startSliderValue + step * sectionCount)
+                    field =  (startSliderValue + step * sectionCount)
                 }
             }
             catch (e:Exception){
                 Toast.makeText(context, "Слайдер не был инициализирован," +
                         " либо введены некорректные данный",Toast.LENGTH_LONG).show()
+                field = 0f
             }
-            return 0F
+            field = field.toBigDecimal().setScale(5, RoundingMode.DOWN).toFloat()
+            return field
         }
     private set
     //---------------------------------------------------------------------------------------------------
 
     //ValuesForSetup_____________________________
-    private var step: Float = 0.01f
-    private var startSliderValue: Float = -4f
-    private var endSliderValue: Float = -2f
+    private var step: Float = 0f
+    private var startSliderValue: Float = 0f
+    private var endSliderValue: Float = 0f
     //--------------------------------
 
-    abstract fun onAfterSetup()
+    open fun onAfterSetup(){}
 
     //Callbacks________________________________________
     private var onSliderValueChange: ()->Unit = {}
@@ -70,7 +69,7 @@ abstract class CustomSlider (context: Context, attrs: AttributeSet) : View(conte
         it.color = 0xDDEEEEEE.toInt()
     }
     var stripeWidth = 600
-    var stripeHeight = 80
+    var stripeHeight = 85
 
     //Pointer__________________________________
     var pointerObject :ShapeObject = RectRShape().also {
@@ -137,14 +136,22 @@ abstract class CustomSlider (context: Context, attrs: AttributeSet) : View(conte
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         val x = event!!.x
         val deltaX = x - startX
+        val downBound:Float =
+            (stripeObject.posX + OFFSET_POINTER/2 + pointerObject.width/2).toFloat()
+        val upBound: Float =
+            (stripeObject.posX + stripeObject.width - OFFSET_POINTER - pointerObject.width/2).toFloat()
         when(event.action){
-            MotionEvent.ACTION_MOVE ->{
-                    pointerObject.posX =
-                        (startX + deltaX - OFFSET_POINTER - pointerObject.width / 4).toInt()
+            MotionEvent.ACTION_MOVE -> {
+                if(x in downBound..upBound)
+                {
+                    pointerObject.posX = (startX + deltaX - OFFSET_POINTER - pointerObject.width / 4).toInt()
+                }
             }
             MotionEvent.ACTION_DOWN->{
+                if(x in downBound..upBound) {
                     pointerObject.posX = (x - OFFSET_POINTER - pointerObject.width / 4).toInt()
                     startX = event.x.toInt()
+                }
             }
             MotionEvent.ACTION_UP->{
             }

@@ -32,10 +32,10 @@ class ColorPickerPopupWindow(var onColorChange: (Int)->Unit): PopupWindowDefault
             HSV[1] = saturation
             onColorChange(HSVToColor(alpha,HSV))
         }
-        valuePicker = this.popupView!!.findViewById(R.id.valueStripePicker)
-        valuePicker!!.onValueChange = { value ->
-            HSV[2] = value
-            onColorChange(HSVToColor(alpha,HSV))
-        }
+       // valuePicker = this.popupView!!.findViewById(R.id.valueStripePicker)
+        //valuePicker!!.onValueChange = { value ->
+          //  HSV[2] = value
+         //   onColorChange(HSVToColor(alpha,HSV))
+       // }
     }
 }
