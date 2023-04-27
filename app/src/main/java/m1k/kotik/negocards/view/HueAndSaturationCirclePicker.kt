@@ -59,8 +59,15 @@ class HueAndSaturationCirclePicker (context: Context, attrs: AttributeSet) : Vie
                 }
                 selectedHue = angle.toFloat()
             }
-            selectedSaturation = (naturalDistance!! /circleRadius).toFloat()
-            selectedColor = HSVToColor(255, floatArrayOf(selectedHue!!,selectedSaturation!!,1f))
+            try {
+
+                selectedSaturation = (naturalDistance!! / circleRadius).toFloat()
+                selectedColor =
+                    HSVToColor(255, floatArrayOf(selectedHue!!, selectedSaturation!!, 1f))
+            }
+            catch (e:Exception){
+                println(" hue&saturarion govno  = $e ")
+            }
         }
         when(event!!.action){
             MotionEvent.ACTION_MOVE ->{

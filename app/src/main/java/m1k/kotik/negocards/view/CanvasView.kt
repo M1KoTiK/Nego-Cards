@@ -199,7 +199,7 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
 
     private fun findSelectedObject(x: Int, y: Int) {
         listCurrentSelectedObjects.clear()
-        for (obj in objects_) {
+        for (obj in objects_.reversed()) {
             if (obj.isCursorHoveredOver(x, y)) {
                 listCurrentSelectedObjects.add(obj)
             }

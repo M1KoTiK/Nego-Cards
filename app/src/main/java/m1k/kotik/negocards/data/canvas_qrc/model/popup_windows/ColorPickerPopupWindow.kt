@@ -36,7 +36,6 @@ class ColorPickerPopupWindow(var onColorChange: (Int)->Unit): PopupWindowDefault
         valuePicker!!.onValueChange = { value ->
             HSV[2] = value
             onColorChange(HSVToColor(alpha,HSV))
-            println(value)
         }
     }
 }
