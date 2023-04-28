@@ -12,13 +12,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Переименовал классный класс (❁´◡`❁)">
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Переделал классный класс со слайдером (❁´◡`❁)">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/ColorPickerPopupWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/ColorPickerPopupWindow.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/Slider.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/Slider.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/ValueSliderPicker.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/ValueSliderPicker.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/ValueStripePicker.kt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,13 +212,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675626606726</updated>
-    </task>
-    <task id="LOCAL-00006" summary="*Добавлены зависимости и библиотеки*&#10;-SmoothBar&#10;-ViewBinding">
-      <created>1675661144774</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1675661144774</updated>
     </task>
     <task id="LOCAL-00007" summary="Наконец-то исправлен гит репозиторий :3">
       <created>1675661320345</created>
@@ -559,7 +549,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682620573221</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Переделал классный класс со слайдером (❁´◡`❁)">
+      <created>1682675878195</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1682675878195</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -574,7 +571,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Пофиксил style tag" />
     <MESSAGE value="Теперь можно через формат для qr задавать параметры объектам" />
     <MESSAGE value="Добавил проверок чтобы не крашилось и проверил работоспособность фигур" />
     <MESSAGE value="Добавил PopupWindow для добавления объектов(Оно немного поломалось)" />
@@ -599,7 +595,8 @@
     <MESSAGE value="Сделал нормальный класс для кастомного слайдера" />
     <MESSAGE value="Переименовал классный (❁´◡`❁)" />
     <MESSAGE value="Переименовал классный класс (❁´◡`❁)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Переименовал классный класс (❁´◡`❁)" />
+    <MESSAGE value="Переделал классный класс со слайдером (❁´◡`❁)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Переделал классный класс со слайдером (❁´◡`❁)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -17,18 +17,42 @@ abstract class Slider (context: Context, attrs: AttributeSet) : View(context, at
     //OutputValues___________________________________________________________________________________
     var outValue: Float = 0F
         get() {
-            val minValue: Float  = (stripeObject.posX + OFFSET_POINTER + SPARE_SPACE ).toFloat()
-            val maxValue: Float  = (stripeObject.posX + stripeObject.width - pointerObject.width - OFFSET_POINTER - SPARE_SPACE).toFloat()
+            var minValue = (stripeObject.posX + OFFSET_POINTER + SPARE_SPACE ).toFloat()
+            var maxValue: Float  = (stripeObject.posX + stripeObject.width - pointerObject.width - OFFSET_POINTER - SPARE_SPACE).toFloat()
+            if(sliderValueSequence == SliderValueSequence.Descending){
+                maxValue = (stripeObject.posX + OFFSET_POINTER + SPARE_SPACE ).toFloat()
+                minValue = (stripeObject.posX + stripeObject.width - pointerObject.width - OFFSET_POINTER - SPARE_SPACE).toFloat()
+            }
             val currentValue: Float = (pointerObject.posX ).toFloat()
             val progressFraction: Float = (currentValue - minValue)/(maxValue - minValue)
+            println("---------------------------")
+            println(progressFraction)
+            println(currentValue-minValue)
+            println(maxValue - minValue)
+            println((currentValue-minValue)/(maxValue - minValue))
             val halfStepSize :Float = step / 2f
             val progressFractionStepped: Float = progressFraction - (progressFraction - halfStepSize) % step + halfStepSize
-            field = progressFractionStepped.toBigDecimal().setScale(5, RoundingMode.HALF_EVEN).toFloat()
-            if(field <= startSliderValue){
-                field = startSliderValue
-            }
-            else if(field >= endSliderValue){
-                field = endSliderValue
+            field = progressFractionStepped
+            when(sliderValueSequence){
+                SliderValueSequence.Ascending->{
+                    if(field >= endSliderValue){
+                        field = endSliderValue
+                    }
+                    else if(field <= startSliderValue){
+                        field = startSliderValue
+                    }
+                }
+                SliderValueSequence.Descending->{
+                    if(field <= endSliderValue){
+                        field = endSliderValue
+                    }
+                    else if(field >= startSliderValue){
+                        field = startSliderValue
+                    }
+                }
+                SliderValueSequence.Equals->{
+                    field = 0F
+                }
             }
 
             println("$field")
@@ -39,7 +63,7 @@ abstract class Slider (context: Context, attrs: AttributeSet) : View(context, at
 
     //ValuesForSetup_____________________________
     private var step: Float = 0f
-    private var startSliderValue: Float = 0f
+    private var startSliderValue: Float = 1f
     private var endSliderValue: Float = 0f
     //--------------------------------
 

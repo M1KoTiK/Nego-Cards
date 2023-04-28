@@ -8,7 +8,7 @@ import android.util.AttributeSet
 
 class ValueSliderPicker(context: Context, attrs: AttributeSet) : Slider(context, attrs) {
     init{
-        super.setup(0.01f, 0f,1f)
+        super.setup(0.01f, 1f,0f)
         stripeObject.width = 600
         stripeObject.height = 100
         stripePaint = Paint().also {
