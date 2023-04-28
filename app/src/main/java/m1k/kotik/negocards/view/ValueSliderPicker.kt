@@ -12,8 +12,8 @@ class ValueSliderPicker(context: Context, attrs: AttributeSet) : Slider(context,
         stripeObject.width = 600
         stripeObject.height = 100
         stripePaint = Paint().also {
-            it.shader = LinearGradient(this.stripeObject.posX.toFloat(), 0f,
-                this.stripeObject.posX + this.stripeObject.width.toFloat(), 0f,
+            it.shader = LinearGradient(stripeObject.posX.toFloat(), 0f,
+                stripeObject.posX + stripeObject.width.toFloat(), 0f,
                 0xFFFFFFFF.toInt(),0xFF000000.toInt(),
                 Shader.TileMode.REPEAT)
         }

@@ -17,28 +17,21 @@ abstract class Slider (context: Context, attrs: AttributeSet) : View(context, at
     //OutputValues___________________________________________________________________________________
     var outValue: Float = 0F
         get() {
-            try {
-                var deltaSliderValue = abs(startSliderValue) + abs(endSliderValue)
-                val stepCount = deltaSliderValue / step
-                val deltaStripeDistance = stripeObject.posX + stripeObject.width - 2 * OFFSET_POINTER - pointerObject.height
-                val distanceInStripe = deltaStripeDistance / stepCount
-                val sectionCount = ((pointerObject.posX - OFFSET_POINTER) / distanceInStripe ).toInt()
-                if(startSliderValue< 0 && endSliderValue<0){
-                    deltaSliderValue = abs(abs(startSliderValue) - abs(endSliderValue))
-                }
-                if (sliderValueSequence == SliderValueSequence.Descending) {
-                    field = (startSliderValue - step * sectionCount)
-                }
-                else if(sliderValueSequence == SliderValueSequence.Ascending) {
-                    field =  (startSliderValue + step * sectionCount)
-                }
+            val minValue: Float  = (stripeObject.posX + OFFSET_POINTER + SPARE_SPACE ).toFloat()
+            val maxValue: Float  = (stripeObject.posX + stripeObject.width - pointerObject.width - OFFSET_POINTER - SPARE_SPACE).toFloat()
+            val currentValue: Float = (pointerObject.posX ).toFloat()
+            val progressFraction: Float = (currentValue - minValue)/(maxValue - minValue)
+            val halfStepSize :Float = step / 2f
+            val progressFractionStepped: Float = progressFraction - (progressFraction - halfStepSize) % step + halfStepSize
+            field = progressFractionStepped.toBigDecimal().setScale(5, RoundingMode.HALF_EVEN).toFloat()
+            if(field <= startSliderValue){
+                field = startSliderValue
             }
-            catch (e:Exception){
-                Toast.makeText(context, "Слайдер не был инициализирован," +
-                        " либо введены некорректные данный",Toast.LENGTH_LONG).show()
-                field = 0f
+            else if(field >= endSliderValue){
+                field = endSliderValue
             }
-            field = field.toBigDecimal().setScale(5, RoundingMode.DOWN).toFloat()
+
+            println("$field")
             return field
         }
     private set
@@ -52,13 +45,9 @@ abstract class Slider (context: Context, attrs: AttributeSet) : View(context, at
 
     open fun onAfterSetup(){}
 
-    //Callbacks________________________________________
-    private var onSliderValueChange: ()->Unit = {}
-    fun setOnSliderValueChange(Action:()->Unit){
-        onSliderValueChange = Action
-    }
+    //Callback________________________________________
+    var onSliderValueChange: (Float)->Unit = {}
     //-------------------------
-
     //Stripe__________________________________
     var stripeObject: ShapeObject = RectRShape().also {
         it.posX = 0
@@ -157,6 +146,7 @@ abstract class Slider (context: Context, attrs: AttributeSet) : View(context, at
             }
         }
         println("$outValue")
+        onSliderValueChange.invoke(outValue)
         this.invalidate()
         return true
     }
@@ -172,6 +162,7 @@ abstract class Slider (context: Context, attrs: AttributeSet) : View(context, at
             Descending
         }
         const val OFFSET_POINTER = 12
+        const val SPARE_SPACE = 10
     }
 
 }
