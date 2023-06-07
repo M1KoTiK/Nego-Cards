@@ -1,10 +1,11 @@
-package m1k.kotik.negocards.data.canvas_qrc.model.shapes
+package m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.shapes
 
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Path
-import m1k.kotik.negocards.data.canvas_qrc.model.ShapeObject
-import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject.CanvasObjectType.Shape
+import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObjectSerializationTag
+import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObjectType
+import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.ShapeObject
 
 class QadrilShape (
     val bottomLeftX: Int = 0,
@@ -21,7 +22,7 @@ class QadrilShape (
     height: Int = 0,
     color: String = "FF181818",
     style: CanvasObjectSerializationTag.Style
-    ) : ShapeObject(Shape.Quadril(),bottomLeftX,bottomLeftY, width, height,color,style) {
+    ) : ShapeObject(CanvasObjectType.Shape.Quadril(),bottomLeftX,bottomLeftY, width, height,color,style) {
     override fun draw(canvas: Canvas) {
         val path: Path = Path()
         path.moveTo(posX.toFloat(), posY.toFloat()) // Top

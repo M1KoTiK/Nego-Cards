@@ -1,9 +1,10 @@
-package m1k.kotik.negocards.data.canvas_qrc.model.shapes
+package m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.shapes
 
 import android.graphics.Canvas
 import android.graphics.Paint
-import m1k.kotik.negocards.data.canvas_qrc.model.ShapeObject
-import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject.CanvasObjectType.Shape
+import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObjectSerializationTag
+import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObjectType
+import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.ShapeObject
 
 
 class RectRShape (
@@ -16,7 +17,7 @@ class RectRShape (
     color: String,
     style: CanvasObjectSerializationTag.Style,
     strokeWidth: Int = CanvasObjectSerializationTag.StrokeWidth.default
-) : ShapeObject(Shape.RectR(), posX, posY, width, height,color,style,strokeWidth) {
+) : ShapeObject(CanvasObjectType.Shape.RectR(), posX, posY, width, height,color,style,strokeWidth) {
     constructor(): this(
         CanvasObjectSerializationTag.LeftCorner.default,
         CanvasObjectSerializationTag.RightCorner.default,

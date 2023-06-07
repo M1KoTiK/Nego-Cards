@@ -6,8 +6,10 @@ import android.view.View
 import android.widget.*
 import m1k.kotik.negocards.R
 import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject
+import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObjectType
+import m1k.kotik.negocards.data.canvas_qrc.model.listCanvasObjectTypes
 
-class AddCanvasObjectPopupWindow(var onAddCanvasObject: (CanvasObject.CanvasObjectType)->Unit,
+class AddCanvasObjectPopupWindow(var onAddCanvasObject: (CanvasObjectType)->Unit,
                                  var onChangeSelectedObject: ()->Unit): MovablePopupWindowDefault()  {
     var selectedItemPosition = -1
     fun setup(context: Context,
@@ -36,7 +38,7 @@ class AddCanvasObjectPopupWindow(var onAddCanvasObject: (CanvasObject.CanvasObje
         addObject.setOnClickListener {
             if(selectedItemPosition >=0){
                 val selectedItem = typesObject[selectedItemPosition]
-                for (type in CanvasObject.searchableListCanvasObjectTypes) {
+                for (type in listCanvasObjectTypes) {
                     if (selectedItem == type.visibleName){
                         onAddCanvasObject.invoke(type)
                         selectedItemPosition = -1
@@ -45,7 +47,7 @@ class AddCanvasObjectPopupWindow(var onAddCanvasObject: (CanvasObject.CanvasObje
             }
             this.close()
         }
-        for (type in CanvasObject.searchableListCanvasObjectTypes){
+        for (type in listCanvasObjectTypes){
             if(!type.isSubsection) {
                 typesObject.add(type.visibleName)
             }
@@ -56,7 +58,7 @@ class AddCanvasObjectPopupWindow(var onAddCanvasObject: (CanvasObject.CanvasObje
             if(selectedItemPosition != position){
                 selectedItemPosition = position
                 val selectedItem = parent.getItemAtPosition(position).toString()
-                for (type in CanvasObject.searchableListCanvasObjectTypes){
+                for (type in listCanvasObjectTypes){
                     if (type.visibleName == selectedItem){
                         onChangeSelectedObject.invoke()
                     }

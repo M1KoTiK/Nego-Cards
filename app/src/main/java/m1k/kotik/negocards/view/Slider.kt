@@ -7,11 +7,8 @@ import android.graphics.Paint.Style
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
-import android.widget.Toast
-import m1k.kotik.negocards.data.canvas_qrc.model.ShapeObject
-import m1k.kotik.negocards.data.canvas_qrc.model.shapes.RectRShape
-import java.math.RoundingMode
-import kotlin.math.abs
+import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.ShapeObject
+import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.shapes.RectRShape
 
 abstract class Slider (context: Context, attrs: AttributeSet) : View(context, attrs) {
     //OutputValues___________________________________________________________________________________
@@ -25,11 +22,6 @@ abstract class Slider (context: Context, attrs: AttributeSet) : View(context, at
             }
             val currentValue: Float = (pointerObject.posX ).toFloat()
             val progressFraction: Float = (currentValue - minValue)/(maxValue - minValue)
-            println("---------------------------")
-            println(progressFraction)
-            println(currentValue-minValue)
-            println(maxValue - minValue)
-            println((currentValue-minValue)/(maxValue - minValue))
             val halfStepSize :Float = step / 2f
             val progressFractionStepped: Float = progressFraction - (progressFraction - halfStepSize) % step + halfStepSize
             field = progressFractionStepped
@@ -85,7 +77,7 @@ abstract class Slider (context: Context, attrs: AttributeSet) : View(context, at
     var stripeHeight = 85
 
     //Pointer__________________________________
-    var pointerObject :ShapeObject = RectRShape().also {
+    var pointerObject : ShapeObject = RectRShape().also {
         it.posX = OFFSET_POINTER
         it.leftCorner = 12
         it.rightCorner = 12

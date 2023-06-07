@@ -1,9 +1,9 @@
-package m1k.kotik.negocards.data.canvas_qrc.model.shapes
+package m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.shapes
 
 import android.graphics.Canvas
-import android.graphics.Paint
-import m1k.kotik.negocards.data.canvas_qrc.model.ShapeObject
-import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject.CanvasObjectType.Shape
+import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObjectSerializationTag
+import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObjectType
+import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.ShapeObject
 class ArcShape(
     var startAngle: Int,
     var sweepAngle: Int,
@@ -15,7 +15,7 @@ class ArcShape(
     height: Int = 0,
     color: String = "FF181818",
     style: CanvasObjectSerializationTag.Style
-) : ShapeObject(Shape.Arc(), posX, posY, width, height,color,style) {
+) : ShapeObject(CanvasObjectType.Shape.Arc(), posX, posY, width, height,color,style) {
     constructor(): this(
         CanvasObjectSerializationTag.StartAngle.default,
         CanvasObjectSerializationTag.SweepAngle.default,

@@ -16,16 +16,14 @@
             style="@style/RoundedEditTextSmall"
             android:layout_gravity="center"
             android:ems="10"
-            android:hint="Введите ширину"
-            android:inputType="textPersonName" />
+            android:hint="Введите ширину" />
         <EditText
             android:id="@+id/editTextTextPersonName6"
             style="@style/RoundedEditTextSmall"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:ems="10"
-            android:hint="Введите длину"
-            android:inputType="textPersonName" />
+            android:hint="Введите длину" />
 
         <Button
             android:id="@+id/button4"

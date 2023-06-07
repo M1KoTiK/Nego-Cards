@@ -1,6 +1,9 @@
-package m1k.kotik.negocards.data.canvas_qrc.model
+package m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types
 
 import android.graphics.*
+import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject
+import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObjectSerializationTag
+import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObjectType
 
 open class ShapeObject(
     var shapeType: CanvasObjectType.Shape,
@@ -10,8 +13,8 @@ open class ShapeObject(
     height: Int = 0,
     color:  String = "FF181818",
     style: CanvasObjectSerializationTag.Style,
-    var strokeWidth: Int = CanvasObject.CanvasObjectSerializationTag.StrokeWidth.default,
-    var pathEffect: Int = CanvasObject.CanvasObjectSerializationTag.StrokeWidth.default
+    var strokeWidth: Int = CanvasObjectSerializationTag.StrokeWidth.default,
+    var pathEffect: Int = CanvasObjectSerializationTag.StrokeWidth.default
 
     ) : CanvasObject(CanvasObjectType.Shape(), width, height, posX, posY,color,style) {
     constructor(): this(

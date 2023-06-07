@@ -10,7 +10,8 @@ import android.view.View
 import androidx.core.content.res.ResourcesCompat
 import m1k.kotik.negocards.R
 import m1k.kotik.negocards.data.canvas_qrc.model.*
-import m1k.kotik.negocards.data.canvas_qrc.model.shapes.RectRShape
+import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.ShapeObject
+import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.shapes.RectRShape
 import java.lang.Math.*
 
 class HueAndSaturationCirclePicker (context: Context, attrs: AttributeSet) : View(context, attrs) {
@@ -26,8 +27,8 @@ class HueAndSaturationCirclePicker (context: Context, attrs: AttributeSet) : Vie
     private var circleY = 0
     private var naturalDistance:Double? = null
 
-    private var colorPointer :ShapeObject = RectRShape(10,10,0,0,60,60,"AA181818",
-        CanvasObject.CanvasObjectSerializationTag.Style.Stroke(),5)
+    private var colorPointer : ShapeObject = RectRShape(10,10,0,0,60,60,"AA181818",
+        CanvasObjectSerializationTag.Style.Stroke(),5)
 
     val circleRadius:Double  get(){
         return (height/2).toDouble()
@@ -105,11 +106,11 @@ class HueAndSaturationCirclePicker (context: Context, attrs: AttributeSet) : Vie
         myIcon!!.setBounds(circleX,circleY,circleWidth,circleHeight)
         myIcon.draw(canvas!!)
         if(colorPointerX!= null && colorPointerY!=null){
-            colorPointer.color = CanvasObject.CanvasObjectSerializationTag.Color.default
-            colorPointer.style = CanvasObject.CanvasObjectSerializationTag.Style.Stroke()
+            colorPointer.color = CanvasObjectSerializationTag.Color.default
+            colorPointer.style = CanvasObjectSerializationTag.Style.Stroke()
             colorPointer.draw(canvas)
             if(selectedColor !=null) {
-                colorPointer.style = CanvasObject.CanvasObjectSerializationTag.Style.Fill()
+                colorPointer.style = CanvasObjectSerializationTag.Style.Fill()
                 colorPointer.color = getHexString(selectedColor!!)
                 colorPointer.draw(canvas)
             }
