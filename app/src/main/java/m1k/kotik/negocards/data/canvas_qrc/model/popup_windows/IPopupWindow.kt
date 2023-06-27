@@ -9,7 +9,7 @@ interface IPopupWindow {
               layoutRes: Int,
               height:Int,
               width:Int,
-              isOutsideTouchable:Boolean= true,
+              isOutsideTouchable:Boolean = true,
               isFocusable:Boolean = true)
     fun show(x:Int,y:Int,gravity: Int)
     fun close()

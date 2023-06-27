@@ -3,22 +3,21 @@ package m1k.kotik.negocards.view
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
-import android.view.Gravity
 import android.view.MotionEvent
 import android.widget.Toast
 import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject
-import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObjectType
+import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.CanvasObjectType
 import m1k.kotik.negocards.data.canvas_qrc.model.DoubleClickChecker
+import m1k.kotik.negocards.data.canvas_qrc.model.alert_dialogs.InputTextDialog
 import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.TextObject
-import m1k.kotik.negocards.data.canvas_qrc.model.popup_windows.InputTextPopupWindow
 import kotlin.math.max
 import kotlin.math.min
 
 open class CanvasEditor(context: Context, attrs: AttributeSet) : CanvasView(context, attrs) {
-    private var inpTextPopup = InputTextPopupWindow()
+    private var inpTextPopup = InputTextDialog(context)
+
     init{
-        inpTextPopup.setup(context,300,1000)
-        inpTextPopup.root!!.setOnDismissListener{
+        inpTextPopup.setOnDismissListener{
             if(currentSelectedObject!=null){
                 currentSelectedObject!!.isSelectMode = true
                 this.invalidate()
@@ -72,10 +71,9 @@ open class CanvasEditor(context: Context, attrs: AttributeSet) : CanvasView(cont
                         this.pathEffect = null
                         this.style = Paint.Style.FILL
                     })
-                    if(!inpTextPopup.isOpen){
+                    if(!inpTextPopup.isShowing){
                         inpTextPopup.initText = (currentSelectedObject!! as TextObject).text
-                        inpTextPopup.show(0,-200,
-                            Gravity.CENTER_HORIZONTAL or Gravity.CENTER_VERTICAL)
+                        inpTextPopup.show()
                     }
                 }
             } catch (e: Exception) {
@@ -124,7 +122,6 @@ open class CanvasEditor(context: Context, attrs: AttributeSet) : CanvasView(cont
                 if (selectedObject?.isEditMode == true){
                     transformInitialWidth = selectedObject.width
                     transformInitialHeight = selectedObject.height
-
                 }
                 findSelectedObject(x, y)
                 if (listCurrentSelectedObjects.isNotEmpty()) {
@@ -132,13 +129,10 @@ open class CanvasEditor(context: Context, attrs: AttributeSet) : CanvasView(cont
                     transformInitialPosX = currentSelectedObject!!.posX
                     transformInitialPosY = currentSelectedObject!!.posY
                     doubleClickChecker.click()
-
                 }
                 if (listCurrentSelectedObjects.isEmpty()) {
                     onEmptySelected()
                 }
-
-
                 onCurrentSelectedObjectChange.invoke()
                 this.invalidate()
             }

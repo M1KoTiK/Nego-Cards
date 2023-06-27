@@ -12,47 +12,44 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Переделал классный класс со слайдером 123123123123(❁´◡`❁)">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/canvas_object_types/CanvasObject.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/canvas_object_types/ImageObject.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/CanvasToQRCPopupWindow.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/CopyAndPasteMenuPopupWindow.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/AlphaSliderPicker.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/QRCFromCanvasObjects.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/ScannedQRCViewer.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/inptexticon.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/canvas_to_qrc_popup_window.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/copy_and_paste_menu.xml" afterDir="false" />
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="коммит для того чтобы не потерять изменения">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/alert_dialogs/InputTextDialog.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.androidTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.androidTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.unitTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.unitTest.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/CanvasModel.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/CanvasObject.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/ShapeObject.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/canvas_object_types/ShapeObject.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/TextObject.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/canvas_object_types/TextObject.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/PointModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/PointModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/canvas_object_types/CanvasObject.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/canvas_object_types/CanvasObject.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/canvas_object_types/ImageObject.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/canvas_object_types/ImageObject.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/canvas_object_types/ShapeObject.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/canvas_object_types/ShapeObject.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/canvas_object_types/TextObject.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/canvas_object_types/TextObject.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/canvas_object_types/shapes/ArcShape.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/canvas_object_types/shapes/ArcShape.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/canvas_object_types/shapes/OvalShape.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/canvas_object_types/shapes/OvalShape.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/canvas_object_types/shapes/QadrilShape.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/canvas_object_types/shapes/QadrilShape.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/canvas_object_types/shapes/RectRShape.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/canvas_object_types/shapes/RectRShape.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/canvas_object_types/shapes/RectShape.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/canvas_object_types/shapes/RectShape.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/AddCanvasObjectPopupWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/AddCanvasObjectPopupWindow.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/InputTextAndChangeTextSizePopupWindow.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/CopyAndPasteMenuPopupWindow.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/IPopupWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/IPopupWindow.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/InputTextPopupWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/InputTextPopupWindow.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/shapes/ArcShape.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/canvas_object_types/shapes/ArcShape.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/shapes/OvalShape.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/canvas_object_types/shapes/OvalShape.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/shapes/QadrilShape.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/canvas_object_types/shapes/QadrilShape.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/shapes/RectRShape.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/canvas_object_types/shapes/RectRShape.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/shapes/RectShape.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/canvas_object_types/shapes/RectShape.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/CreateCanvasQRCFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/CreateCanvasQRCFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/CanvasEditor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/CanvasEditor.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/CanvasView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/CanvasView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/ColorPicker.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/ColorPicker.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/HueAndSaturationCirclePicker.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/HueAndSaturationCirclePicker.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/Slider.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/view/Slider.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/color_picker_popup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/color_picker_popup.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/add_canvas_object_popup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/add_canvas_object_popup.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/canvas_to_qrc_popup_window.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/canvas_to_qrc_popup_window.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/copy_and_paste_menu.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_choice_parameters_for_card.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_choice_parameters_for_card.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_choice_parameters_for_text.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_choice_parameters_for_text.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_choice_type_qrc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_choice_type_qrc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_create_canvas_q_r_c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_create_canvas_q_r_c.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_main_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_main_page.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_scanner_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_scanner_page.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_settings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/input_text_popup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/input_text_popup.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values-night/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-night/themes.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,11 +84,11 @@
       <list>
         <option value="navigationResourceFile" />
         <option value="valueResourceFile" />
-        <option value="Kotlin Interface" />
         <option value="Kotlin Annotation" />
-        <option value="resourceFile" />
-        <option value="Kotlin Class" />
         <option value="layoutResourceFile" />
+        <option value="Kotlin Interface" />
+        <option value="Kotlin Class" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -153,6 +150,10 @@
     <property name="android-custom-viewC:/Users/User/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/view/Slider.kt_SELECTED" value="Slider" />
     <property name="android-custom-viewC:/Users/User/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/view/ValueSliderPicker.kt_SELECTED" value="ValueSliderPicker" />
     <property name="android-custom-viewC:/Users/User/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/view/ValueStripePicker.kt_SELECTED" value="ValueStripePicker" />
+    <property name="android-custom-viewC:/Users/User/source/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/view/CanvasEditor.kt_SELECTED" value="CanvasEditor" />
+    <property name="android-custom-viewC:/Users/User/source/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/view/CanvasView.kt_SELECTED" value="CanvasView" />
+    <property name="android-custom-viewC:/Users/User/source/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/view/HueAndSaturationCirclePicker.kt_SELECTED" value="HueAndSaturationCirclePicker" />
+    <property name="android-custom-viewC:/Users/User/source/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/view/Slider.kt_SELECTED" value="Slider" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="com.android.tools.idea.emulator.zoom.toolbar.visible" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
@@ -256,13 +257,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675626606726</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Нижняя панель теперь на своем месте">
-      <created>1675711470594</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1675711470594</updated>
     </task>
     <task id="LOCAL-00009" summary="Добавлены нужные фрагменты">
       <created>1675712037572</created>
@@ -600,7 +594,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682679301557</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="коммит для того чтобы не потерять изменения">
+      <created>1686144608150</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1686144608151</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -615,7 +616,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добавил проверок чтобы не крашилось и проверил работоспособность фигур" />
     <MESSAGE value="Добавил PopupWindow для добавления объектов(Оно немного поломалось)" />
     <MESSAGE value="Починил передвижение объектов по канвасу, теперь можно добавлять и перемещать текст :3" />
     <MESSAGE value="Починил передвижение объектов по канвасу, теперь можно добавлять и перемещать текст :3 &#10;Добавил логотип" />
@@ -640,7 +640,8 @@
     <MESSAGE value="Переименовал классный класс (❁´◡`❁)" />
     <MESSAGE value="Переделал классный класс со слайдером (❁´◡`❁)" />
     <MESSAGE value="Переделал классный класс со слайдером 123123123123(❁´◡`❁)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Переделал классный класс со слайдером 123123123123(❁´◡`❁)" />
+    <MESSAGE value="коммит для того чтобы не потерять изменения" />
+    <option name="LAST_COMMIT_MESSAGE" value="коммит для того чтобы не потерять изменения" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

@@ -3,8 +3,6 @@ package m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types
 import android.graphics.Canvas
 import android.graphics.Paint
 import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject
-import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObjectSerializationTag
-import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObjectType
 import kotlin.math.abs
 
 

@@ -2,14 +2,9 @@ package m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types
 
 import android.graphics.*
 import android.graphics.drawable.Drawable
-import android.widget.Toast
-import androidx.core.content.res.ResourcesCompat
-import androidx.core.graphics.drawable.toDrawable
 import com.squareup.picasso.Picasso
 import m1k.kotik.negocards.R
 import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject
-import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObjectSerializationTag
-import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObjectType
 
 class ImageObject(
     posX: Int = 0,

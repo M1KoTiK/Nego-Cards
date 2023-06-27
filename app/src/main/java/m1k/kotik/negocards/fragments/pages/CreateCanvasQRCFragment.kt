@@ -9,9 +9,10 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import m1k.kotik.negocards.R
 import m1k.kotik.negocards.data.canvas_qrc.model.*
+import m1k.kotik.negocards.data.canvas_qrc.model.alert_dialogs.InputTextDialog
+import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.isInpTextTagInObject
 import m1k.kotik.negocards.data.canvas_qrc.model.popup_windows.CardMenuPopupWindow
 import m1k.kotik.negocards.data.canvas_qrc.model.popup_windows.ColorPickerPopupWindow
-import m1k.kotik.negocards.data.canvas_qrc.model.popup_windows.InputTextPopupWindow
 import m1k.kotik.negocards.databinding.FragmentCreateCanvasQRCBinding
 import m1k.kotik.negocards.fragments.utils_fragment.IOnBackPressedListener
 
@@ -38,15 +39,19 @@ class CreateCanvasQRCFragment : Fragment(), IOnBackPressedListener {
                 binding?.button5?.imageTintList = ColorStateList.valueOf(0xFF000000.toInt())
                 val inpTags = isInpTextTagInObject(binding?.view?.currentSelectedObject!!)
                 if(inpTags.isNotEmpty()){
-
-                    inpTags[0]
+                    binding?.inpTextBtn?.imageTintList = ColorStateList.valueOf(0xFF000000.toInt())
                 }
+                else{
+                    binding?.inpTextBtn?.imageTintList = ColorStateList.valueOf(0xFF909090.toInt())
+                }
+
             }
             else{
                 //**Когда не выбран не один объект на канвасе
                 binding?.button5?.imageTintList = ColorStateList.valueOf(0xFF909090.toInt())
                 binding?.buttonminus?.setImageResource(R.drawable.grayminus)
                 binding?.textView3?.text = ""
+                binding?.inpTextBtn?.imageTintList = ColorStateList.valueOf(0xFF909090.toInt())
             }
         }
         binding?.buttonminus?.setOnClickListener {
@@ -59,38 +64,40 @@ class CreateCanvasQRCFragment : Fragment(), IOnBackPressedListener {
             }
         }
 
-        val inpTextPopup =  InputTextPopupWindow()
-        inpTextPopup.setup(binding?.root?.context!!,300,1000)
-        inpTextPopup.inpText.isFocusableInTouchMode = true
-        inpTextPopup.root!!.setOnDismissListener {
+        val inputTextDialog = InputTextDialog(requireActivity())
+
+        inputTextDialog.setOnDismissListener {
             val currentSelectedObject = binding?.view?.currentSelectedObject
             if(currentSelectedObject != null) {
                 currentSelectedObject.isSelectMode = true
                 binding?.view?.invalidate()
             }
         }
-        inpTextPopup.onInpTextChange = {
+
+        inputTextDialog.onInpTextChange = {
             val currentSelectedObject = binding?.view?.currentSelectedObject
             if (currentSelectedObject != null) {
                 val inpTextTag = isInpTextTagInObject(currentSelectedObject)
                 if (inpTextTag.isNotEmpty()) {
-                    inpTextPopup.initText = inpTextTag[0].getField(currentSelectedObject).toString()
+                    inputTextDialog.initText = inpTextTag[0].getField(currentSelectedObject).toString()
                     inpTextTag[0].setField(currentSelectedObject,
-                        inpTextPopup.inpText.text.toString())
+                        inputTextDialog.inpText.text.toString())
                     currentSelectedObject.reMeasure()
                     binding?.view?.invalidate()
                 }
             }
         }
 
+
+        //Нажатие кнопки для ввода текста в объект на канвасе
         binding?.inpTextBtn?.setOnClickListener {
             val currentSelectedObject = binding?.view?.currentSelectedObject
             if  (currentSelectedObject!= null) {
                 val inpTextTag = isInpTextTagInObject(currentSelectedObject)
                 if (inpTextTag.isNotEmpty()) {
-                    inpTextPopup.initText = inpTextTag[0].getField(currentSelectedObject).toString()
-                    inpTextPopup.show(0, -200,
-                        Gravity.CENTER_HORIZONTAL or Gravity.CENTER_VERTICAL)
+                    inputTextDialog.initText =
+                        inpTextTag[0].getField(currentSelectedObject).toString()
+                    inputTextDialog.show()
                 }
             }
         }

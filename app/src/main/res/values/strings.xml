@@ -17,6 +17,8 @@
     необходимо выбрать
     его конечный тип
     </string>
+    <string name="default_speak_present">nothing</string>
+    <string name="default_hint">Введите текст</string>
 
     <string-array name="type_qrc">
         <item>Холст</item>

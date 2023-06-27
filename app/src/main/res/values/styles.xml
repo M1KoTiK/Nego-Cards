@@ -5,7 +5,7 @@
         <item name="android:textColor">@color/black18</item>
         <item name="android:typeface">monospace</item>
     </style>
-    <style name="RoundedEditText" >
+    <style name="RoundedEditText">
         <item name="android:textSize">18sp</item>
         <item name="android:background">@drawable/rounded_edittext</item>
         <item name="android:textColor">@color/black18</item>
@@ -71,4 +71,12 @@
         <item name="android:popupBackground">@drawable/rounded_popupmenu</item>
     </style>
 
+    <style name="MaterialDialogSheet" parent="@style/MaterialAlertDialog.Material3">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
 </resources>

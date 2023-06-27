@@ -1,6 +1,10 @@
 package m1k.kotik.negocards.data.canvas_qrc.model
 
 import android.graphics.*
+import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.CanvasObjectSerializationTag
+import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.CanvasObjectType
+import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.STR_CONTAINS_CHAR
+import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.splitValuesAndTags
 
 enum class CanvasObjectMode{
     Select,
@@ -77,7 +81,7 @@ abstract class CanvasObject(
                     code += "${objTag.name}${field}"
                 }
                 else{
-                    code += "${objTag.name}${STR_CONTAINS_CHAR}${field}${STR_CONTAINS_CHAR}"
+                    code += "${objTag.name}$STR_CONTAINS_CHAR${field}$STR_CONTAINS_CHAR"
                 }
             }
         }

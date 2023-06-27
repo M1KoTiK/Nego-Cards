@@ -3,8 +3,8 @@ package m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.shapes
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Path
-import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObjectSerializationTag
-import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObjectType
+import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.CanvasObjectSerializationTag
+import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.CanvasObjectType
 import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.ShapeObject
 
 class QadrilShape (

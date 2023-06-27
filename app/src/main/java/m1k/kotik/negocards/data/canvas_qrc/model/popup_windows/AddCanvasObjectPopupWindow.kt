@@ -2,12 +2,10 @@ package m1k.kotik.negocards.data.canvas_qrc.model.popup_windows
 
 import android.content.Context
 import android.view.MotionEvent
-import android.view.View
 import android.widget.*
 import m1k.kotik.negocards.R
-import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject
-import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObjectType
-import m1k.kotik.negocards.data.canvas_qrc.model.listCanvasObjectTypes
+import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.CanvasObjectType
+import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.listCanvasObjectTypes
 
 class AddCanvasObjectPopupWindow(var onAddCanvasObject: (CanvasObjectType)->Unit,
                                  var onChangeSelectedObject: ()->Unit): MovablePopupWindowDefault()  {
