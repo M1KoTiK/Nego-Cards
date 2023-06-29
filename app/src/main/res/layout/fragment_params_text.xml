@@ -7,9 +7,10 @@
 
     <EditText
         android:id="@+id/editTextTextPersonName7"
-        android:ems="10"
         style="@style/RoundedEditTextSmall"
+        android:layout_height="48dp"
         android:layout_gravity="center_horizontal"
-        android:inputType="textPersonName"
-        android:hint="Введите текст"/>
+        android:ems="10"
+        android:hint="Введите текст"
+        android:inputType="textPersonName" />
 </FrameLayout>

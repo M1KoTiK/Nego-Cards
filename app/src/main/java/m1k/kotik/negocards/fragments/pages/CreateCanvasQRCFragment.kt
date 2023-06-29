@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import m1k.kotik.negocards.R
 import m1k.kotik.negocards.data.canvas_qrc.model.*
 import m1k.kotik.negocards.data.canvas_qrc.model.alert_dialogs.InputTextDialog
+import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.QRCDecoder
 import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.isInpTextTagInObject
 import m1k.kotik.negocards.data.canvas_qrc.model.popup_windows.CardMenuPopupWindow
 import m1k.kotik.negocards.data.canvas_qrc.model.popup_windows.ColorPickerPopupWindow
@@ -110,6 +111,8 @@ class CreateCanvasQRCFragment : Fragment(), IOnBackPressedListener {
                     {
                         binding?.view?.addCanvasObjects(it.classType)
                         binding?.view?.invalidate()
+                        val decoder =  QRCDecoder()
+                        println(decoder.encode(binding?.view?.objects!!))
                     },
                     {
 
@@ -119,7 +122,6 @@ class CreateCanvasQRCFragment : Fragment(), IOnBackPressedListener {
                 700, 700)
             addCanvasObjectPopupWindow.show(20, 300, Gravity.TOP or Gravity.LEFT)
         }
-
         binding?.button5?.setOnClickListener {
             //Нажатие кнопки выбора цвета
             val selectedObject = binding?.view?.currentSelectedObject

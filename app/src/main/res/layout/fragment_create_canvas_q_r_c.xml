@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorPrimary"
+    android:background="@color/black18"
     tools:context=".fragments.pages.CreateCanvasQRCFragment">
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -103,12 +102,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Вывод QREncode"
+            android:text="..."
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="24sp" />
-
-
-
     </LinearLayout>
 </FrameLayout>

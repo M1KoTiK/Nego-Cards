@@ -12,6 +12,7 @@ abstract class PopupWindowDefault: IPopupWindow {
     var x:Int? = null
     var y:Int? = null
     var gravity: Int? = null
+    var isCreated: Boolean = false
     override fun setup(
         context: Context,
         layoutRes: Int,
@@ -29,6 +30,7 @@ abstract class PopupWindowDefault: IPopupWindow {
         newPopupWindow.width = width
         root = newPopupWindow
         onCreate()
+        isCreated = true
     }
     abstract fun onCreate()
     private fun inflate(layoutRes: Int): View {

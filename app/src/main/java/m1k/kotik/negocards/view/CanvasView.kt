@@ -167,9 +167,7 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
     fun onEmptySelected() {
         clearSelectInAllObjects()
         listCurrentSelectedObjects.clear()
-
     }
-
 
     fun clearSelectInAllObjects() {
         onCurrentSelectedObjectChange.invoke()
