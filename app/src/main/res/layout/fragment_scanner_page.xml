@@ -31,11 +31,14 @@
             </androidx.camera.view.PreviewView>
         </androidx.cardview.widget.CardView>
 
-        <TextView
+        <EditText
             android:id="@+id/tvScannedData"
             android:layout_width="wrap_content"
-            android:layout_height="27dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:inputType="textMultiLine"
+            android:minWidth="100dp"
+            android:minHeight="60dp"
             android:text="Ожидание"
             android:textColor="@color/white"
             android:textSize="23sp"

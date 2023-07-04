@@ -11,6 +11,7 @@ import android.widget.Toast
 import com.squareup.picasso.Picasso
 import m1k.kotik.negocards.data.canvas_qrc.model.*
 import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.ImageObject
+import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.QRCDecoder
 import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.ShapeObject
 import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.shapes.RectRShape
 import java.io.IOException
@@ -41,7 +42,9 @@ open class CanvasView(context: Context, attrs: AttributeSet) : View(context, att
     protected var canvasViewWidth = 900
     protected var canvasViewHeight = 600
     protected var objects_: MutableList<CanvasObject> = mutableListOf()
-
+    fun getObjectsFromCode(code:String){
+        objects_ = QRCDecoder().decode(code,backgroundObject)
+    }
     val objects: List<CanvasObject>
         get() = objects_
 

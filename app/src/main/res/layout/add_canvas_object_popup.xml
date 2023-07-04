@@ -21,7 +21,7 @@
         <AutoCompleteTextView
             android:id="@+id/ChoiceObjectType"
             android:layout_width="190dp"
-            android:layout_height="55dp"
+            android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/rounded_popupmenu"
             android:inputType="none"

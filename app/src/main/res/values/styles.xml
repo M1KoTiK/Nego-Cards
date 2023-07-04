@@ -71,7 +71,7 @@
         <item name="android:popupBackground">@drawable/rounded_popupmenu</item>
     </style>
 
-    <style name="MaterialDialogSheet" parent="@style/MaterialAlertDialog.Material3">
+    <style name="MaterialDialogSheet" parent="@style/Theme.NegoCards">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowContentOverlay">@null</item>

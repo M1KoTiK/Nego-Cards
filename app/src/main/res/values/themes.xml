@@ -1,11 +1,21 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.NegoCards" parent="Theme.Material3.Dark.NoActionBar">
+    <style name="Theme.NegoCards" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="android:windowSplashScreenBackground" tools:targetApi="s">@color/black18</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
         <item name="colorPrimary">@color/black18</item>
         <item name="colorPrimaryVariant">@color/black18</item>
         <item name="colorOnPrimary">@color/white</item>
-
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/black18</item>
+        <item name="colorSecondaryVariant">@color/black18</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <item name="popupMenuStyle">@style/CustomPopupBackground</item>
-
+        <item name="dialogTheme">@style/MaterialDialogSheet</item>
+        <!-- Customize your theme here. -->
     </style>
 </resources>
+

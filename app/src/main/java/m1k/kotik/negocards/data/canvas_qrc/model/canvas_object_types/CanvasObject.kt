@@ -92,7 +92,11 @@ abstract class CanvasObject(
         val tagToValue = splitValuesAndTags(code)
         for (tag in this.type.listTag) {
             if(tagToValue.containsKey(tag.name)){
-                tag.setField(this, tagToValue[tag.name]!!)
+                if(tag.name != CanvasObjectSerializationTag.ObjectTypeTag.name && tag.name!=CanvasObjectSerializationTag.Style().name) {
+                    if(tagToValue[tag.name] != tag.default) {
+                        tag.setField(this, tagToValue[tag.name]!!)
+                    }
+                }
             }
         }
     }

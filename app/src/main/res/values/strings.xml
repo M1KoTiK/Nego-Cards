@@ -1,9 +1,7 @@
 <resources>
     <string name="app_name">NegoCards</string>
     <string name="RegistrationWelcome">
-    Привет!
-    Чтобы создать визитную
-    карту необходимо заполнить
+    здесь можно заполнить
     основные данные
     </string>
     <!-- TODO: Remove or change this placeholder text -->

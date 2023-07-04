@@ -10,6 +10,7 @@ import android.view.Gravity
 import android.view.WindowManager
 import android.widget.EditText
 import android.widget.LinearLayout
+import androidx.core.widget.TextViewCompat.setTextAppearance
 import m1k.kotik.negocards.R
 
 

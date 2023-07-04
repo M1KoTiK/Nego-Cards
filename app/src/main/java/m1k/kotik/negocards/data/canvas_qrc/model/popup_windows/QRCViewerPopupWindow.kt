@@ -7,14 +7,15 @@ import m1k.kotik.negocards.data.QRC.QRCreator
 import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.QRCDecoder
 
 class QRCViewerPopupWindow: PopupWindowDefault() {
+    lateinit var imageQRC: ImageView
     var qrcCreator = QRCreator()
     var code = String()
     set(value) {
         if(isCreated && value != "")
+            println("value = $value")
+            imageQRC.setImageBitmap(qrcCreator.getQRCToBitmap(value))
             field = value
-            imageQRC.setImageBitmap(qrcCreator.getQRCToBitmap(code))
     }
-    lateinit var imageQRC: ImageView
     override fun onCreate() {
        imageQRC = popupView!!.findViewById(R.id.QRCImage)
     }

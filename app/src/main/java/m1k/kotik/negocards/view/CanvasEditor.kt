@@ -6,6 +6,8 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.widget.Toast
 import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject
+import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObjectMode
+import m1k.kotik.negocards.data.canvas_qrc.model.CanvasSaver
 import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.CanvasObjectType
 import m1k.kotik.negocards.data.canvas_qrc.model.DoubleClickChecker
 import m1k.kotik.negocards.data.canvas_qrc.model.alert_dialogs.InputTextDialog
@@ -32,7 +34,17 @@ open class CanvasEditor(context: Context, attrs: AttributeSet) : CanvasView(cont
             }
         }
     }
+    fun clearObjectsMode(){
+        for(obj in objects_){
+            obj.mode = CanvasObjectMode.None
+        }
+        invalidate()
+    }
 
+    fun saveInGallery(){
+        clearObjectsMode()
+        CanvasSaver.saveBitmapInGallery(CanvasSaver.getBitmapFromView(this),context)
+    }
 
 
 

@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +25,7 @@ import com.google.mlkit.vision.barcode.BarcodeScanner
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.common.InputImage
+import m1k.kotik.negocards.data.canvas_qrc.model.popup_windows.CanvasViewerPopupWindow
 import m1k.kotik.negocards.databinding.FragmentScannerPageBinding
 import java.util.concurrent.Executors
 
@@ -37,7 +39,7 @@ class ScannerPageFragment : Fragment() {
     private var lensFacing = CameraSelector.LENS_FACING_BACK
     private var previewUseCase: Preview? = null
     private var analysisUseCase: ImageAnalysis? = null
-
+    var canvasViewer = CanvasViewerPopupWindow()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -165,7 +167,10 @@ class ScannerPageFragment : Fragment() {
 
                     val rawValue = barcode.rawValue
 
-                     binding?.tvScannedData?.text = barcode.rawValue
+                    binding?.tvScannedData?.setText(barcode.rawValue)
+                    canvasViewer.setup(requireActivity(),700,700)
+                    canvasViewer.canvas.getObjectsFromCode("""ot\"tx\"w169h92x165y319s\"sf""")
+                    canvasViewer.show(0,0,Gravity.CENTER)
 
                     val valueType = barcode.valueType
                     // See API reference for complete list of supported types
