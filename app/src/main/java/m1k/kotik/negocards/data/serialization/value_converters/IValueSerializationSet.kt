@@ -1,4 +1,4 @@
-package m1k.kotik.negocards.data.serialization.value_serializations
+package m1k.kotik.negocards.data.serialization.value_converters
 
 import java.lang.reflect.Type
 

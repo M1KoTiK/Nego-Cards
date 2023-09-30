@@ -38,7 +38,10 @@ android {
 dependencies {
     //Работа с изображениями
     implementation "com.squareup.picasso:picasso:2.8"
-    
+
+    //Рефлексия
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.1.0"
+
 
     //Splash Screen
     implementation("androidx.core:core-splashscreen:1.0.0")
