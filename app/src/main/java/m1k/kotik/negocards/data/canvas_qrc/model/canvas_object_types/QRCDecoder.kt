@@ -149,6 +149,9 @@ sealed class CanvasObjectSerializationTag{
         override val default: CanvasObjectType get() = CanvasObjectType.Text
         override val name: String get() = "ot"
         override val visiblePropertyName: String get() = "Тип объекта"
+
+        override var childTags: List<CanvasObjectSerializationTag> = super.childTags
+
         override fun setField(canvasObject: CanvasObject, value: Any) {
             canvasObject.type = value as CanvasObjectType
         }
@@ -367,9 +370,7 @@ sealed class CanvasObjectSerializationTag{
         override val name: String get() = "s"
         override val visiblePropertyName: String get() = "Стиль"
         override val default: Style get() = Fill()
-        override var childTags: List<CanvasObjectSerializationTag> = super.childTags +
-                CanvasObjectSerializationTag.Style.Fill() +
-                CanvasObjectSerializationTag.Style.Stroke()
+
         override fun setField(canvasObject: CanvasObject, value: Any) {
             canvasObject.style = value as Style
         }

@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.Toast
 import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject
 
-abstract class MovablePopupWindowDefault:PopupWindowDefault(), IMovablePopupWindow {
+abstract class MovablePopupWindowDefault: PopupWindowDefault(), IMovablePopupWindow {
     override fun move(x: Int, y: Int) {
         root!!.update(x,y,-1,-1)
 
