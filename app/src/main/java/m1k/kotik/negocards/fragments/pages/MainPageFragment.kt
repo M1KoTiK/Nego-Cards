@@ -8,6 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import m1k.kotik.negocards.R
+import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject
+import m1k.kotik.negocards.data.serialization.TestParser
+import m1k.kotik.negocards.data.serialization.serializationObject.TestSerializeObject
 import m1k.kotik.negocards.databinding.FragmentMainPageBinding
 
 class MainPageFragment: Fragment() {
@@ -24,6 +27,9 @@ class MainPageFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        var  parser = TestParser()
+        parser.parseString("",)
+
         navController = binding?.root?.findNavController()!!
         binding?.button2?.setOnClickListener {
             navController.navigate(R.id.scannerPageFragment)

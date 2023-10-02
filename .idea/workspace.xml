@@ -14,22 +14,25 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Начал переписывать класс для сериализации">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/SeriаlizeMember.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/reflection/WriteValue.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/serializationObject/TestSerializeObject.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/serializer/DefaultSerializer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.androidTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.androidTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.unitTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.unitTest.iml" afterDir="false" />
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Начал писать логику рефлексии для десериализации">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/parser/TestParser.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/parser/TypedValue.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/reflection/Utils.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/value_converters/canvas_object_value_converters/CanvasObjectArrayConverter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/value_converters/canvas_object_value_converters/CanvasObjectConverterSet.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/value_converters/canvas_object_value_converters/CanvasObjectIntConverter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/value_converters/canvas_object_value_converters/CanvasObjectStringConverter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/ISerializationObject.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/serializationObject/ISerializationObject.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/ISerializationParser.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/parser/ISerializationParser.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/SeriаlizeMember.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/serializationObject/SeriаlizationMember.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/reflection/WriteValue.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/serializationObject/TestSerializeObject.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/serializationObject/TestSerializeObject.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/serializer/DefaultSerializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/serializer/TestSerializer.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/serializer/ISerializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/serializer/ISerializer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/value_serializations/IValueSerialization.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/value_converters/IValueSerialization.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/value_serializations/IValueSerializationSet.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/value_converters/IValueSerializationSet.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/value_serializations/canvas_object_value_serialization/CanvasObjectValueSerialization.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/value_converters/canvas_object_value_converters/CanvasObjectValueSerialization.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/value_converters/IValueSerialization.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/value_converters/IValueConverter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/value_converters/IValueSerializationSet.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/value_converters/IValueConverterSet.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/value_converters/canvas_object_value_converters/CanvasObjectValueSerialization.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/MainPageFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/MainPageFragment.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,11 +166,11 @@
       <recent name="m1k.kotik.negocards.model" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="m1k.kotik.negocards.data.serialization.serializationObject" />
+      <recent name="m1k.kotik.negocards.data.serialization.parser" />
+      <recent name="m1k.kotik.negocards.data.serialization.serialization_allocators" />
       <recent name="m1k.kotik.negocards.data.serialization.serializationObjects" />
       <recent name="m1k.kotik.negocards.data.serialization.value_serializations" />
-      <recent name="m1k.kotik.negocards.data.serialization.serializer" />
-      <recent name="m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.shapes.canvas_objects" />
-      <recent name="m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types" />
     </key>
     <key name="android.template.1505593035">
       <recent name="com.example.negocards.fragments.pages" />
@@ -242,13 +245,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675626606726</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Переходы между экранами через нижнее меню">
-      <created>1675713394513</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1675713394513</updated>
     </task>
     <task id="LOCAL-00011" summary="Добавлены библиотеки cameraX и MLKIT.&#10;Добавлен переход к фрагменту со сканером по кнопке">
       <created>1678045071039</created>
@@ -586,7 +582,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696090023236</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Начал писать логику рефлексии для десериализации">
+      <created>1696100726895</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1696100726895</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -601,7 +604,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Починил передвижение объектов по канвасу, теперь можно добавлять и перемещать текст :3 &#10;Добавил логотип" />
     <MESSAGE value="Исправил перетаскивание" />
     <MESSAGE value="Добавил функцию для правильного движения разных объектов" />
     <MESSAGE value="Теперь можно добавлять любые объекты и двигать их" />
@@ -626,7 +628,8 @@
     <MESSAGE value="Исправлена противная ошибка" />
     <MESSAGE value="проверка QRCViewer в несвойственном для него месте и начало исправления класса тегов так как они неправильно насраны" />
     <MESSAGE value="Начал переписывать класс для сериализации" />
-    <option name="LAST_COMMIT_MESSAGE" value="Начал переписывать класс для сериализации" />
+    <MESSAGE value="Начал писать логику рефлексии для десериализации" />
+    <option name="LAST_COMMIT_MESSAGE" value="Начал писать логику рефлексии для десериализации" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
