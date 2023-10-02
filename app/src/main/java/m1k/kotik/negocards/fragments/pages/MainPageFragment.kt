@@ -28,8 +28,11 @@ class MainPageFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var  parser = TestParser()
-        parser.parseString("",)
-
+        var testObject = TestSerializeObject()
+        val map = parser.parseString("text(valueText)", testObject)
+        println(map.keys.toString())
+        println(map.values.first().value)
+        println(map.values.first().type)
         navController = binding?.root?.findNavController()!!
         binding?.button2?.setOnClickListener {
             navController.navigate(R.id.scannerPageFragment)

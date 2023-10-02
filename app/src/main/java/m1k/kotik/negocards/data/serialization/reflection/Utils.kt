@@ -3,7 +3,8 @@ package m1k.kotik.negocards.data.serialization.reflection
 import m1k.kotik.negocards.data.serialization.serializationObject.SeriаlizationMember
 import m1k.kotik.negocards.data.serialization.serializationObject.ISerializationObject
 import kotlin.reflect.*
-import kotlin.reflect.full.*
+import kotlin.reflect.full.findAnnotation
+import kotlin.reflect.full.memberProperties
 
 inline fun <reified T: ISerializationObject, V> writeOnKey(key:String, value: V, serializationObject: T){
         val properties = serializationObject::class.memberProperties

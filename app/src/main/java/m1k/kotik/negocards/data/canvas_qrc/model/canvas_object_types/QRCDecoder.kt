@@ -62,8 +62,7 @@ sealed class CanvasObjectType {
         CanvasObjectSerializationTag.Height,
         CanvasObjectSerializationTag.PosX,
         CanvasObjectSerializationTag.PosY,
-        CanvasObjectSerializationTag.Color,
-        CanvasObjectSerializationTag.Style())
+        CanvasObjectSerializationTag.Color)
 
     object Text: CanvasObjectType() {
         override val tag: String get() = "tx"

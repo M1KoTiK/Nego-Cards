@@ -5,7 +5,7 @@ import m1k.kotik.negocards.data.serialization.value_converters.IValueConverterSe
 import java.lang.reflect.Type
 
 class CanvasObjectConverterSet: IValueConverterSet{
-    override val objectSeparator: String = ""
+    override val objectSeparator: String = ";"
     override val map: MutableMap<Type, IValueConverter<*>>
         get() = mutableMapOf(
             String::class.java to CanvasObjectStringConverter(),
