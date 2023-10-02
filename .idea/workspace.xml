@@ -14,7 +14,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="УРА!! Парсер работает" />
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Оказалось что до это этого парсер не работал, так что теперь работает" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -226,13 +226,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675626606726</updated>
-    </task>
-    <task id="LOCAL-00013" summary="- Добавил возвращение к начальному фрагменту при повторном нажатии на пункт меню. &#10;- Добавлены иконки для выбора сканера и создания qr-кода&#10;- Добавлено закругление для сканера">
-      <created>1678136863670</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1678136863670</updated>
     </task>
     <task id="LOCAL-00014" summary="Много чего добавил">
       <created>1678316896882</created>
@@ -570,7 +563,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696244212980</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Оказалось что до это этого парсер не работал, так что теперь работает">
+      <created>1696245463643</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1696245463643</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -585,7 +585,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Теперь можно добавлять любые объекты и двигать их" />
     <MESSAGE value="Добавил выделение объектов синей обводкой" />
     <MESSAGE value="Теперь есть два режима выделения синей обводкой и красной" />
     <MESSAGE value="Даблклик теперь работает" />
@@ -610,7 +609,8 @@
     <MESSAGE value="Начал писать логику рефлексии для десериализации" />
     <MESSAGE value="Пишу парсер" />
     <MESSAGE value="УРА!! Парсер работает" />
-    <option name="LAST_COMMIT_MESSAGE" value="УРА!! Парсер работает" />
+    <MESSAGE value="Оказалось что до это этого парсер не работал, так что теперь работает" />
+    <option name="LAST_COMMIT_MESSAGE" value="Оказалось что до это этого парсер не работал, так что теперь работает" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -622,8 +622,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/MainPageFragment.kt</url>
-          <line>31</line>
-          <option name="timeStamp" value="20" />
+          <line>33</line>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
