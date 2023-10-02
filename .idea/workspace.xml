@@ -14,7 +14,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Оказалось что до это этого парсер не работал, так что теперь работает" />
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Жопа я неправильно сделал парсер">
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/parser/TestParser.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/parser/TestParser.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/reflection/Utils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/reflection/Utils.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -226,13 +230,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675626606726</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Много чего добавил">
-      <created>1678316896882</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1678316896882</updated>
     </task>
     <task id="LOCAL-00015" summary="Добаален экран с выбором типа QRC из выпадающего меню">
       <created>1678318615651</created>
@@ -570,7 +567,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696245463643</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Жопа я неправильно сделал парсер">
+      <created>1696245711278</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1696245711278</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -585,7 +589,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добавил выделение объектов синей обводкой" />
     <MESSAGE value="Теперь есть два режима выделения синей обводкой и красной" />
     <MESSAGE value="Даблклик теперь работает" />
     <MESSAGE value="Теперь можно задавать размеры канваса" />
@@ -610,7 +613,8 @@
     <MESSAGE value="Пишу парсер" />
     <MESSAGE value="УРА!! Парсер работает" />
     <MESSAGE value="Оказалось что до это этого парсер не работал, так что теперь работает" />
-    <option name="LAST_COMMIT_MESSAGE" value="Оказалось что до это этого парсер не работал, так что теперь работает" />
+    <MESSAGE value="Жопа я неправильно сделал парсер" />
+    <option name="LAST_COMMIT_MESSAGE" value="Жопа я неправильно сделал парсер" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

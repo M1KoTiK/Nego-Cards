@@ -3,6 +3,7 @@ package m1k.kotik.negocards.data.serialization
 import m1k.kotik.negocards.data.serialization.parser.ISerializationParser
 import m1k.kotik.negocards.data.serialization.parser.TypedValue
 import m1k.kotik.negocards.data.serialization.reflection.getMemberKeys
+import m1k.kotik.negocards.data.serialization.reflection.getMemberKeysAndTypes
 import m1k.kotik.negocards.data.serialization.serializationObject.ISerializationObject
 import m1k.kotik.negocards.data.serialization.value_converters.IValueConverterSet
 import m1k.kotik.negocards.data.serialization.value_converters.canvas_object_value_converters.CanvasObjectConverterSet
@@ -20,7 +21,7 @@ class TestParser: ISerializationParser {
         serializationString: String,
         sObj: ISerializationObject
     ): Map<String, TypedValue> {
-        val objectMemberKeys = getMemberKeys(sObj)
+        val memberKeyAndTypes = getMemberKeysAndTypes(sObj)
         val outputMap = mutableMapOf<String, TypedValue>()
         var index = 0
 
@@ -28,7 +29,7 @@ class TestParser: ISerializationParser {
             var scanValue: String = ""
             while(index< serializationString.count()){
                 scanValue += serializationString[index]
-                if(getMemberKeys(sObj).contains(scanValue)){
+                if(memberKeyAndTypes.containsKey(scanValue)){
                     index++
                     return scanValue;
                 }
@@ -50,7 +51,7 @@ class TestParser: ISerializationParser {
 
         }
 
-        fun searchValue(): TypedValue?{
+        fun searchValue(key: String): TypedValue?{
             var scanValue: String = ""
             var startAllocatorValue = ""
             var type: Type? = null
@@ -62,12 +63,7 @@ class TestParser: ISerializationParser {
                     scanValue = ""
                     index++
                     value = goToEndAllocator(startAllocatorValue) ?: return null
-                    for (t in listRequiredType) {
-                        if (converterSet.map[t]!!.valueStarts == startAllocatorValue) {
-                            type = t
-                            break
-                        }
-                    }
+                    type = memberKeyAndTypes[key]
                     if(type != null) {
                         index++
                         return TypedValue(type, value)
@@ -80,9 +76,9 @@ class TestParser: ISerializationParser {
 
         //работа функции
         while(index < serializationString.count()){
-            val key = searchKey()
-            val typedValue = searchValue()
-            if(key != null && typedValue != null){
+            val key = searchKey() ?: continue
+            val typedValue = searchValue(key)
+            if(typedValue != null){
                 outputMap[key] = typedValue
             }
         }
