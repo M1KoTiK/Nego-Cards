@@ -45,7 +45,7 @@ class TestParser: ISerializationParser {
                 return null
             }
             var value = subSerializationString.substring(0,indexEndAllocator)
-                index = indexEndAllocator + 1
+                index += indexEndAllocator
             return value
 
         }

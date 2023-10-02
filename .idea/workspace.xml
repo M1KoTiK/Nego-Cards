@@ -14,19 +14,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Пишу парсер">
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.androidTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.androidTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.unitTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.unitTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/canvas_object_types/QRCDecoder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/canvas_object_types/QRCDecoder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/parser/TestParser.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/parser/TestParser.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/reflection/Utils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/reflection/Utils.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/value_converters/canvas_object_value_converters/CanvasObjectConverterSet.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/value_converters/canvas_object_value_converters/CanvasObjectConverterSet.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/MainPageFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/MainPageFragment.kt" afterDir="false" />
-    </list>
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="УРА!! Парсер работает" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -238,13 +226,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675626606726</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Сканер теперь работает">
-      <created>1678050133773</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1678050133774</updated>
     </task>
     <task id="LOCAL-00013" summary="- Добавил возвращение к начальному фрагменту при повторном нажатии на пункт меню. &#10;- Добавлены иконки для выбора сканера и создания qr-кода&#10;- Добавлено закругление для сканера">
       <created>1678136863670</created>
@@ -582,7 +563,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696226511705</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="УРА!! Парсер работает">
+      <created>1696244212980</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1696244212980</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -597,7 +585,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добавил функцию для правильного движения разных объектов" />
     <MESSAGE value="Теперь можно добавлять любые объекты и двигать их" />
     <MESSAGE value="Добавил выделение объектов синей обводкой" />
     <MESSAGE value="Теперь есть два режима выделения синей обводкой и красной" />
@@ -622,7 +609,8 @@
     <MESSAGE value="Начал переписывать класс для сериализации" />
     <MESSAGE value="Начал писать логику рефлексии для десериализации" />
     <MESSAGE value="Пишу парсер" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пишу парсер" />
+    <MESSAGE value="УРА!! Парсер работает" />
+    <option name="LAST_COMMIT_MESSAGE" value="УРА!! Парсер работает" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
