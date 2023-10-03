@@ -13,6 +13,6 @@ class TestConverterSet: IValueConverterSet {
         get() = mutableMapOf(
             typeOf<String>() to SimpleValueConverter<String>("\"","\""),
             typeOf<Int>() to SimpleValueConverter<Int>("(", ")"),
-            typeOf<List<Any>>() to  SimpleListConverter("[","]")
+            typeOf<List<Any>>() to SimpleListConverter<Any>("[","]")
         )
 }

@@ -2,20 +2,16 @@ package m1k.kotik.negocards.data.serialization
 
 import m1k.kotik.negocards.data.serialization.parser.ISerializationParser
 import m1k.kotik.negocards.data.serialization.parser.TypedValue
+import m1k.kotik.negocards.data.serialization.reflection.getMemberKeysAndTypedValue
 import m1k.kotik.negocards.data.serialization.reflection.getMemberKeysAndTypes
 import m1k.kotik.negocards.data.serialization.serializationObject.ISerializationObject
 import m1k.kotik.negocards.data.serialization.string_utils.findRestrictedBetween
 import m1k.kotik.negocards.data.serialization.value_converters.IValueConverterSet
 import m1k.kotik.negocards.data.serialization.value_converters.TestConverterSet
-import java.lang.reflect.Type
 import kotlin.reflect.KType
 
-class TestParser: ISerializationParser {
+class DefaultParser: ISerializationParser {
     override val converterSet: IValueConverterSet = TestConverterSet() //CanvasObjectConverterSet()
-
-    private val listAllStartAllocator = getAllStartAllocators()
-    private val mapAllocations = getAllAllocations()
-    private val listRequiredType = getAllConvertableType()
 
     // не вернет ключ для типа самого сериализуемого объекта - он обрабатывается в ISerializer
     override fun parseString(
@@ -82,30 +78,40 @@ class TestParser: ISerializationParser {
         return outputMap
     }
 
-
-
     override fun parseObject(sObj: ISerializationObject): Map<String, TypedValue> {
-        TODO("Not yet implemented")
+        return getMemberKeysAndTypedValue(sObj)
     }
-    private fun getAllConvertableType(): MutableList<KType>{
-        val outputList = mutableListOf<KType>()
-        for(type in converterSet.typeToConverterMap.keys){
-            outputList.add(type)
+    //------------------------------------
+    //Списки с всопомогательными значениями
+    //----------------------------------------
+    private val listAllStartAllocator = Companion.getAllStartAllocators(this)
+    private val mapAllocations = Companion.getAllAllocations(this)
+    private val listRequiredType = Companion.getAllConvertableType(this)
+
+    companion object {
+
+        fun getAllConvertableType(defaultParser: DefaultParser): MutableList<KType>{
+            val outputList = mutableListOf<KType>()
+            for(type in defaultParser.converterSet.typeToConverterMap.keys){
+                outputList.add(type)
+            }
+            return outputList
         }
-        return outputList
-    }
-    private fun getAllStartAllocators():List<String>{
-        val outputList = mutableListOf<String>()
-        for(value in converterSet.typeToConverterMap.values){
-            outputList.add(value.valueStarts)
+
+        fun getAllAllocations(defaultParser: DefaultParser):Map<String, String>{
+            val outputList = mutableMapOf<String, String>()
+            for(value in defaultParser.converterSet.typeToConverterMap.values){
+                outputList[value.valueStarts] = value.valueEnds
+            }
+            return outputList
         }
-        return outputList
-    }
-    private fun getAllAllocations():Map<String, String>{
-        val outputList = mutableMapOf<String, String>()
-        for(value in converterSet.typeToConverterMap.values){
-            outputList[value.valueStarts] = value.valueEnds
+
+        fun getAllStartAllocators(defaultParser: DefaultParser):List<String>{
+            val outputList = mutableListOf<String>()
+            for(value in defaultParser.converterSet.typeToConverterMap.values){
+                outputList.add(value.valueStarts)
+            }
+            return outputList
         }
-        return outputList
     }
 }

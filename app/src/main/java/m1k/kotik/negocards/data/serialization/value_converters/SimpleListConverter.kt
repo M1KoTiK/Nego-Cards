@@ -5,10 +5,11 @@ import java.util.Arrays
 import kotlin.reflect.full.createType
 
 
-class SimpleListConverter(
+
+class SimpleListConverter<T>(
     override val valueStarts: String,
     override val valueEnds: String,
-    private val itemSeparator: String = ","): IValueConverter<MutableList<Any>>
+    private val itemSeparator: String = ","): IValueConverter<MutableList<T>>
 {
     init{
 
@@ -17,17 +18,17 @@ class SimpleListConverter(
                     " и для разделения их элементов не должны быть одинаковыми")
         }
     }
-
-    override fun deserialize(serializationValue: String): MutableList<Any> {
-        val outputList = mutableListOf<Any>()
+    @Suppress("UNCHECKED_CAST")
+    override fun deserialize(serializationValue: String): MutableList<T> {
+        val outputList = mutableListOf<T>()
         val list = serializationValue.drop(valueStarts.length).dropLast(valueEnds.length).split(",")
         for(item in list){
-            outputList.add(item)
+            outputList.add(item as T)
         }
         return outputList
     }
 
-    override fun serialize(value: MutableList<Any>): String {
+    override fun serialize(value: MutableList<T>): String {
         var outputString = valueStarts
         for(item in value){
             if(outputString.length == valueStarts.length){

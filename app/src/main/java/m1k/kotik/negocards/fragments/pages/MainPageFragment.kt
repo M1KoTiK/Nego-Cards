@@ -8,12 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import m1k.kotik.negocards.R
-import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject
-import m1k.kotik.negocards.data.serialization.TestParser
-import m1k.kotik.negocards.data.serialization.reflection.getType
+import m1k.kotik.negocards.data.serialization.DefaultParser
 import m1k.kotik.negocards.data.serialization.serializationObject.TestSerializeObject
 import m1k.kotik.negocards.databinding.FragmentMainPageBinding
-import kotlin.reflect.jvm.jvmName
 
 
 class MainPageFragment: Fragment() {
@@ -31,10 +28,11 @@ class MainPageFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        println(mutableListOf<Any>().javaClass)
-        var  parser = TestParser()
+//Проверка парсера
+        var  parser = DefaultParser()
         var testObject = TestSerializeObject()
-        val map = parser.parseString("text\"valueText\"int(10)list[5,4,3,2,1]", testObject)
+        val map = parser.parseObject(testObject)
+        //val map = parser.parseString("text\"valueText\"int(10)list[5,4,3,2,1]", testObject)
         println(map.keys.toString())
         map.values.forEach { it-> println(" type: ${it.type} value: ${it.value}") }
 

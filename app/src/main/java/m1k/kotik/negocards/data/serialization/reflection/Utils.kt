@@ -1,19 +1,29 @@
 package m1k.kotik.negocards.data.serialization.reflection
 
+import m1k.kotik.negocards.data.serialization.parser.TypedValue
 import m1k.kotik.negocards.data.serialization.serializationObject.SeriаlizationMember
 import m1k.kotik.negocards.data.serialization.serializationObject.ISerializationObject
-import java.lang.reflect.Type
-import java.util.PropertyPermission
+import org.reflections.Reflections
 import kotlin.reflect.*
+import kotlin.reflect.full.allSuperclasses
 import kotlin.reflect.full.findAnnotation
 import kotlin.reflect.full.memberProperties
-import kotlin.reflect.jvm.javaType
 
-                                                             
+fun findImplementationsOfInterface(interfaceType: KClass<*>, packageName: String): Set<KClass<*>> {
+    val reflections = Reflections(packageName)
+    val subTypes = reflections.getSubTypesOf(interfaceType.java)
+    val implementingClasses = mutableSetOf<KClass<*>>()
+    for (subType in subTypes) {
+        val implementedInterfaces = subType.kotlin.allSuperclasses
+        if (implementedInterfaces.contains(interfaceType)) {
+            implementingClasses.add(subType.kotlin)
+        }
+    }
+    return implementingClasses
+}
 
-
-inline fun <reified T: ISerializationObject, V> writeOnKey(key:String, value: V, serializationObject: T){
-        val properties = serializationObject::class.memberProperties
+inline fun <T> writeOnKey(key:String, value: Any, serializationObject: T){
+        val properties = serializationObject!!::class.memberProperties
         for(prop in properties){
             var annotation = prop.findAnnotation<SeriаlizationMember>()
             if(annotation != null && annotation.Key == key){
@@ -23,6 +33,7 @@ inline fun <reified T: ISerializationObject, V> writeOnKey(key:String, value: V,
             }
         }
 }
+
 fun getMemberAnnotation(sObj: ISerializationObject): MutableList<SeriаlizationMember>{
     val outputList: MutableList<SeriаlizationMember> = mutableListOf()
     val properties = sObj::class.memberProperties
@@ -54,4 +65,22 @@ fun getMemberKeysAndTypes(sObj: ISerializationObject): MutableMap<String, KType>
     }
     return outputMap
 }
+
+fun getMemberKeysAndTypedValue(sObj: ISerializationObject): MutableMap<String, TypedValue>{
+    val memberAnnotationList = getMemberAnnotation(sObj)
+    val outputMap = mutableMapOf<String,TypedValue>()
+    val properties = sObj::class.memberProperties
+    for (prop in properties){
+        val annotation = prop.findAnnotation<SeriаlizationMember>()
+        if(annotation!= null) {
+            val type = prop.returnType
+            val value = prop.getter.call(sObj) ?: continue
+            outputMap[annotation.Key] = TypedValue(type, value)
+        }
+    }
+    return outputMap
+}
+
+
+
 inline fun <reified T> getType() = T::class.java
