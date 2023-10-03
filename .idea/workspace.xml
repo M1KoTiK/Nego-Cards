@@ -14,10 +14,21 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Жопа я неправильно сделал парсер">
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Теперь парсер правильно срет">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/string_utils/StringSeparators.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/value_converters/SimpleListConverter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/value_converters/SimpleValueConverter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/value_converters/TestConverterSet.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/parser/TestParser.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/parser/TestParser.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/parser/TypedValue.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/parser/TypedValue.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/reflection/Utils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/reflection/Utils.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/serializationObject/TestSerializeObject.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/serializationObject/TestSerializeObject.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/value_converters/IValueConverterSet.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/value_converters/IValueConverterSet.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/value_converters/canvas_object_value_converters/CanvasObjectConverterSet.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/value_converters/canvas_object_value_converters/CanvasObjectConverterSet.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/value_converters/canvas_object_value_converters/CanvasObjectIntConverter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/value_converters/canvas_object_value_converters/CanvasObjectIntConverter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/MainPageFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/MainPageFragment.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,13 +241,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675626606726</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Добаален экран с выбором типа QRC из выпадающего меню">
-      <created>1678318615651</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1678318615651</updated>
     </task>
     <task id="LOCAL-00016" summary="Добаален экран с выбором типа QRC из выпадающего меню&#10;//EmptyCommit">
       <created>1678318686676</created>
@@ -574,7 +578,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696245711278</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="Теперь парсер правильно срет">
+      <created>1696247158452</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1696247158452</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -589,7 +600,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Теперь есть два режима выделения синей обводкой и красной" />
     <MESSAGE value="Даблклик теперь работает" />
     <MESSAGE value="Теперь можно задавать размеры канваса" />
     <MESSAGE value="Добавил удаление объектов" />
@@ -614,7 +624,8 @@
     <MESSAGE value="УРА!! Парсер работает" />
     <MESSAGE value="Оказалось что до это этого парсер не работал, так что теперь работает" />
     <MESSAGE value="Жопа я неправильно сделал парсер" />
-    <option name="LAST_COMMIT_MESSAGE" value="Жопа я неправильно сделал парсер" />
+    <MESSAGE value="Теперь парсер правильно срет" />
+    <option name="LAST_COMMIT_MESSAGE" value="Теперь парсер правильно срет" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -626,17 +637,19 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/MainPageFragment.kt</url>
-          <line>33</line>
-          <option name="timeStamp" value="21" />
+          <line>36</line>
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
+        <PinnedItemInfo parentTag="m1k.kotik.negocards.data.serialization.serializationObject.TestSerializeObject" memberName="list" />
         <PinnedItemInfo parentTag="m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject$Tag$Text" memberName="obligatory" />
         <PinnedItemInfo parentTag="m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject$Tag$Text" memberName="tag" />
         <PinnedItemInfo parentTag="m1k.kotik.negocards.data.canvas_qrc.model.TextObject" memberName="height" />
         <PinnedItemInfo parentTag="m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject$Tag$Text" memberName="default" />
+        <PinnedItemInfo parentTag="m1k.kotik.negocards.data.serialization.value_converters.TestConverterSet" memberName="map" />
         <PinnedItemInfo parentTag="m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject$Companion" memberName="searchableListObjectType" />
         <PinnedItemInfo parentTag="m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject$Companion" memberName="shadow$_monitor_" />
         <PinnedItemInfo parentTag="m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject$CanvasObjectSerializationTag$ObjectTypeTag" memberName="visiblePropertyName" />

@@ -7,4 +7,7 @@ class TestSerializeObject: ISerializationObject {
 
     @SeriаlizationMember("text")
     var text = "1256"
+
+    @SeriаlizationMember("list")
+    var list = listOf(1,"3")
 }

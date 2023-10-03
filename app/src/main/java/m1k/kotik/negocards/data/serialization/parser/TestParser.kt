@@ -2,15 +2,16 @@ package m1k.kotik.negocards.data.serialization
 
 import m1k.kotik.negocards.data.serialization.parser.ISerializationParser
 import m1k.kotik.negocards.data.serialization.parser.TypedValue
-import m1k.kotik.negocards.data.serialization.reflection.getMemberKeys
 import m1k.kotik.negocards.data.serialization.reflection.getMemberKeysAndTypes
 import m1k.kotik.negocards.data.serialization.serializationObject.ISerializationObject
+import m1k.kotik.negocards.data.serialization.string_utils.findRestrictedBetween
 import m1k.kotik.negocards.data.serialization.value_converters.IValueConverterSet
-import m1k.kotik.negocards.data.serialization.value_converters.canvas_object_value_converters.CanvasObjectConverterSet
+import m1k.kotik.negocards.data.serialization.value_converters.TestConverterSet
 import java.lang.reflect.Type
+import kotlin.reflect.KType
 
 class TestParser: ISerializationParser {
-    override val converterSet: IValueConverterSet = CanvasObjectConverterSet()
+    override val converterSet: IValueConverterSet = TestConverterSet() //CanvasObjectConverterSet()
 
     private val listAllStartAllocator = getAllStartAllocators()
     private val mapAllocations = getAllAllocations()
@@ -38,36 +39,32 @@ class TestParser: ISerializationParser {
             return null
         }
 
-        fun goToEndAllocator(startAllocator: String): String?{
-            val endAllocator = mapAllocations[startAllocator] ?: return null
-            var subSerializationString = serializationString.substring(index,serializationString.count())
-            var indexEndAllocator = subSerializationString.indexOf(endAllocator)
-            if(indexEndAllocator == -1){
-                return null
-            }
-            var value = subSerializationString.substring(0,indexEndAllocator)
-                index += indexEndAllocator
-            return value
 
-        }
 
         fun searchValue(key: String): TypedValue?{
             var scanValue: String = ""
             var startAllocatorValue = ""
-            var type: Type? = null
             var value: Any
             while(index< serializationString.count()) {
                 scanValue += serializationString[index]
                 if (listAllStartAllocator.contains(scanValue)) {
                     startAllocatorValue = scanValue
                     scanValue = ""
-                    index++
-                    value = goToEndAllocator(startAllocatorValue) ?: return null
-                    type = memberKeyAndTypes[key]
-                    if(type != null) {
-                        index++
-                        return TypedValue(type, value)
-                    }
+
+                    val endAllocator = mapAllocations[startAllocatorValue] ?: return null
+                    var subSerializationString = serializationString.substring(index,serializationString.count())
+
+                    var subStringForValueConvert = findRestrictedBetween(
+                        subSerializationString,
+                        startAllocatorValue,
+                        endAllocator
+                    ) ?: return null
+                    var type = memberKeyAndTypes[key] ?: return null
+                    var converter = converterSet.typeToConverterMap[type]
+                    value = converter?.deserialize(subStringForValueConvert) ?: return null
+                    index += value.toString().length + startAllocatorValue.length + endAllocator.length
+                    return TypedValue(type, value)
+
                 }
                 index++
             }
@@ -90,23 +87,23 @@ class TestParser: ISerializationParser {
     override fun parseObject(sObj: ISerializationObject): Map<String, TypedValue> {
         TODO("Not yet implemented")
     }
-    private fun getAllConvertableType(): MutableList<Type>{
-        val outputList = mutableListOf<Type>()
-        for(type in converterSet.map.keys){
+    private fun getAllConvertableType(): MutableList<KType>{
+        val outputList = mutableListOf<KType>()
+        for(type in converterSet.typeToConverterMap.keys){
             outputList.add(type)
         }
         return outputList
     }
     private fun getAllStartAllocators():List<String>{
         val outputList = mutableListOf<String>()
-        for(value in converterSet.map.values){
+        for(value in converterSet.typeToConverterMap.values){
             outputList.add(value.valueStarts)
         }
         return outputList
     }
     private fun getAllAllocations():Map<String, String>{
         val outputList = mutableMapOf<String, String>()
-        for(value in converterSet.map.values){
+        for(value in converterSet.typeToConverterMap.values){
             outputList[value.valueStarts] = value.valueEnds
         }
         return outputList
