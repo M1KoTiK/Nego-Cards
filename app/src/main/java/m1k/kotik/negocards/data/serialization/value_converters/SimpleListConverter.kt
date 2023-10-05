@@ -21,7 +21,7 @@ class SimpleListConverter<T>(
     @Suppress("UNCHECKED_CAST")
     override fun deserialize(serializationValue: String): MutableList<T> {
         val outputList = mutableListOf<T>()
-        val list = serializationValue.drop(valueStarts.length).dropLast(valueEnds.length).split(",")
+        val list = serializationValue.drop(valueStarts.length).dropLast(valueEnds.length).split(itemSeparator)
         for(item in list){
             outputList.add(item as T)
         }
@@ -35,10 +35,11 @@ class SimpleListConverter<T>(
                 outputString += item
             }
             else{
-                outputString += ",${item}"
+                outputString += "${itemSeparator}${item}"
             }
         }
         outputString += valueEnds
+        println(outputString)
         return  outputString
     }
 

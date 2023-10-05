@@ -10,7 +10,16 @@ import androidx.navigation.findNavController
 import m1k.kotik.negocards.R
 import m1k.kotik.negocards.data.serialization.DefaultParser
 import m1k.kotik.negocards.data.serialization.serializationObject.TestSerializeObject
+import m1k.kotik.negocards.data.serialization.serializer.TestSerializer
 import m1k.kotik.negocards.databinding.FragmentMainPageBinding
+import kotlin.reflect.full.createType
+import kotlin.reflect.KType
+import kotlin.reflect.KClass
+import kotlin.reflect.cast
+import kotlin.reflect.full.createInstance
+import kotlin.reflect.javaType
+import kotlin.reflect.jvm.javaType
+import kotlin.reflect.jvm.jvmErasure
 
 
 class MainPageFragment: Fragment() {
@@ -24,19 +33,19 @@ class MainPageFragment: Fragment() {
         binding = FragmentMainPageBinding.inflate(inflater, container, false)
         return binding!!.root
     }
-
+    inline fun <reified T: Any> Any.cast(): T{
+        return this as T
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
 //Проверка парсера
         var  parser = DefaultParser()
         var testObject = TestSerializeObject()
-        val map = parser.parseObject(testObject)
-        //val map = parser.parseString("text\"valueText\"int(10)list[5,4,3,2,1]", testObject)
-        println(map.keys.toString())
-        map.values.forEach { it-> println(" type: ${it.type} value: ${it.value}") }
 
-
+        var serializator = TestSerializer()
+        var output: TestSerializeObject? = serializator.deserialize<TestSerializeObject>("sqint(5)text\"10\"list[1,\"10\"]")
+        println( output?.list)
 
         navController = binding?.root?.findNavController()!!
         binding?.button2?.setOnClickListener {

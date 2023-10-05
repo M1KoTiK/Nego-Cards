@@ -1,18 +1,21 @@
 package m1k.kotik.negocards.data.serialization.value_converters
 
+import m1k.kotik.negocards.data.serialization.value_converters.canvas_object_value_converters.CanvasObjectIntConverter
+import m1k.kotik.negocards.data.serialization.value_converters.canvas_object_value_converters.CanvasObjectStringConverter
 import java.lang.reflect.Type
+import kotlin.reflect.KClass
 import kotlin.reflect.KType
 import kotlin.reflect.typeOf
 
 
 class TestConverterSet: IValueConverterSet {
-    private inline fun <reified T> getType() = T::class.java.componentType
+
     override val objectSeparator: String
         get() = ";"
     override val typeToConverterMap: Map<KType, IValueConverter<*>>
         get() = mutableMapOf(
-            typeOf<String>() to SimpleValueConverter<String>("\"","\""),
-            typeOf<Int>() to SimpleValueConverter<Int>("(", ")"),
+            typeOf<String>() to CanvasObjectStringConverter(),
+            typeOf<Int>() to CanvasObjectIntConverter(),
             typeOf<List<Any>>() to SimpleListConverter<Any>("[","]")
         )
 }

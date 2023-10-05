@@ -8,6 +8,7 @@ import kotlin.reflect.*
 import kotlin.reflect.full.allSuperclasses
 import kotlin.reflect.full.findAnnotation
 import kotlin.reflect.full.memberProperties
+import kotlin.reflect.jvm.jvmErasure
 
 fun findImplementationsOfInterface(interfaceType: KClass<*>, packageName: String): Set<KClass<*>> {
     val reflections = Reflections(packageName)
@@ -22,13 +23,27 @@ fun findImplementationsOfInterface(interfaceType: KClass<*>, packageName: String
     return implementingClasses
 }
 
-inline fun <T> writeOnKey(key:String, value: Any, serializationObject: T){
+
+inline fun <reified T> writeOnKey(key:String, value: Any, serializationObject: T){
+        println("writeOnKeyValue - ${value}")
+        println("writeOnKeyKey - ${key}")
         val properties = serializationObject!!::class.memberProperties
         for(prop in properties){
             var annotation = prop.findAnnotation<SeriаlizationMember>()
             if(annotation != null && annotation.Key == key){
-                if(prop is KMutableProperty1){
-                    prop.setter.call(serializationObject, value)
+                if (prop is KMutableProperty1<*, *>) {
+                    val propType = prop.returnType.jvmErasure // Тип свойства prop
+                    val valueType = value::class // Тип value
+                    if (propType.isInstance(value)) {
+                        // Типы совпадают или value может быть приведен к типу propType
+                        prop.setter.call(serializationObject, value)
+                    } else {
+                        // Типы не совпадают
+                        println("Тип value ($valueType) не совпадает с типом свойства ($propType).")
+                    }
+                } else {
+                    // prop не является изменяемым свойством
+                    println("prop не является изменяемым свойством.")
                 }
             }
         }

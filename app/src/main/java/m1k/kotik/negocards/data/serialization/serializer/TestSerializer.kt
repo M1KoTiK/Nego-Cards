@@ -2,24 +2,52 @@ package m1k.kotik.negocards.data.serialization.serializer
 
 import m1k.kotik.negocards.data.serialization.parser.ISerializationParser
 import m1k.kotik.negocards.data.serialization.DefaultParser
-import m1k.kotik.negocards.data.serialization.reflection.getMemberAnnotation
+import m1k.kotik.negocards.data.serialization.parser.TypedValue
 import m1k.kotik.negocards.data.serialization.reflection.writeOnKey
 import m1k.kotik.negocards.data.serialization.serializationObject.ISerializationObject
 import m1k.kotik.negocards.data.serialization.serializationObject.TestSerializeObject
-import m1k.kotik.negocards.data.serialization.value_converters.IValueConverterSet
-import kotlin.reflect.KType
-import kotlin.reflect.typeOf
+import kotlin.reflect.KClass
+import kotlin.reflect.full.createInstance
+import kotlin.reflect.full.createType
 
-class TestSerializer(var lengthForKey: Int = 5): ISerializer {
-    override val requiredObjectList: MutableList<KType>
-        get() = TODO("Not yet implemented")
+class TestSerializer(var lengthForKey: Int = 10,
+): ISerializer {
+    override val requiredObjectMap: Map<String, KClass<*>> = mutableMapOf(
+        "sq" to TestSerializeObject::class
+    )
+
     override var parser: ISerializationParser = DefaultParser()
 
     override fun serialize(serializeObject: ISerializationObject): String {
     TODO()
     }
 
-    override fun <T : ISerializationObject> deserialize(code: String, serializeObject: T): T {
-    TODO()
+    override fun <T> deserialize(code: String): T? {
+        val key = searchKey(code) ?: return null
+        val kClass = requiredObjectMap[key] ?: return null
+        val kType = kClass.createType()
+        val instance = kClass.createInstance() as ISerializationObject
+        val map = parser.parseString(code.drop(key.length),instance)
+        for (memberKey in map.keys){
+            val typedValue = map[memberKey]?: return null
+            val memberValueType = typedValue.type
+            val memberValue = typedValue.value
+            writeOnKey(memberKey,memberValue,instance)
+        }
+        @Suppress("UNCHECKED_CAST")
+        return instance as T
     }
+
+    private fun searchKey(code: String): String?{
+        var scanValue = ""
+        for(i in 0..lengthForKey){
+            scanValue += code[i]
+            if(requiredObjectMap.containsKey(scanValue)){
+                return scanValue
+            }
+        }
+        return null
+    }
+
+
 }
