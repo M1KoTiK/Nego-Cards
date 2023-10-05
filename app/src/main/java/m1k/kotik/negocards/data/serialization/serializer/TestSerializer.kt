@@ -19,7 +19,18 @@ class TestSerializer(var lengthForKey: Int = 10,
     override var parser: ISerializationParser = DefaultParser()
 
     override fun serialize(serializeObject: ISerializationObject): String {
-    TODO()
+        val key = serializeObject.key
+        var outputString = key
+        val map = parser.parseObject(serializeObject)
+        for(key in map.keys){
+            val typedValue = map[key] ?: continue
+            val type = typedValue.type
+            val value = typedValue.value
+            val converter = parser.converterSet.typeToConverterMap[type] ?: continue
+            outputString += key
+            outputString += converter.serialize(value)
+        }
+        return outputString
     }
 
     override fun <T> deserialize(code: String): T? {

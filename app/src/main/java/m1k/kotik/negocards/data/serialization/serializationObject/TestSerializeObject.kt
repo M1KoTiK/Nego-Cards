@@ -3,7 +3,7 @@ package m1k.kotik.negocards.data.serialization.serializationObject
 class TestSerializeObject: ISerializationObject {
     override val key: String = "sq"
     @SeriаlizationMember("int")
-    var integer:Int  = 1214
+    var integer:String  = "1214"
 
     @SeriаlizationMember("text")
     var text:String = "1256"

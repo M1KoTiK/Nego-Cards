@@ -44,8 +44,10 @@ class MainPageFragment: Fragment() {
         var testObject = TestSerializeObject()
 
         var serializator = TestSerializer()
-        var output: TestSerializeObject? = serializator.deserialize<TestSerializeObject>("sqint(5)text\"10\"list[1,\"10\"]")
-        println( output?.list)
+        var serObject = serializator.deserialize<TestSerializeObject>("sqint(1214)list[1,3]text\"1256\"")
+        println( serializator.serialize(serObject!!))
+
+
 
         navController = binding?.root?.findNavController()!!
         binding?.button2?.setOnClickListener {

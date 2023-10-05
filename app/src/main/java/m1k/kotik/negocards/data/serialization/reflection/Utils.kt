@@ -25,8 +25,6 @@ fun findImplementationsOfInterface(interfaceType: KClass<*>, packageName: String
 
 
 inline fun <reified T> writeOnKey(key:String, value: Any, serializationObject: T){
-        println("writeOnKeyValue - ${value}")
-        println("writeOnKeyKey - ${key}")
         val properties = serializationObject!!::class.memberProperties
         for(prop in properties){
             var annotation = prop.findAnnotation<SeriаlizationMember>()

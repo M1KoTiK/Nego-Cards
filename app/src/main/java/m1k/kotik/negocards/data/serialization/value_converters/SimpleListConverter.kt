@@ -28,8 +28,11 @@ class SimpleListConverter<T>(
         return outputList
     }
 
-    override fun serialize(value: MutableList<T>): String {
+    override fun serialize(value: Any): String {
         var outputString = valueStarts
+        @Suppress("UNCHECKED_CAST")
+        value as MutableList<T>
+
         for(item in value){
             if(outputString.length == valueStarts.length){
                 outputString += item
@@ -39,7 +42,6 @@ class SimpleListConverter<T>(
             }
         }
         outputString += valueEnds
-        println(outputString)
         return  outputString
     }
 

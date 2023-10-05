@@ -6,6 +6,6 @@ interface IValueConverter<T> {
    // Символы обозначающие начало и конец значения не должны иметь в себе цифру
    val valueStarts: String
    val valueEnds: String
-   fun serialize(value:T):String
+   fun serialize(value: Any):String
    fun deserialize(serializationValue:String):T
 }

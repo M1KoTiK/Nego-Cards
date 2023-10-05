@@ -12,7 +12,7 @@ class SimpleValueConverter<T>(): IValueConverter<T> {
         return outputValue
     }
 
-    override fun serialize(value: T): String {
+    override fun serialize(value: Any): String {
         return  "${valueStarts}${value}${value}"
     }
 
