@@ -7,8 +7,8 @@ import kotlin.reflect.full.createType
 
 
 class SimpleListConverter<T>(
-    override val valueStarts: String,
-    override val valueEnds: String,
+    override val valueStarts: String = "[",
+    override val valueEnds: String = "]",
     private val itemSeparator: String = ","): IValueConverter<MutableList<T>>
 {
     init{

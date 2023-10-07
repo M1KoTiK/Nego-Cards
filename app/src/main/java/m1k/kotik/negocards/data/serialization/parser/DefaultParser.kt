@@ -60,7 +60,8 @@ class DefaultParser: ISerializationParser {
                     var type = memberKeyAndTypes[key] ?: return null
                     var converter = converterSet.typeToConverterMap[type]
                     value = converter?.deserialize(subStringForValueConvert) ?: return null
-                    index += value.toString().length + startAllocatorValue.length + endAllocator.length
+                    println("tp = ${converter::class.java.toGenericString()}")
+                    index += subStringForValueConvert.length
                     return TypedValue(type, value)
 
                 }

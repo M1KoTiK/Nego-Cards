@@ -44,9 +44,11 @@ class MainPageFragment: Fragment() {
         var testObject = TestSerializeObject()
 
         var serializator = TestSerializer()
-        var serObject = serializator.deserialize<TestSerializeObject>("sqint(1214)list[1,3]text\"1256\"")
-        println( serializator.serialize(serObject!!))
-
+        val testString = serializator.serialize(testObject)
+        println(testString)
+        val testObject2 = serializator.deserialize<TestSerializeObject>(testString)
+        testObject2!!.isUse = false
+        println(serializator.serialize(testObject2))
 
 
         navController = binding?.root?.findNavController()!!

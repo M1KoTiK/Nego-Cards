@@ -2,12 +2,15 @@ package m1k.kotik.negocards.data.serialization.serializationObject
 
 class TestSerializeObject: ISerializationObject {
     override val key: String = "sq"
-    @SeriаlizationMember("int")
-    var integer:String  = "1214"
+    @SeriаlizationMember("x")
+    var integer:Int  = 20
 
-    @SeriаlizationMember("text")
-    var text:String = "1256"
+    @SeriаlizationMember("y")
+    var text:Int = 122
 
-    @SeriаlizationMember("list")
+    @SeriаlizationMember("u")
+    var isUse: Boolean = true
+
+    @SeriаlizationMember("l")
     var list = listOf(1,"3")
 }

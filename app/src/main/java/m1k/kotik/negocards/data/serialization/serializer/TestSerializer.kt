@@ -29,6 +29,7 @@ class TestSerializer(var lengthForKey: Int = 10,
             val converter = parser.converterSet.typeToConverterMap[type] ?: continue
             outputString += key
             outputString += converter.serialize(value)
+
         }
         return outputString
     }
@@ -43,7 +44,9 @@ class TestSerializer(var lengthForKey: Int = 10,
             val typedValue = map[memberKey]?: return null
             val memberValueType = typedValue.type
             val memberValue = typedValue.value
-            writeOnKey(memberKey,memberValue,instance)
+            println("key = ${memberKey}, value = ${memberValue}, type = ${memberValue::class}")
+           writeOnKey(memberKey,memberValue,instance)
+
         }
         @Suppress("UNCHECKED_CAST")
         return instance as T

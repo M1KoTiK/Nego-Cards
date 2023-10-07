@@ -88,6 +88,7 @@ fun getMemberKeysAndTypedValue(sObj: ISerializationObject): MutableMap<String, T
         if(annotation!= null) {
             val type = prop.returnType
             val value = prop.getter.call(sObj) ?: continue
+            println("${value} ${value::class}")
             outputMap[annotation.Key] = TypedValue(type, value)
         }
     }
