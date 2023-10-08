@@ -8,18 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import m1k.kotik.negocards.R
+import m1k.kotik.negocards.data.canvas_qrc.canvas_objects.CanvasObject
 import m1k.kotik.negocards.data.serialization.DefaultParser
-import m1k.kotik.negocards.data.serialization.serializationObject.TestSerializeObject
-import m1k.kotik.negocards.data.serialization.serializer.TestSerializer
+import m1k.kotik.negocards.data.serialization.serializer.DefaultSerializer
 import m1k.kotik.negocards.databinding.FragmentMainPageBinding
-import kotlin.reflect.full.createType
-import kotlin.reflect.KType
-import kotlin.reflect.KClass
-import kotlin.reflect.cast
-import kotlin.reflect.full.createInstance
-import kotlin.reflect.javaType
-import kotlin.reflect.jvm.javaType
-import kotlin.reflect.jvm.jvmErasure
 
 
 class MainPageFragment: Fragment() {
@@ -41,21 +33,29 @@ class MainPageFragment: Fragment() {
 
 //Проверка парсера
         var  parser = DefaultParser()
-        var testObject = TestSerializeObject()
+        class TestCanvasObject: CanvasObject(){
+            override val key: String
+                get() = "co"
 
-        var serializator = TestSerializer()
+        }
+        var testObject =  TestCanvasObject()
+
+        var serializator = DefaultSerializer(
+            mutableMapOf(
+            "co" to TestCanvasObject::class
+            )
+        )
         val testString = serializator.serialize(testObject)
         println(testString)
-        val testObject2 = serializator.deserialize<TestSerializeObject>(testString)
-        testObject2!!.isUse = false
-        println(serializator.serialize(testObject2))
+        val testObject2 = serializator.deserialize<TestCanvasObject>(testString)
+        println(serializator.serialize(testObject!!))
 
 
         navController = binding?.root?.findNavController()!!
-        binding?.button2?.setOnClickListener {
+        binding?.imageView9?.setOnClickListener {
             navController.navigate(R.id.scannerPageFragment)
         }
-        binding?.button3?.setOnClickListener {
+        binding?.imageView21?.setOnClickListener {
             navController.navigate(R.id.choiceTypeQRCFragment)
         }
     }

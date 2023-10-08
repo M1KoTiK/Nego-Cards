@@ -1,4 +1,4 @@
-package m1k.kotik.negocards.view
+package m1k.kotik.negocards.custom_view
 
 import android.annotation.SuppressLint
 import android.content.Context

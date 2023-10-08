@@ -1,23 +1,16 @@
-package m1k.kotik.negocards.view
+package m1k.kotik.negocards.custom_view
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.*
 import android.graphics.Paint.Style
-import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
 import android.widget.Toast
-import com.squareup.picasso.Picasso
 import m1k.kotik.negocards.data.canvas_qrc.model.*
-import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.ImageObject
 import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.QRCDecoder
 import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.ShapeObject
 import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.shapes.RectRShape
-import java.io.IOException
-import java.io.InputStream
-import java.net.HttpURLConnection
-import java.net.URL
 
 
 open class CanvasView(context: Context, attrs: AttributeSet) : View(context, attrs) {

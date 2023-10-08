@@ -43,7 +43,7 @@
         <item name="fontFamily">@font/roboto</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:letterSpacing">0.05</item>
-        <item name="backgroundTint">@color/inpField</item>
+        <item name="backgroundTint">@color/white_d9</item>
         <item name="android:textColor">@color/black18</item>
         <item name="android:layout_width">280dp</item>
         <item name="android:layout_height">60dp</item>
@@ -56,7 +56,7 @@
         <item name="fontFamily">@font/roboto</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:letterSpacing">0.05</item>
-        <item name="backgroundTint">@color/inpField</item>
+        <item name="backgroundTint">@color/white_d9</item>
         <item name="android:textColor">@color/black18</item>
         <item name="android:layout_width">280dp</item>
         <item name="android:layout_height">60dp</item>

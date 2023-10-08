@@ -5,7 +5,7 @@
     android:background="@drawable/rounded_popup_window"
     android:layout_height="match_parent">
 
-    <m1k.kotik.negocards.view.CanvasView
+    <m1k.kotik.negocards.custom_view.CanvasView
         android:id="@+id/canvasView"
         android:layout_width="343dp"
         android:layout_height="229dp"

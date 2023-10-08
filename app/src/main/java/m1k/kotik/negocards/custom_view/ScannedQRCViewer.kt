@@ -1,12 +1,10 @@
-package m1k.kotik.negocards.view
+package m1k.kotik.negocards.custom_view
 
 import android.content.Context
 import android.graphics.Canvas
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
-import androidx.core.content.res.ResourcesCompat
-import m1k.kotik.negocards.R
 import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.shapes.RectRShape
 
 class ScannedQRCViewer(context: Context, attrs: AttributeSet) : View(context, attrs) {
