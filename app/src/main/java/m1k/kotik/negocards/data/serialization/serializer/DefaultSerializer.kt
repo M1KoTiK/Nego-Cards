@@ -9,7 +9,7 @@ import kotlin.reflect.KClass
 import kotlin.reflect.full.createInstance
 import kotlin.reflect.full.createType
 
-class DefaultSerializer(
+open class DefaultSerializer(
     override val requiredObjectMap: Map<String, KClass<*>>,
     var lengthForKey: Int = 10
 ): ISerializer {
@@ -17,7 +17,12 @@ class DefaultSerializer(
     override var parser: ISerializationParser = DefaultParser()
 
     override fun serialize(serializeObject: ISerializationObject): String {
-        val key = serializeObject.key
+        var key = serializeObject.key
+
+        //Если есть символ для отделения ключа то добавляем его
+        if(parser.converterSet.splitSign.isNotEmpty()){
+            key += parser.converterSet.splitSign
+        }
         var outputString = key
         val map = parser.parseObject(serializeObject)
         for(key in map.keys){
@@ -34,15 +39,17 @@ class DefaultSerializer(
 
     override fun <T> deserialize(code: String): T? {
         val key = searchKey(code) ?: return null
+
         val kClass = requiredObjectMap[key] ?: return null
         val kType = kClass.createType()
         val instance = kClass.createInstance() as ISerializationObject
-        val map = parser.parseString(code.drop(key.length),instance)
+
+        // Пропускаем символы ключа и символ для того чтобы его отделить от значений объекта
+        val map = parser.parseString(code.drop(key.length + parser.converterSet.splitSign.length),instance)
         for (memberKey in map.keys){
             val typedValue = map[memberKey]?: return null
             val memberValueType = typedValue.type
             val memberValue = typedValue.value
-            //println("key = ${memberKey}, value = ${memberValue}, type = ${memberValue::class}")
            writeOnKey(memberKey,memberValue,instance)
 
         }

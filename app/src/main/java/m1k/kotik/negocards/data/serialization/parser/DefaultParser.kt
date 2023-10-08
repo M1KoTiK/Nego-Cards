@@ -13,9 +13,10 @@ import java.lang.reflect.Type
 import kotlin.reflect.KType
 
 class DefaultParser: ISerializationParser {
-    override val converterSet: IValueConverterSet = TestConverterSet() //CanvasObjectConverterSet()
-
+    override var serializationStringSplitObjectValueIndex: Int = 0
+    override var converterSet: IValueConverterSet = TestConverterSet() //CanvasObjectConverterSet()
     // не вернет ключ для типа самого сериализуемого объекта - он обрабатывается в ISerializer
+
     override fun parseString(
         serializationString: String,
         sObj: ISerializationObject
@@ -27,6 +28,10 @@ class DefaultParser: ISerializationParser {
         fun searchKey(): String?{
             var scanValue: String = ""
             while(index< serializationString.count()){
+                if(scanValue == converterSet.objectSeparator){
+                    serializationStringSplitObjectValueIndex = index
+                    return null
+                }
                 scanValue += serializationString[index]
                 if(memberKeyAndTypes.containsKey(scanValue)){
                     index++
@@ -84,7 +89,7 @@ class DefaultParser: ISerializationParser {
         return getMemberKeysAndTypedValue(sObj)
     }
     //------------------------------------
-    //Списки с всопомогательными значениями
+    //Списки с вспомогательными значениями
     //----------------------------------------
     private val listAllStartAllocator = Companion.getAllStartAllocators(this)
     private val mapAllocations = Companion.getAllAllocations(this)

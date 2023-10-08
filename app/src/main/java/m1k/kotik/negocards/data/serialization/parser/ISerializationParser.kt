@@ -4,7 +4,8 @@ import m1k.kotik.negocards.data.serialization.serializationObject.ISerialization
 import m1k.kotik.negocards.data.serialization.value_converters.IValueConverterSet
 
 interface ISerializationParser {
-    val converterSet: IValueConverterSet
+    var serializationStringSplitObjectValueIndex: Int
+    var converterSet: IValueConverterSet
     fun parseString(serializationString: String, sObj: ISerializationObject):Map<String, TypedValue>
     fun parseObject(sObj: ISerializationObject): Map<String,TypedValue>
 }

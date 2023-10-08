@@ -9,16 +9,18 @@ class Rectangle(
     y: Int,
     width: Int,
     height: Int,
-    color: String
+    color: String = defaultColor
 
 ) : CanvasShape(x,y,width, height,color) {
-    init {
-
-    }
-
     override val key: String = "rc"
 
     override fun draw(canvas: Canvas) {
-        TODO("Not yet implemented")
+        canvas.drawRect(
+            x.toFloat(), //Левая стороная
+            y.toFloat(), //Верхняя сторона
+            x + width.toFloat(), //Правая сторона
+            y + height.toFloat(), //Нижняя сторона
+            paint // Кисть для задания стиля
+        )
     }
 }

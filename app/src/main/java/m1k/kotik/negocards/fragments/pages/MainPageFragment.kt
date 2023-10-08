@@ -45,9 +45,9 @@ class MainPageFragment: Fragment() {
             "co" to TestCanvasObject::class
             )
         )
-        val testString = serializator.serialize(testObject)
-        println(testString)
-        val testObject2 = serializator.deserialize<TestCanvasObject>(testString)
+        //val testString = serializator.serialize(testObject)
+        //println(testString)
+        val testObject2 = serializator.deserialize<TestCanvasObject>("co:h(0)w(0)x(0)y(0);co:h(0)w(0)x(0)y(0)")
         println(serializator.serialize(testObject!!))
 
 
