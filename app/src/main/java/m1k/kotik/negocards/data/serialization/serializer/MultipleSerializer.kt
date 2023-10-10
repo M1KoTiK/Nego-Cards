@@ -3,7 +3,7 @@ package m1k.kotik.negocards.data.serialization.serializer
 import m1k.kotik.negocards.data.serialization.serializationObject.ISerializationObject
 import kotlin.reflect.KClass
 
-class ComplementarySerializer(requiredObjectMap: Map<String, KClass<*>>)
+class MultipleSerializer(requiredObjectMap: Map<String, KClass<*>>)
     : DefaultSerializer(requiredObjectMap)
 {
         fun multipleSerialize(list: MutableList<ISerializationObject>):String{

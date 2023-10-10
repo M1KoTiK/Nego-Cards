@@ -13,6 +13,7 @@ import java.lang.reflect.Type
 import kotlin.reflect.KType
 
 class DefaultParser: ISerializationParser {
+    override var checkTypeChange: Boolean = true
     override var serializationStringSplitObjectValueIndex: Int = 0
     override var converterSet: IValueConverterSet = TestConverterSet() //CanvasObjectConverterSet()
     // не вернет ключ для типа самого сериализуемого объекта - он обрабатывается в ISerializer
@@ -41,7 +42,12 @@ class DefaultParser: ISerializationParser {
             }
             return null
         }
-
+        fun checkTypeChange(text: String):Boolean{
+            if(text.toDoubleOrNull()!=null){
+                return true
+            }
+            return false
+        }
 
 
         fun searchValue(key: String): TypedValue?{
@@ -50,6 +56,7 @@ class DefaultParser: ISerializationParser {
             var value: Any
             while(index< serializationString.count()) {
                 scanValue += serializationString[index]
+                if(checkTypeChange(scanValue))
                 if (listAllStartAllocator.contains(scanValue)) {
                     startAllocatorValue = scanValue
                     scanValue = ""

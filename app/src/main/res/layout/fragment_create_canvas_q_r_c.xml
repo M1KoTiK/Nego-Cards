@@ -58,7 +58,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <m1k.kotik.negocards.custom_view.CanvasEditor
+        <m1k.kotik.negocards.data.canvas_qrc.canvas_view.CanvasEditor
             android:id="@+id/view"
             android:layout_marginTop="25dp"
             android:layout_width="wrap_content"

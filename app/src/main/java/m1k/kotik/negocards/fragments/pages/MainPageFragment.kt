@@ -25,9 +25,7 @@ class MainPageFragment: Fragment() {
         binding = FragmentMainPageBinding.inflate(inflater, container, false)
         return binding!!.root
     }
-    inline fun <reified T: Any> Any.cast(): T{
-        return this as T
-    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

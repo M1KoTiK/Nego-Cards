@@ -1,8 +1,7 @@
 package m1k.kotik.negocards.data.canvas_qrc.canvas_serialization
 
 import m1k.kotik.negocards.data.canvas_qrc.canvas_objects.shapes.Rectangle
-import m1k.kotik.negocards.data.serialization.DefaultParser
-import m1k.kotik.negocards.data.serialization.serializer.ComplementarySerializer
+import m1k.kotik.negocards.data.serialization.serializer.MultipleSerializer
 import kotlin.reflect.KClass
 
 class CanvasSerialization {
@@ -10,7 +9,7 @@ class CanvasSerialization {
         "rc" to Rectangle::class,
     )
 
-    val canvasSerializer = ComplementarySerializer(mapReqObjects).also {
+    val canvasSerializer = MultipleSerializer(mapReqObjects).also {
         it.parser.converterSet = CanvasConverterSet()
     }
 }
