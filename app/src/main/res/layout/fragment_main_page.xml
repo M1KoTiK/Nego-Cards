@@ -8,7 +8,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/pixel_background">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,14 +25,14 @@
 
                 <ImageView
                     android:id="@+id/button2"
-                    android:layout_width="55dp"
-                    android:layout_height="45dp"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:adjustViewBounds="true"
                     android:background="@drawable/rounded_square_30"
+                    android:scaleType="centerInside"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:scaleType="centerInside"
-                    android:adjustViewBounds="true"
                     app:srcCompat="@drawable/menu_icon_smallest" />
 
                 <TextView
@@ -39,8 +40,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
-                    android:textColor="@color/white_d9"
                     android:text="Меню главной"
+                    android:textColor="@color/white_d9"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/button2"
@@ -57,9 +58,9 @@
 
                 <ImageView
                     android:id="@+id/imageView10"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="15dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="25dp"
                     android:background="@drawable/rounded_square_30"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -67,9 +68,9 @@
 
                 <ImageView
                     android:id="@+id/imageView11"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="15dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="20dp"
                     android:background="@drawable/rounded_square_30"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView10"
@@ -77,9 +78,9 @@
 
                 <ImageView
                     android:id="@+id/imageView12"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="15dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="20dp"
                     android:background="@drawable/rounded_square_30"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView11"
@@ -93,8 +94,8 @@
 
                 <ImageView
                     android:id="@+id/imageView9"
-                    android:layout_width="95dp"
-                    android:layout_height="95dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:background="@drawable/rounded_square_20"
                     android:scaleType="centerInside"
                     app:layout_constraintEnd_toStartOf="@+id/imageView21"
@@ -104,13 +105,13 @@
 
                 <TextView
                     android:id="@+id/textView6"
-                    android:layout_width="111dp"
-                    android:layout_height="21dp"
+                    android:layout_width="117dp"
+                    android:layout_height="25dp"
                     android:layout_marginTop="10dp"
                     android:text="Сканировать"
                     android:textAlignment="center"
                     android:textColor="@color/white_d9"
-                    android:textSize="18dp"
+                    android:textSize="15dp"
                     app:layout_constraintEnd_toStartOf="@+id/textView7"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageView9" />
@@ -118,8 +119,8 @@
                 <ImageView
                     android:id="@+id/imageView21"
 
-                    android:layout_width="95dp"
-                    android:layout_height="95dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:background="@drawable/rounded_square_20"
                     android:scaleType="centerInside"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -130,8 +131,8 @@
                 <ImageView
                     android:id="@+id/imageView8"
 
-                    android:layout_width="95dp"
-                    android:layout_height="95dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:background="@drawable/rounded_square_20"
                     android:scaleType="centerInside"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -146,7 +147,7 @@
                     android:text="Создать"
                     android:textAlignment="center"
                     android:textColor="@color/white_d9"
-                    android:textSize="18dp"
+                    android:textSize="15dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageView21" />
@@ -159,7 +160,7 @@
                     android:text="Сохраненное"
                     android:textAlignment="center"
                     android:textColor="@color/white_d9"
-                    android:textSize="18dp"
+                    android:textSize="15dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textView7"
                     app:layout_constraintTop_toBottomOf="@+id/imageView8" />
@@ -171,15 +172,14 @@
 
                 <ImageView
                     android:id="@+id/imageView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="200dp"
+                    android:layout_width="375dp"
+                    android:layout_height="180dp"
                     android:layout_marginTop="30dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.157"
+                    app:layout_constraintVertical_bias="0.128"
                     app:srcCompat="@drawable/favourite_qrc_icon" />
 
                 <TextView
@@ -187,9 +187,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:text="Закрепите здесь избранный QRC"
                     android:textColor="@color/white_d9"
                     android:textSize="18sp"
-                    android:text="Закрепите здесь избранный QRC"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageView5" />
