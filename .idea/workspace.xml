@@ -14,18 +14,22 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Поменял дизайн главной страницы">
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Исправил дизайн главной страницы и добавил бэкграунд с пикселями">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/flashlight_icon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_main_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_main_page.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/ScannerPageFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/ScannerPageFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/pixel_background.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/pixel_background.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_scanner_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_scanner_page.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\User\.android\avd\Nexus_6P_API_28.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\User\.android\avd\Pixel_3_XL_API_33.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -234,13 +238,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675626606726</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Начал делать Encoder">
-      <created>1678709629571</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1678709629571</updated>
     </task>
     <task id="LOCAL-00025" summary="Переделываю модель для объектов Canvas">
       <created>1678739418348</created>
@@ -578,7 +575,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696965506234</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="Исправил дизайн главной страницы и добавил бэкграунд с пикселями">
+      <created>1696966752713</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1696966752714</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -593,7 +597,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Корявый слайдер хорошо работает, начала делать нормальный кастомный слайдер" />
     <MESSAGE value="Сделал нормальный класс для кастомного слайдера" />
     <MESSAGE value="Переименовал классный (❁´◡`❁)" />
     <MESSAGE value="Переименовал классный класс (❁´◡`❁)" />
@@ -618,7 +621,8 @@
     <MESSAGE value="Делаю реализация сериализатора для канваса" />
     <MESSAGE value="Доделал сериализатор, добавил новых фичей" />
     <MESSAGE value="Поменял дизайн главной страницы" />
-    <option name="LAST_COMMIT_MESSAGE" value="Поменял дизайн главной страницы" />
+    <MESSAGE value="Исправил дизайн главной страницы и добавил бэкграунд с пикселями" />
+    <option name="LAST_COMMIT_MESSAGE" value="Исправил дизайн главной страницы и добавил бэкграунд с пикселями" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

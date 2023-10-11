@@ -31,23 +31,24 @@
             </androidx.camera.view.PreviewView>
         </androidx.cardview.widget.CardView>
 
-        <EditText
-            android:id="@+id/tvScannedData"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:inputType="textMultiLine"
-            android:minWidth="100dp"
-            android:minHeight="60dp"
-            android:text="Ожидание"
-            android:textColor="@color/white"
-            android:textSize="23sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_height="wrap_content">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/flash_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="-35dp"
+            android:layout_marginEnd="-50dp"
+            android:background="@drawable/rounded_square_30"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toStartOf="@+id/cardView"
             app:layout_constraintTop_toBottomOf="@+id/cardView"
-            app:layout_constraintVertical_bias="0.142" />
+            app:srcCompat="@drawable/flashlight_icon" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

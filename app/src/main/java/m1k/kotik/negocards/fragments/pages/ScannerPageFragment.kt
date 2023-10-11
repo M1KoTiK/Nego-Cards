@@ -1,30 +1,27 @@
 package m1k.kotik.negocards.fragments.pages
-
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
+import android.hardware.Camera
 import android.os.Bundle
 import android.util.Log
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.camera.core.CameraSelector
-import androidx.camera.core.ImageAnalysis
-import androidx.camera.core.ImageProxy
-import androidx.camera.core.Preview
+import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
-import m1k.kotik.negocards.CameraXViewModel
 import com.google.mlkit.vision.barcode.Barcode
 import com.google.mlkit.vision.barcode.BarcodeScanner
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.common.InputImage
+import m1k.kotik.negocards.CameraXViewModel
 import m1k.kotik.negocards.data.canvas_qrc.model.popup_windows.CanvasViewerPopupWindow
 import m1k.kotik.negocards.databinding.FragmentScannerPageBinding
 import java.util.concurrent.Executors
@@ -32,7 +29,6 @@ import java.util.concurrent.Executors
 
 class ScannerPageFragment : Fragment() {
     private var binding: FragmentScannerPageBinding? = null
-
     private var previewView: PreviewView? = null
     private var cameraProvider: ProcessCameraProvider? = null
     private var cameraSelector: CameraSelector? = null
@@ -40,6 +36,8 @@ class ScannerPageFragment : Fragment() {
     private var previewUseCase: Preview? = null
     private var analysisUseCase: ImageAnalysis? = null
     var canvasViewer = CanvasViewerPopupWindow()
+    private lateinit var cam: androidx.camera.core.Camera
+    private var isLight = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,12 +52,23 @@ class ScannerPageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupCamera()
+
+
+        binding?.flashBtn?.setOnClickListener {
+            setTorch()
+            println("light!!")
+        }
     }
+
 
     override fun onStop() {
         super.onStop()
 
     }
+    val imageCapture = ImageCapture.Builder()
+    .setFlashMode(ImageCapture.FLASH_MODE_ON)
+    .build()
+
     private fun setupCamera() {
         previewView = binding?.previewView
         cameraSelector = CameraSelector.Builder().requireLensFacing(lensFacing).build()
@@ -79,6 +88,7 @@ class ScannerPageFragment : Fragment() {
                     )
                 }
             }
+
     }
 
     private fun bindCameraUseCases() {
@@ -98,11 +108,11 @@ class ScannerPageFragment : Fragment() {
             .build()
         previewUseCase!!.setSurfaceProvider(previewView!!.surfaceProvider)
         try {
-
-            cameraProvider!!.bindToLifecycle(
+            cam = cameraProvider!!.bindToLifecycle(
                 this,
                 cameraSelector!!,
-                previewUseCase
+                previewUseCase,
+                imageCapture
             )
         } catch (illegalStateException: IllegalStateException) {
             Log.e(TAG, illegalStateException.message ?: "IllegalStateException")
@@ -167,10 +177,9 @@ class ScannerPageFragment : Fragment() {
 
                     val rawValue = barcode.rawValue
 
-                    binding?.tvScannedData?.setText(barcode.rawValue)
-                    canvasViewer.setup(requireActivity(),700,700)
-                    canvasViewer.canvas.getObjectsFromCode("""ot\"tx\"w169h92x165y319s\"sf""")
-                    canvasViewer.show(0,0,Gravity.CENTER)
+//                    canvasViewer.setup(requireActivity(),700,700)
+//                    canvasViewer.canvas.getObjectsFromCode("""ot\"tx\"w169h92x165y319s\"sf""")
+//                    canvasViewer.show(0,0,Gravity.CENTER)
 
                     val valueType = barcode.valueType
                     // See API reference for complete list of supported types
@@ -212,7 +221,8 @@ class ScannerPageFragment : Fragment() {
         if (requestCode == PERMISSION_CAMERA_REQUEST) {
             if (isCameraPermissionGranted()) {
                 // start camera
-            } else {
+            }
+            else {
                 Log.e(TAG, "no camera permission")
             }
         }
@@ -226,7 +236,31 @@ class ScannerPageFragment : Fragment() {
         ) == PackageManager.PERMISSION_GRANTED
     }
 
+//        cameraManager = activity?.getSystemService(CAMERA_SERVICE) as CameraManager
+//        try {
+//            for(cameraID in cameraManager.cameraIdList) {
+//                val characteristics = cameraManager.getCameraCharacteristics(cameraID)
+//                val isHasFlashUnit = characteristics.get(FLASH_INFO_AVAILABLE)
+//                if (isHasFlashUnit!!){
+//                    cameraManager.setTorchMode(cameraID, true)
+//                }
+//            }
+//        }
+//        catch (e:Exception){
+//
+//        }
 
+
+    private fun setTorch(){
+        if (cam.cameraInfo.hasFlashUnit() ) {
+            if(isLight){
+                cam.cameraControl.enableTorch(false)
+            }
+            else if (!isLight){
+                cam.cameraControl.enableTorch(true)
+            }
+        }
+    }
 
     companion object {
         private val TAG = ScannerPageFragment::class.java.simpleName
