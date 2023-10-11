@@ -14,15 +14,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Исправил дизайн главной страницы и добавил бэкграунд с пикселями">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/flashlight_icon.png" afterDir="false" />
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Добавил фонарик при сканировании QRC">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/ScannerPageFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/ScannerPageFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/pixel_background.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/pixel_background.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_scanner_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_scanner_page.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -238,13 +233,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675626606726</updated>
-    </task>
-    <task id="LOCAL-00025" summary="Переделываю модель для объектов Canvas">
-      <created>1678739418348</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1678739418349</updated>
     </task>
     <task id="LOCAL-00026" summary="Исправлена модель CanvasObject">
       <created>1678792716162</created>
@@ -582,7 +570,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696966752714</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="Добавил фонарик при сканировании QRC">
+      <created>1697006681777</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1697006681777</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -597,7 +592,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Сделал нормальный класс для кастомного слайдера" />
     <MESSAGE value="Переименовал классный (❁´◡`❁)" />
     <MESSAGE value="Переименовал классный класс (❁´◡`❁)" />
     <MESSAGE value="Переделал классный класс со слайдером (❁´◡`❁)" />
@@ -622,7 +616,8 @@
     <MESSAGE value="Доделал сериализатор, добавил новых фичей" />
     <MESSAGE value="Поменял дизайн главной страницы" />
     <MESSAGE value="Исправил дизайн главной страницы и добавил бэкграунд с пикселями" />
-    <option name="LAST_COMMIT_MESSAGE" value="Исправил дизайн главной страницы и добавил бэкграунд с пикселями" />
+    <MESSAGE value="Добавил фонарик при сканировании QRC" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил фонарик при сканировании QRC" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -255,9 +255,11 @@ class ScannerPageFragment : Fragment() {
         if (cam.cameraInfo.hasFlashUnit() ) {
             if(isLight){
                 cam.cameraControl.enableTorch(false)
+                isLight = false
             }
             else if (!isLight){
                 cam.cameraControl.enableTorch(true)
+                isLight = true
             }
         }
     }
