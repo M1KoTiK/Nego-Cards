@@ -2,6 +2,7 @@ package m1k.kotik.negocards.fragments.pages
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -57,11 +58,17 @@ class ScannerPageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupCamera()
-
+        binding?.flashBtn?.imageTintList = ColorStateList.valueOf(0xFF909090.toInt())
         binding?.flashBtn?.setOnClickListener {
             setTorch()
         }
         val testList = mutableListOf<ScannedQRC>()
+        testList.add(ScannedQRC(QRCType.Canvas,"ot:rweew8931ffvsd", Date(23,10,12)))
+        testList.add(ScannedQRC(QRCType.Text,"TEXT", Date(23,10,12)))
+        testList.add(ScannedQRC(QRCType.Location,"X:232, Y:@323", Date(23,10,12)))
+        testList.add(ScannedQRC(QRCType.Canvas,"ot:rweew8931ffvsd", Date(23,10,12)))
+        testList.add(ScannedQRC(QRCType.Text,"TEXT", Date(23,10,12)))
+        testList.add(ScannedQRC(QRCType.Location,"X:232, Y:@323", Date(23,10,12)))
         testList.add(ScannedQRC(QRCType.Canvas,"ot:rweew8931ffvsd", Date(23,10,12)))
         testList.add(ScannedQRC(QRCType.Text,"TEXT", Date(23,10,12)))
         testList.add(ScannedQRC(QRCType.Location,"X:232, Y:@323", Date(23,10,12)))
@@ -261,11 +268,13 @@ class ScannerPageFragment : Fragment() {
 //        }
     private fun setTorch(){
         if (cam.cameraInfo.hasFlashUnit() ) {
-            if(isLight){
+            if(isLight) {
+                binding?.flashBtn?.imageTintList = ColorStateList.valueOf(0xFF000000.toInt())
                 cam.cameraControl.enableTorch(false)
                 isLight = false
             }
-            else if (!isLight){
+            else {
+                binding?.flashBtn?.imageTintList = ColorStateList.valueOf(0xFFD9D9D9.toInt())
                 cam.cameraControl.enableTorch(true)
                 isLight = true
             }

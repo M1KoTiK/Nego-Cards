@@ -1,13 +1,22 @@
 package m1k.kotik.negocards.data.qrc
 
 import android.content.Context
+import android.content.res.ColorStateList
+import android.content.res.Resources
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import m1k.kotik.negocards.R
 import m1k.kotik.negocards.databinding.ScannedQrcItemBinding
 
+private fun setCustomHeight(height: Int, view: View){
+    val params = view.layoutParams
+    params.height = height
+    view.layoutParams = params
+    view.requestLayout()
+}
 class ScannedQrcAdapter(val context: Context, private val scannedQRCList: List<ScannedQRC>):
     RecyclerView.Adapter<ScannedQrcAdapter.ScannedQRCViewHolder>() {
 
@@ -16,7 +25,15 @@ class ScannedQrcAdapter(val context: Context, private val scannedQRCList: List<S
             private val binding = scannedQrcItemBinding
             fun bind(scannedQRC: ScannedQRC, itemClickListener:(Int)->Unit){
                 binding.root.setOnClickListener { itemClickListener.invoke(bindingAdapterPosition) }
-                binding.QRCType.text = scannedQRC.type.name
+                when(bindingAdapterPosition){
+                    0 -> {
+                        setCustomHeight(225,binding.root)
+                        binding.root.background.setTintList(ColorStateList.valueOf(0xFFD9D9D9.toInt()))
+                    }
+                    else -> binding.root.background.setTintList(ColorStateList.valueOf(0xFF909090.toInt()))
+                }
+
+                binding.QRCType.text = scannedQRC.type.typeName
                 binding.QRCValue.text = scannedQRC.value
             }
         }

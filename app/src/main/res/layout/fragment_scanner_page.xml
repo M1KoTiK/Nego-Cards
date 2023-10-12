@@ -35,6 +35,7 @@
             android:id="@+id/flash_btn"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:foreground="@drawable/rounded_square_ripple_30"
             android:layout_marginTop="-35dp"
             android:layout_marginEnd="-50dp"
             android:background="@drawable/rounded_square_30"
@@ -56,7 +57,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listScannedQRC"
             android:layout_width="300dp"
-            android:layout_height="200dp"
+            android:layout_height="225dp"
             android:layout_marginTop="25dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

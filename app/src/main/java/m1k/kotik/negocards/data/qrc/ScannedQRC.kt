@@ -2,7 +2,7 @@ package m1k.kotik.negocards.data.qrc
 
 import java.util.Date
 
-enum class QRCType(name:String){
+enum class QRCType(val typeName: String){
     Text("Текст"),
     Reference("Ссылка"),
     Location("Геоданные"),
