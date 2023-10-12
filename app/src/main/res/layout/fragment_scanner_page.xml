@@ -31,12 +31,6 @@
             </androidx.camera.view.PreviewView>
         </androidx.cardview.widget.CardView>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
         <ImageView
             android:id="@+id/flash_btn"
             android:layout_width="50dp"
@@ -48,6 +42,25 @@
             app:layout_constraintEnd_toStartOf="@+id/cardView"
             app:layout_constraintTop_toBottomOf="@+id/cardView"
             app:srcCompat="@drawable/flashlight_icon" />
+
+        <ImageView
+            android:id="@+id/flash_btn2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="-35dp"
+            android:background="@drawable/rounded_square_30"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="@+id/cardView"
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listScannedQRC"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

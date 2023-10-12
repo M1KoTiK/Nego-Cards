@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import m1k.kotik.negocards.databinding.FragmentQrcViewPageBinding
-import m1k.kotik.negocards.data.QRC.QRCreator
+import m1k.kotik.negocards.data.qrc.QRCreator
 
 
 class QRCViewPageFragment : Fragment() {

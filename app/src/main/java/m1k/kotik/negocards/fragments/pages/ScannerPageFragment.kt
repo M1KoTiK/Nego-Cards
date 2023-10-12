@@ -2,20 +2,20 @@ package m1k.kotik.negocards.fragments.pages
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
-import android.hardware.Camera
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.mlkit.vision.barcode.Barcode
 import com.google.mlkit.vision.barcode.BarcodeScanner
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
@@ -23,7 +23,11 @@ import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.common.InputImage
 import m1k.kotik.negocards.CameraXViewModel
 import m1k.kotik.negocards.data.canvas_qrc.model.popup_windows.CanvasViewerPopupWindow
+import m1k.kotik.negocards.data.qrc.QRCType
+import m1k.kotik.negocards.data.qrc.ScannedQRC
+import m1k.kotik.negocards.data.qrc.ScannedQrcAdapter
 import m1k.kotik.negocards.databinding.FragmentScannerPageBinding
+import java.util.*
 import java.util.concurrent.Executors
 
 
@@ -53,18 +57,22 @@ class ScannerPageFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupCamera()
 
-
         binding?.flashBtn?.setOnClickListener {
             setTorch()
-            println("light!!")
         }
-    }
+        val testList = mutableListOf<ScannedQRC>()
+        testList.add(ScannedQRC(QRCType.Canvas,"ot:rweew8931ffvsd", Date(23,10,12)))
+        testList.add(ScannedQRC(QRCType.Text,"TEXT", Date(23,10,12)))
+        testList.add(ScannedQRC(QRCType.Location,"X:232, Y:@323", Date(23,10,12)))
 
+        binding?.listScannedQRC?.adapter = ScannedQrcAdapter(requireActivity(), testList)
+        binding?.listScannedQRC?.layoutManager = LinearLayoutManager(requireActivity())
+    }
 
     override fun onStop() {
         super.onStop()
-
     }
+
     val imageCapture = ImageCapture.Builder()
     .setFlashMode(ImageCapture.FLASH_MODE_ON)
     .build()
@@ -76,19 +84,17 @@ class ScannerPageFragment : Fragment() {
             this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
         ).get(CameraXViewModel::class.java)
             .processCameraProvider
-            .observe(requireActivity()) { provider: ProcessCameraProvider? ->
-                cameraProvider = provider
-                if (isCameraPermissionGranted()) {
-                    bindCameraUseCases()
-                } else {
-                    ActivityCompat.requestPermissions(
-                        requireActivity(),
-                        arrayOf(Manifest.permission.CAMERA),
-                        PERMISSION_CAMERA_REQUEST
-                    )
-                }
+            .observe(requireActivity()) { provider: ProcessCameraProvider? -> cameraProvider = provider
+            if (isCameraPermissionGranted()) {
+                bindCameraUseCases()
             }
-
+            else {
+                ActivityCompat.requestPermissions(
+                    requireActivity(),
+                    arrayOf(Manifest.permission.CAMERA),
+                    PERMISSION_CAMERA_REQUEST)
+            }
+        }
     }
 
     private fun bindCameraUseCases() {
@@ -150,7 +156,7 @@ class ScannerPageFragment : Fragment() {
 
         try {
             cameraProvider!!.bindToLifecycle(
-                /* lifecycleOwner= */this,
+                this,
                 cameraSelector!!,
                 analysisUseCase
             )
@@ -249,8 +255,6 @@ class ScannerPageFragment : Fragment() {
 //        catch (e:Exception){
 //
 //        }
-
-
     private fun setTorch(){
         if (cam.cameraInfo.hasFlashUnit() ) {
             if(isLight){

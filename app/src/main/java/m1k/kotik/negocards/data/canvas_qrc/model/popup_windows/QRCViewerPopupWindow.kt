@@ -3,8 +3,7 @@ package m1k.kotik.negocards.data.canvas_qrc.model.popup_windows
 import android.content.Context
 import android.widget.ImageView
 import m1k.kotik.negocards.R
-import m1k.kotik.negocards.data.QRC.QRCreator
-import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.QRCDecoder
+import m1k.kotik.negocards.data.qrc.QRCreator
 
 class QRCViewerPopupWindow: PopupWindowDefault() {
     lateinit var imageQRC: ImageView

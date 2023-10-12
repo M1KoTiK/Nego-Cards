@@ -18,7 +18,7 @@ import m1k.kotik.negocards.fragments.choiceParametersForQR.parametersForText.Par
 import m1k.kotik.negocards.fragments.choiceParametersForQR.parametersForText.ParamsReference
 import m1k.kotik.negocards.fragments.choiceParametersForQR.parametersForText.ParamsText
 import m1k.kotik.negocards.fragments.choiceParametersForQR.parametersForText.IParamsQRC
-import m1k.kotik.negocards.data.QRC.QRCreator
+import m1k.kotik.negocards.data.qrc.QRCreator
 
 
 class ChoiceParametersForTextFragment : Fragment() {

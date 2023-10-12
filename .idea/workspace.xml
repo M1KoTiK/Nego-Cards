@@ -14,10 +14,26 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Добавил фонарик при сканировании QRC">
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Исправил чтобы фонарик можно было выключить">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/new_canvas_view/CanvasView.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/qrc/ScannedQRC.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/qrc/ScannedQrcAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_square_ripple_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_square_ripple_30.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/scanned_qrc_item.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.androidTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.androidTest.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.unitTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.unitTest.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/QRC/QRCreator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/qrc/QRCreator.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/QRCViewerPopupWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/QRCViewerPopupWindow.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/choiceParametersForQR/ChoiceParametersForTextFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/choiceParametersForQR/ChoiceParametersForTextFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/QRCViewPageFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/QRCViewPageFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/ScannerPageFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/ScannerPageFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_main_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_main_page.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_scanner_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_scanner_page.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,9 +69,9 @@
         <option value="navigationResourceFile" />
         <option value="valueResourceFile" />
         <option value="Kotlin Annotation" />
-        <option value="layoutResourceFile" />
         <option value="Kotlin Interface" />
         <option value="resourceFile" />
+        <option value="layoutResourceFile" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -127,6 +143,7 @@
     <property name="android-custom-viewC:/Users/User/source/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/custom_view/CanvasEditor.kt_SELECTED" value="CanvasEditor" />
     <property name="android-custom-viewC:/Users/User/source/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/CanvasEditor.kt_SELECTED" value="CanvasEditor" />
     <property name="android-custom-viewC:/Users/User/source/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/CanvasView.kt_SELECTED" value="CanvasView" />
+    <property name="android-custom-viewC:/Users/User/source/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/new_canvas_view/CanvasView.kt_SELECTED" value="CanvasView" />
     <property name="android-custom-viewC:/Users/User/source/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/view/CanvasEditor.kt_SELECTED" value="CanvasEditor" />
     <property name="android-custom-viewC:/Users/User/source/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/view/CanvasView.kt_SELECTED" value="CanvasView" />
     <property name="android-custom-viewC:/Users/User/source/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/view/ColorPicker.kt_SELECTED" value="ColorPicker" />
@@ -154,11 +171,11 @@
       <recent name="m1k.kotik.negocards.model" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="m1k.kotik.negocards" />
       <recent name="m1k.kotik.negocards.data.canvas_qrc.canvas_view" />
       <recent name="m1k.kotik.negocards.data.canvas_qrc.canvas_objects" />
       <recent name="m1k.kotik.negocards.data.canvas_qrc.canvas_object.canvas_drawable_object" />
       <recent name="m1k.kotik.negocards.data.canvas_qrc.canvas_object" />
-      <recent name="m1k.kotik.negocards.data.serialization.value_converters.default_converters" />
     </key>
     <key name="android.template.1505593035">
       <recent name="com.example.negocards.fragments.pages" />
@@ -233,13 +250,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675626606726</updated>
-    </task>
-    <task id="LOCAL-00026" summary="Исправлена модель CanvasObject">
-      <created>1678792716162</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1678792716162</updated>
     </task>
     <task id="LOCAL-00027" summary="непонятный коммит">
       <created>1678958673543</created>
@@ -577,7 +587,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697006681777</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="Исправил чтобы фонарик можно было выключить">
+      <created>1697006854527</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1697006854527</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -592,7 +609,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Переименовал классный (❁´◡`❁)" />
     <MESSAGE value="Переименовал классный класс (❁´◡`❁)" />
     <MESSAGE value="Переделал классный класс со слайдером (❁´◡`❁)" />
     <MESSAGE value="Переделал классный класс со слайдером 123123123123(❁´◡`❁)" />
@@ -617,7 +633,8 @@
     <MESSAGE value="Поменял дизайн главной страницы" />
     <MESSAGE value="Исправил дизайн главной страницы и добавил бэкграунд с пикселями" />
     <MESSAGE value="Добавил фонарик при сканировании QRC" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил фонарик при сканировании QRC" />
+    <MESSAGE value="Исправил чтобы фонарик можно было выключить" />
+    <option name="LAST_COMMIT_MESSAGE" value="Исправил чтобы фонарик можно было выключить" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
