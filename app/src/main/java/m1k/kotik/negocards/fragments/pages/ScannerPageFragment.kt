@@ -269,12 +269,12 @@ class ScannerPageFragment : Fragment() {
     private fun setTorch(){
         if (cam.cameraInfo.hasFlashUnit() ) {
             if(isLight) {
-                binding?.flashBtn?.imageTintList = ColorStateList.valueOf(0xFF000000.toInt())
+                binding?.flashBtn?.imageTintList = ColorStateList.valueOf(0xFF909090.toInt())
                 cam.cameraControl.enableTorch(false)
                 isLight = false
             }
             else {
-                binding?.flashBtn?.imageTintList = ColorStateList.valueOf(0xFFD9D9D9.toInt())
+                binding?.flashBtn?.imageTintList = ColorStateList.valueOf(0xFF000000.toInt())
                 cam.cameraControl.enableTorch(true)
                 isLight = true
             }

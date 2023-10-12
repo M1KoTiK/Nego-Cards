@@ -14,13 +14,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Добавил clickListener для recyclerView">
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Изменил внешний вид recyclerView для ScannedQrc и сделал чтобы было видно включен ли фонарик">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/qrc/ScannedQrcAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/qrc/ScannedQrcAdapter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/ScannerPageFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/ScannerPageFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_scanner_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_scanner_page.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/scanned_qrc_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/scanned_qrc_item.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,13 +234,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675626606726</updated>
-    </task>
-    <task id="LOCAL-00029" summary="Пофиксил style tag">
-      <created>1679000187115</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1679000187115</updated>
     </task>
     <task id="LOCAL-00030" summary="Теперь можно через формат для qr задавать параметры объектам">
       <created>1679647929671</created>
@@ -581,7 +571,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697133631339</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="Изменил внешний вид recyclerView для ScannedQrc и сделал чтобы было видно включен ли фонарик">
+      <created>1697136150763</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1697136150763</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -596,7 +593,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Переделал классный класс со слайдером 123123123123(❁´◡`❁)" />
     <MESSAGE value="Исправлена противная ошибка" />
     <MESSAGE value="проверка QRCViewer в несвойственном для него месте и начало исправления класса тегов так как они неправильно насраны" />
     <MESSAGE value="Начал переписывать класс для сериализации" />
@@ -621,7 +617,8 @@
     <MESSAGE value="Исправил чтобы фонарик можно было выключить" />
     <MESSAGE value="Добавил recyclerView для отображения ScannedQRC" />
     <MESSAGE value="Добавил clickListener для recyclerView" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил clickListener для recyclerView" />
+    <MESSAGE value="Изменил внешний вид recyclerView для ScannedQrc и сделал чтобы было видно включен ли фонарик" />
+    <option name="LAST_COMMIT_MESSAGE" value="Изменил внешний вид recyclerView для ScannedQrc и сделал чтобы было видно включен ли фонарик" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
