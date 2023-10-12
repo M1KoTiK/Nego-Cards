@@ -14,26 +14,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Исправил чтобы фонарик можно было выключить">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/new_canvas_view/CanvasView.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/qrc/ScannedQRC.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/qrc/ScannedQrcAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_square_ripple_20.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_square_ripple_30.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/scanned_qrc_item.xml" afterDir="false" />
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Добавил recyclerView для отображения ScannedQRC">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.androidTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.androidTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.unitTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.unitTest.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/QRC/QRCreator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/qrc/QRCreator.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/QRCViewerPopupWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/QRCViewerPopupWindow.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/choiceParametersForQR/ChoiceParametersForTextFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/choiceParametersForQR/ChoiceParametersForTextFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/QRCViewPageFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/QRCViewPageFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/qrc/ScannedQrcAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/qrc/ScannedQrcAdapter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/ScannerPageFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/ScannerPageFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_main_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_main_page.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_scanner_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_scanner_page.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,13 +235,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675626606726</updated>
-    </task>
-    <task id="LOCAL-00027" summary="непонятный коммит">
-      <created>1678958673543</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1678958673543</updated>
     </task>
     <task id="LOCAL-00028" summary="убрал стремны свитч кейс или по котлиновски вхен (when)">
       <created>1678998741886</created>
@@ -594,7 +572,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697006854527</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="Добавил recyclerView для отображения ScannedQRC">
+      <created>1697126102929</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1697126102929</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -609,7 +594,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Переименовал классный класс (❁´◡`❁)" />
     <MESSAGE value="Переделал классный класс со слайдером (❁´◡`❁)" />
     <MESSAGE value="Переделал классный класс со слайдером 123123123123(❁´◡`❁)" />
     <MESSAGE value="Исправлена противная ошибка" />
@@ -634,7 +618,8 @@
     <MESSAGE value="Исправил дизайн главной страницы и добавил бэкграунд с пикселями" />
     <MESSAGE value="Добавил фонарик при сканировании QRC" />
     <MESSAGE value="Исправил чтобы фонарик можно было выключить" />
-    <option name="LAST_COMMIT_MESSAGE" value="Исправил чтобы фонарик можно было выключить" />
+    <MESSAGE value="Добавил recyclerView для отображения ScannedQRC" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил recyclerView для отображения ScannedQRC" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

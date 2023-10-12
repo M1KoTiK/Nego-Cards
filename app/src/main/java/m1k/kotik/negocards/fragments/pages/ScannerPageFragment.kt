@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.Toast
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
@@ -64,8 +65,11 @@ class ScannerPageFragment : Fragment() {
         testList.add(ScannedQRC(QRCType.Canvas,"ot:rweew8931ffvsd", Date(23,10,12)))
         testList.add(ScannedQRC(QRCType.Text,"TEXT", Date(23,10,12)))
         testList.add(ScannedQRC(QRCType.Location,"X:232, Y:@323", Date(23,10,12)))
-
-        binding?.listScannedQRC?.adapter = ScannedQrcAdapter(requireActivity(), testList)
+        binding?.listScannedQRC?.adapter = ScannedQrcAdapter(requireActivity(), testList).also{
+            it.itemOnClick = {
+                //Toast.makeText(requireActivity(), "${testList[it].value}",Toast.LENGTH_SHORT).show()
+            }
+        }
         binding?.listScannedQRC?.layoutManager = LinearLayoutManager(requireActivity())
     }
 
