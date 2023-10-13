@@ -14,10 +14,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Теперь отсканированные qr-коды помещаются в списочек">
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Исправил добавление ScannedQRC при пустом списке">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/QRCViewerFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_qrc_viewer.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/ScannerPageFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/ScannerPageFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,8 +58,8 @@
         <option value="Kotlin Annotation" />
         <option value="Kotlin Interface" />
         <option value="resourceFile" />
-        <option value="layoutResourceFile" />
         <option value="Kotlin Class" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
@@ -240,13 +243,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675626606726</updated>
-    </task>
-    <task id="LOCAL-00034" summary="Исправил перетаскивание">
-      <created>1680549295035</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1680549295035</updated>
     </task>
     <task id="LOCAL-00035" summary="Добавил функцию для правильного движения разных объектов">
       <created>1680594447571</created>
@@ -584,7 +580,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697214361976</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="Исправил добавление ScannedQRC при пустом списке">
+      <created>1697218268364</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1697218268364</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -599,7 +602,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Пишу парсер" />
     <MESSAGE value="УРА!! Парсер работает" />
     <MESSAGE value="Оказалось что до это этого парсер не работал, так что теперь работает" />
     <MESSAGE value="Жопа я неправильно сделал парсер" />
@@ -624,7 +626,8 @@
     <MESSAGE value="Создал базу для хранения отсканированных QR-кодов" />
     <MESSAGE value="Исправил работу с базой данных" />
     <MESSAGE value="Теперь отсканированные qr-коды помещаются в списочек" />
-    <option name="LAST_COMMIT_MESSAGE" value="Теперь отсканированные qr-коды помещаются в списочек" />
+    <MESSAGE value="Исправил добавление ScannedQRC при пустом списке" />
+    <option name="LAST_COMMIT_MESSAGE" value="Исправил добавление ScannedQRC при пустом списке" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -633,11 +636,6 @@
           <url>file://$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/CreateCanvasQRCFragment.kt</url>
           <line>32</line>
           <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/date/SimpleDate.kt</url>
-          <line>12</line>
-          <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

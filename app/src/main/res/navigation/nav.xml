@@ -34,7 +34,11 @@
         android:id="@+id/scannerPageFragment"
         android:name="m1k.kotik.negocards.fragments.pages.ScannerPageFragment"
         android:label="fragment_scanner_page"
-        tools:layout="@layout/fragment_scanner_page" />
+        tools:layout="@layout/fragment_scanner_page" >
+        <action
+            android:id="@+id/action_scannerPageFragment_to_QRCViewerFragment"
+            app:destination="@id/QRCViewerFragment" />
+    </fragment>
     <fragment
         android:id="@+id/QRCViewPageFragment"
         android:name="m1k.kotik.negocards.fragments.pages.QRCViewPageFragment"
@@ -75,4 +79,8 @@
         android:label="fragment_canvas_view"
         tools:layout="@layout/fragment_canvas_view" />
     <fragment android:id="@+id/placeholder" />
+    <fragment
+        android:id="@+id/QRCViewerFragment"
+        android:name="m1k.kotik.negocards.fragments.pages.QRCViewerFragment"
+        android:label="QRCViewerFragment" />
 </navigation>

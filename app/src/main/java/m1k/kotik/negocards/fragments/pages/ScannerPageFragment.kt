@@ -16,6 +16,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.mlkit.vision.barcode.Barcode
 import com.google.mlkit.vision.barcode.BarcodeScanner
@@ -32,10 +34,12 @@ import m1k.kotik.negocards.databinding.FragmentScannerPageBinding
 import m1k.kotik.negocards.db.QRCDBHelper
 import java.util.*
 import java.util.concurrent.Executors
+import m1k.kotik.negocards.R
 
 
 class ScannerPageFragment : Fragment() {
     private var binding: FragmentScannerPageBinding? = null
+    private lateinit var navController: NavController
     private var previewView: PreviewView? = null
     private var cameraProvider: ProcessCameraProvider? = null
     private var cameraSelector: CameraSelector? = null
@@ -58,6 +62,7 @@ class ScannerPageFragment : Fragment() {
     private lateinit var db : QRCDBHelper
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        navController = binding?.root?.findNavController()!!
         db = QRCDBHelper(requireContext())
         setupCamera()
         binding?.flashBtn?.imageTintList = ColorStateList.valueOf(0xFF909090.toInt())
@@ -67,9 +72,15 @@ class ScannerPageFragment : Fragment() {
         refreshScannedQRC()
     }
     fun refreshScannedQRC(){
-        val adapter = ScannedQrcAdapter(requireActivity(), db.getScannedQRC().reversed()).also{
-            it.itemOnClick = {
-
+        val listScannedQRC = db.getScannedQRC().reversed()
+        val adapter = ScannedQrcAdapter(requireActivity(),listScannedQRC ).also{ scannedQrcAdapter ->
+            scannedQrcAdapter.itemOnClick = {
+                val bundle = Bundle()
+                val scannedQRC = listScannedQRC[it]
+                bundle.putInt("type", scannedQRC.type.ordinal)
+                bundle.putString("value", scannedQRC.value )
+                bundle.putString("date", scannedQRC.date.toString())
+                navController.navigate(R.id.QRCViewerFragment, bundle)
             }
         }
         if (adapter.itemCount > 0) {
