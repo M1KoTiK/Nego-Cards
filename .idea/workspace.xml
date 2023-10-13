@@ -14,10 +14,27 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Изменил внешний вид recyclerView для ScannedQrc и сделал чтобы было видно включен ли фонарик">
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Пофиксил проблемы с цвветом у кнопки фонарика и исправил изменение размера у последнего элемента recyclerView">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_models/date/SimpleDate.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/db/QRCDBHelper.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.androidTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.androidTest.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.unitTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/NegoCards.app.unitTest.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_view/AlphaSliderPicker.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/canvas/AlphaSliderPicker.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_view/ColorPicker.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/canvas/ColorPicker.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_view/HueAndSaturationCirclePicker.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/canvas/HueAndSaturationCirclePicker.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_view/QRCFromCanvasObjects.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/canvas/QRCFromCanvasObjects.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_view/ScannedQRCViewer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/canvas/ScannedQRCViewer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_view/Slider.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/canvas/Slider.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_view/ValueSliderPicker.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/canvas/ValueSliderPicker.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/ColorPickerPopupWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/model/popup_windows/ColorPickerPopupWindow.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/qrc/ScannedQRC.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/qrc/ScannedQRC.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/ScannerPageFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/ScannerPageFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/color_picker_popup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/color_picker_popup.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_scanner_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_scanner_page.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,6 +142,12 @@
     <property name="android-custom-viewC:/Users/User/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/view/ValueSliderPicker.kt_SELECTED" value="ValueSliderPicker" />
     <property name="android-custom-viewC:/Users/User/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/view/ValueStripePicker.kt_SELECTED" value="ValueStripePicker" />
     <property name="android-custom-viewC:/Users/User/source/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/custom_view/CanvasEditor.kt_SELECTED" value="CanvasEditor" />
+    <property name="android-custom-viewC:/Users/User/source/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/custom_views/canvas/AlphaSliderPicker.kt_SELECTED" value="AlphaSliderPicker" />
+    <property name="android-custom-viewC:/Users/User/source/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/custom_views/canvas/ColorPicker.kt_SELECTED" value="ColorPicker" />
+    <property name="android-custom-viewC:/Users/User/source/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/custom_views/canvas/HueAndSaturationCirclePicker.kt_SELECTED" value="HueAndSaturationCirclePicker" />
+    <property name="android-custom-viewC:/Users/User/source/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/custom_views/canvas/ScannedQRCViewer.kt_SELECTED" value="ScannedQRCViewer" />
+    <property name="android-custom-viewC:/Users/User/source/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/custom_views/canvas/Slider.kt_SELECTED" value="Slider" />
+    <property name="android-custom-viewC:/Users/User/source/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/custom_views/canvas/ValueSliderPicker.kt_SELECTED" value="ValueSliderPicker" />
     <property name="android-custom-viewC:/Users/User/source/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/CanvasEditor.kt_SELECTED" value="CanvasEditor" />
     <property name="android-custom-viewC:/Users/User/source/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/CanvasView.kt_SELECTED" value="CanvasView" />
     <property name="android-custom-viewC:/Users/User/source/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/new_canvas_view/CanvasView.kt_SELECTED" value="CanvasView" />
@@ -155,11 +178,11 @@
       <recent name="m1k.kotik.negocards.model" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="m1k.kotik.negocards.custom_views.canvas" />
+      <recent name="m1k.kotik.negocards.custom_models.date" />
       <recent name="m1k.kotik.negocards" />
       <recent name="m1k.kotik.negocards.data.canvas_qrc.canvas_view" />
       <recent name="m1k.kotik.negocards.data.canvas_qrc.canvas_objects" />
-      <recent name="m1k.kotik.negocards.data.canvas_qrc.canvas_object.canvas_drawable_object" />
-      <recent name="m1k.kotik.negocards.data.canvas_qrc.canvas_object" />
     </key>
     <key name="android.template.1505593035">
       <recent name="com.example.negocards.fragments.pages" />
@@ -234,13 +257,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675626606726</updated>
-    </task>
-    <task id="LOCAL-00030" summary="Теперь можно через формат для qr задавать параметры объектам">
-      <created>1679647929671</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1679647929672</updated>
     </task>
     <task id="LOCAL-00031" summary="Добавил проверок чтобы не крашилось и проверил работоспособность фигур">
       <created>1679650165412</created>
@@ -578,7 +594,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697136150763</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="Пофиксил проблемы с цвветом у кнопки фонарика и исправил изменение размера у последнего элемента recyclerView">
+      <created>1697137115250</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1697137115250</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -593,7 +616,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Исправлена противная ошибка" />
     <MESSAGE value="проверка QRCViewer в несвойственном для него месте и начало исправления класса тегов так как они неправильно насраны" />
     <MESSAGE value="Начал переписывать класс для сериализации" />
     <MESSAGE value="Начал писать логику рефлексии для десериализации" />
@@ -618,7 +640,8 @@
     <MESSAGE value="Добавил recyclerView для отображения ScannedQRC" />
     <MESSAGE value="Добавил clickListener для recyclerView" />
     <MESSAGE value="Изменил внешний вид recyclerView для ScannedQrc и сделал чтобы было видно включен ли фонарик" />
-    <option name="LAST_COMMIT_MESSAGE" value="Изменил внешний вид recyclerView для ScannedQrc и сделал чтобы было видно включен ли фонарик" />
+    <MESSAGE value="Пофиксил проблемы с цвветом у кнопки фонарика и исправил изменение размера у последнего элемента recyclerView" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пофиксил проблемы с цвветом у кнопки фонарика и исправил изменение размера у последнего элемента recyclerView" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

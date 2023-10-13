@@ -54,14 +54,23 @@
             app:layout_constraintEnd_toEndOf="@+id/cardView"
             app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listScannedQRC"
+        <androidx.cardview.widget.CardView
             android:layout_width="300dp"
-            android:layout_height="225dp"
+            app:cardElevation="0dp"
+            android:layout_height="250dp"
             android:layout_marginTop="25dp"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardCornerRadius="35dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+            app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listScannedQRC"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"/>
+        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

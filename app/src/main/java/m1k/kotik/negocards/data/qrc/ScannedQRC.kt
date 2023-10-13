@@ -1,6 +1,6 @@
 package m1k.kotik.negocards.data.qrc
 
-import java.util.Date
+import m1k.kotik.negocards.custom_models.date.SimpleDate
 
 enum class QRCType(val typeName: String){
     Text("Текст"),
@@ -9,4 +9,4 @@ enum class QRCType(val typeName: String){
     Canvas("Холст"),
 }
 
-class ScannedQRC(var type: QRCType, var value: String, var date: Date)
+class ScannedQRC(var type: QRCType, var value: String, var date: SimpleDate)

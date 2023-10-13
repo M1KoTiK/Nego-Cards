@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <m1k.kotik.negocards.custom_view.HueAndSaturationCirclePicker
+        <m1k.kotik.negocards.custom_views.canvas.HueAndSaturationCirclePicker
             android:id="@+id/circleColorPicker"
             android:layout_width="400dp"
             android:layout_height="400dp"
@@ -19,7 +19,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <m1k.kotik.negocards.custom_view.ValueSliderPicker
+        <m1k.kotik.negocards.custom_views.canvas.ValueSliderPicker
             android:id="@+id/valueStripePicker"
             android:layout_width="400dp"
             android:layout_height="400dp"
@@ -28,7 +28,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/circleColorPicker" />
 
-        <m1k.kotik.negocards.custom_view.AlphaSliderPicker
+        <m1k.kotik.negocards.custom_views.canvas.AlphaSliderPicker
             android:id="@+id/alphaSliderPicker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

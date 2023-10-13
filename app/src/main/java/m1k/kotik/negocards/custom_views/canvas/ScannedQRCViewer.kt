@@ -1,4 +1,4 @@
-package m1k.kotik.negocards.custom_view
+package m1k.kotik.negocards.custom_views.canvas
 
 import android.content.Context
 import android.graphics.Canvas

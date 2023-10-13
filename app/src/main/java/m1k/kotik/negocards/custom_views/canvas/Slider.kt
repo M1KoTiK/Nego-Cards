@@ -1,4 +1,4 @@
-package m1k.kotik.negocards.custom_view
+package m1k.kotik.negocards.custom_views.canvas
 
 import android.content.Context
 import android.graphics.Canvas
@@ -26,7 +26,7 @@ abstract class Slider (context: Context, attrs: AttributeSet) : View(context, at
             val progressFractionStepped: Float = progressFraction - (progressFraction - halfStepSize) % step + halfStepSize
             field = progressFractionStepped
             when(sliderValueSequence){
-                SliderValueSequence.Ascending->{
+                SliderValueSequence.Ascending ->{
                     if(field >= endSliderValue){
                         field = endSliderValue
                     }
@@ -34,7 +34,7 @@ abstract class Slider (context: Context, attrs: AttributeSet) : View(context, at
                         field = startSliderValue
                     }
                 }
-                SliderValueSequence.Descending->{
+                SliderValueSequence.Descending ->{
                     if(field <= endSliderValue){
                         field = endSliderValue
                     }
@@ -42,7 +42,7 @@ abstract class Slider (context: Context, attrs: AttributeSet) : View(context, at
                         field = startSliderValue
                     }
                 }
-                SliderValueSequence.Equals->{
+                SliderValueSequence.Equals ->{
                     field = 0F
                 }
             }
@@ -142,7 +142,7 @@ abstract class Slider (context: Context, attrs: AttributeSet) : View(context, at
         val x = event!!.x
         val deltaX = x - startX
         val downBound:Float =
-            (stripeObject.posX + OFFSET_POINTER/2 + pointerObject.width/2).toFloat()
+            (stripeObject.posX + OFFSET_POINTER /2 + pointerObject.width/2).toFloat()
         val upBound: Float =
             (stripeObject.posX + stripeObject.width - OFFSET_POINTER - pointerObject.width/2).toFloat()
         when(event.action){

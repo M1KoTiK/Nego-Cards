@@ -8,8 +8,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.Toast
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
@@ -24,11 +22,13 @@ import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.common.InputImage
 import m1k.kotik.negocards.CameraXViewModel
+import m1k.kotik.negocards.custom_models.date.SimpleDate
 import m1k.kotik.negocards.data.canvas_qrc.model.popup_windows.CanvasViewerPopupWindow
 import m1k.kotik.negocards.data.qrc.QRCType
 import m1k.kotik.negocards.data.qrc.ScannedQRC
 import m1k.kotik.negocards.data.qrc.ScannedQrcAdapter
 import m1k.kotik.negocards.databinding.FragmentScannerPageBinding
+import m1k.kotik.negocards.db.QRCDBHelper
 import java.util.*
 import java.util.concurrent.Executors
 
@@ -54,7 +54,7 @@ class ScannerPageFragment : Fragment() {
         return binding!!.root
 
     }
-
+    private var db = QRCDBHelper(requireActivity())
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupCamera()
@@ -62,16 +62,8 @@ class ScannerPageFragment : Fragment() {
         binding?.flashBtn?.setOnClickListener {
             setTorch()
         }
-        val testList = mutableListOf<ScannedQRC>()
-        testList.add(ScannedQRC(QRCType.Canvas,"ot:rweew8931ffvsd", Date(23,10,12)))
-        testList.add(ScannedQRC(QRCType.Text,"TEXT", Date(23,10,12)))
-        testList.add(ScannedQRC(QRCType.Location,"X:232, Y:@323", Date(23,10,12)))
-        testList.add(ScannedQRC(QRCType.Canvas,"ot:rweew8931ffvsd", Date(23,10,12)))
-        testList.add(ScannedQRC(QRCType.Text,"TEXT", Date(23,10,12)))
-        testList.add(ScannedQRC(QRCType.Location,"X:232, Y:@323", Date(23,10,12)))
-        testList.add(ScannedQRC(QRCType.Canvas,"ot:rweew8931ffvsd", Date(23,10,12)))
-        testList.add(ScannedQRC(QRCType.Text,"TEXT", Date(23,10,12)))
-        testList.add(ScannedQRC(QRCType.Location,"X:232, Y:@323", Date(23,10,12)))
+
+        val testList = db.getScannedQRC()
         binding?.listScannedQRC?.adapter = ScannedQrcAdapter(requireActivity(), testList).also{
             it.itemOnClick = {
                 //Toast.makeText(requireActivity(), "${testList[it].value}",Toast.LENGTH_SHORT).show()
@@ -200,22 +192,27 @@ class ScannerPageFragment : Fragment() {
 
                     val valueType = barcode.valueType
                     // See API reference for complete list of supported types
-                    /*
+
                     when (valueType) {
+                        /*
                         Barcode.TYPE_WIFI -> {
                             val ssid = barcode.wifi!!.ssid
                             val password = barcode.wifi!!.password
                             val type = barcode.wifi!!.encryptionType
-                            binding?.tvScannedData?.text =
-                                "ssid: " + ssid + "\npassword: " + password + "\ntype: " + type
+                           // binding?.tvScannedData?.text =
+                           //     "ssid: " + ssid + "\npassword: " + password + "\ntype: " + type
                         }
                         Barcode.TYPE_URL -> {
-                            val title = barcode.url!!.title
+                          val title = barcode.url!!.title
                             val url = barcode.url!!.url
-
-                            binding?.tvScannedData?.text = "Title: " + title + "\nURL: " + url
+                            //binding?.tvScannedData?.text = "Title: " + title + "\nURL: " + url
                         }
-                     */
+                        */
+                        else -> {
+                            db.add(ScannedQRC(QRCType.Text, rawValue, SimpleDate.Companion.getCurrentDate()))
+                        }
+                    }
+
                 }
             }
             .addOnFailureListener {

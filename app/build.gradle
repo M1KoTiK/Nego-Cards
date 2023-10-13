@@ -36,6 +36,9 @@ android {
 }
 
 dependencies {
+    //SQLite
+    implementation 'androidx.sqlite:sqlite:2.1.0'
+
     //RecyclerView
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'com.github.javafaker:javafaker:1.0.2'
