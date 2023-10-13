@@ -14,18 +14,20 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Создал базу для хранения отсканированных QR-кодов">
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Исправил работу с базой данных">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_models/date/SimpleDate.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_models/date/SimpleDate.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/qrc/ScannedQrcAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/qrc/ScannedQrcAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/db/QRCDBHelper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/db/QRCDBHelper.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/ScannerPageFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/ScannerPageFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_scanner_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_scanner_page.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\User\.android\avd\Pixel_3_XL_API_33.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\User\.android\avd\Nexus_6P_API_28.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -241,13 +243,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675626606726</updated>
-    </task>
-    <task id="LOCAL-00032" summary="Добавил PopupWindow для добавления объектов(Оно немного поломалось)">
-      <created>1680181709453</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1680181709453</updated>
     </task>
     <task id="LOCAL-00033" summary="Починил передвижение объектов по канвасу, теперь можно добавлять и перемещать текст :3 &#10;Добавил логотип">
       <created>1680548566753</created>
@@ -585,7 +580,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697191752521</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="Исправил работу с базой данных">
+      <created>1697192951277</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1697192951278</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -600,7 +602,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Начал переписывать класс для сериализации" />
     <MESSAGE value="Начал писать логику рефлексии для десериализации" />
     <MESSAGE value="Пишу парсер" />
     <MESSAGE value="УРА!! Парсер работает" />
@@ -625,7 +626,8 @@
     <MESSAGE value="Изменил внешний вид recyclerView для ScannedQrc и сделал чтобы было видно включен ли фонарик" />
     <MESSAGE value="Пофиксил проблемы с цвветом у кнопки фонарика и исправил изменение размера у последнего элемента recyclerView" />
     <MESSAGE value="Создал базу для хранения отсканированных QR-кодов" />
-    <option name="LAST_COMMIT_MESSAGE" value="Создал базу для хранения отсканированных QR-кодов" />
+    <MESSAGE value="Исправил работу с базой данных" />
+    <option name="LAST_COMMIT_MESSAGE" value="Исправил работу с базой данных" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -634,6 +636,11 @@
           <url>file://$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/CreateCanvasQRCFragment.kt</url>
           <line>32</line>
           <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_models/date/SimpleDate.kt</url>
+          <line>12</line>
+          <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -652,7 +659,7 @@
     </pin-to-top-manager>
     <watches-manager>
       <configuration name="AndroidRunConfigurationType">
-        <watch expression="((HashMap.Node)((LinkedHashMap)outputMap).entrySet().toArray()[1]).getValue()" custom="java.util.LinkedHashMap,java.util.HashMap.Node" />
+        <watch expression="((outputMap as LinkedHashMap).entrySet().toArray()[1] as HashMap.Node).getValue()" language="kotlin" custom="import java.util.LinkedHashMap&#10;import java.util.HashMap.Node" />
       </configuration>
     </watches-manager>
   </component>

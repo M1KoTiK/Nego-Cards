@@ -1,4 +1,4 @@
-package m1k.kotik.negocards.custom_models.date
+package m1k.kotik.negocards.data.date
 
 import java.util.*
 
@@ -17,13 +17,12 @@ class SimpleDate(var year: Int, var month: Int, var day: Int, var separator: Str
             }
             return null
         }
-        fun getCurrentDate(): SimpleDate{
+        fun getCurrentDate(): SimpleDate {
             val c = Calendar.getInstance()
 
             val year = c.get(Calendar.YEAR)
             val month = c.get(Calendar.MONTH)
-            val day = c.get(Calendar.DAY_OF_MONTH)
-
+            var day = c.get(Calendar.DAY_OF_MONTH)
             val hour = c.get(Calendar.HOUR_OF_DAY)
             val minute = c.get(Calendar.MINUTE)
             return SimpleDate(year, month, day)

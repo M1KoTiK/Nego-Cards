@@ -1,4 +1,4 @@
-package m1k.kotik.negocards.custom_views.canvas
+package m1k.kotik.negocards.data.custom_views.canvas
 
 import android.content.Context
 import android.graphics.LinearGradient

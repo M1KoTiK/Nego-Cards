@@ -1,6 +1,6 @@
 package m1k.kotik.negocards.data.qrc
 
-import m1k.kotik.negocards.custom_models.date.SimpleDate
+import m1k.kotik.negocards.data.date.SimpleDate
 
 enum class QRCType(val typeName: String){
     Text("Текст"),

@@ -26,16 +26,16 @@ class ScannedQrcAdapter(val context: Context, private val scannedQRCList: List<S
             private val defaultHeight  = binding.root.layoutParams.height
             fun bind(scannedQRC: ScannedQRC, itemClickListener:(Int)->Unit){
                 binding.root.setOnClickListener { itemClickListener.invoke(bindingAdapterPosition) }
-                when(bindingAdapterPosition){
-                    0 -> {
-                        setHeightForView(225,binding.root)
-                        binding.root.background.setTintList(ColorStateList.valueOf(0xFFD9D9D9.toInt()))
+                    when (bindingAdapterPosition) {
+                        0 -> {
+                            setHeightForView(225, binding.root)
+                            binding.root.background.setTintList(ColorStateList.valueOf(0xFFD9D9D9.toInt()))
+                        }
+                        else -> {
+                            binding.root.background.setTintList(ColorStateList.valueOf(0xFF909090.toInt()))
+                            setHeightForView(defaultHeight, binding.root)
+                        }
                     }
-                    else ->{
-                        binding.root.background.setTintList(ColorStateList.valueOf(0xFF909090.toInt()))
-                        setHeightForView(defaultHeight,binding.root)
-                    }
-                }
 
                 binding.QRCType.text = scannedQRC.type.typeName
                 binding.QRCValue.text = scannedQRC.value

@@ -23,7 +23,7 @@ import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.common.InputImage
 import m1k.kotik.negocards.CameraXViewModel
-import m1k.kotik.negocards.custom_models.date.SimpleDate
+import m1k.kotik.negocards.data.date.SimpleDate
 import m1k.kotik.negocards.data.canvas_qrc.model.popup_windows.CanvasViewerPopupWindow
 import m1k.kotik.negocards.data.qrc.QRCType
 import m1k.kotik.negocards.data.qrc.ScannedQRC
@@ -64,9 +64,10 @@ class ScannerPageFragment : Fragment() {
         binding?.flashBtn?.setOnClickListener {
             setTorch()
         }
-
-        val testList = db.getScannedQRC()
-        val adapter = ScannedQrcAdapter(requireActivity(), testList).also{
+        refreshScannedQRC()
+    }
+    fun refreshScannedQRC(){
+        val adapter = ScannedQrcAdapter(requireActivity(), db.getScannedQRC().reversed()).also{
             it.itemOnClick = {
 
             }
@@ -79,7 +80,6 @@ class ScannerPageFragment : Fragment() {
         else{
             binding?.placeholderTextRecView?.visibility = View.VISIBLE
         }
-
     }
 
     override fun onStop() {
@@ -219,7 +219,16 @@ class ScannerPageFragment : Fragment() {
                         }
                         */
                         else -> {
-                            db.add(ScannedQRC(QRCType.Text, rawValue, SimpleDate.Companion.getCurrentDate()))
+                            if(rawValue != db.getScannedQRC().last().value) {
+                                db.add(
+                                    ScannedQRC(
+                                        QRCType.Text,
+                                        rawValue,
+                                        SimpleDate.Companion.getCurrentDate()
+                                    )
+                                )
+                                refreshScannedQRC()
+                            }
                         }
                     }
 

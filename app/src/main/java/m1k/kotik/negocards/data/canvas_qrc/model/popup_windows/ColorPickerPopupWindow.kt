@@ -3,8 +3,8 @@ package m1k.kotik.negocards.data.canvas_qrc.model.popup_windows
 import android.content.Context
 import android.graphics.Color.HSVToColor
 import m1k.kotik.negocards.R
-import m1k.kotik.negocards.custom_views.canvas.HueAndSaturationCirclePicker
-import m1k.kotik.negocards.custom_views.canvas.ValueSliderPicker
+import m1k.kotik.negocards.data.custom_views.canvas.HueAndSaturationCirclePicker
+import m1k.kotik.negocards.data.custom_views.canvas.ValueSliderPicker
 
 class ColorPickerPopupWindow(var onColorChange: (Int)->Unit): PopupWindowDefault() {
     private var alpha = 255
