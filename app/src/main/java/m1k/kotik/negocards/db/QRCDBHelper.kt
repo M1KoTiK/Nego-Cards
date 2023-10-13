@@ -44,14 +44,15 @@ class QRCDBHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, nu
     fun getScannedQRC(): List<ScannedQRC>{
         val outputList = mutableListOf<ScannedQRC>()
         val cursor = getAll("scannedQRC") ?: return outputList
-        cursor.moveToFirst()
-        do {
-            var type: QRCType = QRCType.values().first { it.ordinal == cursor.getInt(0) }
-            var value = cursor.getString(1)
-            var date = SimpleDate.Companion.toSimpleDate(cursor.getString(2)) ?: continue
-            outputList.add(ScannedQRC(type,value,date))
+        if(cursor.count >0) {
+            cursor.moveToFirst()
+            do {
+                var type: QRCType = QRCType.values().first { it.ordinal == cursor.getInt(0) }
+                var value = cursor.getString(1)
+                var date = SimpleDate.Companion.toSimpleDate(cursor.getString(2)) ?: continue
+                outputList.add(ScannedQRC(type, value, date))
+            } while (cursor.moveToNext())
         }
-            while (cursor.moveToNext())
         return outputList
     }
 

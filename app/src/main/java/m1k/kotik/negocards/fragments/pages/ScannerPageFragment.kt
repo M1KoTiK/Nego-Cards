@@ -3,6 +3,7 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.content.res.ColorStateList
+import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -54,9 +55,10 @@ class ScannerPageFragment : Fragment() {
         return binding!!.root
 
     }
-    private var db = QRCDBHelper(requireActivity())
+    private lateinit var db : QRCDBHelper
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        db = QRCDBHelper(requireContext())
         setupCamera()
         binding?.flashBtn?.imageTintList = ColorStateList.valueOf(0xFF909090.toInt())
         binding?.flashBtn?.setOnClickListener {
@@ -64,12 +66,20 @@ class ScannerPageFragment : Fragment() {
         }
 
         val testList = db.getScannedQRC()
-        binding?.listScannedQRC?.adapter = ScannedQrcAdapter(requireActivity(), testList).also{
+        val adapter = ScannedQrcAdapter(requireActivity(), testList).also{
             it.itemOnClick = {
-                //Toast.makeText(requireActivity(), "${testList[it].value}",Toast.LENGTH_SHORT).show()
+
             }
         }
-        binding?.listScannedQRC?.layoutManager = LinearLayoutManager(requireActivity())
+        if (adapter.itemCount > 0) {
+            binding?.placeholderTextRecView?.visibility = View.INVISIBLE
+            binding?.listScannedQRC?.adapter = adapter
+            binding?.listScannedQRC?.layoutManager = LinearLayoutManager(requireActivity())
+        }
+        else{
+            binding?.placeholderTextRecView?.visibility = View.VISIBLE
+        }
+
     }
 
     override fun onStop() {
