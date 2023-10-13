@@ -202,9 +202,9 @@ class ScannerPageFragment : Fragment() {
 
                     val valueType = barcode.valueType
                     // See API reference for complete list of supported types
-
+                    val listScannedQRC = db.getScannedQRC()
                     when (valueType) {
-                        /*
+
                         Barcode.TYPE_WIFI -> {
                             val ssid = barcode.wifi!!.ssid
                             val password = barcode.wifi!!.password
@@ -215,20 +215,30 @@ class ScannerPageFragment : Fragment() {
                         Barcode.TYPE_URL -> {
                           val title = barcode.url!!.title
                             val url = barcode.url!!.url
-                            //binding?.tvScannedData?.text = "Title: " + title + "\nURL: " + url
-                        }
-                        */
-                        else -> {
-                            if(rawValue != db.getScannedQRC().last().value) {
+                            val lastScannedQRC = listScannedQRC.lastOrNull()
+                            if( lastScannedQRC == null || lastScannedQRC.value != rawValue) {
                                 db.add(
                                     ScannedQRC(
-                                        QRCType.Text,
+                                        QRCType.Reference,
                                         rawValue,
-                                        SimpleDate.Companion.getCurrentDate()
+                                        SimpleDate.getCurrentDate()
                                     )
                                 )
                                 refreshScannedQRC()
                             }
+                        }
+                        else -> {
+                            val lastScannedQRC = listScannedQRC.lastOrNull()
+                                if(lastScannedQRC == null || lastScannedQRC.value != rawValue) {
+                                    db.add(
+                                        ScannedQRC(
+                                            QRCType.Text,
+                                            rawValue,
+                                            SimpleDate.getCurrentDate()
+                                        )
+                                    )
+                                    refreshScannedQRC()
+                                }
                         }
                     }
 
