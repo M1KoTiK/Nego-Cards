@@ -3,39 +3,54 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/black18"
-    android:layout_height="match_parent">
+    tools:layout_editor_absoluteY="25dp">
 
     <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="15dp"
         android:text="Содержание QRC"
-        android:textSize="16sp"
         android:textColor="@color/white_d9"
-        app:layout_constraintEnd_toEndOf="@+id/QRCValueViewer"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/QRCValueViewer"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout2"
         app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
-    <TextView
-        android:id="@+id/QRCValueViewer"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/rounded_edittext"
-        android:ems="10"
-        android:gravity="center_vertical"
-        android:inputType="none"
-        android:paddingLeft="15dp"
-        android:text="..."
-        android:textColor="@color/black18"
-        android:textIsSelectable="true"
-        android:textSize="18sp"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintTop_toBottomOf="@+id/textView12">
+
+        <TextView
+            android:id="@+id/QRCValueViewer"
+            android:layout_width="225dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_edittext"
+            android:ems="10"
+            android:gravity="center_vertical"
+            android:inputType="none"
+            android:paddingLeft="15dp"
+            android:text="..."
+            android:textColor="@color/black18"
+            android:textIsSelectable="true"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/copy_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/rounded_square_30"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/copy_logo" />
+    </LinearLayout>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
@@ -54,24 +69,16 @@
             app:srcCompat="@drawable/placeholder" />
     </androidx.cardview.widget.CardView>
 
-    <ImageView
-        android:id="@+id/copyBtn"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="-50dp"
-        android:layout_marginEnd="30dp"
-        android:background="@drawable/rounded_square_30"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/QRCValueViewer" />
-
-    <ImageView
-        android:id="@+id/copyBtn2"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="30dp"
-        android:background="@drawable/rounded_square_30"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/open_in_browser_btn"
+        style="@style/RoundedButton"
+        android:layout_width="0dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="10dp"
+        android:text="Открыть в браузере"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

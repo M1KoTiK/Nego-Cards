@@ -35,7 +35,7 @@
 
     <TextView
         android:id="@+id/QRCValue"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:maxWidth="275dp"

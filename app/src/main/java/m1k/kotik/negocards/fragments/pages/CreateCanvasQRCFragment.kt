@@ -164,9 +164,9 @@ class CreateCanvasQRCFragment : Fragment(), IOnBackPressedListener {
         cardMenuPopupWindow.onClickSaveAsQRC = {
             if(binding?.view?.objects!!.isNotEmpty()) {
                 var code = QRCDecoder().encode(binding?.view?.objects!!)
-                qrcViewer.setup(requireActivity(), 800, 800)
-                qrcViewer.code = code
-                qrcViewer.show(0, 0, Gravity.CENTER)
+                //qrcViewer.setup(requireActivity(), 800, 800)
+               // qrcViewer.code = code
+               // qrcViewer.show(0, 0, Gravity.CENTER)
             }
 
             canvasViewer.setup(requireActivity(),1000,1000)
