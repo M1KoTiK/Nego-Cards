@@ -14,9 +14,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Добавил кнопку копирования и кастомный тост">
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Ограничил видимый текст qrc">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_qrc_viewer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_qrc_viewer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/scanned_qrc_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/scanned_qrc_item.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,13 +243,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675626606726</updated>
-    </task>
-    <task id="LOCAL-00038" summary="Добавил выделение объектов синей обводкой">
-      <created>1681022861990</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1681022861991</updated>
     </task>
     <task id="LOCAL-00039" summary="Теперь есть два режима выделения синей обводкой и красной">
       <created>1681065712116</created>
@@ -585,7 +580,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697270063247</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="Ограничил видимый текст qrc">
+      <created>1697271122559</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1697271122559</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -600,7 +602,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Теперь парсер правильно срет" />
     <MESSAGE value="УРА!!!!! Теперь можно правильно понимать где какой тип и даже для дженериков" />
     <MESSAGE value="Положено начало написанию сериализатора" />
     <MESSAGE value="Ну десериализатор работает теперь надо придумать как конвертер сеты удобно создавать и потом уже доделать сериализитор" />
@@ -625,7 +626,8 @@
     <MESSAGE value="Добавил фрагмент для просмотра scannedQrc который пока что только выводит значение QRC" />
     <MESSAGE value="Расположил на экране просмотра отсканированного qr кода отображение этого qrc и добавил кнопок" />
     <MESSAGE value="Добавил кнопку копирования и кастомный тост" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил кнопку копирования и кастомный тост" />
+    <MESSAGE value="Ограничил видимый текст qrc" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ограничил видимый текст qrc" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

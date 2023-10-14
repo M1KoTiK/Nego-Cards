@@ -35,7 +35,8 @@
 
     <TextView
         android:lines="1"
-        android:scrollHorizontally="true"
+        android:paddingEnd="20dp"
+        android:paddingStart="0dp"
         android:ellipsize="end"
         android:singleLine="true"
         android:id="@+id/QRCValue"
