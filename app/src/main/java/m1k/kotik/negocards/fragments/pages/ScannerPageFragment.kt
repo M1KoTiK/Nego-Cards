@@ -3,7 +3,6 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.content.res.ColorStateList
-import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -28,10 +27,10 @@ import m1k.kotik.negocards.CameraXViewModel
 import m1k.kotik.negocards.data.date.SimpleDate
 import m1k.kotik.negocards.data.canvas_qrc.model.popup_windows.CanvasViewerPopupWindow
 import m1k.kotik.negocards.data.qrc.QRCType
-import m1k.kotik.negocards.data.qrc.ScannedQRC
+import m1k.kotik.negocards.data.qrc.QRCViewModel
 import m1k.kotik.negocards.data.qrc.ScannedQrcAdapter
 import m1k.kotik.negocards.databinding.FragmentScannerPageBinding
-import m1k.kotik.negocards.db.QRCDBHelper
+import m1k.kotik.negocards.data.db.QRCDBHelper
 import java.util.*
 import java.util.concurrent.Executors
 import m1k.kotik.negocards.R
@@ -229,7 +228,7 @@ class ScannerPageFragment : Fragment() {
                             val lastScannedQRC = listScannedQRC.lastOrNull()
                             if( lastScannedQRC == null || lastScannedQRC.value != rawValue) {
                                 db.add(
-                                    ScannedQRC(
+                                    QRCViewModel(
                                         QRCType.Reference,
                                         rawValue,
                                         SimpleDate.getCurrentDate()
@@ -242,7 +241,7 @@ class ScannerPageFragment : Fragment() {
                             val lastScannedQRC = listScannedQRC.lastOrNull()
                                 if(lastScannedQRC == null || lastScannedQRC.value != rawValue) {
                                     db.add(
-                                        ScannedQRC(
+                                        QRCViewModel(
                                             QRCType.Text,
                                             rawValue,
                                             SimpleDate.getCurrentDate()

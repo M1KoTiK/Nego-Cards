@@ -1,14 +1,13 @@
-package m1k.kotik.negocards.db
+package m1k.kotik.negocards.data.db
 
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.media.session.PlaybackState.CustomAction
 import m1k.kotik.negocards.data.date.SimpleDate
 import m1k.kotik.negocards.data.qrc.QRCType
-import m1k.kotik.negocards.data.qrc.ScannedQRC
+import m1k.kotik.negocards.data.qrc.QRCViewModel
 
 class QRCDBHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -30,19 +29,19 @@ class QRCDBHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, nu
         db?.execSQL("DROP TABLE IF EXISTS $SCANNED_QRC_TABLE_NAME")
     }
 
-    fun add(scannedQRC: ScannedQRC){
+    fun add(QRCViewModel: QRCViewModel){
         val values = ContentValues()
-        values.put("type", scannedQRC.type.ordinal)
-        values.put("value", scannedQRC.value)
-        values.put("date", scannedQRC.date.toString())
+        values.put("type", QRCViewModel.type.ordinal)
+        values.put("value", QRCViewModel.value)
+        values.put("date", QRCViewModel.date.toString())
         this.writableDatabase.also {
             it.insert(SCANNED_QRC_TABLE_NAME,null, values)
             it.close()
         }
     }
 
-    fun getScannedQRC(): MutableList<ScannedQRC>{
-        val outputList = mutableListOf<ScannedQRC>()
+    fun getScannedQRC(): MutableList<QRCViewModel>{
+        val outputList = mutableListOf<QRCViewModel>()
         val cursor = getAll("scannedQRC") ?: return outputList
         if(cursor.count >0) {
             cursor.moveToFirst()
@@ -50,7 +49,7 @@ class QRCDBHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, nu
                 var type: QRCType = QRCType.values().first { it.ordinal == cursor.getInt(1) }
                 var value = cursor.getString(2)
                 var date = SimpleDate.Companion.toSimpleDate(cursor.getString(3)) ?: continue
-                outputList.add(ScannedQRC(type, value, date))
+                outputList.add(QRCViewModel(type, value, date))
             } while (cursor.moveToNext())
         }
         return outputList

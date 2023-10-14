@@ -19,12 +19,11 @@ class QRCViewPageFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var QRC = QRCreator()
-        binding?.imageView2?.setImageBitmap(QRC.getQRCToBitmap("Hello)"))
+        binding?.imageView2?.setImageBitmap(QRCreator.getQRCToBitmap("Hello)"))
         binding?.editTextTextPersonName4?.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {
                 if (!binding?.editTextTextPersonName4?.text.toString().trim().isEmpty()){
-                val bitmapimage = QRC.getQRCToBitmap(binding?.editTextTextPersonName4?.text.toString())
+                val bitmapimage = QRCreator.getQRCToBitmap(binding?.editTextTextPersonName4?.text.toString())
                 binding?.imageView2?.setImageBitmap(bitmapimage)
                 }
             }

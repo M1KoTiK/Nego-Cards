@@ -7,12 +7,12 @@ import m1k.kotik.negocards.data.qrc.QRCreator
 
 class QRCViewerPopupWindow: PopupWindowDefault() {
     lateinit var imageQRC: ImageView
-    var qrcCreator = QRCreator()
+
     var code = String()
     set(value) {
         if(isCreated && value != "")
             println("value = $value")
-            imageQRC.setImageBitmap(qrcCreator.getQRCToBitmap(value))
+            imageQRC.setImageBitmap(QRCreator.getQRCToBitmap(value))
             field = value
     }
     override fun onCreate() {

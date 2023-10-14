@@ -9,4 +9,4 @@ enum class QRCType(val typeName: String){
     Canvas("Холст"),
 }
 
-class ScannedQRC(var type: QRCType, var value: String, var date: SimpleDate)
+class QRCViewModel(var type: QRCType, var value: String, var date: SimpleDate)
