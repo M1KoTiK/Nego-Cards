@@ -14,15 +14,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Расположил на экране просмотра отсканированного qr кода отображение этого qrc и добавил кнопок">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/custom_views/toast/CustomToast.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/copy_logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/custom_toast_layout.xml" afterDir="false" />
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Добавил кнопку копирования и кастомный тост">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/QRCViewerFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/QRCViewerFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_qrc_viewer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_qrc_viewer.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/scanned_qrc_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/scanned_qrc_item.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -247,13 +241,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675626606726</updated>
-    </task>
-    <task id="LOCAL-00037" summary="Добавил выделение объектов синей обводкой">
-      <created>1681022796854</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1681022796854</updated>
     </task>
     <task id="LOCAL-00038" summary="Добавил выделение объектов синей обводкой">
       <created>1681022861990</created>
@@ -591,7 +578,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697265456993</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="Добавил кнопку копирования и кастомный тост">
+      <created>1697270063247</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1697270063247</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -606,7 +600,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Жопа я неправильно сделал парсер" />
     <MESSAGE value="Теперь парсер правильно срет" />
     <MESSAGE value="УРА!!!!! Теперь можно правильно понимать где какой тип и даже для дженериков" />
     <MESSAGE value="Положено начало написанию сериализатора" />
@@ -631,7 +624,8 @@
     <MESSAGE value="Исправил добавление ScannedQRC при пустом списке" />
     <MESSAGE value="Добавил фрагмент для просмотра scannedQrc который пока что только выводит значение QRC" />
     <MESSAGE value="Расположил на экране просмотра отсканированного qr кода отображение этого qrc и добавил кнопок" />
-    <option name="LAST_COMMIT_MESSAGE" value="Расположил на экране просмотра отсканированного qr кода отображение этого qrc и добавил кнопок" />
+    <MESSAGE value="Добавил кнопку копирования и кастомный тост" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил кнопку копирования и кастомный тост" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
