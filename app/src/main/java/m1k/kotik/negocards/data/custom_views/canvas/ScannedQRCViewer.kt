@@ -5,7 +5,7 @@ import android.graphics.Canvas
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
-import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.shapes.RectRShape
+import m1k.kotik.negocards.data.canvas_qrc.old_govno.canvas_object_types.shapes.RectRShape
 
 class ScannedQRCViewer(context: Context, attrs: AttributeSet) : View(context, attrs) {
     private var backgroundWidth: Int = 900

@@ -5,13 +5,13 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.widget.Toast
-import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject
-import m1k.kotik.negocards.data.canvas_qrc.model.CanvasObjectMode
-import m1k.kotik.negocards.data.canvas_qrc.model.CanvasSaver
-import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.CanvasObjectType
-import m1k.kotik.negocards.data.canvas_qrc.model.DoubleClickChecker
-import m1k.kotik.negocards.data.canvas_qrc.model.alert_dialogs.InputTextDialog
-import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.TextObject
+import m1k.kotik.negocards.data.canvas_qrc.old_govno.CanvasObject
+import m1k.kotik.negocards.data.canvas_qrc.old_govno.CanvasObjectMode
+import m1k.kotik.negocards.data.canvas_qrc.old_govno.CanvasSaver
+import m1k.kotik.negocards.data.canvas_qrc.old_govno.canvas_object_types.CanvasObjectType
+import m1k.kotik.negocards.data.canvas_qrc.old_govno.DoubleClickChecker
+import m1k.kotik.negocards.data.canvas_qrc.old_govno.alert_dialogs.InputTextDialog
+import m1k.kotik.negocards.data.canvas_qrc.old_govno.canvas_object_types.TextObject
 import kotlin.math.max
 import kotlin.math.min
 

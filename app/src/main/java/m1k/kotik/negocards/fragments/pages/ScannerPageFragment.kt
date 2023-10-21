@@ -25,12 +25,12 @@ import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.common.InputImage
 import m1k.kotik.negocards.CameraXViewModel
 import m1k.kotik.negocards.data.date.SimpleDate
-import m1k.kotik.negocards.data.canvas_qrc.model.popup_windows.CanvasViewerPopupWindow
+import m1k.kotik.negocards.data.canvas_qrc.old_govno.popup_windows.CanvasViewerPopupWindow
 import m1k.kotik.negocards.data.qrc.QRCType
 import m1k.kotik.negocards.data.qrc.QRCViewModel
 import m1k.kotik.negocards.data.qrc.ScannedQrcAdapter
 import m1k.kotik.negocards.databinding.FragmentScannerPageBinding
-import m1k.kotik.negocards.data.db.QRCDBHelper
+import m1k.kotik.negocards.data.db.QRCDB
 import java.util.*
 import java.util.concurrent.Executors
 import m1k.kotik.negocards.R
@@ -58,11 +58,11 @@ class ScannerPageFragment : Fragment() {
         return binding!!.root
 
     }
-    private lateinit var db : QRCDBHelper
+    private lateinit var db : QRCDB
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = binding?.root?.findNavController()!!
-        db = QRCDBHelper(requireContext())
+        db = QRCDB(requireContext())
         setupCamera()
         binding?.flashBtn?.imageTintList = ColorStateList.valueOf(0xFF909090.toInt())
         binding?.flashBtn?.setOnClickListener {

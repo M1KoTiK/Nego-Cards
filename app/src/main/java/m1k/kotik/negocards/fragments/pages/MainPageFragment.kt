@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import m1k.kotik.negocards.R
-import m1k.kotik.negocards.data.canvas_qrc.canvas_objects.CanvasObject
+import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.CanvasObject
 import m1k.kotik.negocards.data.serialization.DefaultParser
 import m1k.kotik.negocards.data.serialization.serializer.DefaultSerializer
 import m1k.kotik.negocards.databinding.FragmentMainPageBinding

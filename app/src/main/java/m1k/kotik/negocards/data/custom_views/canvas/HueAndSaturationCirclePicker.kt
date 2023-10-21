@@ -9,10 +9,10 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.core.content.res.ResourcesCompat
 import m1k.kotik.negocards.R
-import m1k.kotik.negocards.data.canvas_qrc.model.*
-import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.CanvasObjectSerializationTag
-import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.ShapeObject
-import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.shapes.RectRShape
+import m1k.kotik.negocards.data.canvas_qrc.old_govno.*
+import m1k.kotik.negocards.data.canvas_qrc.old_govno.canvas_object_types.CanvasObjectSerializationTag
+import m1k.kotik.negocards.data.canvas_qrc.old_govno.canvas_object_types.ShapeObject
+import m1k.kotik.negocards.data.canvas_qrc.old_govno.canvas_object_types.shapes.RectRShape
 import java.lang.Math.*
 
 class HueAndSaturationCirclePicker (context: Context, attrs: AttributeSet) : View(context, attrs) {

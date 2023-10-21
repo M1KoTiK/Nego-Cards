@@ -5,7 +5,7 @@ import android.graphics.Canvas
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
-import m1k.kotik.negocards.data.canvas_qrc.canvas_objects.CanvasObject
+import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.CanvasObject
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.CanvasEditor
 import kotlin.math.max
 import kotlin.math.min
@@ -61,7 +61,8 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
         val deltaY = y - startY
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-
+                startX = x
+                startY = y
             }
             MotionEvent.ACTION_UP -> {
 

@@ -7,10 +7,10 @@ import android.graphics.Paint.Style
 import android.util.AttributeSet
 import android.view.View
 import android.widget.Toast
-import m1k.kotik.negocards.data.canvas_qrc.model.*
-import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.QRCDecoder
-import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.ShapeObject
-import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.shapes.RectRShape
+import m1k.kotik.negocards.data.canvas_qrc.old_govno.*
+import m1k.kotik.negocards.data.canvas_qrc.old_govno.canvas_object_types.QRCDecoder
+import m1k.kotik.negocards.data.canvas_qrc.old_govno.canvas_object_types.ShapeObject
+import m1k.kotik.negocards.data.canvas_qrc.old_govno.canvas_object_types.shapes.RectRShape
 
 
 open class CanvasView(context: Context, attrs: AttributeSet) : View(context, attrs) {

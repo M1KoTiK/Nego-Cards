@@ -50,9 +50,11 @@
             android:layout_height="50dp"
             android:layout_marginTop="-35dp"
             android:background="@drawable/rounded_square_30"
+            android:foreground="@drawable/rounded_square_ripple_30"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="@+id/cardView"
-            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+            app:layout_constraintTop_toBottomOf="@+id/cardView"
+            app:srcCompat="@drawable/history_icon" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="300dp"

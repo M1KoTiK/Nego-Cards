@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayoutQRCViewer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black18"
@@ -15,85 +16,90 @@
         android:text="Содержание QRC"
         android:textColor="@color/white_d9"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout2"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+        app:layout_constraintBottom_toTopOf="@+id/QRCValueViewer"
+        app:layout_constraintStart_toStartOf="@+id/QRCValueViewer"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2"
+        app:layout_constraintVertical_bias="0.076" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/copy_btn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="-10dp"
+        android:background="@drawable/rounded_square_30"
+        android:foreground="@drawable/rounded_square_ripple_30"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="@+id/QRCValueViewer"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2"
+        app:srcCompat="@drawable/copy_logo" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/QRCValueViewer"
+        android:layout_width="300dp"
+        android:minHeight="45dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:orientation="horizontal"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="12dp"
+        android:maxHeight="175dp"
+        android:background="@drawable/rounded_square_15"
+        android:clickable="true"
+        android:focusable="true"
+        android:scrollbars="vertical"
+        android:focusableInTouchMode="true"
+        android:paddingStart="15dp"
+        android:gravity="center_vertical"
+        android:paddingEnd="15dp"
+        android:text="123"
+        android:textColor="@color/black18"
+        android:textIsSelectable="true"
+        android:textSize="17sp"
+        android:textCursorDrawable="@color/black30"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12">
-
-        <HorizontalScrollView
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp"
-            android:background="@drawable/rounded_edittext"
-            android:layout_below="@+id/toolbar"
-            android:scrollbars="none">
-
-            <ScrollView
-                android:id="@+id/scroll_view"
-                android:layout_width="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_height="wrap_content"
-                android:scrollbars="none">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/QRCValueViewer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="123"
-                    android:layout_gravity="center_vertical"
-                    android:textIsSelectable="true"
-                    android:textColor="@color/black18"
-                    android:textSize="17sp" />
-
-            </ScrollView>
-        </HorizontalScrollView>
-
-        <ImageView
-            android:id="@+id/copy_btn"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/rounded_square_30"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/copy_logo" />
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/copy_btn" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
         android:layout_marginTop="25dp"
         app:cardCornerRadius="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView12"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/qrcDisplay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
             app:srcCompat="@drawable/placeholder" />
     </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/open_in_browser_btn"
         style="@style/RoundedButton"
-        android:layout_width="0dp"
+        android:layout_width="300dp"
         android:layout_height="51dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
+        android:foreground="@drawable/rounded_square_ripple_20"
         android:text="Открыть в браузере"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout2"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/QRCValueViewer" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_square_30"
+        android:foreground="@drawable/rounded_square_ripple_30"
+        android:padding="10dp"
+        android:src="@drawable/painticon"
+        app:layout_constraintEnd_toEndOf="@+id/copy_btn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/copy_btn"
+        app:layout_constraintTop_toTopOf="@+id/cardView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

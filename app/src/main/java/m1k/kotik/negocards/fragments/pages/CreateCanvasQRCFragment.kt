@@ -16,14 +16,14 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import m1k.kotik.negocards.R
-import m1k.kotik.negocards.data.canvas_qrc.model.alert_dialogs.InputTextDialog
-import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.QRCDecoder
-import m1k.kotik.negocards.data.canvas_qrc.model.canvas_object_types.isInpTextTagInObject
-import m1k.kotik.negocards.data.canvas_qrc.model.getHexString
-import m1k.kotik.negocards.data.canvas_qrc.model.popup_windows.CanvasViewerPopupWindow
-import m1k.kotik.negocards.data.canvas_qrc.model.popup_windows.CardMenuPopupWindow
-import m1k.kotik.negocards.data.canvas_qrc.model.popup_windows.ColorPickerPopupWindow
-import m1k.kotik.negocards.data.canvas_qrc.model.popup_windows.QRCViewerPopupWindow
+import m1k.kotik.negocards.data.canvas_qrc.old_govno.alert_dialogs.InputTextDialog
+import m1k.kotik.negocards.data.canvas_qrc.old_govno.canvas_object_types.QRCDecoder
+import m1k.kotik.negocards.data.canvas_qrc.old_govno.canvas_object_types.isInpTextTagInObject
+import m1k.kotik.negocards.data.canvas_qrc.old_govno.getHexString
+import m1k.kotik.negocards.data.canvas_qrc.old_govno.popup_windows.CanvasViewerPopupWindow
+import m1k.kotik.negocards.data.canvas_qrc.old_govno.popup_windows.CardMenuPopupWindow
+import m1k.kotik.negocards.data.canvas_qrc.old_govno.popup_windows.ColorPickerPopupWindow
+import m1k.kotik.negocards.data.canvas_qrc.old_govno.popup_windows.QRCViewerPopupWindow
 import m1k.kotik.negocards.databinding.FragmentCreateCanvasQRCBinding
 import m1k.kotik.negocards.fragments.utils_fragment.IOnBackPressedListener
 
@@ -134,7 +134,7 @@ class CreateCanvasQRCFragment : Fragment(), IOnBackPressedListener {
             //нажатие кнопки добавления
             selectedItemPosition = -1
             val addCanvasObjectPopupWindow =
-                m1k.kotik.negocards.data.canvas_qrc.model.popup_windows.AddCanvasObjectPopupWindow(
+                m1k.kotik.negocards.data.canvas_qrc.old_govno.popup_windows.AddCanvasObjectPopupWindow(
                     {
                         binding?.view?.addCanvasObjects(it.classType)
                         binding?.view?.invalidate()
