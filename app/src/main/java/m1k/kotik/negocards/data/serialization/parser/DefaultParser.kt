@@ -54,10 +54,12 @@ class DefaultParser: ISerializationParser {
             while(index < serializationString.count()) {
                 scanValue += serializationString[index]
                 if(checkTypeChange(scanValue)){
-                    index++
-                    while(index < serializationString.count() && checkTypeChange(scanValue)){
-                        scanValue += serializationString[index]
+                    while(
+                        index+1 < serializationString.count() &&
+                        checkTypeChange(scanValue + serializationString[index + 1])
+                    ){
                         index++
+                        scanValue += serializationString[index]
                     }
                     var type = memberKeyAndTypes[key] ?: return null
                     var converter = converterSet.typeToConverterMap[type]

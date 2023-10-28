@@ -1,5 +1,7 @@
 package m1k.kotik.negocards.data.canvas_qrc.canvas_serialization
 
+import android.graphics.Paint
+import m1k.kotik.negocards.data.canvas_qrc.canvas_serialization.canvas_converters.PaintConverter
 import m1k.kotik.negocards.data.serialization.value_converters.IValueConverter
 import m1k.kotik.negocards.data.serialization.value_converters.IValueConverterSet
 import m1k.kotik.negocards.data.serialization.value_converters.default_converters.BoolConverter
@@ -15,7 +17,8 @@ class CanvasConverterSet: IValueConverterSet {
         get() = mutableMapOf(
             typeOf<String>() to StringConverter(),
             typeOf<Int>() to  IntConverter(),
-            typeOf<Boolean>() to BoolConverter()
+            typeOf<Boolean>() to BoolConverter(),
+            typeOf<Paint>() to PaintConverter()
         )
 
 }

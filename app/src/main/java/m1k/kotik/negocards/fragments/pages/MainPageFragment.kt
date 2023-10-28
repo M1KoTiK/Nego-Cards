@@ -1,5 +1,6 @@
 package m1k.kotik.negocards.fragments.pages
 
+import android.graphics.Color
 import android.graphics.Paint
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -37,14 +38,16 @@ class MainPageFragment: Fragment() {
 
 //Проверка парсера
         var  parser = DefaultParser()
-        val testCanvasObject = Rectangle(12,10,100,200, Paint())
+        val testCanvasObject = Rectangle(12,10,100,200, Paint().also { it.color = "#FF181818".toColorInt(); it.style = Paint.Style.FILL })
         val serializtionHelper = CanvasSerialization()
         var serializator = serializtionHelper.canvasSerializer
         val testString = serializator.serialize(testCanvasObject)
         println(testString)
-        serializator.deserialize<Rectangle>(testString)
-
-
+        val testRect = serializator.deserialize<Rectangle>(testString)
+        testRect?.x =100
+        testRect?.y =129
+        val serRect = serializator.serialize(testRect!!)
+        println(serRect)
 
         navController = binding?.root?.findNavController()!!
         binding?.imageView9?.setOnClickListener {

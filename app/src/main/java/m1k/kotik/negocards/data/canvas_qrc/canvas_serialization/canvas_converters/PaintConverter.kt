@@ -4,6 +4,8 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Paint.Style
 import android.graphics.PathEffect
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.core.graphics.toColorInt
 import m1k.kotik.negocards.data.serialization.value_converters.IValueConverter
 import java.lang.StringBuilder
@@ -21,8 +23,9 @@ class PaintConverter: IValueConverter<Paint> {
         var outputString = StringBuilder()
         outputString.append(valueStarts)
         value as Paint
-        outputString.append(value.color.toString() + itemSeparator)
-        outputString.append(styleMap.keys.find{styleMap[it] == value.style} + itemSeparator)
+        outputString.append("#" +Integer.toHexString(value.color) + itemSeparator)
+        outputString.append(styleMap.keys.find{styleMap[it] == value.style})
+        outputString.append(valueEnds)
         return outputString.toString()
     }
     val styleMap = mapOf<String, Style>(

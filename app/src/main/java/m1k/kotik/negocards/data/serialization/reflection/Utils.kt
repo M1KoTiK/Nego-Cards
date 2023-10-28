@@ -1,7 +1,7 @@
 package m1k.kotik.negocards.data.serialization.reflection
 
 import m1k.kotik.negocards.data.serialization.parser.TypedValue
-import m1k.kotik.negocards.data.serialization.serializationObject.SeriаlizationMember
+import m1k.kotik.negocards.data.serialization.serializationObject.SerializeMember
 import m1k.kotik.negocards.data.serialization.serializationObject.ISerializationObject
 import org.reflections.Reflections
 import kotlin.reflect.*
@@ -27,7 +27,7 @@ fun findImplementationsOfInterface(interfaceType: KClass<*>, packageName: String
 inline fun <reified T> writeOnKey(key:String, value: Any, serializationObject: T){
         val properties = serializationObject!!::class.memberProperties
         for(prop in properties){
-            var annotation = prop.findAnnotation<SeriаlizationMember>()
+            var annotation = prop.findAnnotation<SerializeMember>()
             if(annotation != null && annotation.Key == key){
                 if (prop is KMutableProperty1<*, *>) {
                     val propType = prop.returnType.jvmErasure // Тип свойства prop
@@ -47,11 +47,11 @@ inline fun <reified T> writeOnKey(key:String, value: Any, serializationObject: T
         }
 }
 
-fun getMemberAnnotation(sObj: ISerializationObject): MutableList<SeriаlizationMember>{
-    val outputList: MutableList<SeriаlizationMember> = mutableListOf()
+fun getMemberAnnotation(sObj: ISerializationObject): MutableList<SerializeMember>{
+    val outputList: MutableList<SerializeMember> = mutableListOf()
     val properties = sObj::class.memberProperties
     for (prop in properties){
-        val annotation = prop.findAnnotation<SeriаlizationMember>()
+        val annotation = prop.findAnnotation<SerializeMember>()
         if(annotation!= null) {
             outputList.add(annotation)
         }
@@ -71,7 +71,7 @@ fun getMemberKeysAndTypes(sObj: ISerializationObject): MutableMap<String, KType>
     val outputMap = mutableMapOf<String,KType>()
     val properties = sObj::class.memberProperties
     for (prop in properties){
-        val annotation = prop.findAnnotation<SeriаlizationMember>()
+        val annotation = prop.findAnnotation<SerializeMember>()
         if(annotation!= null) {
             outputMap[annotation.Key] = prop.returnType
         }
@@ -84,7 +84,7 @@ fun getMemberKeysAndTypedValue(sObj: ISerializationObject): MutableMap<String, T
     val outputMap = mutableMapOf<String,TypedValue>()
     val properties = sObj::class.memberProperties
     for (prop in properties){
-        val annotation = prop.findAnnotation<SeriаlizationMember>()
+        val annotation = prop.findAnnotation<SerializeMember>()
         if(annotation!= null) {
             val type = prop.returnType
             val value = prop.getter.call(sObj) ?: continue
