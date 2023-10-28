@@ -12,7 +12,6 @@ class SimpleListConverter<T>(
     private val itemSeparator: String = ","): IValueConverter<MutableList<T>>
 {
     init{
-
         if(itemSeparator == valueEnds || itemSeparator == valueStarts){
             throw Exception("Чел ты тупой? Значения для начала и конца списка" +
                     " и для разделения их элементов не должны быть одинаковыми")

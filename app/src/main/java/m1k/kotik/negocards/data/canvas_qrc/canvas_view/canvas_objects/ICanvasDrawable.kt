@@ -8,6 +8,5 @@ import m1k.kotik.negocards.data.serialization.serializationObject.Seriаlization
 interface ICanvasDrawable {
     @SeriаlizationMember("pnt")
     val paint: Paint
-
     fun draw(canvas: Canvas)
 }

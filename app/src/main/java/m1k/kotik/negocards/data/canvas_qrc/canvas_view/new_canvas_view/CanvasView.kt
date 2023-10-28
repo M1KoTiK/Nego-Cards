@@ -18,7 +18,7 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
     // Масштаб (в процентах)
     var canvasZoom: Int = 100
     /* Выбранный на канвасе объект считается как первый в списке, например когда на одном и том же
-        месте находятся сразу несколько объектов - выбираться будет самый верхний */
+        месте находятся сразу несколько объектов выбираться будет самый верхний */
     val currentSelectedObject: CanvasObject?
         get() {
             if (_listCurrentSelectedObjects.isNotEmpty()) {
@@ -63,6 +63,7 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
             MotionEvent.ACTION_DOWN -> {
                 startX = x
                 startY = y
+
             }
             MotionEvent.ACTION_UP -> {
 

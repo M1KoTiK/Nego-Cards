@@ -1,15 +1,21 @@
 package m1k.kotik.negocards.fragments.pages
 
+import android.graphics.Paint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.graphics.toColorInt
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import m1k.kotik.negocards.R
+import m1k.kotik.negocards.data.canvas_qrc.canvas_serialization.CanvasSerialization
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.CanvasObject
-import m1k.kotik.negocards.data.serialization.DefaultParser
+import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.CanvasShape
+import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.Rectangle
+import m1k.kotik.negocards.data.canvas_qrc.old_govno.canvas_object_types.ShapeObject
+import m1k.kotik.negocards.data.serialization.parser.DefaultParser
 import m1k.kotik.negocards.data.serialization.serializer.DefaultSerializer
 import m1k.kotik.negocards.databinding.FragmentMainPageBinding
 
@@ -31,22 +37,13 @@ class MainPageFragment: Fragment() {
 
 //Проверка парсера
         var  parser = DefaultParser()
-        class TestCanvasObject: CanvasObject(){
-            override val key: String
-                get() = "co"
+        val testCanvasObject = Rectangle(12,10,100,200, Paint())
+        val serializtionHelper = CanvasSerialization()
+        var serializator = serializtionHelper.canvasSerializer
+        val testString = serializator.serialize(testCanvasObject)
+        println(testString)
+        serializator.deserialize<Rectangle>(testString)
 
-        }
-        var testObject =  TestCanvasObject()
-
-        var serializator = DefaultSerializer(
-            mutableMapOf(
-            "co" to TestCanvasObject::class
-            )
-        )
-        //val testString = serializator.serialize(testObject)
-        //println(testString)
-        val testObject2 = serializator.deserialize<TestCanvasObject>("co:h(0)w(0)x(0)y(0);co:h(0)w(0)x(0)y(0)")
-        println(serializator.serialize(testObject!!))
 
 
         navController = binding?.root?.findNavController()!!

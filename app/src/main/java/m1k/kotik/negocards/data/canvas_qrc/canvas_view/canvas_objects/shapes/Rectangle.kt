@@ -9,7 +9,6 @@ class Rectangle(
     y: Int,
     width: Int,
     height: Int,
-    color: String = defaultColor,
     override val paint: Paint
 
 ) : CanvasShape(x,y,width, height, paint) {

@@ -1,10 +1,9 @@
 package m1k.kotik.negocards.data.serialization.serializer
 
 import m1k.kotik.negocards.data.serialization.parser.ISerializationParser
-import m1k.kotik.negocards.data.serialization.DefaultParser
+import m1k.kotik.negocards.data.serialization.parser.DefaultParser
 import m1k.kotik.negocards.data.serialization.reflection.writeOnKey
 import m1k.kotik.negocards.data.serialization.serializationObject.ISerializationObject
-import m1k.kotik.negocards.data.serialization.serializationObject.TestSerializeObject
 import kotlin.reflect.KClass
 import kotlin.reflect.full.createInstance
 import kotlin.reflect.full.createType

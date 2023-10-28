@@ -1,23 +1,21 @@
-package m1k.kotik.negocards.data.serialization
+package m1k.kotik.negocards.data.serialization.parser
 
-import m1k.kotik.negocards.data.serialization.parser.ISerializationParser
-import m1k.kotik.negocards.data.serialization.parser.TypedValue
-import m1k.kotik.negocards.data.serialization.reflection.getMemberKeys
 import m1k.kotik.negocards.data.serialization.reflection.getMemberKeysAndTypedValue
 import m1k.kotik.negocards.data.serialization.reflection.getMemberKeysAndTypes
 import m1k.kotik.negocards.data.serialization.serializationObject.ISerializationObject
 import m1k.kotik.negocards.data.serialization.string_utils.findRestrictedBetween
 import m1k.kotik.negocards.data.serialization.value_converters.IValueConverterSet
 import m1k.kotik.negocards.data.serialization.value_converters.TestConverterSet
-import java.lang.reflect.Type
 import kotlin.reflect.KType
 
+// не вернет ключ для типа самого сериализуемого объекта - он обрабатывается в ISerializer
 class DefaultParser: ISerializationParser {
     override var checkTypeChange: Boolean = true
+    // Для того чтобы парсить сразу значения нескольких объектов
+    // нужно понимать на каком индексе находится парсер после парса значений одного объекта
+    // так как сам парсер не знает ничего об объекте и дальнейшую логику выполняет сериализатор
     override var serializationStringSplitObjectValueIndex: Int = 0
-    override var converterSet: IValueConverterSet = TestConverterSet() //CanvasObjectConverterSet()
-    // не вернет ключ для типа самого сериализуемого объекта - он обрабатывается в ISerializer
-
+    override var converterSet: IValueConverterSet = TestConverterSet()
     override fun parseString(
         serializationString: String,
         sObj: ISerializationObject
@@ -49,18 +47,25 @@ class DefaultParser: ISerializationParser {
             return false
         }
 
-
         fun searchValue(key: String): TypedValue?{
             var scanValue: String = ""
             var startAllocatorValue = ""
             var value: Any
-            while(index< serializationString.count()) {
+            while(index < serializationString.count()) {
                 scanValue += serializationString[index]
-                if(checkTypeChange(scanValue))
-                if (listAllStartAllocator.contains(scanValue)) {
+                if(checkTypeChange(scanValue)){
+                    index++
+                    while(index < serializationString.count() && checkTypeChange(scanValue)){
+                        scanValue += serializationString[index]
+                        index++
+                    }
+                    var type = memberKeyAndTypes[key] ?: return null
+                    var converter = converterSet.typeToConverterMap[type]
+                    value = converter?.deserialize(scanValue) ?: return null
+                    return TypedValue(type, value)
+                }
+                else if (listAllStartAllocator.contains(scanValue)) {
                     startAllocatorValue = scanValue
-                    scanValue = ""
-
                     val endAllocator = mapAllocations[startAllocatorValue] ?: return null
                     var subSerializationString = serializationString.substring(index,serializationString.count())
 
@@ -74,7 +79,6 @@ class DefaultParser: ISerializationParser {
                     value = converter?.deserialize(subStringForValueConvert) ?: return null
                     index += subStringForValueConvert.length
                     return TypedValue(type, value)
-
                 }
                 index++
             }
@@ -98,9 +102,9 @@ class DefaultParser: ISerializationParser {
     //------------------------------------
     //Списки с вспомогательными значениями
     //----------------------------------------
-    private val listAllStartAllocator = Companion.getAllStartAllocators(this)
-    private val mapAllocations = Companion.getAllAllocations(this)
-    private val listRequiredType = Companion.getAllConvertableType(this)
+    private val listAllStartAllocator = getAllStartAllocators(this)
+    private val mapAllocations = getAllAllocations(this)
+    private val listRequiredType = getAllConvertableType(this)
 
     companion object {
 

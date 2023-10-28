@@ -12,6 +12,6 @@ abstract class CanvasObject(
     var width: Int = 0,
     @SeriаlizationMember("h")
     var height: Int = 0
-) : ISerializationObject {
+) : ISerializationObject{
 
 }
