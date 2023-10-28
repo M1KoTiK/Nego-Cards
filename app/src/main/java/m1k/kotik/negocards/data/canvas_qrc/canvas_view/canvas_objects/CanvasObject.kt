@@ -5,13 +5,13 @@ import m1k.kotik.negocards.data.serialization.serializationObject.SerializeMembe
 
 abstract class CanvasObject(
     @SerializeMember("y")
-    var y: Int = 0,
+    var y: Int,
     @SerializeMember("x")
-    var x: Int = 0,
+    var x: Int,
     @SerializeMember("w")
-    var width: Int = 0,
+    var width: Int,
     @SerializeMember("h")
-    var height: Int = 0
+    var height: Int
 ) : ISerializationObject{
 
 }

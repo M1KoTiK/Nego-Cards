@@ -9,11 +9,14 @@ import kotlin.reflect.full.createInstance
 import kotlin.reflect.full.createType
 
 open class DefaultSerializer(
+    override var parser: ISerializationParser,
     override val requiredObjectMap: Map<String, KClass<*>>,
     var lengthForKey: Int = 10
 ): ISerializer {
+    override fun getSerializeObjectKey(code: String): String? {
+        return searchKey(code)
+    }
 
-    override var parser: ISerializationParser = DefaultParser()
 
     override fun serialize(serializeObject: ISerializationObject): String {
         var key = serializeObject.key

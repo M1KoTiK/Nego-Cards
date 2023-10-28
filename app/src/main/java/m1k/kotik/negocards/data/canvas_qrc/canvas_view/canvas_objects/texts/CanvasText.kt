@@ -10,21 +10,22 @@ import m1k.kotik.negocards.data.serialization.serializationObject.SerializeMembe
 
 class CanvasText(
     // x, y - координаты верхнего левого угла для прямоугольника в который впиысывается фигура
-    x: Int,
-    y: Int,
-    width: Int,
-    height: Int,
-    @SerializeMember("clr")
-    var color: String = CanvasShape.defaultColor,
-    var text: String = "text"
-
+    x: Int = 0,
+    y: Int = 0,
+    width: Int = 100,
+    height: Int = 100,
+    @SerializeMember("t")
+    var text: String = "text",
+    @SerializeMember("p")
+    var paint: Paint = Paint()
     ): CanvasObject(x,y,width,height), ICanvasDrawable {
-
-    override var paint: Paint = Paint().also { it.color = color.toColorInt() }
 
     override fun draw(canvas: Canvas) {
         canvas.drawText(text,x.toFloat(),y.toFloat(),paint)
     }
+    override var _paint: Paint
+        get() { return paint }
+        set(value) { paint = value }
 
     override val key: String
         get() = TODO("Not yet implemented")

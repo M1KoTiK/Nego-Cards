@@ -9,8 +9,7 @@ class Rectangle(
     y: Int = 0,
     width: Int = 100,
     height: Int = 100,
-    @SerializeMember("p")
-    override var paint: Paint = Paint()
+    paint: Paint = Paint()
 
 ) : CanvasShape(x,y,width, height, paint) {
     override val key: String = "rc"

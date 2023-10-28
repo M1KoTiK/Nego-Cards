@@ -5,6 +5,7 @@ import android.graphics.Paint
 import m1k.kotik.negocards.data.serialization.serializationObject.SerializeMember
 
 interface ICanvasDrawable {
-    var paint: Paint
+    @SerializeMember("p")
+    var _paint: Paint
     fun draw(canvas: Canvas)
 }

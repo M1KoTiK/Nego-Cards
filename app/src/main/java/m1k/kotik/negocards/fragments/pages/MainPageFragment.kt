@@ -37,16 +37,17 @@ class MainPageFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 //Проверка парсера
-        var  parser = DefaultParser()
         val testCanvasObject = Rectangle(12,10,100,200, Paint().also { it.color = "#FF181818".toColorInt(); it.style = Paint.Style.FILL })
         val serializtionHelper = CanvasSerialization()
         var serializator = serializtionHelper.canvasSerializer
-        val testString = serializator.serialize(testCanvasObject)
+        val testString = serializator.multipleSerialize(mutableListOf(testCanvasObject,testCanvasObject))
         println(testString)
-        val testRect = serializator.deserialize<Rectangle>(testString)
-        testRect?.x =100
-        testRect?.y =129
-        val serRect = serializator.serialize(testRect!!)
+        val testRect = serializator.multipleDeserialize<Rectangle>(testString)
+        val test1 = testRect[0]
+        val test2 = testRect[1]
+        test1.x = 1
+        test2.x = 2
+        val serRect = serializator.multipleSerialize(mutableListOf(test1,test2))
         println(serRect)
 
         navController = binding?.root?.findNavController()!!

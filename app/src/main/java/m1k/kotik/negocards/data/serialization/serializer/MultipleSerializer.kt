@@ -1,15 +1,17 @@
 package m1k.kotik.negocards.data.serialization.serializer
 
+import com.bumptech.glide.load.model.ByteArrayLoader.Converter
+import m1k.kotik.negocards.data.serialization.parser.ISerializationParser
 import m1k.kotik.negocards.data.serialization.serializationObject.ISerializationObject
 import kotlin.reflect.KClass
 
-class MultipleSerializer(requiredObjectMap: Map<String, KClass<*>>)
-    : DefaultSerializer(requiredObjectMap)
+class MultipleSerializer(parser:ISerializationParser, requiredObjectMap: Map<String, KClass<*>>)
+    : DefaultSerializer(parser, requiredObjectMap)
 {
         fun multipleSerialize(list: MutableList<ISerializationObject>):String{
             var outputSting =  ""
             for (item in list){
-                outputSting = super.serialize(item) + parser.converterSet.objectSeparator
+                outputSting += super.serialize(item) + parser.converterSet.objectSeparator
             }
             return outputSting
         }
@@ -18,12 +20,21 @@ class MultipleSerializer(requiredObjectMap: Map<String, KClass<*>>)
             var index = 0
         val outputList = mutableListOf<T>()
             while ( index < serializedString.length){
-                val deserializeObject = super.deserialize<T>(serializedString.drop(index))
+                val key = super.getSerializeObjectKey(serializedString)?: break
                 index = parser.serializationStringSplitObjectValueIndex
-                if(deserializeObject == null ){
-                    continue
+                if(index!= 0) {
+                    val deserializeObject = super.deserialize<T>(
+                        serializedString.drop(
+                            index + parser.converterSet.splitSign.count() + key.count()
+                        )
+                    )?: break
+                    outputList.add(deserializeObject)
                 }
-                outputList.add(deserializeObject)
+                else{
+                   val deserializeObject = super.deserialize<T>(serializedString)?: break
+                    outputList.add(deserializeObject)
+                }
+
             }
             return outputList
         }

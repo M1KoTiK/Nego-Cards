@@ -13,12 +13,17 @@ abstract class CanvasShape (
     y: Int,
     width: Int,
     height: Int,
-    override var paint: Paint
+    @SerializeMember("p")
+    var paint: Paint
 
 ): CanvasObject(x,y,width,height), ICanvasDrawable, ICanvasEditable {
     companion object{
         const val defaultColor = "FF181818"
     }
+
+    override var _paint: Paint
+        get() { return paint }
+        set(value) { paint = value }
 
     override var mode: CanvasObjectMode = CanvasObjectMode.None
         set(value) {

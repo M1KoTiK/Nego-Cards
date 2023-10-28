@@ -7,6 +7,7 @@ import kotlin.reflect.KClass
 interface ISerializer{
     val requiredObjectMap: Map<String, KClass<*>>
     var parser: ISerializationParser
+    fun getSerializeObjectKey(code: String):String?
     fun serialize(serializeObject: ISerializationObject): String?
     fun <T> deserialize(code: String): T?
 }
