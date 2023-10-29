@@ -5,31 +5,39 @@ import m1k.kotik.negocards.data.serialization.reflection.getMemberKeysAndTypes
 import m1k.kotik.negocards.data.serialization.serializationObject.ISerializationObject
 import m1k.kotik.negocards.data.serialization.string_utils.findRestrictedBetween
 import m1k.kotik.negocards.data.serialization.value_converters.IValueConverterSet
-import m1k.kotik.negocards.data.serialization.value_converters.TestConverterSet
+import kotlin.reflect.KClass
 import kotlin.reflect.KType
+import kotlin.reflect.full.createInstance
 
-// не вернет ключ для типа самого сериализуемого объекта - он обрабатывается в ISerializer
-class DefaultParser(override var converterSet: IValueConverterSet): ISerializationParser {
-    override var checkTypeChange: Boolean = true
-    // Для того чтобы парсить сразу значения нескольких объектов
-    // нужно понимать на каком индексе находится парсер после парса значений одного объекта
-    // так как сам парсер не знает ничего об объекте и дальнейшую логику выполняет сериализатор
-    override var serializationStringSplitObjectValueIndex: Int = 0
+class DefaultParser(
+    override var converterSet: IValueConverterSet,
+    override val requiredObjectMap: Map<String, KClass<*>>,
+    override var checkTypeChange: Boolean = true,
+    var maxLengthForFindObjectSeparator: Int = 5,
+    var maxLengthForFindObjectKey: Int = 5
+): ISerializationParser {
+
     override fun parseString(
         serializationString: String,
-        sObj: ISerializationObject
-    ): Map<String, TypedValue> {
-        val memberKeyAndTypes = getMemberKeysAndTypes(sObj)
-        val outputMap = mutableMapOf<String, TypedValue>()
+    ): List<SeparatedObject> {
+        var memberKeyAndTypes = mutableMapOf<String,KType>()
+        val outputList = mutableListOf<SeparatedObject>()
         var index = 0
 
-        fun searchKey(): String?{
+        fun searchObjectKey(): String?{
+            var scanValue = ""
+            for(i in 0..maxLengthForFindObjectKey){
+                scanValue += serializationString[index + i]
+                if(requiredObjectMap.containsKey(scanValue)){
+                    index += i + converterSet.splitSign.length + 1
+                    return scanValue
+                }
+            }
+            return null
+        }
+        fun searchValueKey(): String?{
             var scanValue: String = ""
             while(index< serializationString.count()){
-                if(scanValue == converterSet.objectSeparator){
-                    serializationStringSplitObjectValueIndex = index
-                    return null
-                }
                 scanValue += serializationString[index]
                 if(memberKeyAndTypes.containsKey(scanValue)){
                     index++
@@ -86,20 +94,58 @@ class DefaultParser(override var converterSet: IValueConverterSet): ISerializati
             }
             return null
         }
+        fun checkEnd():Boolean{
+            var scanValue = ""
+            for(i in 0..maxLengthForFindObjectSeparator){
+                if(index + i < serializationString.count()) {
+                    scanValue += serializationString[index + i].toString()
+                    if(scanValue == converterSet.objectSeparator){
+                        index += i + 1
+                        return true
+                    }
+                }
+            }
+            return false
+        }
 
         //работа функции
-        while(index < serializationString.count()){
-            val key = searchKey() ?: return outputMap
-            val typedValue = searchValue(key)
-            if(typedValue != null){
-                outputMap[key] = typedValue
+        fun scanObject():Map<String, TypedValue>{
+            val sObjMap: MutableMap<String, TypedValue> = mutableMapOf()
+            while(index < serializationString.count()) {
+                val key = searchValueKey() ?: break
+                val typedValue = searchValue(key)
+                if (checkEnd()) {
+                    if (typedValue != null) {
+                        sObjMap[key] = typedValue
+                    }
+                    return sObjMap
+                } else {
+                    if (typedValue != null) {
+                        sObjMap[key] = typedValue
+                    }
+                }
             }
+            return sObjMap
         }
-        return outputMap
+        while(index < serializationString.count()) {
+            val objKey = searchObjectKey()?: break
+            val kClass = requiredObjectMap[objKey] ?: break
+            val instance = kClass.createInstance() as ISerializationObject
+            memberKeyAndTypes = getMemberKeysAndTypes(instance)
+            val sepObj = SeparatedObject(objKey,scanObject())
+            outputList.add(sepObj)
+        }
+        return outputList
     }
 
-    override fun parseObject(sObj: ISerializationObject): Map<String, TypedValue> {
-        return getMemberKeysAndTypedValue(sObj)
+    override fun parseObject(listSObj: List<ISerializationObject>): List<SeparatedObject> {
+        val outputList =  mutableListOf<SeparatedObject>()
+        for(sObj in listSObj){
+            val key = sObj.key
+            val sepObj = SeparatedObject(key, getMemberKeysAndTypedValue(sObj))
+            outputList.add(sepObj)
+        }
+        return outputList
     }
     //------------------------------------
     //Списки с вспомогательными значениями
