@@ -11,7 +11,7 @@ import kotlin.reflect.KType
 import kotlin.reflect.typeOf
 
 class CanvasConverterSet: IValueConverterSet {
-    override var splitSign: String = "->"
+    override var splitSign: String = ":"
     override var objectSeparator: String = ";"
     override val typeToConverterMap: MutableMap<KType, IValueConverter<*>>
         get() = mutableMapOf(

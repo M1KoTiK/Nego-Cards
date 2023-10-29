@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_mainPageFragment_to_choiceTypeQRCFragment"
             app:destination="@id/choiceTypeQRCFragment" />
+        <action
+            android:id="@+id/action_mainPageFragment_to_canvasViewerFragment"
+            app:destination="@id/canvasViewerFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -83,4 +86,8 @@
         android:id="@+id/QRCViewerFragment"
         android:name="m1k.kotik.negocards.fragments.pages.QRCViewerFragment"
         android:label="QRCViewerFragment" />
+    <fragment
+        android:id="@+id/canvasViewerFragment"
+        android:name="m1k.kotik.negocards.fragments.pages.CanvasViewerFragment"
+        android:label="CanvasViewerFragment" />
 </navigation>

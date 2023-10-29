@@ -6,10 +6,12 @@ import m1k.kotik.negocards.data.serialization.serializer.DefaultSerializer
 import kotlin.reflect.KClass
 
 class CanvasSerialization {
-    private val mapReqObjects: Map<String, KClass<*>> = mutableMapOf(
-        "rc" to Rectangle::class,
-    )
+    companion object {
+        private val mapReqObjects: Map<String, KClass<*>> = mutableMapOf(
+            "rc" to Rectangle::class,
+        )
 
-    val canvasSerializer = DefaultSerializer(DefaultParser(CanvasConverterSet(),mapReqObjects))
+        val canvasSerializer = DefaultSerializer(DefaultParser(CanvasConverterSet(), mapReqObjects))
+    }
 }
 

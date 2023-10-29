@@ -12,10 +12,10 @@ class CanvasViewerPopupWindow :PopupWindowDefault(){
               isOutsideTouchable: Boolean = true,
               isFocusable: Boolean = true){
         super.setup(context,
-            R.layout.canvas_viewer,height,width,isOutsideTouchable,isFocusable)
+            R.layout.fragment_canvas_viewer,height,width,isOutsideTouchable,isFocusable)
     }
     override fun onCreate() {
-       canvas =  popupView!!.findViewById(R.id.canvasView)!!
+       //canvas =  popupView!!.findViewById(R.id.canvasView)!!
 
     }
 }

@@ -36,13 +36,11 @@ open class DefaultSerializer(
             }
             outputString += parser.converterSet.objectSeparator
         }
-
     return outputString
     }
 
 
     override fun <T> deserialize(code: String): List<T>? {
-        // Пропускаем символы ключа и символ для того чтобы его отделить от значений объекта
         val outputList = mutableListOf<T>()
         val listDesObject = parser.parseString(code)
         for(sepObj in listDesObject) {

@@ -23,7 +23,7 @@ class PaintConverter: IValueConverter<Paint> {
         var outputString = StringBuilder()
         outputString.append(valueStarts)
         value as Paint
-        outputString.append("#" +Integer.toHexString(value.color) + itemSeparator)
+        outputString.append("#" + Integer.toHexString(value.color) + itemSeparator)
         outputString.append(styleMap.keys.find{styleMap[it] == value.style})
         outputString.append(valueEnds)
         return outputString.toString()

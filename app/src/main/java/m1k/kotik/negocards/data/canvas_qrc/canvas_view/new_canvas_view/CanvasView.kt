@@ -2,22 +2,38 @@ package m1k.kotik.negocards.data.canvas_qrc.canvas_view.new_canvas_view
 
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
+import androidx.core.graphics.toColorInt
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.CanvasObject
-import m1k.kotik.negocards.data.canvas_qrc.canvas_view.CanvasEditor
-import kotlin.math.max
-import kotlin.math.min
+import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.ICanvasDrawable
 
+/**
+ * Представляет холст на котором выводятся объекты без возможности их изменять
+ * но есть возможность выполнять действия при их наличии закрепленные за объектом
+ */
 open class CanvasView (context: Context, attrs: AttributeSet) : View(context, attrs) {
     //============================Публичные свойства==========================
     // Размеры холста
-    var canvasHeight: Int = 900
-    var canvasWidth: Int = 600
-    // Масштаб (в процентах)
+    var canvasHeight: Int = 600
+    set(value) {
+        field = value
+        this.requestLayout()
+    }
+    var canvasWidth: Int = 900
+        set(value) {
+            field = value
+            this.requestLayout()
+        }
+    /**Масштаб (в процентах)*/
     var canvasZoom: Int = 100
-    /* Выбранный на канвасе объект считается как первый в списке, например когда на одном и том же
+        set(value) {
+            field = value
+            this.requestLayout()
+        }
+    /** Выбранный на канвасе объект считается как первый в списке, например когда на одном и том же
         месте находятся сразу несколько объектов выбираться будет самый верхний */
     val currentSelectedObject: CanvasObject?
         get() {
@@ -26,13 +42,13 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
             }
             return null
         }
-    //Список выбранных объектов
+    /**Список выбранных объектов*/
     val listCurrentSelectedObjects: MutableList<CanvasObject>
         get() {
                 return _listCurrentSelectedObjects
         }
 
-    /* Коллбэк который срабатывает когда меняется текущий выбранный объект
+    /** Коллбэк который срабатывает когда меняется текущий выбранный объект
         (он сработает даже если будет заново выбран тот объект который и так выбран) */
     var onCurrentSelectedObjectChange: () -> Unit = {}
 
@@ -42,6 +58,12 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
 //============================Публичные методы=================================
     fun findSelectedObject(x: Int, y: Int) {
         TODO()
+    }
+    fun setObjects(listObjects: List<CanvasObject>){
+        for(obj in listObjects){
+            _objects.add(obj)
+        }
+        invalidate()
     }
 
 //============================Приватные свойства================================
@@ -78,6 +100,12 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
+        canvas!!.drawRect(0f,0f,900f,600f, Paint().also { it.color = "#FFFFFF".toColorInt() })
+        for(obj in _objects){
+            if(obj is ICanvasDrawable){
+                obj.draw(canvas!!)
+            }
+        }
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
