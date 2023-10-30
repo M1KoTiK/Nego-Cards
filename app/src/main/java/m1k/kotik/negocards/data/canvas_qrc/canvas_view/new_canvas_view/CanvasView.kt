@@ -100,7 +100,6 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
-        canvas!!.drawRect(0f,0f,900f,600f, Paint().also { it.color = "#FFFFFF".toColorInt() })
         for(obj in _objects){
             if(obj is ICanvasDrawable){
                 obj.draw(canvas!!)

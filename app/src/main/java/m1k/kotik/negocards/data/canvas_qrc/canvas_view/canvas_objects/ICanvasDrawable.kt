@@ -6,6 +6,6 @@ import m1k.kotik.negocards.data.serialization.serializationObject.SerializeMembe
 
 interface ICanvasDrawable {
     @SerializeMember("p")
-    var _paint: Paint
+    var paint: Paint
     fun draw(canvas: Canvas)
 }

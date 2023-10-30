@@ -57,7 +57,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/test_btn"
+                    android:id="@+id/testBtn"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginStart="25dp"
@@ -73,7 +73,7 @@
                     android:layout_marginStart="20dp"
                     android:background="@drawable/rounded_square_30"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/test_btn"
+                    app:layout_constraintStart_toEndOf="@+id/testBtn"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView

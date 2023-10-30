@@ -17,15 +17,12 @@ class CanvasText(
     @SerializeMember("t")
     var text: String = "text",
     @SerializeMember("p")
-    var paint: Paint = Paint()
+    override var paint: Paint = Paint()
     ): CanvasObject(x,y,width,height), ICanvasDrawable {
 
     override fun draw(canvas: Canvas) {
         canvas.drawText(text,x.toFloat(),y.toFloat(),paint)
     }
-    override var _paint: Paint
-        get() { return paint }
-        set(value) { paint = value }
 
     override val key: String
         get() = TODO("Not yet implemented")
