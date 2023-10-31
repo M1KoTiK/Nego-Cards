@@ -2,6 +2,7 @@ package m1k.kotik.negocards.data.canvas_qrc.canvas_view.new_canvas_view
 
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.MotionEvent
@@ -9,6 +10,9 @@ import android.view.View
 import androidx.core.graphics.toColorInt
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.CanvasObject
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.ICanvasDrawable
+import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.ICanvasZoomable
+import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.Rectangle
+import m1k.kotik.negocards.data.canvas_qrc.old_govno.canvas_object_types.CanvasObjectType
 
 /**
  * Представляет холст на котором выводятся объекты без возможности их изменять
@@ -28,7 +32,7 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
             this.requestLayout()
         }
     /**Масштаб (в процентах)*/
-    var canvasZoom: Int = 100
+    var canvasZoom: Float = 1f
         set(value) {
             field = value
             this.requestLayout()
@@ -56,9 +60,20 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
         get() = _objects
 
 //============================Публичные методы=================================
-    fun findSelectedObject(x: Int, y: Int) {
-        TODO()
+    fun selectObjectBy(x: Int, y: Int) {
+    listCurrentSelectedObjects.clear()
+        for (obj in _objects.reversed()) {
+            if (isCursorHoveredOver(x,y,obj)) {
+                listCurrentSelectedObjects.add(obj)
+            }
+        }
     }
+
+    fun clearObject() {
+        _objects.clear()
+        invalidate()
+    }
+
     fun setObjects(listObjects: List<CanvasObject>){
         for(obj in listObjects){
             _objects.add(obj)
@@ -70,6 +85,23 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
     private var _objects: MutableList<CanvasObject> = mutableListOf()
     private var _listCurrentSelectedObjects: MutableList<CanvasObject> = mutableListOf()
 
+//=============================Приватные методы=================================
+
+    private fun isCursorHoveredOver(x:Int, y:Int, obj: CanvasObject, touchZoneExpansion: Int = 10)
+    : Boolean{
+        if(x >= obj.x - touchZoneExpansion && x <= obj.x + obj.width + touchZoneExpansion &&
+           y >= obj.y - touchZoneExpansion && y <= obj.y + obj.height + touchZoneExpansion ){
+            return true
+        }
+        return false
+    }
+    fun setZoomForObject(obj: CanvasObject):Boolean{
+        if(obj is ICanvasZoomable){
+            obj.zoomValue = canvasZoom
+            return true
+        }
+        return false
+    }
 //==============================================================================
 //---------------------Обработка нажатий на холсте------------------------------
 //==============================================================================
@@ -85,7 +117,7 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
             MotionEvent.ACTION_DOWN -> {
                 startX = x
                 startY = y
-
+                selectObjectBy(startX, startY)
             }
             MotionEvent.ACTION_UP -> {
 
@@ -96,12 +128,14 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
         }
         return true
     }
-
-
+    //Это здесь только для теста потом его надо будет убрать!!!
+    var background = Rectangle(0,0,900,600, Paint().also { it.color= Color.WHITE })
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
+        background.draw(canvas!!)
         for(obj in _objects){
             if(obj is ICanvasDrawable){
+                setZoomForObject(obj)
                 obj.draw(canvas!!)
             }
         }

@@ -1,11 +1,7 @@
 package m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes
 
 import android.graphics.Paint
-import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.CanvasObject
-import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.CanvasObjectMode
-import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.ICanvasDrawable
-import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.ICanvasEditable
-import m1k.kotik.negocards.data.serialization.serializationObject.SerializeMember
+import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.*
 
 abstract class CanvasShape (
     // x, y - координаты верхнего левого угла для прямоугольника в который впиысывается фигура
@@ -15,11 +11,11 @@ abstract class CanvasShape (
     height: Int,
     override var paint: Paint
 
-): CanvasObject(x,y,width,height), ICanvasDrawable, ICanvasEditable {
+): CanvasObject(x,y,width,height), ICanvasDrawable, ICanvasEditable, ICanvasZoomable {
     companion object{
         const val defaultColor = "FF181818"
     }
 
-
-    override var mode: CanvasObjectMode = CanvasObjectMode.None
+    override var zoomValue = 1f
+    override var mode = CanvasObjectMode.None
 }

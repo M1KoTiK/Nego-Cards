@@ -1,7 +1,6 @@
-package m1k.kotik.negocards.data.canvas_qrc.canvas_serialization
+package m1k.kotik.negocards.data.canvas_qrc.canvas_serialization.canvas_converters
 
 import android.graphics.Paint
-import m1k.kotik.negocards.data.canvas_qrc.canvas_serialization.canvas_converters.PaintConverter
 import m1k.kotik.negocards.data.serialization.value_converters.IValueConverter
 import m1k.kotik.negocards.data.serialization.value_converters.IValueConverterSet
 import m1k.kotik.negocards.data.serialization.value_converters.default_converters.BoolConverter

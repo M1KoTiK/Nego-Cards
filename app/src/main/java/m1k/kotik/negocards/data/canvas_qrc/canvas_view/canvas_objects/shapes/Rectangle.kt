@@ -17,10 +17,10 @@ class Rectangle(
 
     override fun draw(canvas: Canvas) {
         canvas.drawRect(
-            x.toFloat(), //Левая стороная
-            y.toFloat(), //Верхняя сторона
-            x + width.toFloat(), //Правая сторона
-            y + height.toFloat(), //Нижняя сторона
+            x.toFloat() * zoomValue, //Левая стороная
+            y.toFloat() * zoomValue, //Верхняя сторона
+            (x + width.toFloat()) * zoomValue, //Правая сторона
+            (y + height.toFloat())* zoomValue, //Нижняя сторона
             paint // Кисть для задания стиля
         )
     }
