@@ -14,18 +14,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="🧙‍Пошаманил с Gradle и обновил его версию))">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/canvas_objects/ICanvasZoomable.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/custom_views/canvas/SliderDefault.kt" afterDir="false" />
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Делаю CanvasView:&#10;Тестирую как будет работать зум&#10;Возникла проблема -&gt; Slider который я давно насрал оказался полным дерьмом и не работает правильно">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/custom_views/slider/Slider.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/CustomSliderAttrs.attrs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_serialization/CanvasConverterSet.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_serialization/canvas_converters/CanvasConverterSet.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_serialization/CanvasSerialization.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_serialization/CanvasSerialization.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/canvas_objects/shapes/CanvasShape.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/canvas_objects/shapes/CanvasShape.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/canvas_objects/shapes/Rectangle.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/canvas_objects/shapes/Rectangle.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/canvas_objects/texts/ICanvasTextInputable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/canvas_objects/ICanvasTextInputable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/new_canvas_view/CanvasView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/new_canvas_view/CanvasView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/CanvasViewerFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/CanvasViewerFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/custom_views/canvas/Slider.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/custom_views/canvas/Slider.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_canvas_viewer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_canvas_viewer.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,8 +59,8 @@
         <option value="resourceFile" />
         <option value="Kotlin File" />
         <option value="layoutResourceFile" />
-        <option value="valueResourceFile" />
         <option value="Kotlin Class" />
+        <option value="valueResourceFile" />
       </list>
     </option>
   </component>
@@ -127,6 +121,7 @@
     <property name="android-custom-viewC:/Users/User/Desktop/Projects/Kotlin/Nego-Cards/app/src/main/java/m1k/kotik/negocards/data/custom_views/canvas/Slider.kt_SELECTED" value="Slider" />
     <property name="android-custom-viewC:/Users/User/Desktop/Projects/Kotlin/Nego-Cards/app/src/main/java/m1k/kotik/negocards/data/custom_views/canvas/SliderDefault.kt_SELECTED" value="SliderDefault" />
     <property name="android-custom-viewC:/Users/User/Desktop/Projects/Kotlin/Nego-Cards/app/src/main/java/m1k/kotik/negocards/data/custom_views/canvas/ValueSliderPicker.kt_SELECTED" value="ValueSliderPicker" />
+    <property name="android-custom-viewC:/Users/User/Desktop/Projects/Kotlin/Nego-Cards/app/src/main/java/m1k/kotik/negocards/data/custom_views/slider/Slider.kt_SELECTED" value="Slider" />
     <property name="android-custom-viewC:/Users/User/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/view/AlphaSliderPicker.kt_SELECTED" value="AlphaSliderPicker" />
     <property name="android-custom-viewC:/Users/User/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/view/CanvasEditor.kt_SELECTED" value="CanvasEditor" />
     <property name="android-custom-viewC:/Users/User/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/view/CanvasView.kt_SELECTED" value="CanvasView" />
@@ -155,13 +150,14 @@
     <property name="android-custom-viewC:/Users/User/source/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/view/ColorPicker.kt_SELECTED" value="ColorPicker" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="com.android.tools.idea.emulator.zoom.toolbar.visible" value="false" />
+    <property name="com.intellij.openapi.externalSystem.service.settings.ExternalSystemGroupConfigurable" value="ALL" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
   </component>
   <component name="PsdUISettings">
     <option name="LAST_EDITED_BUILD_TYPE" value="release" />
@@ -260,13 +256,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675626606726</updated>
-    </task>
-    <task id="LOCAL-00047" summary="колорпикер меняет цвет фигурам">
-      <created>1682267330153</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1682267330153</updated>
     </task>
     <task id="LOCAL-00048" summary="Масштабирование работает правильно">
       <created>1682281975764</created>
@@ -604,7 +593,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698697552889</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="Делаю CanvasView:&#10;Тестирую как будет работать зум&#10;Возникла проблема -&gt; Slider который я давно насрал оказался полным дерьмом и не работает правильно">
+      <created>1698779225950</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1698779225950</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -619,7 +615,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Доделал сериализатор, добавил новых фичей" />
     <MESSAGE value="Поменял дизайн главной страницы" />
     <MESSAGE value="Исправил дизайн главной страницы и добавил бэкграунд с пикселями" />
     <MESSAGE value="Добавил фонарик при сканировании QRC" />
@@ -644,7 +639,8 @@
     <MESSAGE value="Пытаюсь сдеалть сериализатор для списка объектов" />
     <MESSAGE value="Внес некоторые правки в проект чтобы он лучше работал" />
     <MESSAGE value="‍Пошаманил с Gradle и обновил его версию))" />
-    <option name="LAST_COMMIT_MESSAGE" value="‍Пошаманил с Gradle и обновил его версию))" />
+    <MESSAGE value="Делаю CanvasView:&#10;Тестирую как будет работать зум&#10;Возникла проблема -&gt; Slider который я давно насрал оказался полным дерьмом и не работает правильно" />
+    <option name="LAST_COMMIT_MESSAGE" value="Делаю CanvasView:&#10;Тестирую как будет работать зум&#10;Возникла проблема -&gt; Slider который я давно насрал оказался полным дерьмом и не работает правильно" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

@@ -47,7 +47,7 @@ abstract class Slider (context: Context, attrs: AttributeSet) : View(context, at
                 }
             }
 
-            println("$field")
+            //println("$field")
             return field
         }
     private set

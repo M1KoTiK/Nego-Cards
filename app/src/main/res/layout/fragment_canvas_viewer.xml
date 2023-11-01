@@ -27,4 +27,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <m1k.kotik.negocards.data.custom_views.slider.Slider
+        android:id="@+id/valueSlider"
+        android:layout_width="500dp"
+        android:layout_height="200dp"
+        app:cursorHeight="30dp"
+        app:cursorWidth="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.887"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/canvas_viewer"
+        app:layout_constraintVertical_bias="0.686"
+        app:stripeColor="@color/white"
+        app:stripeHeight="35dp"
+        app:stripeLCorner="10dp"
+        app:stripeRCorner="10dp"
+        app:stripeWidth="250dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

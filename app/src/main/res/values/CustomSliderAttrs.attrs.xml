@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Slider">
+        <attr name="stripeHeight" format="dimension" />
+        <attr name="stripeWidth" format="dimension" />
+        <attr name="stripeColor" format="color" />
+        <attr name="stripeRCorner" format="dimension" />
+        <attr name="stripeLCorner" format="dimension" />
+        <attr name="cursorHeight" format="dimension" />
+        <attr name="cursorWidth" format="dimension" />
+    </declare-styleable>
+</resources>
