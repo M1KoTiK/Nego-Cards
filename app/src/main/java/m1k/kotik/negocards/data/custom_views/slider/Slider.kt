@@ -9,31 +9,36 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import androidx.core.graphics.toColorInt
-import com.google.mlkit.common.model.CustomRemoteModel
 import m1k.kotik.negocards.R
-import kotlin.math.abs
 
 class Slider (context: Context, attrs: AttributeSet) : View(context, attrs) {
-    var startValue = 0f
+    var startValue = -10f
     set(value) {
         field = value
         invalidate()
     }
-    var endValue = 100f
+    var endValue = 10f
         set(value) {
             field = value
             invalidate()
         }
-    var step = 1f
+    var step = 0.1f
         set(value) {
             field = value
             invalidate()
         }
+    val outputValue: Float
+        get(){
+            val currentValueInPercent: Float = localCurrentValue/localDistance
+            val currentValue = currentValueInPercent * (endValue - startValue)
+            return currentValue
+        }
+    val onSliderChangeValue : (Float)->Unit = {}
 
 //====================================
 //Свойства задней панели (Stripe)
 //====================================
-    private var stripeHeight = 65
+    private var stripeHeight = 65f
     set(value){
         field = value
         invalidate()
@@ -49,49 +54,72 @@ class Slider (context: Context, attrs: AttributeSet) : View(context, attrs) {
             field = value
             invalidate()
         }
-    private var stripeWidth = 200
+    private var stripeWidth:Float = 200f
         set(value){
             field = value
             invalidate()
             requestLayout()
         }
-    private var stripeRCorner = 10
+    private var stripeRCorner = 10f
         set(value) {
             field = value
             invalidate()
         }
-    private var stripeLCorner = 10
+    private var stripeLCorner = 10f
         set(value) {
             field = value
             invalidate()
         }
-    private val stripeX
+    private var stripeX:Float = 0f
     get() = width/2 - stripeWidth/2
 
-    private val stripeY: Float
+    private var stripeY: Float = 0f
         get() = height.toFloat()/2 - stripeHeight.toFloat()/2
+
+    private var isStripeStrokeEnable: Boolean = false
+        set(value) {
+            field = value
+            invalidate()
+        }
+    private var stripeStrokeWidth = 4f
+        set(value) {
+            field = value
+            invalidate()
+        }
+
 //====================================
 //Свойства курсора (Cursor)
 //====================================
-    private var cursorHeight = 100
+    private var cursorHeight = 100f
         set(value) {
             field = value
             invalidate()
         }
-    private var cursorWidth = 100
+    private var cursorWidth = 100f
         set(value) {
             field = value
             invalidate()
         }
-    private val defaultCursorX: Int
+    private var defaultCursorX: Float = stripeX
     get() {
         return stripeX
     }
-    private var cursorX: Int? = null
+    private var cursorX: Float? = null
         set(value) {
-            field =value
-            invalidate()
-            requestLayout()
+            if (value != null) {
+                val currentForSet = value - localStartValue
+                if(currentForSet <0){
+                    field = defaultCursorX
+                }
+                else if (currentForSet > localDistance) {
+                    field = localEndValue
+                }
+                else {
+                    field = value
+                }
+                invalidate()
+                requestLayout()
+            }
         }
 
     private var cursorY: Float = 0f
@@ -103,12 +131,12 @@ class Slider (context: Context, attrs: AttributeSet) : View(context, attrs) {
             invalidate()
             requestLayout()
         }
-    private var cursorLCorner = 10
+    private var cursorLCorner = 10f
         set(value) {
             field = value
             invalidate()
         }
-    private var cursorRCorner = 10
+    private var cursorRCorner = 10f
         set(value) {
             field = value
             invalidate()
@@ -123,25 +151,73 @@ class Slider (context: Context, attrs: AttributeSet) : View(context, attrs) {
             field = value
             invalidate()
         }
-    private var isStrokeEnabled = true
+    private var isCursorStrokeEnable: Boolean = false
         set(value) {
             field = value
             invalidate()
         }
+    private var cursorStrokeWidth = 4f
+        set(value) {
+            field = value
+            invalidate()
+        }
+    private var cursorXOffset: Float = 20f
+        set(value) {
+            field = value
+            invalidate()
+            requestLayout()
+        }
+    //====================================================
+    private var localStartValue: Float
+        get() = defaultCursorX
+
+    private var localEndValue: Float
+        get()= localStartValue + stripeWidth - cursorWidth
+
+    private val localDistance: Float
+        get()= localEndValue.minus(localStartValue)
+
+    private val localCurrentValue: Float
+        get() {
+            if(cursorX != null) {
+                val current = cursorX!! - localStartValue
+                if(current <=0){
+                    return 0f
+                }
+                if(current >= localDistance){
+                    return localDistance
+                }
+                return current
+            }
+            return 0f
+        }
+    //===================================================
     init {
         val typedArray = context.obtainStyledAttributes(attrs,R.styleable.Slider)
-        stripeHeight = typedArray.getDimension(R.styleable.Slider_stripeHeight,115f).toInt()
-        stripeWidth = typedArray.getDimension(R.styleable.Slider_stripeWidth,600f).toInt()
-        stripeColor = typedArray.getColor(R.styleable.Slider_stripeColor,"#D9D9D9".toColorInt())
-        stripeRCorner = typedArray.getDimension(R.styleable.Slider_stripeRCorner,10f).toInt()
-        stripeLCorner = typedArray.getDimension(R.styleable.Slider_stripeLCorner,10f).toInt()
-        cursorHeight = typedArray.getDimension(R.styleable.Slider_cursorHeight,100f).toInt()
-        cursorWidth = typedArray.getDimension(R.styleable.Slider_cursorWidth,100f).toInt()
+        stripeHeight = typedArray.getDimension(R.styleable.Slider_stripeHeight,85f)
+        stripeWidth = typedArray.getDimension(R.styleable.Slider_stripeWidth,600f)
+        stripeColor = typedArray.getColor(R.styleable.Slider_stripeColor, Color.WHITE)
+        stripeRCorner = typedArray.getDimension(R.styleable.Slider_stripeRCorner,25f)
+        stripeLCorner = typedArray.getDimension(R.styleable.Slider_stripeLCorner,25f)
+        cursorHeight = typedArray.getDimension(R.styleable.Slider_cursorHeight,70f)
+        cursorWidth = typedArray.getDimension(R.styleable.Slider_cursorWidth,70f)
+        cursorColor = typedArray.getColor(R.styleable.Slider_cursorColor,"#D9D9D9".toColorInt())
+        cursorRCorner = typedArray.getDimension(R.styleable.Slider_cursorRCorner,15f)
+        cursorLCorner = typedArray.getDimension(R.styleable.Slider_cursorLCorner,15f)
+        cursorStrokeColor = typedArray.getColor(R.styleable.Slider_cursorStrokeColor,Color.BLACK)
+        stripeStrokeColor= typedArray.getColor(R.styleable.Slider_stripeStrokeColor,Color.BLACK)
+        isCursorStrokeEnable =typedArray.getBoolean(R.styleable.Slider_isCursorStroke,true)
+        isStripeStrokeEnable =typedArray.getBoolean(R.styleable.Slider_isStripeStroke,false)
+        cursorStrokeWidth = typedArray.getDimension(R.styleable.Slider_cursorStrokeWidth,5f)
+        stripeStrokeWidth = typedArray.getDimension(R.styleable.Slider_stripeStrokeWidth,5f)
+        cursorXOffset = 0f
         typedArray.recycle()
+        defaultCursorX = stripeX
+        localStartValue = defaultCursorX + cursorXOffset
+        localEndValue= defaultCursorX + stripeWidth - 2 * cursorXOffset - cursorWidth
+
         invalidate()
         requestLayout()
-
-
     }
 
     override fun onDraw(canvas: Canvas?) {
@@ -149,19 +225,29 @@ class Slider (context: Context, attrs: AttributeSet) : View(context, attrs) {
         drawStripe(canvas)
         drawCursor(canvas)
 
+        println(localDistance)
+        println("================")
+        println(localCurrentValue)
+        println(outputValue)
+        println("================")
     }
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         event ?: return true
         var x = event.x
         var y = event.y
-        cursorX = x.toInt()
+
+        cursorX = x - cursorWidth/2
         return true
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        val desiredWidth = stripeWidth
-        val desiredHeight = stripeHeight
+        val desiredWidth = stripeWidth.toInt() + stripeStrokeWidth.toInt() + 2*cursorXOffset.toInt()
+        var additionHeight = 0f
+        if(cursorHeight > stripeHeight){
+            additionHeight = cursorHeight - stripeHeight
+        }
+        val desiredHeight = stripeHeight.toInt() + stripeStrokeWidth.toInt() + additionHeight.toInt()
         val widthMode = MeasureSpec.getMode(widthMeasureSpec)
         val widthSize = MeasureSpec.getSize(widthMeasureSpec)
         val heightMode = MeasureSpec.getMode(heightMeasureSpec)
@@ -183,70 +269,70 @@ class Slider (context: Context, attrs: AttributeSet) : View(context, attrs) {
         }
         setMeasuredDimension(width, height)
     }
+    private fun drawCaption(canvas: Canvas?){
 
-    /**
-     *Реальный margin будет в два раза меньше в количественном эквиваленте
-     */
-    private var marginX = 0
-    /**
-     *Реальный margin будет в два раза меньше в количественном эквиваленте
-     */
-    private var marginY = 0
+    }
+
     private fun drawStripe(canvas: Canvas?){
         canvas?.drawRoundRect(
             stripeX.toFloat(),
-            stripeY +(2 * marginY),
-            stripeWidth.toFloat() + (2 * marginX) + stripeX,
+            stripeY,
+            stripeWidth.toFloat() + stripeX + 2 * cursorXOffset,
             stripeHeight.toFloat() + stripeY,
             stripeRCorner.toFloat(),stripeLCorner.toFloat(),
             Paint().also {
+                it.isAntiAlias = true
                 it.color = stripeColor
                 it.style = Style.FILL
             }
         )
-        if(isStrokeEnabled) {
+        if(isStripeStrokeEnable) {
             canvas?.drawRoundRect(
                 stripeX.toFloat(),
-                stripeY + (2 * marginY),
-                stripeWidth.toFloat() + stripeX +  (2 * marginX),
+                stripeY,
+                stripeWidth.toFloat() + stripeX + 2 * cursorXOffset,
                 stripeHeight.toFloat() + stripeY,
                 stripeRCorner.toFloat(),
                 stripeLCorner.toFloat(),
                 Paint().also {
+                    it.isDither = true
+                    it.isAntiAlias = true
                     it.color = stripeStrokeColor
                     it.style = Style.STROKE
-                    it.strokeWidth = 10f
+                    it.strokeWidth = stripeStrokeWidth
                 })
         }
     }
     private fun drawCursor(canvas: Canvas?){
-        var localCursorX = defaultCursorX
+        var localCursorX= defaultCursorX
         if(cursorX != null){
             localCursorX = cursorX!!
         }
         canvas?.drawRoundRect(
-            localCursorX.toFloat() + marginX,
-            cursorY + marginY,
-            cursorWidth.toFloat() + localCursorX,
+            localCursorX + cursorXOffset,
+            cursorY,
+            cursorWidth.toFloat() + localCursorX + cursorXOffset,
             cursorHeight.toFloat() + cursorY,
             cursorRCorner.toFloat(),
             cursorLCorner.toFloat(),
             Paint().also {
+                it.isAntiAlias = true
                 it.color = cursorColor
                 it.style = Style.FILL
         },)
-        if(isStrokeEnabled) {
+        if(isCursorStrokeEnable) {
             canvas?.drawRoundRect(
-                localCursorX.toFloat(),
-                cursorY + marginY,
-                cursorWidth.toFloat() + localCursorX,
+                localCursorX.toFloat() + cursorXOffset,
+                cursorY,
+                cursorWidth.toFloat() + localCursorX + cursorXOffset,
                 cursorHeight.toFloat()+ cursorY,
                 cursorRCorner.toFloat(),
                 cursorLCorner.toFloat(),
                 Paint().also {
+                    it.isAntiAlias = true
                     it.color = cursorStrokeColor
                     it.style = Style.STROKE
-                    it.strokeWidth = 10f
+                    it.strokeWidth = cursorStrokeWidth
                 }
             )
         }

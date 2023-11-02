@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="Slider">
-        <attr name="stripeHeight" format="dimension" />
-        <attr name="stripeWidth" format="dimension" />
-        <attr name="stripeColor" format="color" />
-        <attr name="stripeRCorner" format="dimension" />
-        <attr name="stripeLCorner" format="dimension" />
-        <attr name="cursorHeight" format="dimension" />
-        <attr name="cursorWidth" format="dimension" />
+        <attr name="stripeHeight" format="dimension"/>
+        <attr name="stripeWidth" format="dimension"/>
+        <attr name="stripeColor" format="color"/>
+        <attr name="stripeRCorner" format="dimension"/>
+        <attr name="stripeLCorner" format="dimension"/>
+        <attr name="isStripeStroke" format="boolean"/>
+        <attr name="stripeStrokeColor" format="color"/>
+        <attr name="stripeStrokeWidth" format="dimension"/>
+
+        <attr name="cursorRCorner" format="dimension"/>
+        <attr name="cursorLCorner" format="dimension"/>
+        <attr name="cursorHeight" format="dimension"/>
+        <attr name="cursorWidth" format="dimension"/>
+        <attr name="isCursorStroke" format="boolean"/>
+        <attr name="cursorStrokeColor" format="color"/>
+        <attr name="cursorStrokeWidth" format="dimension"/>
+        <attr name="cursorColor" format="color"/>
+        <attr name="cursorXOffset" format="dimension"/>
     </declare-styleable>
 </resources>
