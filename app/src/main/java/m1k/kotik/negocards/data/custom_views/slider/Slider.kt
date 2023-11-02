@@ -17,12 +17,12 @@ class Slider (context: Context, attrs: AttributeSet) : View(context, attrs) {
         field = value
         invalidate()
     }
-    var endValue = 10f
+    var endValue = -2f
         set(value) {
             field = value
             invalidate()
         }
-    var step = 0.1f
+    var step = 0.21f
         set(value) {
             field = value
             invalidate()
@@ -30,8 +30,16 @@ class Slider (context: Context, attrs: AttributeSet) : View(context, attrs) {
     val outputValue: Float
         get(){
             val currentValueInPercent: Float = localCurrentValue/localDistance
-            val currentValue = currentValueInPercent * (endValue - startValue)
-            return currentValue
+            val currentValue = currentValueInPercent * (endValue - startValue) + startValue
+            val steppedValue = currentValue - ((currentValue - step) % step)
+            val roundedValue = Math.round(steppedValue/ step) * step
+            if(currentValueInPercent == 1f){
+                return endValue
+            }
+            if(currentValueInPercent == 0f){
+                return startValue
+            }
+            return roundedValue
         }
     val onSliderChangeValue : (Float)->Unit = {}
 
@@ -224,20 +232,26 @@ class Slider (context: Context, attrs: AttributeSet) : View(context, attrs) {
         super.onDraw(canvas)
         drawStripe(canvas)
         drawCursor(canvas)
-
-        println(localDistance)
+//
+//        println(localDistance)
         println("================")
-        println(localCurrentValue)
+//        println(localCurrentValue)
         println(outputValue)
         println("================")
     }
-
+    private var buffOutputValue: Float? = null
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         event ?: return true
         var x = event.x
         var y = event.y
-
         cursorX = x - cursorWidth/2
+
+        if(buffOutputValue == null ){
+            buffOutputValue = outputValue
+        }
+        else if (outputValue!= buffOutputValue){
+            onSliderChangeValue.invoke(outputValue)
+        }
         return true
     }
 
