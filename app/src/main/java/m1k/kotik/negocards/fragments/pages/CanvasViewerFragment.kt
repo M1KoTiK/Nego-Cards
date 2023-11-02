@@ -28,7 +28,7 @@ class CanvasViewerFragment: Fragment() {
                 Rectangle(200, 50)
             )
         )
-        binding.valueSliderPicker.onSliderValueChange = {
+        binding.valueSlider.onSliderChangeValue = {
             binding.canvasViewer.canvasZoom = it
             println(it)
         }

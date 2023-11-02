@@ -18,6 +18,9 @@
         <attr name="cursorStrokeColor" format="color"/>
         <attr name="cursorStrokeWidth" format="dimension"/>
         <attr name="cursorColor" format="color"/>
+        <attr name="startValue" format="float"/>
+        <attr name="endValue" format="float"/>
+        <attr name="step" format="float"/>
         <attr name="cursorXOffset" format="dimension"/>
     </declare-styleable>
 </resources>

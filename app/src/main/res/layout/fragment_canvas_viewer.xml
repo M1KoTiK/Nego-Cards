@@ -37,7 +37,6 @@
         app:cursorStrokeColor="@color/black19"
         app:cursorStrokeWidth="0.5dp"
         app:cursorWidth="20dp"
-        android:background="@drawable/rounded_square_15"
         app:isStripeStroke="true"
         app:layout_constraintEnd_toEndOf="@+id/canvas_viewer"
         app:layout_constraintStart_toStartOf="@+id/canvas_viewer"

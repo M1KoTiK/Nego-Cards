@@ -12,17 +12,17 @@ import androidx.core.graphics.toColorInt
 import m1k.kotik.negocards.R
 
 class Slider (context: Context, attrs: AttributeSet) : View(context, attrs) {
-    var startValue = -10f
+    var startValue = 0f
     set(value) {
         field = value
         invalidate()
     }
-    var endValue = -2f
+    var endValue = 2f
         set(value) {
             field = value
             invalidate()
         }
-    var step = 0.21f
+    var step = 0.5f
         set(value) {
             field = value
             invalidate()
@@ -32,7 +32,7 @@ class Slider (context: Context, attrs: AttributeSet) : View(context, attrs) {
             val currentValueInPercent: Float = localCurrentValue/localDistance
             val currentValue = currentValueInPercent * (endValue - startValue) + startValue
             val steppedValue = currentValue - ((currentValue - step) % step)
-            val roundedValue = Math.round(steppedValue/ step) * step
+            val roundedValue = ("%.4f".format(Math.round(steppedValue/ step) * step)).toFloat()
             if(currentValueInPercent == 1f){
                 return endValue
             }
@@ -41,7 +41,7 @@ class Slider (context: Context, attrs: AttributeSet) : View(context, attrs) {
             }
             return roundedValue
         }
-    val onSliderChangeValue : (Float)->Unit = {}
+    var onSliderChangeValue : (Float)->Unit = {}
 
 //====================================
 //Свойства задней панели (Stripe)
@@ -232,12 +232,6 @@ class Slider (context: Context, attrs: AttributeSet) : View(context, attrs) {
         super.onDraw(canvas)
         drawStripe(canvas)
         drawCursor(canvas)
-//
-//        println(localDistance)
-        println("================")
-//        println(localCurrentValue)
-        println(outputValue)
-        println("================")
     }
     private var buffOutputValue: Float? = null
     override fun onTouchEvent(event: MotionEvent?): Boolean {
@@ -245,13 +239,7 @@ class Slider (context: Context, attrs: AttributeSet) : View(context, attrs) {
         var x = event.x
         var y = event.y
         cursorX = x - cursorWidth/2
-
-        if(buffOutputValue == null ){
-            buffOutputValue = outputValue
-        }
-        else if (outputValue!= buffOutputValue){
-            onSliderChangeValue.invoke(outputValue)
-        }
+        onSliderChangeValue.invoke(outputValue)
         return true
     }
 
