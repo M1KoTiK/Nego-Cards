@@ -11,13 +11,7 @@ abstract class CanvasShape (
     x: Int,
     y: Int,
     width: Int,
-    /**
-     *  //Высота прямоугольника в который вписывается фигура
-     */
     height: Int,
-    /**
-     * Кисть необходима для отрисовки фигур из стандартной библиотеки
-     */
     @SerializeMember("p")
     override var paint: Paint
 

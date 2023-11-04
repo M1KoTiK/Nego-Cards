@@ -26,18 +26,18 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
     var canvasHeight: Int = 600
     set(value) {
         field = value
-        this.requestLayout()
+        requestLayout()
     }
     var canvasWidth: Int = 900
         set(value) {
             field = value
-            this.requestLayout()
+            requestLayout()
         }
     /**Масштаб (в процентах)*/
     var canvasZoom: Float = 1f
         set(value) {
             field = value
-            this.requestLayout()
+            requestLayout()
         }
     /** Выбранный на канвасе объект считается как первый в списке, например когда на одном и том же
         месте находятся сразу несколько объектов выбираться будет самый верхний */
@@ -69,11 +69,13 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
         for (obj in _objects.reversed()) {
             if (isCursorHoveredOver(x,y,obj)) {
                 listCurrentSelectedObjects.add(obj)
-                if (obj is ICanvasEditable){
-                    obj.mode = CanvasObjectMode.Select
+            }
+            if(listCurrentSelectedObjects.isNotEmpty()) {
+                var upperSelectedObj = listCurrentSelectedObjects[0]
+                if (upperSelectedObj is ICanvasEditable) {
+                    upperSelectedObj.mode = CanvasObjectMode.Select
+                    onCurrentSelectedObjectChange.invoke()
                 }
-                onCurrentSelectedObjectChange.invoke()
-
             }
         }
     invalidate()
@@ -99,8 +101,11 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
     }
 
 //============================Приватные свойства================================
+    private val defaultBackgroundObject = Rectangle(0,0,canvasWidth,canvasHeight,
+    Paint().also { it.color = Color.WHITE })
+
     private var _objects: MutableList<CanvasObject> = mutableListOf()
-    private var _backgroundObject: CanvasShape? = null
+    private var _backgroundObject: CanvasShape = defaultBackgroundObject
     private var _listCurrentSelectedObjects: MutableList<CanvasObject> = mutableListOf()
 
 //=============================Приватные методы=================================
@@ -143,17 +148,17 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
                 zoomValue = obj.zoomValue
             }
             canvas!!.drawRoundRect(
-                (obj.x - offset).toFloat()*zoomValue,
-                (obj.y - offset).toFloat()*zoomValue,
-                (obj.x + obj.width + offset).toFloat()*zoomValue,
-                (obj.y + obj.height + offset).toFloat()*zoomValue,
+                (obj.x - offset)*zoomValue,
+                (obj.y - offset)*zoomValue,
+                (obj.x + obj.width + offset)*zoomValue,
+                (obj.y + obj.height + offset)*zoomValue,
                 10f,
                 10f,
                 Paint().also {
                     it.color = colorForSelectedObjectStroke
                     it.style = Paint.Style.STROKE
                     it.strokeWidth = 5f
-                    it.pathEffect = DashPathEffect(floatArrayOf(10f, 10f), 5f)
+                    it.pathEffect = null //DashPathEffect(floatArrayOf(10f, 10f), 5f)
                 }
             )
             return true
@@ -176,12 +181,6 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
                 startX = x
                 startY = y
                 selectObjectBy(startX, startY)
-            }
-            MotionEvent.ACTION_UP -> {
-
-            }
-            MotionEvent.ACTION_MOVE -> {
-
             }
         }
         return true

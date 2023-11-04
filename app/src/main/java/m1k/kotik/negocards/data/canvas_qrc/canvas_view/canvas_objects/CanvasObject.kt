@@ -5,18 +5,23 @@ import m1k.kotik.negocards.data.serialization.serializationObject.SerializeMembe
 
 abstract class CanvasObject(
     /**
-     * y координата верхнего левого угла для прямоугольника в который впиысывается фигура
+     * y координата верхнего левого угла для прямоугольника в который будет вписываться объект
      */
     @SerializeMember("y")
     var y: Int,
     /**
-     *  x - координата верхнего левого угла для прямоугольника в который впиысывается фигура
+     *  x - координата верхнего левого угла для прямоугольника в который будет вписываться объект
      */
     @SerializeMember("x")
     var x: Int,
-
+    /**
+     *  //Ширина прямоугольника в который будет вписываться объект
+     */
     @SerializeMember("w")
     var width: Int,
+    /**
+     *  //Высота прямоугольника в который будет вписываться объект
+     */
     @SerializeMember("h")
     var height: Int
 ) : ISerializationObject{
