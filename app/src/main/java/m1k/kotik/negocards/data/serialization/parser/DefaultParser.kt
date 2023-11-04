@@ -9,11 +9,21 @@ import kotlin.reflect.KClass
 import kotlin.reflect.KType
 import kotlin.reflect.full.createInstance
 
+/**
+ * Выполняет разбор сериализуемых объектов на части, которые обрабатываются в сериалиазаторе.
+ * Реализует интерфейс ISerializationParser
+ */
 class DefaultParser(
     override var converterSet: IValueConverterSet,
     override val requiredObjectMap: Map<String, KClass<*>>,
     override var checkTypeChange: Boolean = true,
+    /**
+     * Указывает максимальную длину поиска разделителя объектов
+     */
     var maxLengthForFindObjectSeparator: Int = 5,
+    /**
+     * Указывает максимальную длину поиска ключа объекта
+     */
     var maxLengthForFindObjectKey: Int = 5
 ): ISerializationParser {
 

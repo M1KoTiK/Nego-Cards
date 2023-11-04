@@ -18,7 +18,7 @@
 
     </m1k.kotik.negocards.data.canvas_qrc.canvas_view.new_canvas_view.CanvasView>
 
-    <m1k.kotik.negocards.data.custom_views.canvas.SliderDefault
+    <m1k.kotik.negocards.custom_views.canvas.SliderDefault
         android:id="@+id/valueSliderPicker"
         android:layout_width="600dp"
         android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <m1k.kotik.negocards.data.custom_views.slider.Slider
+    <m1k.kotik.negocards.custom_views.slider.Slider
         android:id="@+id/valueSlider"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

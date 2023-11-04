@@ -13,9 +13,9 @@ import android.view.View.OnTouchListener
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import m1k.kotik.negocards.data.custom_views.toast.showCustomToast
+import m1k.kotik.negocards.custom_views.toast.showCustomToast
 import m1k.kotik.negocards.data.date.SimpleDate
-import m1k.kotik.negocards.data.qrc.QRCType
+import m1k.kotik.negocards.data.qrc.CodeContentType
 import m1k.kotik.negocards.data.qrc.QRCViewModel
 import m1k.kotik.negocards.data.qrc.QRCreator
 import m1k.kotik.negocards.databinding.FragmentQrcViewerBinding
@@ -48,7 +48,7 @@ class QRCViewerFragment() : Fragment() {
             false
         })
         val bundle: Bundle = this.requireArguments()
-        val type: QRCType? = QRCType.values().firstOrNull { it.ordinal == bundle.getInt("type") }
+        val type: CodeContentType? = CodeContentType.values().firstOrNull { it.ordinal == bundle.getInt("type") }
         val value: String? = bundle.getString("value")
         val date: SimpleDate? = SimpleDate.toSimpleDate(bundle.getString("date") ?: "")
         var qrcViewModel: QRCViewModel

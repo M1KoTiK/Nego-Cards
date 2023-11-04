@@ -26,7 +26,7 @@ import com.google.mlkit.vision.common.InputImage
 import m1k.kotik.negocards.CameraXViewModel
 import m1k.kotik.negocards.data.date.SimpleDate
 import m1k.kotik.negocards.data.canvas_qrc.old_govno.popup_windows.CanvasViewerPopupWindow
-import m1k.kotik.negocards.data.qrc.QRCType
+import m1k.kotik.negocards.data.qrc.CodeContentType
 import m1k.kotik.negocards.data.qrc.QRCViewModel
 import m1k.kotik.negocards.data.qrc.ScannedQrcAdapter
 import m1k.kotik.negocards.databinding.FragmentScannerPageBinding
@@ -229,7 +229,7 @@ class ScannerPageFragment : Fragment() {
                             if( lastScannedQRC == null || lastScannedQRC.value != rawValue) {
                                 db.add(
                                     QRCViewModel(
-                                        QRCType.Reference,
+                                        CodeContentType.Reference,
                                         rawValue,
                                         SimpleDate.getCurrentDate()
                                     )
@@ -242,7 +242,7 @@ class ScannerPageFragment : Fragment() {
                                 if(lastScannedQRC == null || lastScannedQRC.value != rawValue) {
                                     db.add(
                                         QRCViewModel(
-                                            QRCType.Text,
+                                            CodeContentType.Text,
                                             rawValue,
                                             SimpleDate.getCurrentDate()
                                         )

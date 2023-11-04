@@ -6,5 +6,5 @@ interface IValueConverterSet {
     //разделитель объектов не может иметь в себе цифру
     var splitSign: String
     var objectSeparator: String
-    val typeToConverterMap: MutableMap< KType, IValueConverter<*>>
+    val typeToConverterMap: MutableMap<KType, IValueConverter<*>>
 }

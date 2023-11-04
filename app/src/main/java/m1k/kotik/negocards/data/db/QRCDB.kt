@@ -6,7 +6,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import m1k.kotik.negocards.data.date.SimpleDate
-import m1k.kotik.negocards.data.qrc.QRCType
+import m1k.kotik.negocards.data.qrc.CodeContentType
 import m1k.kotik.negocards.data.qrc.QRCViewModel
 
 class QRCDB(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
@@ -46,7 +46,7 @@ class QRCDB(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DA
         if(cursor.count >0) {
             cursor.moveToFirst()
             do {
-                var type: QRCType = QRCType.values().first { it.ordinal == cursor.getInt(1) }
+                var type: CodeContentType = CodeContentType.values().first { it.ordinal == cursor.getInt(1) }
                 var value = cursor.getString(2)
                 var date = SimpleDate.Companion.toSimpleDate(cursor.getString(3)) ?: continue
                 outputList.add(QRCViewModel(type, value, date))

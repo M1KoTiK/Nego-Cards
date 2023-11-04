@@ -4,6 +4,9 @@ import m1k.kotik.negocards.data.serialization.serializationObject.ISerialization
 import m1k.kotik.negocards.data.serialization.parser.ISerializationParser
 import kotlin.reflect.KClass
 
+/**
+ * Выполняет десериализацию/сериализацию объектов, используя парсер (ISerializationParser)
+ */
 interface ISerializer{
     var parser: ISerializationParser
     fun serialize(listSerializeObject: List<ISerializationObject>): String?

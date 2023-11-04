@@ -1,4 +1,4 @@
-package m1k.kotik.negocards.data.custom_views.toast
+package m1k.kotik.negocards.custom_views.toast
 
 import android.app.Activity
 import android.content.Context

@@ -1,4 +1,4 @@
-package m1k.kotik.negocards.data.custom_views.slider
+package m1k.kotik.negocards.custom_views.slider
 
 import android.content.Context
 import android.graphics.Canvas
@@ -22,7 +22,7 @@ class Slider (context: Context, attrs: AttributeSet) : View(context, attrs) {
             field = value
             invalidate()
         }
-    var step = 0.5f
+    var step = 0.01f
         set(value) {
             field = value
             invalidate()
@@ -175,7 +175,16 @@ class Slider (context: Context, attrs: AttributeSet) : View(context, attrs) {
             invalidate()
             requestLayout()
         }
-    //====================================================
+    //==================================================
+    // Свойства для Caption
+    //==================================================
+    private var captionColor: Float = 20f
+        set(value) {
+            field = value
+            invalidate()
+            requestLayout()
+        }
+    //=================================================
     private var localStartValue: Float
         get() = defaultCursorX
 
@@ -233,7 +242,7 @@ class Slider (context: Context, attrs: AttributeSet) : View(context, attrs) {
         drawStripe(canvas)
         drawCursor(canvas)
     }
-    private var buffOutputValue: Float? = null
+
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         event ?: return true
         var x = event.x
@@ -262,6 +271,7 @@ class Slider (context: Context, attrs: AttributeSet) : View(context, attrs) {
         } else {
             desiredWidth
         }
+
         val height: Int = if (heightMode == MeasureSpec.EXACTLY) {
             heightSize
         } else if (heightMode == MeasureSpec.AT_MOST) {
@@ -271,10 +281,6 @@ class Slider (context: Context, attrs: AttributeSet) : View(context, attrs) {
         }
         setMeasuredDimension(width, height)
     }
-    private fun drawCaption(canvas: Canvas?){
-
-    }
-
     private fun drawStripe(canvas: Canvas?){
         canvas?.drawRoundRect(
             stripeX.toFloat(),
