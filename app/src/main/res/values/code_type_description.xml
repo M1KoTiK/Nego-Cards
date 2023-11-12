@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="various_text_desc">Любые данные для которых важно указать только текст (номер телефона, координаты,ссылки на различные ресурсы и др.)</string>
+    <string name="canvas_code_desc">Графический макет, который можно создать в встроенном редакторе</string>
+    <string name="file_code_desc">Ссылки на файлы или файлы небольшого размера (VCF,…)</string>
+</resources>

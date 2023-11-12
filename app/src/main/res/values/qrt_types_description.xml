@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="various_text_desc">Включает в себя любые данные для которых важно указать только текст (номер телефона, координаты,ссылки на различные ресурсы и др.)</string>
-    <string name="canvas_qrc_desc">Сохраняет в QR-код графический макет, который можно создать в встроенном редакторе</string>
-    <string name="other_qrc_desc">В разработке</string>
-</resources>

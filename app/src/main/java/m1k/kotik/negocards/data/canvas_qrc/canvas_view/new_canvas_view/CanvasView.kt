@@ -100,12 +100,12 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
         invalidate()
     }
 
-//============================Приватные свойства================================
+//========================Приватные/protected свойства==========================
     private val defaultBackgroundObject = Rectangle(0,0,canvasWidth,canvasHeight,
     Paint().also { it.color = Color.WHITE })
 
-    private var _objects: MutableList<CanvasObject> = mutableListOf()
-    private var _backgroundObject: CanvasShape = defaultBackgroundObject
+    protected var _objects: MutableList<CanvasObject> = mutableListOf()
+    protected var _backgroundObject: CanvasShape = defaultBackgroundObject
     private var _listCurrentSelectedObjects: MutableList<CanvasObject> = mutableListOf()
 
 //=============================Приватные методы=================================
@@ -141,7 +141,7 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
         }
         return false
     }
-    private fun setSelectStrokeForSelectedObject(obj: CanvasObject, canvas: Canvas?, offset: Float = 10f): Boolean{
+    protected fun setSelectStrokeForSelectedObject(obj: CanvasObject, canvas: Canvas?, offset: Float = 10f): Boolean{
         if(obj is ICanvasEditable && obj.mode == CanvasObjectMode.Select){
             var zoomValue = 1f
             if(obj is ICanvasZoomable){
@@ -174,8 +174,6 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
         event ?: return true
         val x = event.x.toInt()
         val y = event.y.toInt()
-        val deltaX = x - startX
-        val deltaY = y - startY
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
                 startX = x
@@ -188,15 +186,13 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
-        canvas ?: throw  NullPointerException("canvas was null")
-        if(_backgroundObject!=null){
-            _backgroundObject!!.draw(canvas)
-        }
+
+        _backgroundObject!!.draw(canvas!!)
         for(obj in _objects){
             if(obj is ICanvasDrawable){
                 setZoomForObject(obj)
                 setSelectStrokeForSelectedObject(obj, canvas)
-                obj.draw(canvas)
+                obj.draw(canvas!!)
             }
         }
     }

@@ -7,7 +7,7 @@
     android:background="@color/black18"
     android:layout_height="match_parent">
 
-    <m1k.kotik.negocards.data.canvas_qrc.canvas_view.new_canvas_view.CanvasView
+    <m1k.kotik.negocards.data.canvas_qrc.canvas_view.new_canvas_view.CanvasEditor
         android:id="@+id/canvas_viewer"
         android:layout_width="900dp"
         android:layout_height="600dp"
@@ -16,16 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    </m1k.kotik.negocards.data.canvas_qrc.canvas_view.new_canvas_view.CanvasView>
-
-    <m1k.kotik.negocards.custom_views.canvas.SliderDefault
-        android:id="@+id/valueSliderPicker"
-        android:layout_width="600dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/canvas_viewer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    </m1k.kotik.negocards.data.canvas_qrc.canvas_view.new_canvas_view.CanvasEditor>
 
     <m1k.kotik.negocards.custom_views.slider.Slider
         android:id="@+id/valueSlider"
@@ -42,7 +33,7 @@
         app:layout_constraintStart_toStartOf="@+id/canvas_viewer"
         app:layout_constraintTop_toBottomOf="@+id/canvas_viewer"
         app:stripeColor="@color/white_d9"
-        app:stripeHeight="10dp"
+        app:stripeHeight="15dp"
         app:stripeLCorner="25dp"
         app:stripeRCorner="25dp"
         app:stripeStrokeColor="@color/black30"

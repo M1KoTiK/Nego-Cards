@@ -14,19 +14,25 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Переделываю CanvasEditor так как с CanvasView плюс минус разобрался&#10;Также добавил документацию для классов">
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="вываыва">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/canvas_code_type.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/file_code_type.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rectangle_189.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/text_code_type.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/canvas_objects/CanvasObject.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/canvas_objects/CanvasObject.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/canvas_objects/shapes/CanvasShape.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/canvas_objects/shapes/CanvasShape.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/new_canvas_view/CanvasEditor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/new_canvas_view/CanvasEditor.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/new_canvas_view/CanvasView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/new_canvas_view/CanvasView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/choice_qrc_type_for_create.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/choice_qrc_type_for_create.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_canvas_viewer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_canvas_viewer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/qrt_types_description.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/code_type_description.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\User\.android\avd\Nexus_6P_API_28.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\User\.android\avd\Pixel_3_XL_API_31.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -113,6 +119,7 @@
     <property name="android-custom-viewC:/Users/User/AppData/Local/Android/Sdk/sources/android-33/android/widget/AbsListView.java_SELECTED" value="AbsListView" />
     <property name="android-custom-viewC:/Users/User/AppData/Local/Android/Sdk/sources/android-33/android/widget/AdapterView.java_SELECTED" value="AdapterView" />
     <property name="android-custom-viewC:/Users/User/AppData/Local/Android/Sdk/sources/android-33/android/widget/AutoCompleteTextView.java_SELECTED" value="AutoCompleteTextView" />
+    <property name="android-custom-viewC:/Users/User/Desktop/Projects/Kotlin/Nego-Cards/app/src/main/java/m1k/kotik/negocards/custom_views/canvas/Slider.kt_SELECTED" value="Slider" />
     <property name="android-custom-viewC:/Users/User/Desktop/Projects/Kotlin/Nego-Cards/app/src/main/java/m1k/kotik/negocards/custom_views/slider/Slider.kt_SELECTED" value="Slider" />
     <property name="android-custom-viewC:/Users/User/Desktop/Projects/Kotlin/Nego-Cards/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/CanvasEditor.kt_SELECTED" value="CanvasEditor" />
     <property name="android-custom-viewC:/Users/User/Desktop/Projects/Kotlin/Nego-Cards/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/CanvasView.kt_SELECTED" value="CanvasView" />
@@ -257,13 +264,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675626606726</updated>
-    </task>
-    <task id="LOCAL-00052" summary="Корявый слайдер хорошо работает, начала делать нормальный кастомный слайдер">
-      <created>1682536577473</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1682536577473</updated>
     </task>
     <task id="LOCAL-00053" summary="Сделал нормальный класс для кастомного слайдера">
       <created>1682611634569</created>
@@ -601,7 +601,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699120083787</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="🥩🥩Допилил CanvasView🥩🥩">
+      <created>1699121442561</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1699121442561</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -616,8 +623,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добавил clickListener для recyclerView" />
-    <MESSAGE value="Изменил внешний вид recyclerView для ScannedQrc и сделал чтобы было видно включен ли фонарик" />
     <MESSAGE value="Пофиксил проблемы с цвветом у кнопки фонарика и исправил изменение размера у последнего элемента recyclerView" />
     <MESSAGE value="Создал базу для хранения отсканированных QR-кодов" />
     <MESSAGE value="Исправил работу с базой данных" />
@@ -641,7 +646,9 @@
     <MESSAGE value="Слайдер правильно работает x2" />
     <MESSAGE value="Переделываю CanvasEditor так как с CanvasView плюс минус разобрался" />
     <MESSAGE value="Переделываю CanvasEditor так как с CanvasView плюс минус разобрался&#10;Также добавил документацию для классов" />
-    <option name="LAST_COMMIT_MESSAGE" value="Переделываю CanvasEditor так как с CanvasView плюс минус разобрался&#10;Также добавил документацию для классов" />
+    <MESSAGE value="Допилил CanvasView" />
+    <MESSAGE value="Допилил CanvasView" />
+    <option name="LAST_COMMIT_MESSAGE" value="Допилил CanvasView" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
