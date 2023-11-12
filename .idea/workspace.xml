@@ -14,18 +14,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="вываыва">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/canvas_code_type.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/file_code_type.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rectangle_189.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/text_code_type.png" afterDir="false" />
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Добавил в новый CanvasEditor возможность двигать и выделять объекты">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/new_canvas_view/CanvasEditor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/new_canvas_view/CanvasEditor.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/new_canvas_view/CanvasView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/new_canvas_view/CanvasView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/choice_qrc_type_for_create.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/choice_qrc_type_for_create.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_canvas_viewer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_canvas_viewer.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/qrt_types_description.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/code_type_description.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/CanvasViewerFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/CanvasViewerFragment.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,7 +150,6 @@
     <property name="android-custom-viewC:/Users/User/source/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/view/CanvasView.kt_SELECTED" value="CanvasView" />
     <property name="android-custom-viewC:/Users/User/source/StudioProjects/Nego-Cards/app/src/main/java/m1k/kotik/negocards/view/ColorPicker.kt_SELECTED" value="ColorPicker" />
     <property name="cidr.known.project.marker" value="true" />
-    <property name="com.android.tools.idea.emulator.zoom.toolbar.visible" value="false" />
     <property name="com.intellij.openapi.externalSystem.service.settings.ExternalSystemGroupConfigurable" value="ALL" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
@@ -264,13 +256,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675626606726</updated>
-    </task>
-    <task id="LOCAL-00053" summary="Сделал нормальный класс для кастомного слайдера">
-      <created>1682611634569</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1682611634569</updated>
     </task>
     <task id="LOCAL-00054" summary="Переименовал классный класс (❁´◡`❁)">
       <created>1682620573221</created>
@@ -608,7 +593,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699121442561</updated>
     </task>
-    <option name="localTasksCounter" value="102" />
+    <task id="LOCAL-00102" summary="Добавил в новый CanvasEditor возможность двигать и выделять объекты">
+      <created>1699802295472</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1699802295472</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -623,7 +615,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Пофиксил проблемы с цвветом у кнопки фонарика и исправил изменение размера у последнего элемента recyclerView" />
     <MESSAGE value="Создал базу для хранения отсканированных QR-кодов" />
     <MESSAGE value="Исправил работу с базой данных" />
     <MESSAGE value="Теперь отсканированные qr-коды помещаются в списочек" />
@@ -648,7 +639,8 @@
     <MESSAGE value="Переделываю CanvasEditor так как с CanvasView плюс минус разобрался&#10;Также добавил документацию для классов" />
     <MESSAGE value="Допилил CanvasView" />
     <MESSAGE value="Допилил CanvasView" />
-    <option name="LAST_COMMIT_MESSAGE" value="Допилил CanvasView" />
+    <MESSAGE value="Добавил в новый CanvasEditor возможность двигать и выделять объекты" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил в новый CanvasEditor возможность двигать и выделять объекты" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

@@ -1,5 +1,7 @@
 package m1k.kotik.negocards.fragments.pages
 
+import android.graphics.Color
+import android.graphics.Paint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -24,9 +26,9 @@ class CanvasViewerFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.canvasViewer.setObjects(
             listOf(
-                Rectangle(12),
-                Rectangle(500, 150),
-                Rectangle(200, 50)
+                Rectangle(12, paint = Paint().also { it.color = Color.GREEN }),
+                Rectangle(500, 150, paint = Paint().also { it.color = Color.RED }),
+                Rectangle(200, 50,paint = Paint().also { it.color = Color.BLUE })
             )
         )
         binding.canvasViewer.onCurrentSelectedObjectChange = {
