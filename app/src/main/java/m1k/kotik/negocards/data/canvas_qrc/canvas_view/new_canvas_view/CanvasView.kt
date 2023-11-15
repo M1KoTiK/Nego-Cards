@@ -85,13 +85,15 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
         _objects.clear()
         invalidate()
     }
-    /**
-     * Удаляет все старые объекты и помещает новые на канвас
-     */
+
     fun setBackgroundObject(backgroundObject: CanvasShape){
         setCanvasSize(backgroundObject.width,backgroundObject.height)
         _backgroundObject = backgroundObject
     }
+
+    /**
+     * Удаляет все старые объекты и помещает новые на канвас
+     */
     fun setObjects(listObjects: List<CanvasObject>){
         _objects.clear()
         for(obj in listObjects){

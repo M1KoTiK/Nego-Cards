@@ -8,6 +8,26 @@ import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.*
 import m1k.kotik.negocards.data.canvas_qrc.old_govno.DoubleClickChecker
 
 class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context, attrs) {
+    //============================Публичные свойства==========================
+
+    //============================Публичные методы=================================
+    fun addObject(canvasObject: CanvasObject){
+        _objects.add(0,canvasObject)
+    }
+    //========================Приватные/protected свойства==========================
+
+    //=============================Приватные методы=================================
+    private fun moveSelectedItemToEndOfList() {
+        val obj = currentSelectedObject ?: return
+        if (_objects.contains(obj)) {
+            _objects.remove(obj)
+            _objects.add(obj)
+        }
+    }
+
+//==============================================================================
+//---------------------Обработка нажатий на холсте------------------------------
+//==============================================================================
     private val doubleClickChecker = DoubleClickChecker(200) {
         val obj = currentSelectedObject
         if(obj is ICanvasEditable){
@@ -53,7 +73,7 @@ class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context,
                 startX = event.x.toInt()
                 startY = event.y.toInt()
                 selectObjectBy(startX, startY)
-                moveSelectedItemToTop()
+                moveSelectedItemToEndOfList()
                 doubleClickChecker.click()
                 currentSelectedObject ?: return true
                 initialPosX = currentSelectedObject!!.x
@@ -70,13 +90,9 @@ class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context,
         }
         return true
     }
-    private fun moveSelectedItemToTop() {
-        val obj = currentSelectedObject?: return
-        if (_objects.contains(obj)) {
-            _objects.remove(obj)
-            _objects.add(obj)
-        }
-    }
+//==============================================================================
+//-------------------------Отрисовка на холсте----------------------------------
+//==============================================================================
 
     override fun onDraw(canvas: Canvas?) {
         _backgroundObject!!.draw(canvas!!)

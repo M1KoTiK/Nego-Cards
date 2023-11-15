@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import m1k.kotik.negocards.R
+import m1k.kotik.negocards.custom_views.floating_windows.FloatingWindow
 import m1k.kotik.negocards.data.canvas_qrc.canvas_serialization.CanvasSerialization
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.Rectangle
 import m1k.kotik.negocards.data.canvas_qrc.old_govno.CanvasSaver
@@ -22,8 +24,11 @@ class CanvasViewerFragment: Fragment() {
         binding = FragmentCanvasViewerBinding.inflate(inflater, container, false)
         return binding.root
     }
+    lateinit var floatingWindow:FloatingWindow
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        floatingWindow = FloatingWindow(requireContext(), R.layout.input_text_popup)
+        floatingWindow.show(10,10)
         binding.canvasViewer.setObjects(
             listOf(
                 Rectangle(12, paint = Paint().also { it.color = Color.GREEN }),
@@ -42,4 +47,10 @@ class CanvasViewerFragment: Fragment() {
             println(it)
         }
     }
+
+    override fun onDestroy() {
+        floatingWindow.close()
+        super.onDestroy()
+    }
+
 }

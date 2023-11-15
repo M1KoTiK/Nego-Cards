@@ -1,8 +1,13 @@
 package m1k.kotik.negocards
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.PopupMenu
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -19,7 +24,9 @@ class MainActivity : AppCompatActivity() {
         navController = findNavController(R.id.fragmentContainerView)
         //setupActionBarWithNavController(navController)
         setupSmoothBottomMenu()
+
     }
+
     override fun onBackPressed() {
         val fm: FragmentManager = supportFragmentManager
         var backPressedListener: IOnBackPressedListener? = null

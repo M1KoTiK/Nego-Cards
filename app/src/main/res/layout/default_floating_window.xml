@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <LinearLayout android:id="@+id/window_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black30"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView android:id="@+id/window_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
+            android:layout_weight="1"
+            android:paddingStart="8dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="4dp"
+            android:text="Title"
+            android:textColor="@color/greyE" />
+
+        <ImageButton android:id="@+id/window_close"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="end|center_vertical"
+            android:layout_margin="4dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="0dp"
+            android:src="@drawable/rounded_square_30"
+            android:tintMode="src_in" />
+
+    </LinearLayout>
+
+    <LinearLayout android:id="@+id/window_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+</LinearLayout>
