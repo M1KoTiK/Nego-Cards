@@ -23,7 +23,7 @@ abstract class DefaultWindow(
     var isInstanceMustRecreated: Boolean = false
     var isWindowOpen = false
 
-    open var windowParameters = WindowManager.LayoutParams(
+    override var windowParameters = WindowManager.LayoutParams(
         0,
         0,
         0,
@@ -51,25 +51,45 @@ abstract class DefaultWindow(
         windowParameters.height = height
         windowParameters.width = width
         windowParameters.gravity = gravity
-        if (!isWindowOpen) {
-            if (isInstanceMustRecreated) {
-                attachChildView()
-                windowManager.addView(rootView, windowParameters)
-                isWindowOpen = true
-            } else {
-                contentView = layoutInflater.inflate(windowContentLayoutResource, null)
-                attachChildView()
-                windowManager.addView(rootView, windowParameters)
-                isWindowOpen = true
+        if(onBeforeShow()) {
+            if (!isWindowOpen) {
+                if (isInstanceMustRecreated) {
+                    attachChildView()
+                    windowManager.addView(rootView, windowParameters)
+                    isWindowOpen = true
+                } else {
+                    contentView = layoutInflater.inflate(windowContentLayoutResource, null)
+                    attachChildView()
+                    windowManager.addView(rootView, windowParameters)
+                    isWindowOpen = true
+                }
+                onAfterShow(true)
+                return
             }
-
         }
+        onAfterShow(false)
     }
+    var onBeforeClose: ()->Boolean = {true}
+    var onAfterClose: ()->Unit = {}
+    var onBeforeShow: ()->Boolean = {true}
+    var onAfterShow : (isSuccess: Boolean)->Unit = {}
     final override fun update() {
         windowManager.updateViewLayout(rootView, windowParameters)
     }
+    protected fun forcedClose(){
+        if(isWindowOpen) {
+            windowManager.removeView(rootView)
+            isWindowOpen = false
+        }
+    }
+
     final override fun close() {
-        windowManager.removeView(rootView)
-        isWindowOpen = false
+        if(onBeforeClose()) {
+            if(isWindowOpen) {
+                windowManager.removeView(rootView)
+                isWindowOpen = false
+            }
+        }
+        onAfterClose()
     }
 }

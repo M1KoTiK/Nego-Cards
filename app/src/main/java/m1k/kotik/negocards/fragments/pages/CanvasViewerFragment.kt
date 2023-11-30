@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import m1k.kotik.negocards.R
 import m1k.kotik.negocards.custom_views.windows.FloatingWindow
+import m1k.kotik.negocards.custom_views.windows.StaticWindow
 import m1k.kotik.negocards.data.canvas_qrc.canvas_serialization.CanvasSerialization
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.Rectangle
 import m1k.kotik.negocards.databinding.FragmentCanvasViewerBinding
@@ -24,7 +25,8 @@ class CanvasViewerFragment: Fragment() {
         binding = FragmentCanvasViewerBinding.inflate(inflater, container, false)
         return binding.root
     }
-    lateinit var floatingWindow:FloatingWindow
+
+    lateinit var floatingWindow: FloatingWindow
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         floatingWindow = FloatingWindow(requireContext(), R.layout.input_text_popup)
@@ -39,17 +41,14 @@ class CanvasViewerFragment: Fragment() {
 
             val listObj = binding.canvasViewer.listCurrentSelectedObjects
             println(CanvasSerialization.canvasSerializer.serialize(listObj))
-
         }
         binding.valueSlider.onSliderChangeValue = {
             binding.canvasViewer.canvasZoom = it
             println(it)
         }
-
         binding.button3.setOnClickListener {
-            floatingWindow.show(-50,10, 1050,500, Gravity.TOP or Gravity.LEFT)
+            floatingWindow.show(0,0, 1050,500, Gravity.CENTER_HORIZONTAL or Gravity.CENTER_VERTICAL)
         }
-
     }
 
     override fun onDestroyView() {

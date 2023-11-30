@@ -14,15 +14,15 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="🤯🤯Сделал Movable Floating Window🤯🤯">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/DefaultWindow.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/StaticWindow.kt" afterDir="false" />
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="📦😐📂 Создал дефолтную реализацию Window 📂🎲📂">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/DefaultStylizedWindow.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/floating_windows/FloatingWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/FloatingWindow.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/floating_windows/IFloatingWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/IWindow.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/DefaultWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/DefaultWindow.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/FloatingWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/FloatingWindow.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/IWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/IWindow.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/StaticWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/StaticWindow.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/CanvasViewerFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/CanvasViewerFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_canvas_viewer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_canvas_viewer.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,13 +261,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675626606726</updated>
-    </task>
-    <task id="LOCAL-00056" summary="Переделал классный класс со слайдером 123123123123(❁´◡`❁)">
-      <created>1682679301556</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1682679301557</updated>
     </task>
     <task id="LOCAL-00057" summary="проверка QRCViewer в несвойственном для него месте и начало исправления класса тегов так как они неправильно насраны">
       <created>1688470288014</created>
@@ -605,7 +598,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700034008106</updated>
     </task>
-    <option name="localTasksCounter" value="105" />
+    <task id="LOCAL-00105" summary="📦😐📂 Создал дефолтную реализацию Window 📂🎲📂">
+      <created>1701025769170</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1701025769171</updated>
+    </task>
+    <option name="localTasksCounter" value="106" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -620,7 +620,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Теперь отсканированные qr-коды помещаются в списочек" />
     <MESSAGE value="Исправил добавление ScannedQRC при пустом списке" />
     <MESSAGE value="Добавил фрагмент для просмотра scannedQrc который пока что только выводит значение QRC" />
     <MESSAGE value="Расположил на экране просмотра отсканированного qr кода отображение этого qrc и добавил кнопок" />
@@ -645,7 +644,8 @@
     <MESSAGE value="Добавил в новый CanvasEditor возможность двигать и выделять объекты" />
     <MESSAGE value="Теперь объекты могут менять размер в новом CanvasEditor" />
     <MESSAGE value="Сделал Movable Floating Window" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделал Movable Floating Window" />
+    <MESSAGE value=" Создал дефолтную реализацию Window " />
+    <option name="LAST_COMMIT_MESSAGE" value=" Создал дефолтную реализацию Window " />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

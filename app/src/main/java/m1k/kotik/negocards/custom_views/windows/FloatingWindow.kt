@@ -12,7 +12,7 @@ import java.util.*
 class FloatingWindow(
     context: Context,
     windowContentLayoutResource: Int
-) : DefaultWindow(context, windowContentLayoutResource) {
+) : DefaultStylizedWindow(context, windowContentLayoutResource) {
 
     init {
         setTouchProcessingForWindow()
@@ -25,7 +25,6 @@ class FloatingWindow(
 
     @SuppressLint("ClickableViewAccessibility")
     private fun setTouchProcessingForWindow() {
-        // Using kotlin extension for views caused error, so good old findViewById is used
         rootView.findViewById<View>(R.id.window_close).setOnClickListener { close() }
         rootView.findViewById<LinearLayout>(R.id.window_header).setOnTouchListener { v, event ->
             val deltaX = event.rawX - startX
@@ -34,9 +33,6 @@ class FloatingWindow(
                 MotionEvent.ACTION_DOWN ->{
                     startX = event.rawX.toInt()
                     startY = event.rawY.toInt()
-                    rootView.clearFocus()
-                    val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                    imm.hideSoftInputFromWindow(rootView.windowToken, 0)
                     initialPosX = windowParameters.x
                     initialPosY = windowParameters.y
                 }
