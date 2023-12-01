@@ -14,19 +14,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="📦😐📂 Доделал разные виды окон (Ура!) 📂🎲📂">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/layouts/BackPressNotifyingLinearLayout.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/stylized_window/StaticStylizedWindow.kt" afterDir="false" />
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Добавил возможность закрывать окно нажатием кнопки назад и вооооообще сделал окна более юзабельными">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/DefaultStylizedWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/stylized_window/DefaultStylizedWindow.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/DefaultWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/DefaultWindow.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/FloatingWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/stylized_window/FloatingStylizedWindow.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/StaticWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/StaticWindow.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/CanvasViewerFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/CanvasViewerFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/default_floating_window.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/default_floating_window.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/input_text_popup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/input_text_popup.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/qrc_viewer_popup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/qrc_viewer_popup.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/QRCViewerFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/QRCViewerFragment.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -266,13 +258,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675626606726</updated>
-    </task>
-    <task id="LOCAL-00058" summary="Начал переписывать класс для сериализации">
-      <created>1696090023235</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1696090023236</updated>
     </task>
     <task id="LOCAL-00059" summary="Начал писать логику рефлексии для десериализации">
       <created>1696100726895</created>
@@ -610,7 +595,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701373296917</updated>
     </task>
-    <option name="localTasksCounter" value="107" />
+    <task id="LOCAL-00107" summary="Добавил возможность закрывать окно нажатием кнопки назад и вооооообще сделал окна более юзабельными">
+      <created>1701456442508</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1701456442508</updated>
+    </task>
+    <option name="localTasksCounter" value="108" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -625,7 +617,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добавил фрагмент для просмотра scannedQrc который пока что только выводит значение QRC" />
     <MESSAGE value="Расположил на экране просмотра отсканированного qr кода отображение этого qrc и добавил кнопок" />
     <MESSAGE value="Добавил кнопку копирования и кастомный тост" />
     <MESSAGE value="Ограничил видимый текст qrc" />
@@ -650,7 +641,8 @@
     <MESSAGE value="Сделал Movable Floating Window" />
     <MESSAGE value=" Создал дефолтную реализацию Window " />
     <MESSAGE value=" Доделал разные виды окон (Ура!) " />
-    <option name="LAST_COMMIT_MESSAGE" value=" Доделал разные виды окон (Ура!) " />
+    <MESSAGE value="Добавил возможность закрывать окно нажатием кнопки назад и вооооообще сделал окна более юзабельными" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил возможность закрывать окно нажатием кнопки назад и вооооообще сделал окна более юзабельными" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

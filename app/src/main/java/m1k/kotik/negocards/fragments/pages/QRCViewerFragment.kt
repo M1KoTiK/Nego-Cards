@@ -5,6 +5,7 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context.CLIPBOARD_SERVICE
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.net.Uri
 import android.os.Bundle
 import android.view.Gravity
@@ -14,6 +15,7 @@ import android.view.View.OnTouchListener
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import m1k.kotik.negocards.R
 import m1k.kotik.negocards.custom_views.toast.showCustomToast
@@ -35,12 +37,18 @@ class QRCViewerFragment() : Fragment() {
         binding = FragmentQrcViewerBinding.inflate(inflater, container, false)
         return binding!!.root
     }
-
-    var codeViewWindow = FloatingStylizedWindow(requireContext(), R.layout.qrc_viewer_popup)
+    private lateinit var codeViewWindow: FloatingStylizedWindow
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        codeViewWindow = FloatingStylizedWindow(requireContext(), R.layout.qrc_viewer_popup)
+        codeViewWindow.windowContentViewGroup.also {
+            it.background =
+                ResourcesCompat.getDrawable(resources, R.drawable.rounded_square_15, null)
+            it.backgroundTintList = ColorStateList.valueOf(0xF5252525.toInt())
+        }
+        codeViewWindow.header = "Просмотр кода"
         binding.mainLayoutQRCViewer.setOnTouchListener(OnTouchListener { v, event ->
             if (binding.QRCValueViewer.isFocused) {
                 if (event.y > binding.QRCValueViewer.y - binding.QRCValueViewer.height ||
