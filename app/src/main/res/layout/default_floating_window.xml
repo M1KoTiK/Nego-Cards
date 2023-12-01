@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<m1k.kotik.negocards.custom_views.layouts.BackPressNotifyingLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="1">
+    android:orientation="vertical">
 
     <LinearLayout android:id="@+id/window_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/black30"
-        android:orientation="horizontal"
-        android:weightSum="1">
+        android:orientation="horizontal">
 
         <TextView android:id="@+id/window_title"
             android:layout_width="0dp"
@@ -23,11 +21,12 @@
             android:paddingEnd="8dp"
             android:paddingBottom="4dp"
             android:text="Title"
+            android:textSize="15sp"
             android:textColor="@color/greyE" />
 
         <ImageButton android:id="@+id/window_close"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_gravity="end|center_vertical"
             android:layout_margin="4dp"
             android:background="?android:attr/selectableItemBackground"
@@ -37,13 +36,15 @@
 
     </LinearLayout>
 
-    <LinearLayout android:id="@+id/window_content"
+    <LinearLayout
+        android:id="@+id/window_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         android:background="@android:color/transparent"
+        android:gravity="center"
+
         android:orientation="horizontal">
 
     </LinearLayout>
 
-</LinearLayout>
+</m1k.kotik.negocards.custom_views.layouts.BackPressNotifyingLinearLayout>

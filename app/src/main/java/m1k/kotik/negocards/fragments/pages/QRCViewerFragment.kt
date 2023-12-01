@@ -7,13 +7,17 @@ import android.content.Context.CLIPBOARD_SERVICE
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnTouchListener
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import m1k.kotik.negocards.R
 import m1k.kotik.negocards.custom_views.toast.showCustomToast
+import m1k.kotik.negocards.custom_views.windows.stylized_window.FloatingStylizedWindow
 import m1k.kotik.negocards.data.date.SimpleDate
 import m1k.kotik.negocards.data.qrc.CodeContentType
 import m1k.kotik.negocards.data.qrc.QRCViewModel
@@ -31,6 +35,8 @@ class QRCViewerFragment() : Fragment() {
         binding = FragmentQrcViewerBinding.inflate(inflater, container, false)
         return binding!!.root
     }
+
+    var codeViewWindow = FloatingStylizedWindow(requireContext(), R.layout.qrc_viewer_popup)
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -54,8 +60,11 @@ class QRCViewerFragment() : Fragment() {
         var qrcViewModel: QRCViewModel
         if (type != null && value != null && date != null) {
             qrcViewModel = QRCViewModel(type, value, date)
+            val codeImageView = codeViewWindow.contentView.findViewById<ImageView>(R.id.QRCImage)
             binding.QRCValueViewer.text = qrcViewModel.value
-            binding.qrcDisplay.setImageBitmap(QRCreator.getQRCToBitmap(value))
+            val codeImage = QRCreator.getQRCToBitmap(value)
+            binding.qrcDisplay.setImageBitmap(codeImage)
+            codeViewWindow.contentView.findViewById<ImageView>(R.id.QRCImage).setImageBitmap(codeImage)
             binding.copyBtn.setOnClickListener {
                 val clipboardManager =
                     requireActivity().getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
@@ -67,6 +76,12 @@ class QRCViewerFragment() : Fragment() {
                 Toast(requireContext()).showCustomToast("Скопировано!", requireActivity())
             }
 
+        }
+
+
+        binding.qrcDisplay.setOnClickListener {
+            codeViewWindow.show(0,0,1000,1100,
+                Gravity.CENTER_VERTICAL or Gravity.CENTER_HORIZONTAL)
         }
         binding.openInBrowserBtn.setOnClickListener {
             val browserIntent = if (

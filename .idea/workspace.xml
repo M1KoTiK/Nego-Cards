@@ -14,22 +14,26 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="📦😐📂 Создал дефолтную реализацию Window 📂🎲📂">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/DefaultStylizedWindow.kt" afterDir="false" />
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="📦😐📂 Доделал разные виды окон (Ура!) 📂🎲📂">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/layouts/BackPressNotifyingLinearLayout.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/stylized_window/StaticStylizedWindow.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/DefaultStylizedWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/stylized_window/DefaultStylizedWindow.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/DefaultWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/DefaultWindow.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/FloatingWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/FloatingWindow.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/IWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/IWindow.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/FloatingWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/stylized_window/FloatingStylizedWindow.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/StaticWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/custom_views/windows/StaticWindow.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/CanvasViewerFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/CanvasViewerFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/default_floating_window.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/default_floating_window.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/input_text_popup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/input_text_popup.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/qrc_viewer_popup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/qrc_viewer_popup.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\User\.android\avd\Pixel_3_XL_API_31.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\User\.android\avd\Pixel_4_API_28.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -117,6 +121,7 @@
     <property name="android-custom-viewC:/Users/User/AppData/Local/Android/Sdk/sources/android-33/android/widget/AdapterView.java_SELECTED" value="AdapterView" />
     <property name="android-custom-viewC:/Users/User/AppData/Local/Android/Sdk/sources/android-33/android/widget/AutoCompleteTextView.java_SELECTED" value="AutoCompleteTextView" />
     <property name="android-custom-viewC:/Users/User/Desktop/Projects/Kotlin/Nego-Cards/app/src/main/java/m1k/kotik/negocards/custom_views/canvas/Slider.kt_SELECTED" value="Slider" />
+    <property name="android-custom-viewC:/Users/User/Desktop/Projects/Kotlin/Nego-Cards/app/src/main/java/m1k/kotik/negocards/custom_views/layouts/BackPressedLinearLayout.kt_SELECTED" value="BackPressNotifyingLinearLayout" />
     <property name="android-custom-viewC:/Users/User/Desktop/Projects/Kotlin/Nego-Cards/app/src/main/java/m1k/kotik/negocards/custom_views/slider/Slider.kt_SELECTED" value="Slider" />
     <property name="android-custom-viewC:/Users/User/Desktop/Projects/Kotlin/Nego-Cards/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/CanvasEditor.kt_SELECTED" value="CanvasEditor" />
     <property name="android-custom-viewC:/Users/User/Desktop/Projects/Kotlin/Nego-Cards/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/CanvasView.kt_SELECTED" value="CanvasView" />
@@ -182,11 +187,11 @@
       <recent name="m1k.kotik.negocards.model" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="m1k.kotik.negocards.custom_views.windows.stylized_window" />
+      <recent name="m1k.kotik.negocards.custom_views.windows.StylizedWindow" />
       <recent name="m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects" />
       <recent name="m1k.kotik.negocards.data.canvas_qrc.canvas_serialization.canvas_converters" />
       <recent name="m1k.kotik.negocards.data.canvas_qrc.canvas_objects.texts" />
-      <recent name="m1k.kotik.negocards.data.canvas_qrc.canvas_objects" />
-      <recent name="m1k.kotik.negocards.custom_views.canvas" />
     </key>
     <key name="android.template.1505593035">
       <recent name="com.example.negocards.fragments.pages" />
@@ -261,13 +266,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675626606726</updated>
-    </task>
-    <task id="LOCAL-00057" summary="проверка QRCViewer в несвойственном для него месте и начало исправления класса тегов так как они неправильно насраны">
-      <created>1688470288014</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1688470288015</updated>
     </task>
     <task id="LOCAL-00058" summary="Начал переписывать класс для сериализации">
       <created>1696090023235</created>
@@ -605,7 +603,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701025769171</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="📦😐📂 Доделал разные виды окон (Ура!) 📂🎲📂">
+      <created>1701373296917</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1701373296917</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -620,7 +625,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Исправил добавление ScannedQRC при пустом списке" />
     <MESSAGE value="Добавил фрагмент для просмотра scannedQrc который пока что только выводит значение QRC" />
     <MESSAGE value="Расположил на экране просмотра отсканированного qr кода отображение этого qrc и добавил кнопок" />
     <MESSAGE value="Добавил кнопку копирования и кастомный тост" />
@@ -645,7 +649,8 @@
     <MESSAGE value="Теперь объекты могут менять размер в новом CanvasEditor" />
     <MESSAGE value="Сделал Movable Floating Window" />
     <MESSAGE value=" Создал дефолтную реализацию Window " />
-    <option name="LAST_COMMIT_MESSAGE" value=" Создал дефолтную реализацию Window " />
+    <MESSAGE value=" Доделал разные виды окон (Ура!) " />
+    <option name="LAST_COMMIT_MESSAGE" value=" Доделал разные виды окон (Ура!) " />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

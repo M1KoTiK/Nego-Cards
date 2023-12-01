@@ -1,31 +1,42 @@
-package m1k.kotik.negocards.custom_views.windows
+package m1k.kotik.negocards.custom_views.windows.stylized_window
 
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.content.Context
 import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
 import androidx.core.animation.doOnEnd
 import m1k.kotik.negocards.R
+import m1k.kotik.negocards.custom_views.layouts.BackPressNotifyingLinearLayout
+import m1k.kotik.negocards.custom_views.windows.DefaultWindow
 
-open class DefaultStylizedWindow(context: Context, layout: Int):DefaultWindow(context,layout) {
+abstract class DefaultStylizedWindow(context: Context, layout: Int): DefaultWindow(context,layout) {
+    val windowContentViewGroup: ViewGroup = rootView.findViewById(R.id.window_content)
+    var header = "title"
+    set(value) {
+        field = value
+        rootView.findViewById<View>(R.id.window_header)
+            .findViewById<TextView>(R.id.window_title).text = value
+    }
     var canHideKeyboardWhenClickOnHeader = false
-    var canClearFocusWhenClickOnHeader = false
+    var canClearFocusWhenClickOnHeader = true
     init {
-        rootView.findViewById<View>(R.id.window_close).setOnClickListener { close() }
+        rootView as BackPressNotifyingLinearLayout
+        rootView.onBackPressed = {close()}
+        rootView.findViewById<View>(R.id.window_close).setOnClickListener {
+            close()
+            hideKeyboard()
+        }
+
         rootView.findViewById<View>(R.id.window_header).setOnClickListener {
             if(canClearFocusWhenClickOnHeader) {
                 rootView.clearFocus()
             }
             if(canHideKeyboardWhenClickOnHeader) {
-                val imm =
-                    context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(rootView.windowToken, 0)
+                hideKeyboard()
             }
-        }
-        onBeforeShow = {
-            rootView.alpha = 0f
-            true
         }
         onAfterShow= {
             if (it) {
@@ -68,5 +79,10 @@ open class DefaultStylizedWindow(context: Context, layout: Int):DefaultWindow(co
         val heightAnimator = ObjectAnimator.ofFloat(view, "scaleY", 0f, 1f)
         heightAnimator.duration = 500
         heightAnimator.start()
+    }
+    protected fun hideKeyboard(){
+        val imm =
+            context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(rootView.windowToken, 0)
     }
 }

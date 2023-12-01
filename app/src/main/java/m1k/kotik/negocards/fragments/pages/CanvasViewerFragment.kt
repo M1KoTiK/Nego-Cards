@@ -1,16 +1,18 @@
 package m1k.kotik.negocards.fragments.pages
 
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Paint
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import m1k.kotik.negocards.R
-import m1k.kotik.negocards.custom_views.windows.FloatingWindow
-import m1k.kotik.negocards.custom_views.windows.StaticWindow
+import m1k.kotik.negocards.custom_views.windows.stylized_window.FloatingStylizedWindow
 import m1k.kotik.negocards.data.canvas_qrc.canvas_serialization.CanvasSerialization
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.Rectangle
 import m1k.kotik.negocards.databinding.FragmentCanvasViewerBinding
@@ -26,10 +28,10 @@ class CanvasViewerFragment: Fragment() {
         return binding.root
     }
 
-    lateinit var floatingWindow: FloatingWindow
+    lateinit var floatingStylizedWindow: FloatingStylizedWindow
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        floatingWindow = FloatingWindow(requireContext(), R.layout.input_text_popup)
+        floatingStylizedWindow = FloatingStylizedWindow(requireContext(), R.layout.qrc_viewer_popup)
         binding.canvasViewer.setObjects(
             listOf(
                 Rectangle(12, paint = Paint().also { it.color = Color.GREEN }),
@@ -47,12 +49,18 @@ class CanvasViewerFragment: Fragment() {
             println(it)
         }
         binding.button3.setOnClickListener {
-            floatingWindow.show(0,0, 1050,500, Gravity.CENTER_HORIZONTAL or Gravity.CENTER_VERTICAL)
+            floatingStylizedWindow.show(0,0, 1050,1100, Gravity.CENTER_HORIZONTAL or Gravity.CENTER_VERTICAL)
+            floatingStylizedWindow.windowContentViewGroup.also {
+                it.background =
+                ResourcesCompat.getDrawable(resources, R.drawable.rounded_square_15, null)
+                it.backgroundTintList = ColorStateList.valueOf(0xF5252525.toInt())
+            }
+            floatingStylizedWindow.header = "Кул окошечко"
         }
     }
 
     override fun onDestroyView() {
-        floatingWindow.close()
+        floatingStylizedWindow.close()
         super.onDestroyView()
     }
 

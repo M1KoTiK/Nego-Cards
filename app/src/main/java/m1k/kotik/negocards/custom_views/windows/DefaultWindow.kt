@@ -3,26 +3,30 @@ package m1k.kotik.negocards.custom_views.windows
 import android.content.Context
 import android.graphics.PixelFormat
 import android.os.Build
-import android.view.LayoutInflater
-import android.view.View
-import android.view.WindowManager
+import android.view.*
+import android.view.View.OnKeyListener
 import android.widget.LinearLayout
+import androidx.core.content.getSystemService
+import androidx.core.view.children
 import m1k.kotik.negocards.R
+import m1k.kotik.negocards.custom_views.layouts.BackPressNotifyingLinearLayout
 
 abstract class DefaultWindow(
     final override val context: Context,
     final override var windowContentLayoutResource: Int,
     final override val windowRootLayoutResource: Int = R.layout.default_floating_window,
 ) : IWindow {
-    val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+    val windowManager = (context.getSystemService(Context.WINDOW_SERVICE) as WindowManager)
     private val layoutInflater =
         context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
     val rootView: View = layoutInflater.inflate(windowRootLayoutResource, null)
-    var contentView: View = layoutInflater.inflate(windowContentLayoutResource, null)
+    var contentView: View = layoutInflater.inflate(windowContentLayoutResource, rootView.findViewById(R.id.window_content))
 
     var isInstanceMustRecreated: Boolean = false
     var isWindowOpen = false
+    private set
 
+    private var isContentAttached = false
     override var windowParameters = WindowManager.LayoutParams(
         0,
         0,
@@ -33,17 +37,22 @@ abstract class DefaultWindow(
         } else {
             WindowManager.LayoutParams.TYPE_APPLICATION
         },
-        WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS or
                 WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL or
                 WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH,
         PixelFormat.TRANSLUCENT
     )
 
-    private fun attachChildView() {
-        rootView.findViewById<LinearLayout>(R.id.window_content).addView(contentView)
-        rootView.requestFocus()
-    }
 
+    private fun attachChildView() {
+        rootView.findViewById<LinearLayout>(R.id.window_content).also {
+            it.addView(contentView)
+        }
+        rootView.requestFocus()
+
+    }
+    private fun detachChildView() {
+        rootView.findViewById<ViewGroup>(R.id.window_content).removeAllViews()
+    }
 
     final override fun show(x: Int, y: Int, width: Int, height: Int, gravity: Int) {
         windowParameters.x = x
@@ -54,13 +63,21 @@ abstract class DefaultWindow(
         if(onBeforeShow()) {
             if (!isWindowOpen) {
                 if (isInstanceMustRecreated) {
-                    attachChildView()
+                    isContentAttached = true
                     windowManager.addView(rootView, windowParameters)
+                    if(isContentAttached){
+                        detachChildView()
+                    }
+                    attachChildView()
+                    isContentAttached = true
                     isWindowOpen = true
                 } else {
                     contentView = layoutInflater.inflate(windowContentLayoutResource, null)
-                    attachChildView()
                     windowManager.addView(rootView, windowParameters)
+                    if(!isContentAttached){
+                        attachChildView()
+                    }
+                    isContentAttached = true
                     isWindowOpen = true
                 }
                 onAfterShow(true)
@@ -69,10 +86,12 @@ abstract class DefaultWindow(
         }
         onAfterShow(false)
     }
-    var onBeforeClose: ()->Boolean = {true}
-    var onAfterClose: ()->Unit = {}
-    var onBeforeShow: ()->Boolean = {true}
-    var onAfterShow : (isSuccess: Boolean)->Unit = {}
+
+    protected var onBeforeClose: ()->Boolean = {true}
+    protected var onAfterClose: ()->Unit = {}
+    protected var onBeforeShow: ()->Boolean = {true}
+    protected var onAfterShow : (isSuccess: Boolean)->Unit = {}
+
     final override fun update() {
         windowManager.updateViewLayout(rootView, windowParameters)
     }

@@ -1,15 +1,14 @@
-package m1k.kotik.negocards.custom_views.windows
+package m1k.kotik.negocards.custom_views.windows.stylized_window
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.*
-import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
 import m1k.kotik.negocards.R
 import java.util.*
 
 
-class FloatingWindow(
+class FloatingStylizedWindow(
     context: Context,
     windowContentLayoutResource: Int
 ) : DefaultStylizedWindow(context, windowContentLayoutResource) {
@@ -25,7 +24,12 @@ class FloatingWindow(
 
     @SuppressLint("ClickableViewAccessibility")
     private fun setTouchProcessingForWindow() {
-        rootView.findViewById<View>(R.id.window_close).setOnClickListener { close() }
+        // Using kotlin extension for views caused error, so good old findViewById is used
+        rootView.findViewById<View>(R.id.window_close).setOnClickListener {
+            close()
+            rootView.clearFocus()
+            hideKeyboard()
+        }
         rootView.findViewById<LinearLayout>(R.id.window_header).setOnTouchListener { v, event ->
             val deltaX = event.rawX - startX
             val deltaY= event.rawY - startY
@@ -33,16 +37,25 @@ class FloatingWindow(
                 MotionEvent.ACTION_DOWN ->{
                     startX = event.rawX.toInt()
                     startY = event.rawY.toInt()
+                    if(canClearFocusWhenClickOnHeader) {
+                        rootView.clearFocus()
+                    }
+                    if(canHideKeyboardWhenClickOnHeader) {
+                        hideKeyboard()
+                    }
                     initialPosX = windowParameters.x
                     initialPosY = windowParameters.y
                 }
                 MotionEvent.ACTION_MOVE->{
-                windowParameters.x = initialPosX + deltaX.toInt()
-                windowParameters.y = initialPosY + deltaY.toInt()
+                    val newX = initialPosX + deltaX.toInt()
+                    val newY = initialPosY + deltaY.toInt()
+                    windowParameters.x = newX
+                    windowParameters.y = newY
                 }
             }
             update()
             true
         }
     }
+
 }
