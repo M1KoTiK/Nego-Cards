@@ -48,7 +48,8 @@ class MainPageFragment: Fragment() {
         }
 
         binding?.imageView21?.setOnClickListener {
-            navController.navigate(R.id.choiceTypeQRCFragment)
+            //choiceTypeQRCFragment
+            navController.navigate(R.id.choiceCodeTypeFragment)
         }
     }
 }

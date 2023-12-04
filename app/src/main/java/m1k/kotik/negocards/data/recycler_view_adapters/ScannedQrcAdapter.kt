@@ -1,4 +1,4 @@
-package m1k.kotik.negocards.data.qrc
+package m1k.kotik.negocards.data.recycler_view_adapters
 
 import android.content.Context
 import android.content.res.ColorStateList
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import m1k.kotik.negocards.data.qrc.QRCViewModel
 import m1k.kotik.negocards.databinding.ScannedQrcItemBinding
 
 private fun setHeightForView(height: Int, view: View){

@@ -90,4 +90,8 @@
         android:id="@+id/canvasViewerFragment"
         android:name="m1k.kotik.negocards.fragments.pages.CanvasViewerFragment"
         android:label="CanvasViewerFragment" />
+    <fragment
+        android:id="@+id/choiceCodeTypeFragment"
+        android:name="m1k.kotik.negocards.fragments.pages.ChoiceCodeTypeFragment"
+        android:label="ChoiceCodeTypeFragment" />
 </navigation>
