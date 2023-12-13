@@ -1,24 +1,17 @@
 package m1k.kotik.negocards
 
-import android.Manifest
-import android.content.pm.PackageManager
 import android.os.Bundle
-import android.view.Gravity
-import android.widget.Button
 import android.widget.PopupMenu
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
-import m1k.kotik.negocards.databinding.ActivityMainBinding
-import m1k.kotik.negocards.R
-import m1k.kotik.negocards.custom_views.windows.StaticWindow
+import androidx.navigation.navOptions
 import m1k.kotik.negocards.custom_views.windows.stylized_window.StaticStylizedWindow
-import m1k.kotik.negocards.fragments.pages.QRCViewerFragment
+import m1k.kotik.negocards.databinding.ActivityMainBinding
 import m1k.kotik.negocards.fragments.utils_fragment.IOnBackPressedListener
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController

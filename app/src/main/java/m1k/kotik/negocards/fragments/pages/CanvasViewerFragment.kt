@@ -32,22 +32,22 @@ class CanvasViewerFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         floatingStylizedWindow = FloatingStylizedWindow(requireContext(), R.layout.qrc_viewer_popup)
-        binding.canvasViewer.setObjects(
-            listOf(
-                Rectangle(12, paint = Paint().also { it.color = Color.GREEN }),
-                Rectangle(500, 150, paint = Paint().also { it.color = Color.RED }),
-                Rectangle(200, 50,paint = Paint().also { it.color = Color.BLUE })
-            )
-        )
-        binding.canvasViewer.onCurrentSelectedObjectChange = {
-
-            val listObj = binding.canvasViewer.listCurrentSelectedObjects
-            println(CanvasSerialization.canvasSerializer.serialize(listObj))
-        }
-        binding.valueSlider.onSliderChangeValue = {
-            binding.canvasViewer.canvasZoom = it
-            println(it)
-        }
+//        binding.canvasViewer.setObjects(
+//            listOf(
+//                Rectangle(12, paint = Paint().also { it.color = Color.GREEN }),
+//                Rectangle(500, 150, paint = Paint().also { it.color = Color.RED }),
+//                Rectangle(200, 50,paint = Paint().also { it.color = Color.BLUE })
+//            )
+//        )
+//        binding.canvasViewer.onCurrentSelectedObjectChange = {
+//
+//            val listObj = binding.canvasViewer.listCurrentSelectedObjects
+//            println(CanvasSerialization.canvasSerializer.serialize(listObj))
+//        }
+//        binding.valueSlider.onSliderChangeValue = {
+//            binding.canvasViewer.canvasZoom = it
+//            println(it)
+//        }
         binding.button3.setOnClickListener {
             floatingStylizedWindow.show(0,0, 1050,1100, Gravity.CENTER_HORIZONTAL or Gravity.CENTER_VERTICAL)
             floatingStylizedWindow.windowContentViewGroup.also {

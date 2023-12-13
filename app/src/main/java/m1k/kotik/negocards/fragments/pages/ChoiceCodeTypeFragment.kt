@@ -30,39 +30,38 @@ class ChoiceCodeTypeFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val codeTypes: MutableList<CodeTypeItemViewModel> = mutableListOf()
-        codeTypes.add(CodeTypeItemViewModel(
-            "Текст",
-            "sdfsd",
-            ResourcesCompat.getDrawable(resources, R.drawable.text_code_type, null)!!)
+        codeTypes.add(
+            CodeTypeItemViewModel(
+                "Текст",
+                "sdfsd",
+                ResourcesCompat.getDrawable(resources, R.drawable.text_code_type, null)!!
+            )
         )
-        codeTypes.add(CodeTypeItemViewModel(
-            "Холст",
-            "sdfsd",
-            ResourcesCompat.getDrawable(resources, R.drawable.canvas_code_type, null)!!)
+        codeTypes.add(
+            CodeTypeItemViewModel(
+                "Холст",
+                "sdfsd",
+                ResourcesCompat.getDrawable(resources, R.drawable.canvas_code_type, null)!!
+            )
         )
-        codeTypes.add(CodeTypeItemViewModel(
-            "Файл",
-            "sdfsd",
-            ResourcesCompat.getDrawable(resources, R.drawable.file_code_type, null)!!)
+        codeTypes.add(
+            CodeTypeItemViewModel(
+                "Файл",
+                "sdfsd",
+                ResourcesCompat.getDrawable(resources, R.drawable.file_code_type, null)!!
+            )
         )
 
-        binding.ListCodeTypeForCreate.adapter = ChoiceTypeCodeAdapter(requireActivity(),codeTypes).also {
-            it.itemOnClick = { pos ->
-                when(pos){
-                    1->{
+        binding.ListCodeTypeForCreate.adapter =
+            ChoiceTypeCodeAdapter(requireActivity(), codeTypes).also {
+                it.itemOnClick = {
 
-                    }
-                    2->{
-
-                    }
-                    3->{
-
-                    }
                 }
-            }
-        }
-        binding.ListCodeTypeForCreate.layoutManager = LinearLayoutManager(requireActivity())
-        binding.ListCodeTypeForCreate.addItemDecoration(SpaceItemDecorator(30))
 
+
+                binding.ListCodeTypeForCreate.layoutManager = LinearLayoutManager(requireActivity())
+                binding.ListCodeTypeForCreate.addItemDecoration(SpaceItemDecorator(30))
+
+            }
     }
 }

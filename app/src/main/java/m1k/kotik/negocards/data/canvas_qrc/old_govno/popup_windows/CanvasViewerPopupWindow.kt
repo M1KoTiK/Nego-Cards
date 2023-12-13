@@ -2,7 +2,7 @@ package m1k.kotik.negocards.data.canvas_qrc.old_govno.popup_windows
 
 import android.content.Context
 import m1k.kotik.negocards.R
-import m1k.kotik.negocards.data.canvas_qrc.canvas_view.CanvasView
+import m1k.kotik.negocards.data.canvas_qrc.old_govno.CanvasView
 
 class CanvasViewerPopupWindow :PopupWindowDefault(){
     lateinit var canvas: CanvasView

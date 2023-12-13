@@ -1,4 +1,4 @@
-package m1k.kotik.negocards.data.canvas_qrc.canvas_view
+package m1k.kotik.negocards.data.canvas_qrc.old_govno
 
 import android.annotation.SuppressLint
 import android.content.Context

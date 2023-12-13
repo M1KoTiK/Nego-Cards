@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.view.KeyEvent
 import android.widget.LinearLayout
 
-public class BackPressNotifyingLinearLayout(context: Context, attributeSet: AttributeSet): LinearLayout(context, attributeSet) {
+class BackPressNotifyingLinearLayout(context: Context, attributeSet: AttributeSet): LinearLayout(context, attributeSet) {
     override fun dispatchKeyEvent(event: KeyEvent?): Boolean {
         event ?: return false
         if (event.keyCode == KeyEvent.KEYCODE_BACK

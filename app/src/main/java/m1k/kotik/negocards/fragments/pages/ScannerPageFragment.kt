@@ -56,8 +56,8 @@ class ScannerPageFragment : Fragment() {
     ): View? {
         binding = FragmentScannerPageBinding.inflate(inflater, container, false)
         return binding!!.root
-
     }
+
     private lateinit var db : QRCDB
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -70,6 +70,7 @@ class ScannerPageFragment : Fragment() {
         }
         refreshScannedQRC()
     }
+
     fun refreshScannedQRC(){
         val listScannedQRC = db.getScannedQRC().reversed()
         val adapter = ScannedQrcAdapter(requireActivity(),listScannedQRC ).also{ scannedQrcAdapter ->
@@ -115,7 +116,8 @@ class ScannerPageFragment : Fragment() {
                 ActivityCompat.requestPermissions(
                     requireActivity(),
                     arrayOf(Manifest.permission.CAMERA),
-                    PERMISSION_CAMERA_REQUEST)
+                    PERMISSION_CAMERA_REQUEST
+                )
             }
         }
     }
