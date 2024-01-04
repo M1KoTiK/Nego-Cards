@@ -1,24 +1,25 @@
 package m1k.kotik.negocards.data.canvas_qrc.canvas_view.new_canvas_view
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.Rect
+import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.CanvasShape
+import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.Line
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.Rectangle
+import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.RoundRectangle
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.texts.CanvasText
 
 class CanvasConfig(context: Context, attrs: AttributeSet) : View(context, attrs) {
     var canvasCorner = 5
-    val background: CanvasShape = Rectangle().also {
+    val background: CanvasShape = RoundRectangle().also {
         it.x = 0
         it.y = 0
+        it.leftCorner = 20
+        it.rightCorner = 20
     }
-    var canvasHeight: Int = 600
-    var canvasWidth: Int = 800
+    var canvasHeight: Int = 1000
+    var canvasWidth: Int = 1000
 
     val backgroundPaint = Paint().also {
         it.isAntiAlias = true
@@ -27,22 +28,14 @@ class CanvasConfig(context: Context, attrs: AttributeSet) : View(context, attrs)
         it.color = Color.parseColor("#F9F9F9")
     }
 
-    val verticalMeasureLine =  Rectangle().also {
-        it.x = marginMeasureLine
-        it.width = sizeForMeasureLine
-    }
-    val horizontalMeasureLine =  Rectangle().also {
-        it.y = marginMeasureLine
-        it.height = sizeForMeasureLine
-    }
-
     val measureLinePaint  = Paint().also {
-        it.isAntiAlias = true
+        it.strokeWidth = 6f
         it.isDither = true
-        it.strokeWidth = 10f
-        it.style = Paint.Style.FILL
+        it.isAntiAlias = true
+        it.style = Paint.Style.STROKE
+        it.pathEffect = DashPathEffect(floatArrayOf(30f,8f), 0f)
     }
-
+    val line = Line()
     val captionPaint = Paint().also {
         it.isAntiAlias = true
         it.isDither = true
@@ -62,31 +55,36 @@ class CanvasConfig(context: Context, attrs: AttributeSet) : View(context, attrs)
             it.paint = backgroundPaint
         }.draw(canvas)
 
-        verticalMeasureLine.also {
-            it.height = canvasHeight
+        line.also {
+            it.x1 = marginMeasureLine
+            it.y1 = 0
+            it.x2 = marginMeasureLine
+            it.y2 = canvasHeight
             it.paint = measureLinePaint
         }.draw(canvas)
 
-        horizontalMeasureLine.also {
-            it.width = canvasWidth
+        line.also {
+            it.x1 = 0
+            it.y1 = marginMeasureLine
+            it.x2 = canvasWidth
+            it.y2 = marginMeasureLine
             it.paint = measureLinePaint
         }.draw(canvas)
 
-        verticalSizeCaption.also {
-            it.text = canvasHeight.toString()
-            it.paint = captionPaint
-            it.x = verticalMeasureLine.x + captionMargin
-            it.y = canvasHeight/2
-        }.draw(canvas)
+        canvas.drawText(
+            canvasHeight.toString(),
+            marginMeasureLine + captionMargin.toFloat(),
+            canvasHeight/2f,
+            captionPaint
+        )
+        val margin = captionMargin + getTextHeight(captionPaint, canvasWidth.toString())
+        canvas.drawText(
+            canvasWidth.toString(),
+            canvasWidth/2f,
+            marginMeasureLine + margin.toFloat(),
+            captionPaint
+        )
 
-        horizontalSizeCaption.also {
-            it.text = canvasWidth.toString()
-            it.paint = captionPaint
-            it.x = canvasWidth/2
-            it.y = horizontalMeasureLine.y +
-                    captionMargin +
-                    getTextHeight(captionPaint, it.text)
-        }.draw(canvas)
     }
     private fun getTextHeight(textPaint: Paint, text: String): Int{
         val bounds = Rect()

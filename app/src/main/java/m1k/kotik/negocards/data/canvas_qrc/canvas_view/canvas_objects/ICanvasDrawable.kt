@@ -7,7 +7,7 @@ import m1k.kotik.negocards.data.serialization.serializationObject.SerializeMembe
 /**
  * Представляет тип объектов которые могут быть отрисованы на канвасе.
  *
- * !Очень важно что у каждого объекта переопределяющего paint
+ * !Очень важно что у каждого объекта реализующего этот интерфейс и переопределяющего paint
  * нужно проставлять отрибут @SerializeMember("p") иначе он не будет сериализоваться!
  */
 interface ICanvasDrawable {
