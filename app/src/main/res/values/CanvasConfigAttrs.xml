@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CanvasConfig">
+        <attr name="CanvasHeight" format="integer"/>
+        <attr name="CanvasWidth" format="integer"/>
+    </declare-styleable>
+</resources>

@@ -14,20 +14,26 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="✅ Исправил адаптер для выбора типа кода ✅">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/canvas_objects/shapes/Line.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/canvas_objects/shapes/RoundRectangle.kt" afterDir="false" />
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Делаю новые объекты для канваса">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/code_create_pages/CanvasCodePreCreateFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_canvas_code_pre_create.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/CanvasConfigAttrs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/canvas_objects/ICanvasDrawable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/canvas_objects/ICanvasDrawable.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/new_canvas_view/CanvasConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/new_canvas_view/CanvasConfig.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/ChoiceCodeTypeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/ChoiceCodeTypeFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/code_create_pages/CanvasCodeCreateFragment.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/config_for_create_canvas_code.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\User\.android\avd\Pixel_4_API_28.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\User\.android\avd\Nexus_6P_API_28.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -57,9 +63,9 @@
         <option value="Kotlin Annotation" />
         <option value="Kotlin File" />
         <option value="Kotlin Interface" />
-        <option value="valueResourceFile" />
         <option value="resourceFile" />
         <option value="layoutResourceFile" />
+        <option value="valueResourceFile" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -269,13 +275,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675626606726</updated>
-    </task>
-    <task id="LOCAL-00063" summary="Жопа я неправильно сделал парсер">
-      <created>1696245711278</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1696245711278</updated>
     </task>
     <task id="LOCAL-00064" summary="Теперь парсер правильно срет">
       <created>1696247158452</created>
@@ -613,7 +612,14 @@
       <option name="project" value="LOCAL" />
       <updated>1702487100035</updated>
     </task>
-    <option name="localTasksCounter" value="112" />
+    <task id="LOCAL-00112" summary="Делаю новые объекты для канваса">
+      <created>1704360377079</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1704360377079</updated>
+    </task>
+    <option name="localTasksCounter" value="113" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -628,7 +634,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Изменил экран просмотра отскаинрованного qrc" />
     <MESSAGE value="Начал создавать новый дизайн для выбора типа QRC" />
     <MESSAGE value="Пытаюсь сделать CanvasSerializator но пока что он не работает" />
     <MESSAGE value="Сделал конвертер для Paint и он работает" />
@@ -653,7 +658,8 @@
     <MESSAGE value="ヽ༼ ͠° ͟ل͜ ͠° ༽ﾉ Изменил макет выбора типа кода  ( ͡° ͜ʖ ͡°)" />
     <MESSAGE value="✅ Добавил к остлеживанию всякие файлики ✅" />
     <MESSAGE value="✅ Исправил адаптер для выбора типа кода ✅" />
-    <option name="LAST_COMMIT_MESSAGE" value="✅ Исправил адаптер для выбора типа кода ✅" />
+    <MESSAGE value="Делаю новые объекты для канваса" />
+    <option name="LAST_COMMIT_MESSAGE" value="Делаю новые объекты для канваса" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

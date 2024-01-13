@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
@@ -18,6 +20,7 @@ import m1k.kotik.negocards.databinding.ChoiceQrcTypeForCreateBinding
 import m1k.kotik.negocards.databinding.CodeForTypeChoiceItemBinding
 
 class ChoiceCodeTypeFragment: Fragment() {
+    lateinit var navController: NavController
     lateinit var binding: ChoiceQrcTypeForCreateBinding
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,6 +32,7 @@ class ChoiceCodeTypeFragment: Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        navController = binding.root.findNavController()
         val codeTypes: MutableList<CodeTypeItemViewModel> = mutableListOf()
         codeTypes.add(
             CodeTypeItemViewModel(
@@ -54,8 +58,10 @@ class ChoiceCodeTypeFragment: Fragment() {
 
         binding.ListCodeTypeForCreate.adapter =
             ChoiceTypeCodeAdapter(requireActivity(), codeTypes).also {
-                it.itemOnClick = {
-
+                it.itemOnClick = { sender ->
+                    if(sender.name == "Холст"){
+                        navController.navigate(R.id.canvasCodePreCreateFragment)
+                    }
                 }
 
 

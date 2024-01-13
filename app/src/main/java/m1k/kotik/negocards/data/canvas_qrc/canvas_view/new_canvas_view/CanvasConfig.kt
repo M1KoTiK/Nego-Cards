@@ -4,6 +4,8 @@ import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
+import androidx.core.graphics.toColorInt
+import m1k.kotik.negocards.R
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.CanvasShape
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.Line
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.Rectangle
@@ -11,6 +13,7 @@ import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.Rou
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.texts.CanvasText
 
 class CanvasConfig(context: Context, attrs: AttributeSet) : View(context, attrs) {
+
     var canvasCorner = 5
     val background: CanvasShape = RoundRectangle().also {
         it.x = 0
@@ -18,9 +21,27 @@ class CanvasConfig(context: Context, attrs: AttributeSet) : View(context, attrs)
         it.leftCorner = 20
         it.rightCorner = 20
     }
-    var canvasHeight: Int = 1000
-    var canvasWidth: Int = 1000
+    var canvasHeight: Int = 600
+    set(value) {
+        field = value
+        invalidate()
+        requestLayout()
+    }
+    var canvasWidth: Int = 800
+        set(value) {
+            field = value
+            invalidate()
+            requestLayout()
+        }
 
+    init{
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.CanvasConfig)
+        canvasHeight = typedArray.getInteger(R.styleable.CanvasConfig_CanvasHeight,600)
+        canvasWidth = typedArray.getInteger(R.styleable.CanvasConfig_CanvasWidth,800)
+        typedArray.recycle()
+        invalidate()
+        requestLayout()
+    }
     val backgroundPaint = Paint().also {
         it.isAntiAlias = true
         it.isDither = true

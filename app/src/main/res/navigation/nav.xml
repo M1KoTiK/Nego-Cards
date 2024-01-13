@@ -100,4 +100,8 @@
         android:id="@+id/choiceCodeTypeFragment"
         android:name="m1k.kotik.negocards.fragments.pages.ChoiceCodeTypeFragment"
         android:label="ChoiceCodeTypeFragment" />
+    <fragment
+        android:id="@+id/canvasCodePreCreateFragment"
+        android:name="m1k.kotik.negocards.fragments.pages.code_create_pages.CanvasCodePreCreateFragment"
+        android:label="CanvasCodePreCreateFragment" />
 </navigation>

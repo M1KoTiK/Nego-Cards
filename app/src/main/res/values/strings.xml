@@ -25,9 +25,18 @@
         <item>В разработке</item>
     </string-array>
 
+    <string-array name="canvas_config_size">
+        <item>Маленький</item>
+        <item>Средний</item>
+        <item>Большой</item>
+        <item>Кастомный</item>
+    </string-array>
+
     <string-array name="type_text_qrc">
         <item>Просто текст</item>
         <item>Ссылка</item>
         <item>Местоположение</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
