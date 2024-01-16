@@ -68,7 +68,7 @@ class HueAndSaturationCirclePicker (context: Context, attrs: AttributeSet) : Vie
                     HSVToColor(255, floatArrayOf(selectedHue!!, selectedSaturation!!, 1f))
             }
             catch (e:Exception){
-                println(" hue&saturarion govno  = $e ")
+                //println(" hue&saturarion govno  = $e ")
             }
         }
         when(event!!.action){

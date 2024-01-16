@@ -45,7 +45,7 @@ class CanvasCodePreCreateFragment : Fragment() {
                     val containerForAdditionSettingsInCanvas = binding.containerForAdditionSettingsInCanvas as View
                     val lp = containerForAdditionSettingsInCanvas.layoutParams as ViewGroup.MarginLayoutParams
                     val initialMargin = lp.topMargin
-                    val marginAnimator = ValueAnimator.ofInt(initialMargin, initialMargin - 200)
+                    val marginAnimator = ValueAnimator.ofInt(initialMargin, initialMargin - 205)
                     marginAnimator.addUpdateListener {
                         lp.topMargin = it.animatedValue as Int
                         containerForAdditionSettingsInCanvas.requestLayout()
@@ -81,7 +81,7 @@ class CanvasCodePreCreateFragment : Fragment() {
                         val containerForAdditionSettingsInCanvas = binding.containerForAdditionSettingsInCanvas as View
                         val lp = containerForAdditionSettingsInCanvas.layoutParams as ViewGroup.MarginLayoutParams
                         val initialMargin = lp.topMargin
-                        val marginAnimator = ValueAnimator.ofInt(initialMargin, initialMargin + 200)
+                        val marginAnimator = ValueAnimator.ofInt(initialMargin, initialMargin + 205)
                         marginAnimator.addUpdateListener {
                             lp.topMargin = it.animatedValue as Int
                             containerForAdditionSettingsInCanvas.requestLayout()
@@ -107,7 +107,7 @@ class CanvasCodePreCreateFragment : Fragment() {
                 override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
                 override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                     val height = binding.canvasConfigHeight.text.toString()
-                    if(height.toIntOrNull() != null && height.toInt() > 150 && height.toInt() <= 1200){
+                    if(height.toIntOrNull() != null && height.toInt() > 0 && height.toInt() <= 1500){
 
                         canvasHeightChangeWithAnimation(height.toInt(),180)
                     }
@@ -118,7 +118,7 @@ class CanvasCodePreCreateFragment : Fragment() {
                 override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
                 override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                     val width = binding.canvasConfigWidth.text.toString()
-                    if (width.toIntOrNull() != null && width.toInt() >= 150 && width.toInt() <= 1200) {
+                    if (width.toIntOrNull() != null && width.toInt() >= 0 && width.toInt() <= 1500) {
                         canvasWidthChangeWithAnimation(width.toInt(),180)
                     }
                 }

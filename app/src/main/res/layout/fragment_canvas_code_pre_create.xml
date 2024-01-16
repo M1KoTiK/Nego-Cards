@@ -30,7 +30,7 @@
                     android:id="@+id/canvasConfigHeight"
                     style="@style/RoundedEditTextSmall"
                     android:layout_width="115dp"
-                    android:layout_height="40dp"
+                    android:layout_height="36dp"
                     android:layout_marginEnd="150dp"
                     android:ems="10"
                     android:hint="Высота"
@@ -45,7 +45,7 @@
                     android:id="@+id/canvasConfigWidth"
                     style="@style/RoundedEditTextSmall"
                     android:layout_width="115dp"
-                    android:layout_height="40dp"
+                    android:layout_height="36dp"
                     android:layout_marginStart="150dp"
                     android:ems="10"
                     android:hint="Ширина"
@@ -116,9 +116,21 @@
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout"
                 app:layout_constraintTop_toBottomOf="@+id/custom_canvas_config_size_container">
 
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Цвет"
+                    android:textColor="@color/white_d9"
+                    app:layout_constraintEnd_toEndOf="@+id/button8"
+                    app:layout_constraintHorizontal_bias="0.435"
+                    app:layout_constraintStart_toStartOf="@+id/imageView14"
+                    app:layout_constraintTop_toBottomOf="@+id/DividerInCanvas" />
+
                 <ImageView
                     android:id="@+id/DividerInCanvas"
-                    android:layout_width="350dp"
+                    android:layout_width="300dp"
                     android:layout_height="8dp"
                     android:layout_marginTop="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -126,29 +138,27 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/rectangle_189" />
 
-                <EditText
-                    android:id="@+id/editTextTextPersonName12"
-                    style="@style/RoundedEditTextSmall"
-                    android:layout_width="115dp"
-                    android:layout_height="40dp"
-                    android:ems="10"
-                    android:hint="Скругление"
-                    android:inputType="textPersonName"
-                    android:textSize="14sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/DividerInCanvas" />
+                <ImageView
+                    android:id="@+id/imageView14"
+                    android:layout_width="70dp"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView15"
+                    app:srcCompat="@drawable/colorselectorbackgraoound" />
 
                 <Button
-                    android:id="@+id/editTextTextPersonName11"
-                    style="@style/RoundedButton"
-                    android:layout_width="115dp"
-                    android:layout_height="40dp"
-                    android:ems="10"
-                    android:hint="Цвет"
-                    android:inputType="textPersonName"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/DividerInCanvas" />
+                    android:id="@+id/button8"
+                    android:layout_width="50dp"
+                    android:layout_height="15dp"
+                    android:background="@drawable/rounded_square_10"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView14"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView14"
+                    app:layout_constraintStart_toStartOf="@+id/imageView14"
+                    app:layout_constraintTop_toTopOf="@+id/imageView14"
+                    app:layout_constraintVertical_bias="0.47000003" />
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
@@ -172,6 +182,18 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+            <Button
+                android:id="@+id/button9"
+                android:layout_width="300dp"
+                android:layout_height="38dp"
+                android:layout_marginTop="10dp"
+                style="@style/RoundedButton"
+                android:text="Продолжить"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/containerForAdditionSettingsInCanvas" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 </ScrollView>

@@ -14,7 +14,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Добавил страницу пресоздания холста">
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="сру страничку пресоздания холста">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/button_color_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/code_create_pages/CanvasCodePreCreateFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/code_create_pages/CanvasCodePreCreateFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_canvas_code_pre_create.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_canvas_code_pre_create.xml" afterDir="false" />
@@ -55,10 +57,10 @@
         <option value="Kotlin Annotation" />
         <option value="Kotlin File" />
         <option value="Kotlin Interface" />
-        <option value="resourceFile" />
         <option value="layoutResourceFile" />
-        <option value="valueResourceFile" />
         <option value="Kotlin Class" />
+        <option value="valueResourceFile" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -113,6 +115,7 @@
     <property name="android-custom-viewC:/Users/User/AppData/Local/Android/Sdk/sources/android-33/android/widget/AbsListView.java_SELECTED" value="AbsListView" />
     <property name="android-custom-viewC:/Users/User/AppData/Local/Android/Sdk/sources/android-33/android/widget/AdapterView.java_SELECTED" value="AdapterView" />
     <property name="android-custom-viewC:/Users/User/AppData/Local/Android/Sdk/sources/android-33/android/widget/AutoCompleteTextView.java_SELECTED" value="AutoCompleteTextView" />
+    <property name="android-custom-viewC:/Users/User/Desktop/Projects/Kotlin/Nego-Cards/app/src/main/java/m1k/kotik/negocards/custom_views/button/BorderButton.kt_SELECTED" value="BorderButton" />
     <property name="android-custom-viewC:/Users/User/Desktop/Projects/Kotlin/Nego-Cards/app/src/main/java/m1k/kotik/negocards/custom_views/canvas/Slider.kt_SELECTED" value="Slider" />
     <property name="android-custom-viewC:/Users/User/Desktop/Projects/Kotlin/Nego-Cards/app/src/main/java/m1k/kotik/negocards/custom_views/layouts/BackPressNotifyingLinearLayout.kt_SELECTED" value="BackPressNotifyingLinearLayout" />
     <property name="android-custom-viewC:/Users/User/Desktop/Projects/Kotlin/Nego-Cards/app/src/main/java/m1k/kotik/negocards/custom_views/layouts/BackPressedLinearLayout.kt_SELECTED" value="BackPressNotifyingLinearLayout" />
@@ -267,13 +270,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675626606726</updated>
-    </task>
-    <task id="LOCAL-00065" summary="УРА!!!!! Теперь можно правильно понимать где какой тип и даже для дженериков">
-      <created>1696326592576</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1696326592576</updated>
     </task>
     <task id="LOCAL-00066" summary="Положено начало написанию сериализатора">
       <created>1696333702472</created>
@@ -611,7 +607,14 @@
       <option name="project" value="LOCAL" />
       <updated>1705154229835</updated>
     </task>
-    <option name="localTasksCounter" value="114" />
+    <task id="LOCAL-00114" summary="сру страничку пресоздания холста">
+      <created>1705395422072</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1705395422073</updated>
+    </task>
+    <option name="localTasksCounter" value="115" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -626,7 +629,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Пытаюсь сделать CanvasSerializator но пока что он не работает" />
     <MESSAGE value="Сделал конвертер для Paint и он работает" />
     <MESSAGE value="Пытаюсь сдеалть сериализатор для списка объектов" />
     <MESSAGE value="Внес некоторые правки в проект чтобы он лучше работал" />
@@ -651,7 +653,8 @@
     <MESSAGE value="✅ Исправил адаптер для выбора типа кода ✅" />
     <MESSAGE value="Делаю новые объекты для канваса" />
     <MESSAGE value="Добавил страницу пресоздания холста" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил страницу пресоздания холста" />
+    <MESSAGE value="сру страничку пресоздания холста" />
+    <option name="LAST_COMMIT_MESSAGE" value="сру страничку пресоздания холста" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
