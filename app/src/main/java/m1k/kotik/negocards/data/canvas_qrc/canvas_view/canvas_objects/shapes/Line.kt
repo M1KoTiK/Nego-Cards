@@ -11,7 +11,7 @@ class Line(
     var y2: Int = 100,
     paint: Paint = Paint()
 
-) : CanvasShape(x1,y1,x2, y2, paint) {
+) : CanvasShape(x1,y1,x2-x1, y2-y1, paint) {
     override val key: String = "ln"
     private val path = Path()
     override fun draw(canvas: Canvas) {

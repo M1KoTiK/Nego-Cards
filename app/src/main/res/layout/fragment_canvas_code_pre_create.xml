@@ -124,7 +124,6 @@
                     android:text="Цвет"
                     android:textColor="@color/white_d9"
                     app:layout_constraintEnd_toEndOf="@+id/button8"
-                    app:layout_constraintHorizontal_bias="0.435"
                     app:layout_constraintStart_toStartOf="@+id/imageView14"
                     app:layout_constraintTop_toBottomOf="@+id/DividerInCanvas" />
 
@@ -145,18 +144,17 @@
                     android:layout_marginTop="5dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView15"
-                    app:srcCompat="@drawable/colorselectorbackgraoound" />
+                    app:srcCompat="@drawable/colorselectorbuttonbackground" />
 
                 <Button
                     android:id="@+id/button8"
-                    android:layout_width="50dp"
-                    android:layout_height="15dp"
-                    android:background="@drawable/rounded_square_10"
+                    android:layout_width="60dp"
+                    android:layout_height="22dp"
+                    android:background="@drawable/rounded_square_5"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView14"
                     app:layout_constraintEnd_toEndOf="@+id/imageView14"
                     app:layout_constraintStart_toStartOf="@+id/imageView14"
-                    app:layout_constraintTop_toTopOf="@+id/imageView14"
-                    app:layout_constraintVertical_bias="0.47000003" />
+                    app:layout_constraintTop_toTopOf="@+id/imageView14" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

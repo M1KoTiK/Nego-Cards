@@ -10,7 +10,6 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import m1k.kotik.negocards.R
 import m1k.kotik.negocards.databinding.FragmentChoiceParametersForCardBinding
-import m1k.kotik.negocards.fragments.pages.CreateCanvasQRCFragment
 
 class ChoiceParametersForCardFragment : Fragment() {
     lateinit var navController: NavController
