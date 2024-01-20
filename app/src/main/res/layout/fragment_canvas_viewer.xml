@@ -20,7 +20,7 @@
 
     </m1k.kotik.negocards.data.canvas_qrc.canvas_view.new_canvas_view.CanvasConfig>
 
-    <m1k.kotik.negocards.custom_views.slider.Slider
+    <m1k.kotik.negocards.custom_views.sliders.Slider
         android:id="@+id/valueSlider"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

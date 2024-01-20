@@ -3,9 +3,13 @@ package m1k.kotik.negocards.fragments.pages.code_create_pages
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.Color
+import android.hardware.biometrics.BiometricManager
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +20,9 @@ import android.widget.ArrayAdapter
 import androidx.core.animation.doOnEnd
 import androidx.core.view.marginTop
 import m1k.kotik.negocards.R
+import m1k.kotik.negocards.custom_views.color_picker.HueAndSaturationCirclePicker
+import m1k.kotik.negocards.custom_views.windows.stylized_window.FloatingStylizedWindow
+import m1k.kotik.negocards.data.canvas_qrc.canvas_view.new_canvas_view.CanvasConfig
 import m1k.kotik.negocards.databinding.FragmentCanvasCodePreCreateBinding
 
 class CanvasCodePreCreateFragment : Fragment() {
@@ -30,11 +37,39 @@ class CanvasCodePreCreateFragment : Fragment() {
         binding = FragmentCanvasCodePreCreateBinding.inflate(inflater, container, false)
         return binding.root
     }
-
+    var windowX = 0
+    var windowY = 0
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val types = resources.getStringArray(R.array.canvas_config_size)
         val arrayAdapter = ArrayAdapter(requireActivity(),R.layout.dropdown_item,types)
+        val colorPickerWindow: FloatingStylizedWindow = FloatingStylizedWindow(requireActivity(), R.layout.color_picker).also {
+            it.header = "Выбор цвета"
+        }
+
+
+        var colorCirclePicker = colorPickerWindow.contentView.findViewById<HueAndSaturationCirclePicker>(R.id.hueAndSaturationCirclePicker)
+        colorCirclePicker.onSelecting = { hue, saturation ->
+            val color = Color.HSVToColor(255, floatArrayOf(hue, saturation, 1f))
+            binding.colorForCanvasPickButton.backgroundTintList = ColorStateList.valueOf(color)
+            binding.canvasConfig.canvasColor = color
+        }
+
+        colorPickerWindow.onClose = {
+            windowX = colorPickerWindow.windowParameters.x
+            windowY = colorPickerWindow.windowParameters.y
+        }
+        binding.colorForCanvasPickButton.setOnClickListener {
+            if(!colorPickerWindow.isWindowOpen) {
+                colorPickerWindow.show(
+                    windowX,
+                    windowY,
+                    600,
+                    800,
+                    Gravity.CENTER_VERTICAL or Gravity.CENTER_HORIZONTAL
+                )
+            }
+        }
         binding.autoCompleteTextView.setAdapter(arrayAdapter)
         binding.autoCompleteTextView.onItemClickListener = AdapterView.OnItemClickListener { parent, _, position, id ->
             if(selectedItemPosition != position){

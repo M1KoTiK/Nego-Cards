@@ -86,9 +86,8 @@ abstract class DefaultWindow(
         }
         onAfterShow(false)
     }
-
-    protected var onBeforeClose: ()->Boolean = {true}
-    protected var onAfterClose: ()->Unit = {}
+    var onClose: ()->Unit = {}
+    var onBeforeClose: ()->Boolean = {true}
     protected var onBeforeShow: ()->Boolean = {true}
     protected var onAfterShow : (isSuccess: Boolean)->Unit = {}
 
@@ -100,6 +99,7 @@ abstract class DefaultWindow(
             windowManager.removeView(rootView)
             isWindowOpen = false
         }
+        onClose()
     }
 
     final override fun close() {
@@ -109,6 +109,6 @@ abstract class DefaultWindow(
                 isWindowOpen = false
             }
         }
-        onAfterClose()
+        onClose()
     }
 }

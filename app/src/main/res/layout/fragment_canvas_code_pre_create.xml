@@ -123,7 +123,7 @@
                     android:layout_marginTop="10dp"
                     android:text="Цвет"
                     android:textColor="@color/white_d9"
-                    app:layout_constraintEnd_toEndOf="@+id/button8"
+                    app:layout_constraintEnd_toEndOf="@+id/colorForCanvasPickButton"
                     app:layout_constraintStart_toStartOf="@+id/imageView14"
                     app:layout_constraintTop_toBottomOf="@+id/DividerInCanvas" />
 
@@ -147,7 +147,7 @@
                     app:srcCompat="@drawable/colorselectorbuttonbackground" />
 
                 <Button
-                    android:id="@+id/button8"
+                    android:id="@+id/colorForCanvasPickButton"
                     android:layout_width="60dp"
                     android:layout_height="22dp"
                     android:background="@drawable/rounded_square_5"

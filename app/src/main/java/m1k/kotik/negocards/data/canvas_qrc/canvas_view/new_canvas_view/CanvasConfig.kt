@@ -33,7 +33,12 @@ class CanvasConfig(context: Context, attrs: AttributeSet) : View(context, attrs)
             invalidate()
             requestLayout()
         }
-
+    var canvasColor = Color.parseColor("#F9F9F9")
+    set(value) {
+        field = value
+        invalidate()
+        requestLayout()
+    }
     init{
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.CanvasConfig)
         canvasHeight = typedArray.getInteger(R.styleable.CanvasConfig_CanvasHeight,600)
@@ -46,7 +51,7 @@ class CanvasConfig(context: Context, attrs: AttributeSet) : View(context, attrs)
         it.isAntiAlias = true
         it.isDither = true
         it.style = Paint.Style.FILL
-        it.color = Color.parseColor("#F9F9F9")
+        it.color = canvasColor
     }
 
     val measureLinePaint  = Paint().also {
@@ -69,7 +74,9 @@ class CanvasConfig(context: Context, attrs: AttributeSet) : View(context, attrs)
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
         canvas ?: return
-
+        backgroundPaint.also {
+            it.color = canvasColor
+        }
         background.also {
             it.width = canvasWidth
             it.height = canvasHeight
