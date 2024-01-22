@@ -69,6 +69,17 @@ class CanvasCodePreCreateFragment : Fragment() {
                     binding.canvasConfig.canvasCorner = corner.toInt()
             }
         })
+        binding.canvasConfigWidth.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                val width = binding.canvasConfigWidth.text.toString()
+                if(width.toIntOrNull() != null && width.toInt() > 0 && width.toInt() <= 1500){
+
+                    canvasWidthChangeWithAnimation(width.toInt(),180)
+                }
+            }
+        })
         val colorPickerWindow: FloatingStylizedWindow = FloatingStylizedWindow(requireActivity(), R.layout.color_picker).also {
             it.header = "Выбор цвета"
         }
