@@ -17,7 +17,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/custom_canvas_config_size_container"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:scaleX="0"
@@ -43,16 +43,14 @@
                 <EditText
                     android:id="@+id/canvasConfigHeight"
                     style="@style/RoundedEditTextSmall"
-                    android:layout_width="115dp"
+                    android:layout_width="85dp"
                     android:layout_height="36dp"
                     android:layout_marginTop="35dp"
-                    android:layout_marginEnd="150dp"
                     android:ems="10"
                     android:hint="Высота"
                     android:inputType="textPersonName"
                     android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -61,8 +59,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
-                    android:textColor="@color/white_d9"
                     android:text="Ширина"
+                    android:textColor="@color/white_d9"
                     app:layout_constraintBottom_toTopOf="@+id/canvasConfigWidth"
                     app:layout_constraintEnd_toEndOf="@+id/canvasConfigWidth"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -71,17 +69,16 @@
                 <EditText
                     android:id="@+id/canvasConfigWidth"
                     style="@style/RoundedEditTextSmall"
-                    android:layout_width="115dp"
+                    android:layout_width="85dp"
                     android:layout_height="36dp"
-                    android:layout_marginStart="150dp"
                     android:ems="10"
                     android:hint="Ширина"
                     android:inputType="textPersonName"
                     android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/canvasConfigHeight" />
+                    app:layout_constraintTop_toTopOf="@+id/canvasConfigHeight"
+                    app:layout_constraintVertical_bias="0.0" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -133,6 +130,30 @@
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout"
                 app:layout_constraintTop_toBottomOf="@+id/custom_canvas_config_size_container">
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Скругление"
+                    android:textColor="@color/white_d9"
+                    app:layout_constraintStart_toStartOf="@+id/canvasConfigRoundedValue"
+                    app:layout_constraintTop_toBottomOf="@+id/DividerInCanvas" />
+
+                <EditText
+                    android:id="@+id/canvasConfigRoundedValue"
+                    android:layout_width="65dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/rounded_square_10"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="13dp"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
                 <TextView
                     android:id="@+id/textView15"
@@ -201,10 +222,10 @@
 
             <Button
                 android:id="@+id/button9"
+                style="@style/RoundedButton"
                 android:layout_width="300dp"
                 android:layout_height="38dp"
-                android:layout_marginTop="10dp"
-                style="@style/RoundedButton"
+                android:layout_marginTop="20dp"
                 android:text="Продолжить"
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"

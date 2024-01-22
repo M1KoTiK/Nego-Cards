@@ -60,6 +60,15 @@ class CanvasCodePreCreateFragment : Fragment() {
         val types = resources.getStringArray(R.array.canvas_config_size)
         val arrayAdapter = ArrayAdapter(requireActivity(),R.layout.dropdown_item,types)
         setInitColor()
+        binding.canvasConfigRoundedValue.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                val corner = binding.canvasConfigRoundedValue.text.toString()
+                if(corner.toIntOrNull()!=null && corner.toInt() >= 0 )
+                    binding.canvasConfig.canvasCorner = corner.toInt()
+            }
+        })
         val colorPickerWindow: FloatingStylizedWindow = FloatingStylizedWindow(requireActivity(), R.layout.color_picker).also {
             it.header = "Выбор цвета"
         }
@@ -168,16 +177,8 @@ class CanvasCodePreCreateFragment : Fragment() {
                     }
                 }
             })
-            binding.canvasConfigWidth.addTextChangedListener(object : TextWatcher {
-                override fun afterTextChanged(s: Editable) {}
-                override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-                override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                    val width = binding.canvasConfigWidth.text.toString()
-                    if (width.toIntOrNull() != null && width.toInt() >= 0 && width.toInt() <= 1500) {
-                        canvasWidthChangeWithAnimation(width.toInt(),180)
-                    }
-                }
-            })
+
+
 
             //Получение текстового представления
             //val selectedItem = parent.getItemAtPosition(position).toString()

@@ -15,7 +15,13 @@ import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.texts.Canv
 class CanvasConfig(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
     var canvasCorner = 5
-    val background: CanvasShape = RoundRectangle().also {
+        set(value) {
+            field = value
+            invalidate()
+            requestLayout()
+        }
+
+    val background: RoundRectangle = RoundRectangle().also {
         it.x = 0
         it.y = 0
         it.leftCorner = 20
@@ -81,6 +87,8 @@ class CanvasConfig(context: Context, attrs: AttributeSet) : View(context, attrs)
             it.width = canvasWidth
             it.height = canvasHeight
             it.paint = backgroundPaint
+            it.leftCorner = canvasCorner
+            it.rightCorner = canvasCorner
         }.draw(canvas)
 
         line.also {
