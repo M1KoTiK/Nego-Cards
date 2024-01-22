@@ -15,17 +15,19 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/slider"
+        app:layout_constraintBottom_toTopOf="@+id/slider_value_color_window"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <m1k.kotik.negocards.custom_views.sliders.Slider
-        android:id="@+id/slider"
+        android:id="@+id/slider_value_color_window"
         android:layout_width="wrap_content"
         android:layout_height="42dp"
         android:layout_marginBottom="10dp"
         app:cursorColor="#909090"
+        app:startValue="1"
+        app:endValue="0"
         app:cursorHeight="40dp"
         app:cursorWidth="20dp"
         app:isCursorStroke="false"

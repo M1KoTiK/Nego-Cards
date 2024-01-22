@@ -5,7 +5,6 @@ import android.animation.ValueAnimator
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
-import android.hardware.biometrics.BiometricManager
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -18,11 +17,10 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.core.animation.doOnEnd
-import androidx.core.view.marginTop
 import m1k.kotik.negocards.R
 import m1k.kotik.negocards.custom_views.color_picker.HueAndSaturationCirclePicker
+import m1k.kotik.negocards.custom_views.sliders.Slider
 import m1k.kotik.negocards.custom_views.windows.stylized_window.FloatingStylizedWindow
-import m1k.kotik.negocards.data.canvas_qrc.canvas_view.new_canvas_view.CanvasConfig
 import m1k.kotik.negocards.databinding.FragmentCanvasCodePreCreateBinding
 
 class CanvasCodePreCreateFragment : Fragment() {
@@ -37,22 +35,44 @@ class CanvasCodePreCreateFragment : Fragment() {
         binding = FragmentCanvasCodePreCreateBinding.inflate(inflater, container, false)
         return binding.root
     }
+    private fun setInitColor(){
+        var array = floatArrayOf(0f,0f,0f)
+        Color.colorToHSV(Color.parseColor("#F9F9F9"),array)
+        hue = array[0]
+        saturation = array[1]
+        value = array[2]
+        updateColor()
+    }
+
     var windowX = 0
     var windowY = 0
+    var hue: Float = 0f
+    var saturation:Float = 0f
+    var value:Float = 1f
+    fun updateColor(){
+        val color = Color.HSVToColor(255, floatArrayOf(hue, saturation, value))
+        binding.colorForCanvasPickButton.backgroundTintList = ColorStateList.valueOf(color)
+        binding.canvasConfig.canvasColor = color
+
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val types = resources.getStringArray(R.array.canvas_config_size)
         val arrayAdapter = ArrayAdapter(requireActivity(),R.layout.dropdown_item,types)
+        setInitColor()
         val colorPickerWindow: FloatingStylizedWindow = FloatingStylizedWindow(requireActivity(), R.layout.color_picker).also {
             it.header = "Выбор цвета"
         }
-
+        colorPickerWindow.contentView.findViewById<Slider>(R.id.slider_value_color_window).onSliderChangeValue = {
+            value = it
+            updateColor()
+        }
 
         var colorCirclePicker = colorPickerWindow.contentView.findViewById<HueAndSaturationCirclePicker>(R.id.hueAndSaturationCirclePicker)
         colorCirclePicker.onSelecting = { hue, saturation ->
-            val color = Color.HSVToColor(255, floatArrayOf(hue, saturation, 1f))
-            binding.colorForCanvasPickButton.backgroundTintList = ColorStateList.valueOf(color)
-            binding.canvasConfig.canvasColor = color
+            this.hue = hue
+            this.saturation = saturation
+            updateColor()
         }
 
         colorPickerWindow.onClose = {

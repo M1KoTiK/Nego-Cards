@@ -17,7 +17,7 @@ class Slider (context: Context, attrs: AttributeSet) : View(context, attrs) {
         field = value
         invalidate()
     }
-    var endValue = 2f
+    var endValue = 1f
         set(value) {
             field = value
             invalidate()
@@ -211,6 +211,8 @@ class Slider (context: Context, attrs: AttributeSet) : View(context, attrs) {
     //===================================================
     init {
         val typedArray = context.obtainStyledAttributes(attrs,R.styleable.Slider)
+        startValue = typedArray.getFloat(R.styleable.Slider_startValue, 0f)
+        endValue = typedArray.getFloat(R.styleable.Slider_endValue, 1f)
         stripeHeight = typedArray.getDimension(R.styleable.Slider_stripeHeight,85f)
         stripeWidth = typedArray.getDimension(R.styleable.Slider_stripeWidth,600f)
         stripeColor = typedArray.getColor(R.styleable.Slider_stripeColor, Color.WHITE)
