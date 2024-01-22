@@ -9,6 +9,7 @@
         <attr name="isStripeStroke" format="boolean"/>
         <attr name="stripeStrokeColor" format="color"/>
         <attr name="stripeStrokeWidth" format="dimension"/>
+        <attr name="stripeColorGradientEnd" format="color"/>
 
         <attr name="cursorRCorner" format="dimension"/>
         <attr name="cursorLCorner" format="dimension"/>

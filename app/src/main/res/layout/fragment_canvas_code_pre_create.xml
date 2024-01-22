@@ -22,15 +22,30 @@
                 android:layout_marginTop="15dp"
                 android:scaleX="0"
                 android:scaleY="0"
+                android:textColor="@color/white_d9"
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout"
                 app:layout_constraintTop_toBottomOf="@+id/canvasConfig">
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Высота"
+                    android:textColor="@color/white_d9"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toTopOf="@+id/canvasConfigHeight"
+                    app:layout_constraintEnd_toEndOf="@+id/canvasConfigHeight"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/canvasConfigHeight" />
 
                 <EditText
                     android:id="@+id/canvasConfigHeight"
                     style="@style/RoundedEditTextSmall"
                     android:layout_width="115dp"
                     android:layout_height="36dp"
+                    android:layout_marginTop="35dp"
                     android:layout_marginEnd="150dp"
                     android:ems="10"
                     android:hint="Высота"
@@ -40,6 +55,18 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/white_d9"
+                    android:text="Ширина"
+                    app:layout_constraintBottom_toTopOf="@+id/canvasConfigWidth"
+                    app:layout_constraintEnd_toEndOf="@+id/canvasConfigWidth"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/canvasConfigWidth" />
 
                 <EditText
                     android:id="@+id/canvasConfigWidth"
@@ -54,7 +81,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="@+id/canvasConfigHeight" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -97,15 +124,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/imageView13"
-                android:layout_width="300dp"
-                android:layout_height="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.495"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView13"
-                app:srcCompat="@drawable/rectangle_189" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/containerForAdditionSettingsInCanvas"
@@ -130,12 +148,12 @@
                 <ImageView
                     android:id="@+id/DividerInCanvas"
                     android:layout_width="300dp"
-                    android:layout_height="8dp"
+                    android:layout_height="3dp"
                     android:layout_marginTop="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/rectangle_189" />
+                    app:srcCompat="@drawable/rounded_square_20" />
 
                 <ImageView
                     android:id="@+id/imageView14"
@@ -163,12 +181,12 @@
                 android:id="@+id/textView14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="5dp"
                 android:text="Размеры"
                 android:textColor="@color/white_d9"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout"
-                app:layout_constraintTop_toBottomOf="@+id/imageView13" />
+                app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
             <m1k.kotik.negocards.data.canvas_qrc.canvas_view.new_canvas_view.CanvasConfig
                 android:id="@+id/canvasConfig"

@@ -1,15 +1,14 @@
 package m1k.kotik.negocards.custom_views.sliders
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
+import android.graphics.*
 import android.graphics.Paint.Style
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import androidx.core.graphics.toColorInt
 import m1k.kotik.negocards.R
+import kotlin.math.roundToInt
 
 class Slider (context: Context, attrs: AttributeSet) : View(context, attrs) {
     var startValue = 0f
@@ -22,7 +21,7 @@ class Slider (context: Context, attrs: AttributeSet) : View(context, attrs) {
             field = value
             invalidate()
         }
-    var step = 0.01f
+    var step = 0.1f
         set(value) {
             field = value
             invalidate()
@@ -32,7 +31,8 @@ class Slider (context: Context, attrs: AttributeSet) : View(context, attrs) {
             val currentValueInPercent: Float = localCurrentValue/localDistance
             val currentValue = currentValueInPercent * (endValue - startValue) + startValue
             val steppedValue = currentValue - ((currentValue - step) % step)
-            val roundedValue = ("%.4f".format(Math.round(steppedValue/ step) * step)).toFloat()
+            //"%.4f".format() пока что убрано
+            val roundedValue = ((steppedValue / step).roundToInt() * step).toFloat()
             if(currentValueInPercent == 1f){
                 return endValue
             }
@@ -41,6 +41,7 @@ class Slider (context: Context, attrs: AttributeSet) : View(context, attrs) {
             }
             return roundedValue
         }
+
     var onSliderChangeValue : (Float)->Unit = {}
 
 //====================================
@@ -90,6 +91,12 @@ class Slider (context: Context, attrs: AttributeSet) : View(context, attrs) {
             invalidate()
         }
     private var stripeStrokeWidth = 4f
+        set(value) {
+            field = value
+            invalidate()
+        }
+
+    private var stripeColorForGradientEnd: Int = stripeColor
         set(value) {
             field = value
             invalidate()
@@ -229,6 +236,7 @@ class Slider (context: Context, attrs: AttributeSet) : View(context, attrs) {
         isStripeStrokeEnable =typedArray.getBoolean(R.styleable.Slider_isStripeStroke,false)
         cursorStrokeWidth = typedArray.getDimension(R.styleable.Slider_cursorStrokeWidth,5f)
         stripeStrokeWidth = typedArray.getDimension(R.styleable.Slider_stripeStrokeWidth,5f)
+        stripeColorForGradientEnd = typedArray.getColor(R.styleable.Slider_stripeColorGradientEnd,stripeColor)
         cursorXOffset = 0f
         typedArray.recycle()
         defaultCursorX = stripeX
@@ -294,6 +302,9 @@ class Slider (context: Context, attrs: AttributeSet) : View(context, attrs) {
                 it.isAntiAlias = true
                 it.color = stripeColor
                 it.style = Style.FILL
+                if(stripeColor != stripeColorForGradientEnd){
+                    it.shader =  LinearGradient(stripeX, stripeY, stripeWidth.toFloat() + stripeX + 2 * cursorXOffset, stripeHeight + stripeY, stripeColor, stripeColorForGradientEnd, Shader.TileMode.MIRROR);
+                }
             }
         )
         if(isStripeStrokeEnable) {
