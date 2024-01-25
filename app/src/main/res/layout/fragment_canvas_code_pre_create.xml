@@ -227,7 +227,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
             <Button
-                android:id="@+id/button9"
+                android:id="@+id/canvasConfigContinueButton"
                 style="@style/RoundedButton"
                 android:layout_width="300dp"
                 android:layout_height="38dp"

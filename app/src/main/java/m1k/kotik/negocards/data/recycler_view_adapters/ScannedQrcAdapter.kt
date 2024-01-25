@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import m1k.kotik.negocards.data.qrc.QRCViewModel
+import m1k.kotik.negocards.data.qrc.ScannedCode
 import m1k.kotik.negocards.databinding.ScannedQrcItemBinding
 
 private fun setHeightForView(height: Int, view: View){
@@ -15,14 +15,14 @@ private fun setHeightForView(height: Int, view: View){
     view.layoutParams = params
     view.requestLayout()
 }
-class ScannedQrcAdapter(val context: Context, private val QRCViewModelList: List<QRCViewModel>):
+class ScannedQrcAdapter(val context: Context, private val scannedCodeList: List<ScannedCode>):
     RecyclerView.Adapter<ScannedQrcAdapter.ScannedQRCViewHolder>() {
 
         class ScannedQRCViewHolder(scannedQrcItemBinding: ScannedQrcItemBinding)
             :RecyclerView.ViewHolder(scannedQrcItemBinding.root) {
             private val binding = scannedQrcItemBinding
             private val defaultHeight  = binding.root.layoutParams.height
-            fun bind(QRCViewModel: QRCViewModel, itemClickListener:(Int)->Unit){
+            fun bind(ScannedCode: ScannedCode, itemClickListener:(Int)->Unit){
                 binding.root.setOnClickListener { itemClickListener.invoke(bindingAdapterPosition) }
                     when (bindingAdapterPosition) {
                         0 -> {
@@ -35,8 +35,8 @@ class ScannedQrcAdapter(val context: Context, private val QRCViewModelList: List
                         }
                     }
 
-                binding.QRCType.text = QRCViewModel.type.typeName
-                binding.QRCValue.text = QRCViewModel.value
+                binding.QRCType.text = ScannedCode.contentType.typeName
+                binding.QRCValue.text = ScannedCode.value
             }
         }
     var itemOnClick: (Int) -> Unit = {}
@@ -46,12 +46,12 @@ class ScannedQrcAdapter(val context: Context, private val QRCViewModelList: List
     }
 
     override fun onBindViewHolder(holder: ScannedQRCViewHolder, position: Int) {
-        val scannedQRCItem = QRCViewModelList[position]
+        val scannedQRCItem = scannedCodeList[position]
         holder.bind(scannedQRCItem,itemOnClick)
     }
 
     override fun getItemCount(): Int {
-        return QRCViewModelList.size
+        return scannedCodeList.size
     }
 
 

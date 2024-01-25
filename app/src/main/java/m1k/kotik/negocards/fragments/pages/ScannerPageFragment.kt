@@ -27,12 +27,14 @@ import m1k.kotik.negocards.CameraXViewModel
 import m1k.kotik.negocards.data.date.SimpleDate
 import m1k.kotik.negocards.data.canvas_qrc.old_govno.popup_windows.CanvasViewerPopupWindow
 import m1k.kotik.negocards.data.qrc.CodeContentType
-import m1k.kotik.negocards.data.qrc.QRCViewModel
+import m1k.kotik.negocards.data.qrc.ScannedCode
 import m1k.kotik.negocards.databinding.FragmentScannerPageBinding
 import m1k.kotik.negocards.data.db.QRCDB
 import java.util.*
 import java.util.concurrent.Executors
 import m1k.kotik.negocards.R
+import m1k.kotik.negocards.data.qrc.CodeType
+import m1k.kotik.negocards.data.qrc.barcodeFormatToCodeType
 import m1k.kotik.negocards.data.recycler_view_adapters.ScannedQrcAdapter
 
 
@@ -77,9 +79,10 @@ class ScannerPageFragment : Fragment() {
             scannedQrcAdapter.itemOnClick = {
                 val bundle = Bundle()
                 val scannedQRC = listScannedQRC[it]
-                bundle.putInt("type", scannedQRC.type.ordinal)
+                bundle.putInt("contentType", scannedQRC.contentType.ordinal)
                 bundle.putString("value", scannedQRC.value )
                 bundle.putString("date", scannedQRC.date.toString())
+                bundle.putInt("codeType", scannedQRC.codeType.ordinal)
                 navController.navigate(R.id.QRCViewerFragment, bundle)
             }
         }
@@ -125,6 +128,14 @@ class ScannerPageFragment : Fragment() {
     private fun bindCameraUseCases() {
         bindPreviewUseCase()
         bindAnalyseUseCase()
+        db.add(
+            ScannedCode(
+                CodeType.QRC,
+                CodeContentType.Reference,
+                "TestCodeValue23123123123",
+                SimpleDate.getCurrentDate()
+            )
+        )
     }
 
     private fun bindPreviewUseCase() {
@@ -207,11 +218,6 @@ class ScannerPageFragment : Fragment() {
                     val corners = barcode.cornerPoints
 
                     val rawValue = barcode.rawValue
-
-//                    canvasViewer.setup(requireActivity(),700,700)
-//                    canvasViewer.canvas.getObjectsFromCode("""ot\"tx\"w169h92x165y319s\"sf""")
-//                    canvasViewer.show(0,0,Gravity.CENTER)
-
                     val valueType = barcode.valueType
                     // See API reference for complete list of supported types
                     val listScannedQRC = db.getScannedQRC()
@@ -229,8 +235,10 @@ class ScannerPageFragment : Fragment() {
                             val url = barcode.url!!.url
                             val lastScannedQRC = listScannedQRC.lastOrNull()
                             if( lastScannedQRC == null || lastScannedQRC.value != rawValue) {
+
                                 db.add(
-                                    QRCViewModel(
+                                    ScannedCode(
+                                        barcodeFormatToCodeType(barcode.format),
                                         CodeContentType.Reference,
                                         rawValue,
                                         SimpleDate.getCurrentDate()
@@ -242,18 +250,21 @@ class ScannerPageFragment : Fragment() {
                         else -> {
                             val lastScannedQRC = listScannedQRC.lastOrNull()
                                 if(lastScannedQRC == null || lastScannedQRC.value != rawValue) {
-                                    db.add(
-                                        QRCViewModel(
-                                            CodeContentType.Text,
-                                            rawValue,
-                                            SimpleDate.getCurrentDate()
-                                        )
-                                    )
-                                    refreshScannedQRC()
+                                    if(rawValue.startsWith("urlto:")){
+
+                                    }
+                                    else {
+                                        db.add(
+                                            ScannedCode(
+                                                barcodeFormatToCodeType(barcode.format),
+                                                CodeContentType.Text,
+                                                rawValue,
+                                                SimpleDate.getCurrentDate()))
+                                        refreshScannedQRC()
+                                    }
                                 }
                         }
                     }
-
                 }
             }
             .addOnFailureListener {

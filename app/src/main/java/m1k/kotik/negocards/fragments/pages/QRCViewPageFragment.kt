@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import m1k.kotik.negocards.databinding.FragmentQrcViewPageBinding
-import m1k.kotik.negocards.data.qrc.QRCreator
+import m1k.kotik.negocards.data.qrc.code_generators.QRCGenerator
 
 
 class QRCViewPageFragment : Fragment() {
@@ -19,11 +19,11 @@ class QRCViewPageFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding?.imageView2?.setImageBitmap(QRCreator.getQRCToBitmap("Hello)"))
+        binding?.imageView2?.setImageBitmap(QRCGenerator.getQRCToBitmap("Hello)"))
         binding?.editTextTextPersonName4?.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {
                 if (!binding?.editTextTextPersonName4?.text.toString().trim().isEmpty()){
-                val bitmapimage = QRCreator.getQRCToBitmap(binding?.editTextTextPersonName4?.text.toString())
+                val bitmapimage = QRCGenerator.getQRCToBitmap(binding?.editTextTextPersonName4?.text.toString())
                 binding?.imageView2?.setImageBitmap(bitmapimage)
                 }
             }

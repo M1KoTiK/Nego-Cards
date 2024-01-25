@@ -4,10 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import m1k.kotik.negocards.data.qrc.QRCViewModel
 import m1k.kotik.negocards.databinding.CodeForTypeChoiceItemBinding
-import m1k.kotik.negocards.databinding.ScannedQrcItemBinding
-import m1k.kotik.negocards.data.recycler_view_adapters.CodeTypeForChoice.CodeTypeItemViewModel
 
 class ChoiceTypeCodeAdapter(val context: Context, private val CodeTypeViewModelList: List<CodeTypeItemViewModel>):
     RecyclerView.Adapter<ChoiceTypeCodeAdapter.ChoiceTypeCodeViewHolder>() {

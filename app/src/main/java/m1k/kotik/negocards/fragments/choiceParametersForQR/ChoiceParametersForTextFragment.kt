@@ -18,7 +18,7 @@ import m1k.kotik.negocards.fragments.choiceParametersForQR.parametersForText.Par
 import m1k.kotik.negocards.fragments.choiceParametersForQR.parametersForText.ParamsReference
 import m1k.kotik.negocards.fragments.choiceParametersForQR.parametersForText.ParamsText
 import m1k.kotik.negocards.fragments.choiceParametersForQR.parametersForText.IParamsQRC
-import m1k.kotik.negocards.data.qrc.QRCreator
+import m1k.kotik.negocards.data.qrc.code_generators.QRCGenerator
 
 
 class ChoiceParametersForTextFragment : Fragment() {
@@ -91,8 +91,8 @@ class ChoiceParametersForTextFragment : Fragment() {
         currentFragment = fragment
         viewLifecycleOwner.lifecycleScope.launch {
             currentFragment.QRCValue.filterNot { it.isEmpty() }.collect { qrcString ->
-                val QRC = QRCreator()
-                val bitmapimage = QRCreator.getQRCToBitmap(qrcString)
+                val QRC = QRCGenerator()
+                val bitmapimage = QRCGenerator.getQRCToBitmap(qrcString)
                 binding?.imageView?.setImageBitmap(bitmapimage)
             }
         }

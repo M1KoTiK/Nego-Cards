@@ -14,13 +14,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Исправил слайдер и добавил шейдер">
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/new_canvas_view/CanvasConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/new_canvas_view/CanvasConfig.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/code_create_pages/CanvasCodePreCreateFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/code_create_pages/CanvasCodePreCreateFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_canvas_code_pre_create.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_canvas_code_pre_create.xml" afterDir="false" />
-    </list>
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="Небольшие правки" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,11 +49,12 @@
         <option value="navigationResourceFile" />
         <option value="Kotlin Annotation" />
         <option value="Kotlin File" />
-        <option value="Kotlin Interface" />
         <option value="valueResourceFile" />
         <option value="resourceFile" />
-        <option value="Kotlin Class" />
         <option value="layoutResourceFile" />
+        <option value="Kotlin Worksheet" />
+        <option value="Kotlin Interface" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -109,6 +104,7 @@
     <property name="android-custom-viewC:/Users/User/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.7.0/289bbb3a7fea52532f1163487f9469217ee608a9/material-1.7.0-sources.jar!/com/google/android/material/textfield/TextInputLayout.java_SELECTED" value="TextInputLayout" />
     <property name="android-custom-viewC:/Users/User/AppData/Local/Android/Sdk/sources/android-32/android/view/View.java_SELECTED" value="View" />
     <property name="android-custom-viewC:/Users/User/AppData/Local/Android/Sdk/sources/android-32/android/view/ViewGroup.java_SELECTED" value="ViewGroup" />
+    <property name="android-custom-viewC:/Users/User/AppData/Local/Android/Sdk/sources/android-32/android/widget/AutoCompleteTextView.java_SELECTED" value="AutoCompleteTextView" />
     <property name="android-custom-viewC:/Users/User/AppData/Local/Android/Sdk/sources/android-32/android/widget/TextView.java_SELECTED" value="TextView" />
     <property name="android-custom-viewC:/Users/User/AppData/Local/Android/Sdk/sources/android-33/android/view/View.java_SELECTED" value="View" />
     <property name="android-custom-viewC:/Users/User/AppData/Local/Android/Sdk/sources/android-33/android/view/ViewGroup.java_SELECTED" value="ViewGroup" />
@@ -201,11 +197,11 @@
       <recent name="m1k.kotik.negocards.model" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="m1k.kotik.negocards.data.qrc.code_action" />
+      <recent name="m1k.kotik.negocards.data.qrc.code_generaotors" />
       <recent name="m1k.kotik.negocards.data.canvas_qrc.old_govno" />
       <recent name="m1k.kotik.negocards.data.canvas_qrc.canvas_view.new_canvas_view" />
       <recent name="m1k.kotik.negocards.fragments.pages" />
-      <recent name="m1k.kotik.negocards.fragments.pages.scanner_pages" />
-      <recent name="m1k.kotik.negocards.data.recycler_view_adapters.CodeTypeForChoice" />
     </key>
     <key name="android.template.1505593035">
       <recent name="com.example.negocards.fragments.pages" />
@@ -280,20 +276,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675626606726</updated>
-    </task>
-    <task id="LOCAL-00072" summary="Поменял дизайн главной страницы">
-      <created>1696965506234</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1696965506234</updated>
-    </task>
-    <task id="LOCAL-00073" summary="Исправил дизайн главной страницы и добавил бэкграунд с пикселями">
-      <created>1696966752713</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1696966752714</updated>
     </task>
     <task id="LOCAL-00074" summary="Добавил фонарик при сканировании QRC">
       <created>1697006681777</created>
@@ -624,7 +606,21 @@
       <option name="project" value="LOCAL" />
       <updated>1705957877398</updated>
     </task>
-    <option name="localTasksCounter" value="121" />
+    <task id="LOCAL-00121" summary="Добавил изменение скругленности">
+      <created>1705960195821</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1705960195822</updated>
+    </task>
+    <task id="LOCAL-00122" summary="Небольшие правки">
+      <created>1705960619970</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1705960619970</updated>
+    </task>
+    <option name="localTasksCounter" value="123" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -639,8 +635,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Почти доделал слайдер" />
-    <MESSAGE value="Слайдер правильно работает x2" />
     <MESSAGE value="Переделываю CanvasEditor так как с CanvasView плюс минус разобрался" />
     <MESSAGE value="Переделываю CanvasEditor так как с CanvasView плюс минус разобрался&#10;Также добавил документацию для классов" />
     <MESSAGE value="Допилил CanvasView" />
@@ -664,7 +658,9 @@
     <MESSAGE value="Исправил Слайдер и немного скорректировал изменение яркости (Ура!!!)" />
     <MESSAGE value="Попытка исправить иконки" />
     <MESSAGE value="Исправил слайдер и добавил шейдер" />
-    <option name="LAST_COMMIT_MESSAGE" value="Исправил слайдер и добавил шейдер" />
+    <MESSAGE value="Добавил изменение скругленности" />
+    <MESSAGE value="Небольшие правки" />
+    <option name="LAST_COMMIT_MESSAGE" value="Небольшие правки" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -672,12 +668,7 @@
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/new_canvas_view/CanvasConfig.kt</url>
           <line>18</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/code_create_pages/CanvasCodePreCreateFragment.kt</url>
-          <line>175</line>
-          <option name="timeStamp" value="5" />
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

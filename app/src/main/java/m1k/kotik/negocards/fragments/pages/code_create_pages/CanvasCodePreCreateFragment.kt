@@ -17,6 +17,9 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.core.animation.doOnEnd
+import androidx.fragment.app.setFragmentResult
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import m1k.kotik.negocards.R
 import m1k.kotik.negocards.custom_views.color_picker.HueAndSaturationCirclePicker
 import m1k.kotik.negocards.custom_views.sliders.Slider
@@ -24,10 +27,19 @@ import m1k.kotik.negocards.custom_views.windows.stylized_window.FloatingStylized
 import m1k.kotik.negocards.databinding.FragmentCanvasCodePreCreateBinding
 
 class CanvasCodePreCreateFragment : Fragment() {
-
     lateinit var binding: FragmentCanvasCodePreCreateBinding
+    lateinit var navController: NavController
+
+    //Выходной объект для бэкграунда холста
+    val canvasConfigObject
+        get() = binding.canvasConfig.background
+
     var customConfigSizePanelIsShow = false
     var selectedItemPosition = 1
+    override fun onSaveInstanceState(outState: Bundle) {
+        //super.onSaveInstanceState(outState)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,6 +47,7 @@ class CanvasCodePreCreateFragment : Fragment() {
         binding = FragmentCanvasCodePreCreateBinding.inflate(inflater, container, false)
         return binding.root
     }
+
     private fun setInitColor(){
         var array = floatArrayOf(0f,0f,0f)
         Color.colorToHSV(Color.parseColor("#F9F9F9"),array)
@@ -57,9 +70,12 @@ class CanvasCodePreCreateFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        navController = binding.root.findNavController()
         val types = resources.getStringArray(R.array.canvas_config_size)
         val arrayAdapter = ArrayAdapter(requireActivity(),R.layout.dropdown_item,types)
+        binding.autoCompleteTextView.setAdapter(arrayAdapter)
         setInitColor()
+
         binding.canvasConfigRoundedValue.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {}
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
@@ -94,6 +110,15 @@ class CanvasCodePreCreateFragment : Fragment() {
             this.saturation = saturation
             updateColor()
         }
+        binding.canvasConfigContinueButton.setOnClickListener {
+            colorPickerWindow.close()
+            var arguments = Bundle()
+            arguments.putInt("width", canvasConfigObject.width)
+            arguments.putInt("height", canvasConfigObject.height)
+            arguments.putInt("corner", canvasConfigObject.leftCorner)
+            arguments.putInt("color", canvasConfigObject.paint.color)
+            navController.navigate(R.id.canvasCodeCreateFragment, arguments)
+        }
 
         colorPickerWindow.onClose = {
             windowX = colorPickerWindow.windowParameters.x
@@ -110,7 +135,7 @@ class CanvasCodePreCreateFragment : Fragment() {
                 )
             }
         }
-        binding.autoCompleteTextView.setAdapter(arrayAdapter)
+
         binding.autoCompleteTextView.onItemClickListener = AdapterView.OnItemClickListener { parent, _, position, id ->
             if(selectedItemPosition != position){
                 selectedItemPosition = position
@@ -126,6 +151,7 @@ class CanvasCodePreCreateFragment : Fragment() {
                         containerForAdditionSettingsInCanvas.requestLayout()
                         containerForAdditionSettingsInCanvas.invalidate()
                     }
+
                     marginAnimator.duration = 300
                     marginAnimator.start()
 
@@ -177,23 +203,21 @@ class CanvasCodePreCreateFragment : Fragment() {
                     }
                 }
             }
-            binding.canvasConfigHeight.addTextChangedListener(object : TextWatcher {
-                override fun afterTextChanged(s: Editable){}
-                override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-                override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                    val height = binding.canvasConfigHeight.text.toString()
-                    if(height.toIntOrNull() != null && height.toInt() > 0 && height.toInt() <= 1500){
-
-                        canvasHeightChangeWithAnimation(height.toInt(),180)
-                    }
-                }
-            })
-
-
-
             //Получение текстового представления
             //val selectedItem = parent.getItemAtPosition(position).toString()
         }
+
+        binding.canvasConfigHeight.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable){}
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                val height = binding.canvasConfigHeight.text.toString()
+                if(height.toIntOrNull() != null && height.toInt() > 0 && height.toInt() <= 1500){
+
+                    canvasHeightChangeWithAnimation(height.toInt(),180)
+                }
+            }
+        })
     }
     fun canvasSizeChangeWithAnimation(targetWidth: Int, targetHeight:Int, duration:Long){
         canvasHeightChangeWithAnimation(targetHeight,duration)

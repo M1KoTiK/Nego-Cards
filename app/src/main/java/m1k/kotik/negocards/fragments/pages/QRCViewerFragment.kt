@@ -22,8 +22,9 @@ import m1k.kotik.negocards.custom_views.toast.showCustomToast
 import m1k.kotik.negocards.custom_views.windows.stylized_window.FloatingStylizedWindow
 import m1k.kotik.negocards.data.date.SimpleDate
 import m1k.kotik.negocards.data.qrc.CodeContentType
-import m1k.kotik.negocards.data.qrc.QRCViewModel
-import m1k.kotik.negocards.data.qrc.QRCreator
+import m1k.kotik.negocards.data.qrc.CodeType
+import m1k.kotik.negocards.data.qrc.ScannedCode
+import m1k.kotik.negocards.data.qrc.code_generators.QRCGenerator
 import m1k.kotik.negocards.databinding.FragmentQrcViewerBinding
 
 
@@ -62,15 +63,16 @@ class QRCViewerFragment() : Fragment() {
             false
         })
         val bundle: Bundle = this.requireArguments()
-        val type: CodeContentType? = CodeContentType.values().firstOrNull { it.ordinal == bundle.getInt("type") }
+        val contentType: CodeContentType? = CodeContentType.values().firstOrNull { it.ordinal == bundle.getInt("contentType") }
         val value: String? = bundle.getString("value")
         val date: SimpleDate? = SimpleDate.toSimpleDate(bundle.getString("date") ?: "")
-        var qrcViewModel: QRCViewModel
-        if (type != null && value != null && date != null) {
-            qrcViewModel = QRCViewModel(type, value, date)
+        val codeType: CodeType? = CodeType.values().firstOrNull { it.ordinal == bundle.getInt("codeType") }
+        var scannedCode: ScannedCode
+        if (contentType != null && value != null && date != null && codeType != null) {
+            scannedCode = ScannedCode(codeType,contentType, value, date)
             val codeImageView = codeViewWindow.contentView.findViewById<ImageView>(R.id.QRCImage)
-            binding.QRCValueViewer.text = qrcViewModel.value
-            val codeImage = QRCreator.getQRCToBitmap(value)
+            binding.QRCValueViewer.text = scannedCode.value
+            val codeImage = QRCGenerator.getQRCToBitmap(value)
             binding.qrcDisplay.setImageBitmap(codeImage)
             codeViewWindow.contentView.findViewById<ImageView>(R.id.QRCImage).setImageBitmap(codeImage)
             binding.copyBtn.setOnClickListener {
