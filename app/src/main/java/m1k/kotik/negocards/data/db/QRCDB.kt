@@ -52,7 +52,7 @@ class QRCDB(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DA
                 val value = cursor.getString(2)
                 val date = SimpleDate.Companion.toSimpleDate(cursor.getString(3)) ?: continue
                 val codeType = CodeType.values().first { it.ordinal == cursor.getInt(4) }
-                outputList.add(ScannedCode(codeType,contentType, value, date))
+                outputList.add(ScannedCode(CodeType.QRC,contentType, value, date))
             } while (cursor.moveToNext())
         }
         return outputList

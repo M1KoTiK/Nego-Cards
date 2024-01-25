@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import m1k.kotik.negocards.R
 import m1k.kotik.negocards.data.canvas_qrc.canvas_serialization.CanvasSerialization
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.Rectangle
+import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.RoundRectangle
 import m1k.kotik.negocards.databinding.FragmentMainPageBinding
 
 
@@ -30,21 +31,21 @@ class MainPageFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //Проверка парсера
-        val testCanvasObject = Rectangle(1,1,1,1, Paint().also { it.color = "#FF111111".toColorInt(); it.style = Paint.Style.FILL })
+        val testCanvasObject = RoundRectangle(0,0,900,600, 7,7, Paint().also { it.color = "#FF111111".toColorInt(); it.style = Paint.Style.FILL })
         var serializator = CanvasSerialization.canvasSerializer
         val testString = serializator.serialize(mutableListOf(testCanvasObject,testCanvasObject))
         println(testString)
-        val testDesObj = serializator.deserialize<Rectangle>(testString!!)
-        println( testDesObj!!.count())
-        val serDesObject = serializator.serialize(testDesObj!!)
-        println(serDesObject)
+//        val testDesObj = serializator.deserialize<Rectangle>(testString!!)
+//        println( testDesObj!!.count())
+//        val serDesObject = serializator.serialize(testDesObj!!)
+//        println(serDesObject)
 
         navController = binding?.root?.findNavController()!!
         binding?.imageView9?.setOnClickListener {
             navController.navigate(R.id.scannerPageFragment)
         }
         binding?.testBtn?.setOnClickListener {
-            navController.navigate(R.id.canvasViewerFragment)
+            //navController.navigate(R.id.canvasViewerFragment)
         }
 
         binding?.imageView21?.setOnClickListener {

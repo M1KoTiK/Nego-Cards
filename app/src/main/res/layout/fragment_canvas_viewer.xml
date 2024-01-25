@@ -7,8 +7,8 @@
     android:background="@color/black18"
     android:layout_height="match_parent">
 
-    <m1k.kotik.negocards.data.canvas_qrc.canvas_view.new_canvas_view.CanvasConfig
-        android:id="@+id/canvas_viewer"
+    <m1k.kotik.negocards.data.canvas_qrc.canvas_view.new_canvas_view.CanvasView
+        android:id="@+id/canvasViewInCanvasViewer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -17,38 +17,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.104">
-
-    </m1k.kotik.negocards.data.canvas_qrc.canvas_view.new_canvas_view.CanvasConfig>
+    </m1k.kotik.negocards.data.canvas_qrc.canvas_view.new_canvas_view.CanvasView>
 
     <m1k.kotik.negocards.custom_views.sliders.Slider
-        android:id="@+id/valueSlider"
+        android:id="@+id/canvasZoomSlider"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        app:cursorColor="#90FF00FF"
+        app:cursorColor="#505050"
         app:cursorHeight="50dp"
         app:cursorStrokeColor="@color/black19"
         app:cursorStrokeWidth="0.5dp"
         app:cursorWidth="20dp"
         app:isStripeStroke="true"
-        app:layout_constraintEnd_toEndOf="@+id/canvas_viewer"
-        app:layout_constraintStart_toStartOf="@+id/canvas_viewer"
-        app:layout_constraintTop_toBottomOf="@+id/canvas_viewer"
+        app:layout_constraintEnd_toEndOf="@+id/canvasViewInCanvasViewer"
+        app:layout_constraintStart_toStartOf="@+id/canvasViewInCanvasViewer"
+        app:layout_constraintTop_toBottomOf="@+id/canvasViewInCanvasViewer"
         app:stripeColor="@color/white_d9"
         app:stripeHeight="15dp"
         app:stripeLCorner="25dp"
         app:stripeRCorner="25dp"
         app:stripeStrokeColor="@color/black30"
         app:stripeStrokeWidth="2dp" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/valueSlider" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,7 +14,7 @@ class SimpleListConverter<T>(
     init{
         if(itemSeparator == valueEnds || itemSeparator == valueStarts){
             throw Exception("Чел ты тупой? Значения для начала и конца списка" +
-                    " и для разделения их элементов не должны быть одинаковыми")
+                    " и для разделения его элементов не должны быть одинаковыми")
         }
     }
     @Suppress("UNCHECKED_CAST")

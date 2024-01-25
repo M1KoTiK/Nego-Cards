@@ -141,7 +141,8 @@ class CanvasCodePreCreateFragment : Fragment() {
                 selectedItemPosition = position
                 if(customConfigSizePanelIsShow){
                     val containerForSizeInCanvas = binding.customCanvasConfigSizeContainer
-
+                    binding.canvasConfigHeight.isEnabled = false
+                    binding.canvasConfigWidth.isEnabled = false
                     val containerForAdditionSettingsInCanvas = binding.containerForAdditionSettingsInCanvas as View
                     val lp = containerForAdditionSettingsInCanvas.layoutParams as ViewGroup.MarginLayoutParams
                     val initialMargin = lp.topMargin
@@ -177,6 +178,8 @@ class CanvasCodePreCreateFragment : Fragment() {
                     "Средний"-> canvasSizeChangeWithAnimation(800, 600, 180)
                     "Большой"-> canvasSizeChangeWithAnimation(1000, 700, 180)
                     "Кастомный"->{
+                        binding.canvasConfigHeight.isEnabled = true
+                        binding.canvasConfigWidth.isEnabled = true
                         val containerForSizeInCanvas = binding.customCanvasConfigSizeContainer
 
                         val containerForAdditionSettingsInCanvas = binding.containerForAdditionSettingsInCanvas as View

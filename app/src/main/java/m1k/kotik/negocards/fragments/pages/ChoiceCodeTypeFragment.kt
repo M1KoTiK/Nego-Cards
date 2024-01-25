@@ -1,6 +1,5 @@
 package m1k.kotik.negocards.fragments.pages
 
-import android.graphics.Rect
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,14 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import m1k.kotik.negocards.R
 import m1k.kotik.negocards.data.recycler_view_adapters.CodeTypeForChoice.ChoiceTypeCodeAdapter
-import m1k.kotik.negocards.data.recycler_view_adapters.CodeTypeForChoice.CodeTypeItemViewModel
+import m1k.kotik.negocards.data.recycler_view_adapters.CodeTypeForChoice.CodeTypeItem
 import m1k.kotik.negocards.data.recycler_view_adapters.SpaceItemDecorator
 import m1k.kotik.negocards.databinding.ChoiceQrcTypeForCreateBinding
-import m1k.kotik.negocards.databinding.CodeForTypeChoiceItemBinding
 
 class ChoiceCodeTypeFragment: Fragment() {
     lateinit var navController: NavController
@@ -33,23 +29,23 @@ class ChoiceCodeTypeFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = binding.root.findNavController()
-        val codeTypes: MutableList<CodeTypeItemViewModel> = mutableListOf()
+        val codeTypes: MutableList<CodeTypeItem> = mutableListOf()
         codeTypes.add(
-            CodeTypeItemViewModel(
+            CodeTypeItem(
                 "Текст",
                 "sdfsd",
                 ResourcesCompat.getDrawable(resources, R.drawable.text_code_type, null)!!
             )
         )
         codeTypes.add(
-            CodeTypeItemViewModel(
+            CodeTypeItem(
                 "Холст",
                 "sdfsd",
                 ResourcesCompat.getDrawable(resources, R.drawable.canvas_code_type, null)!!
             )
         )
         codeTypes.add(
-            CodeTypeItemViewModel(
+            CodeTypeItem(
                 "Файл",
                 "sdfsd",
                 ResourcesCompat.getDrawable(resources, R.drawable.file_code_type, null)!!

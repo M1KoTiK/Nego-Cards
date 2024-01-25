@@ -33,6 +33,8 @@ import m1k.kotik.negocards.data.db.QRCDB
 import java.util.*
 import java.util.concurrent.Executors
 import m1k.kotik.negocards.R
+import m1k.kotik.negocards.data.canvas_qrc.canvas_serialization.CanvasSerialization
+import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.CanvasObject
 import m1k.kotik.negocards.data.qrc.CodeType
 import m1k.kotik.negocards.data.qrc.barcodeFormatToCodeType
 import m1k.kotik.negocards.data.recycler_view_adapters.ScannedQrcAdapter
@@ -128,14 +130,6 @@ class ScannerPageFragment : Fragment() {
     private fun bindCameraUseCases() {
         bindPreviewUseCase()
         bindAnalyseUseCase()
-        db.add(
-            ScannedCode(
-                CodeType.QRC,
-                CodeContentType.Reference,
-                "TestCodeValue23123123123",
-                SimpleDate.getCurrentDate()
-            )
-        )
     }
 
     private fun bindPreviewUseCase() {
@@ -253,6 +247,14 @@ class ScannerPageFragment : Fragment() {
                                     if(rawValue.startsWith("urlto:")){
 
                                     }
+                                    if(CanvasSerialization.canvasSerializer.deserialize<CanvasObject>(rawValue)!=null){
+                                        db.add(
+                                            ScannedCode(
+                                                barcodeFormatToCodeType(barcode.format),
+                                                CodeContentType.Canvas,
+                                                rawValue,
+                                                SimpleDate.getCurrentDate()))
+                                    }
                                     else {
                                         db.add(
                                             ScannedCode(
@@ -260,8 +262,9 @@ class ScannerPageFragment : Fragment() {
                                                 CodeContentType.Text,
                                                 rawValue,
                                                 SimpleDate.getCurrentDate()))
-                                        refreshScannedQRC()
+
                                     }
+                                    refreshScannedQRC()
                                 }
                         }
                     }

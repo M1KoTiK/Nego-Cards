@@ -8,6 +8,51 @@
     android:background="@color/black18"
     tools:layout_editor_absoluteY="25dp">
 
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Дата:"
+        android:textColor="@color/white_d9"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/cardView2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="25.01.2024"
+        android:textColor="@color/white_d9"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/textView22"
+        app:layout_constraintTop_toTopOf="@+id/textView22" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Тип кода:"
+        android:textColor="@color/white_d9"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/textView22"
+        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="QR-код"
+        android:textColor="@color/white_d9"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView21"
+        app:layout_constraintStart_toEndOf="@+id/textView21"
+        app:layout_constraintTop_toTopOf="@+id/textView21" />
+
     <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
@@ -64,10 +109,10 @@
         android:id="@+id/cardView2"
         android:layout_width="220dp"
         android:layout_height="220dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         app:cardCornerRadius="20dp"
         app:layout_constraintStart_toStartOf="@+id/textView12"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/textView21">
 
         <ImageView
             android:id="@+id/qrcDisplay"
@@ -75,19 +120,6 @@
             android:layout_height="220dp"
             app:srcCompat="@drawable/placeholder" />
     </androidx.cardview.widget.CardView>
-
-    <Button
-        android:id="@+id/open_in_browser_btn"
-        style="@style/RoundedButton"
-        android:layout_width="300dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="15dp"
-        android:foreground="@drawable/rounded_square_ripple_20"
-        android:text="Открыть в браузере"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/QRCValueViewer" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -101,5 +133,14 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/copy_btn"
         app:layout_constraintTop_toTopOf="@+id/cardView2" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/QRCValueViewer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

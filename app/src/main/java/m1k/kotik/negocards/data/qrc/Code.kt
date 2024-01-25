@@ -1,14 +1,14 @@
 package m1k.kotik.negocards.data.qrc
 
 import m1k.kotik.negocards.data.date.SimpleDate
-import m1k.kotik.negocards.data.qrc.code_action.CodeActions
+import m1k.kotik.negocards.data.qrc.code_action.CodeAction
 import m1k.kotik.negocards.data.qrc.code_action.ICodeAction
 
-enum class CodeContentType(val typeName: String, actionList: List<ICodeAction>, val desc: String? = null){
+enum class CodeContentType(val typeName: String, val actionList: List<ICodeAction>, val desc: String? = null){
     Text(
         "Текст",
         listOf(
-            CodeActions.SearchInBrowser()
+            CodeAction.SearchInBrowser
         ),
         "Обобщенный тип содержимого в котором может содержаться любая текстовая информация"
     ),
