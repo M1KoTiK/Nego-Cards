@@ -17,6 +17,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import m1k.kotik.negocards.R
 import m1k.kotik.negocards.custom_views.toast.showCustomToast
 import m1k.kotik.negocards.custom_views.windows.stylized_window.FloatingStylizedWindow
@@ -25,6 +26,8 @@ import m1k.kotik.negocards.data.qrc.CodeContentType
 import m1k.kotik.negocards.data.qrc.CodeType
 import m1k.kotik.negocards.data.qrc.ScannedCode
 import m1k.kotik.negocards.data.qrc.code_generators.QRCGenerator
+import m1k.kotik.negocards.data.recycler_view_adapters.adapter_decorations.SpaceItemDecorator
+import m1k.kotik.negocards.data.recycler_view_adapters.code_action.CodeActionAdapter
 import m1k.kotik.negocards.databinding.FragmentQrcViewerBinding
 
 
@@ -74,6 +77,11 @@ class QRCViewerFragment() : Fragment() {
             binding.QRCValueViewer.text = scannedCode.value
             val codeImage = QRCGenerator.getQRCToBitmap(value)
             binding.qrcDisplay.setImageBitmap(codeImage)
+            binding.qrcViewerDateQRC.text = date.toString()
+            binding.QRCViewerCodeType.text = codeType.typeName
+            binding.codeActionsRecyclerView.adapter = CodeActionAdapter(requireActivity(), scannedCode)
+            binding.codeActionsRecyclerView.layoutManager = LinearLayoutManager(requireActivity())
+            binding.codeActionsRecyclerView.addItemDecoration(SpaceItemDecorator(10))
             codeViewWindow.contentView.findViewById<ImageView>(R.id.QRCImage).setImageBitmap(codeImage)
             binding.copyBtn.setOnClickListener {
                 val clipboardManager =
@@ -92,17 +100,6 @@ class QRCViewerFragment() : Fragment() {
         binding.qrcDisplay.setOnClickListener {
             codeViewWindow.show(0,0,1000,1100,
                 Gravity.CENTER_VERTICAL or Gravity.CENTER_HORIZONTAL)
-        }
-        binding.openInBrowserBtn.setOnClickListener {
-            val browserIntent = if (
-                binding.QRCValueViewer.text.startsWith("http://") ||
-                binding.QRCValueViewer.text.startsWith("https://")
-            ) {
-                Intent(Intent.ACTION_VIEW, Uri.parse(binding.QRCValueViewer.text.toString()))
-            } else {
-                Intent(Intent.ACTION_VIEW, Uri.parse("https://ya.ru/search/?text=" + binding.QRCValueViewer.text.toString()))
-            }
-            startActivity(browserIntent)
         }
     }
 }

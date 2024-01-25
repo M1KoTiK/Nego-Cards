@@ -14,28 +14,21 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/qrc/code_action/CodeAction.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/recycler_view_adapters/CodeActionPlusValueItem.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/code_action_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" afterDir="false" />
+    <list default="true" id="50b9d7af-bd51-42b5-84ae-d35f23aad67f" name="Changes" comment="( ͡° ͜ʖ ͡°) Реализовываю различные действия с кодами содержащими разные приколямбы ( ͡° ͜ʖ ͡°)">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/recycler_view_adapters/code_action/CodeActionAdapter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_serialization/CanvasSerialization.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_serialization/CanvasSerialization.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/db/QRCDB.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/db/QRCDB.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/new_canvas_view/CanvasView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/canvas_qrc/canvas_view/new_canvas_view/CanvasView.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/qrc/Code.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/qrc/Code.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/qrc/code_action/CodeActions.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/recycler_view_adapters/CodeTypeForChoice/ChoiceTypeCodeAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/recycler_view_adapters/CodeTypeForChoice/ChoiceTypeCodeAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/recycler_view_adapters/CodeTypeForChoice/CodeTypeItemViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/recycler_view_adapters/CodeTypeForChoice/CodeTypeItem.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/value_converters/SimpleListConverter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/serialization/value_converters/SimpleListConverter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/CanvasViewerFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/CanvasViewerFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/qrc/code_action/CodeAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/qrc/code_action/CodeAction.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/recycler_view_adapters/CodeActionPlusValueItem.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/recycler_view_adapters/CodeTypeForChoice/ChoiceTypeCodeAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/recycler_view_adapters/code_type_for_choice/ChoiceTypeCodeAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/recycler_view_adapters/CodeTypeForChoice/CodeTypeItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/recycler_view_adapters/code_type_for_choice/CodeTypeItem.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/recycler_view_adapters/ScannedQrcAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/recycler_view_adapters/scanned_qrc/ScannedQrcAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/recycler_view_adapters/SpaceItemDecorator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/data/recycler_view_adapters/adapter_decorations/SpaceItemDecorator.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/ChoiceCodeTypeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/ChoiceCodeTypeFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/MainPageFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/MainPageFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/QRCViewerFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/QRCViewerFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/ScannerPageFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/ScannerPageFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/code_create_pages/CanvasCodePreCreateFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/m1k/kotik/negocards/fragments/pages/code_create_pages/CanvasCodePreCreateFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_canvas_code_pre_create.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_canvas_code_pre_create.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_canvas_viewer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_canvas_viewer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/code_action_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/code_action_item.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_qrc_viewer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_qrc_viewer.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/scanned_qrc_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/scanned_qrc_item.xml" afterDir="false" />
     </list>
@@ -44,7 +37,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\User\.android\avd\Pixel_3_XL_API_31.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[EEA9700PRO0039249]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -122,6 +115,7 @@
     <property name="ToolWindowLogcat.ShowToolbar" value="false" />
     <property name="android-custom-viewC:/Users/User/.gradle/caches/modules-2/files-2.1/androidx.constraintlayout/constraintlayout/2.1.4/27e12209e529970f69bc817f349c247ef238fae7/constraintlayout-2.1.4-sources.jar!/androidx/constraintlayout/widget/ConstraintLayout.java_SELECTED" value="ConstraintLayout" />
     <property name="android-custom-viewC:/Users/User/.gradle/caches/modules-2/files-2.1/androidx.fragment/fragment/1.5.5/840b28a2f92b8b4f35c05c1c9866f3741f755871/fragment-1.5.5-sources.jar!/androidx/fragment/app/FragmentContainerView.kt_SELECTED" value="FragmentContainerView" />
+    <property name="android-custom-viewC:/Users/User/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.2.1/f0f93e67af3f7417bdd560d5142f6dec4fe629c3/recyclerview-1.2.1-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED" value="RecyclerView" />
     <property name="android-custom-viewC:/Users/User/.gradle/caches/modules-2/files-2.1/androidx.viewpager/viewpager/1.0.0/db045f92188b9d247d5f556866f8861ab68528f0/viewpager-1.0.0-sources.jar!/androidx/viewpager/widget/PagerTabStrip.java_SELECTED" value="PagerTabStrip" />
     <property name="android-custom-viewC:/Users/User/.gradle/caches/modules-2/files-2.1/com.github.ibrahimsn98/SmoothBottomBar/1.7.9/581d6ad5c7d9d5fe07419a145e4818c5ab824c10/SmoothBottomBar-1.7.9-sources.jar!/me/ibrahimsn/lib/SmoothBottomBar.kt_SELECTED" value="SmoothBottomBar" />
     <property name="android-custom-viewC:/Users/User/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.7.0/289bbb3a7fea52532f1163487f9469217ee608a9/material-1.7.0-sources.jar!/com/google/android/material/button/MaterialButton.java_SELECTED" value="MaterialButton" />
@@ -221,11 +215,11 @@
       <recent name="m1k.kotik.negocards.model" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="m1k.kotik.negocards.data.recycler_view_adapters.adapter_decorations" />
       <recent name="m1k.kotik.negocards.data.qrc.code_action" />
       <recent name="m1k.kotik.negocards.data.qrc.code_generaotors" />
       <recent name="m1k.kotik.negocards.data.canvas_qrc.old_govno" />
       <recent name="m1k.kotik.negocards.data.canvas_qrc.canvas_view.new_canvas_view" />
-      <recent name="m1k.kotik.negocards.fragments.pages" />
     </key>
     <key name="android.template.1505593035">
       <recent name="com.example.negocards.fragments.pages" />
@@ -300,13 +294,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675626606726</updated>
-    </task>
-    <task id="LOCAL-00076" summary="Добавил recyclerView для отображения ScannedQRC">
-      <created>1697126102929</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1697126102929</updated>
     </task>
     <task id="LOCAL-00077" summary="Добавил clickListener для recyclerView">
       <created>1697133631339</created>
@@ -644,7 +631,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706158070019</updated>
     </task>
-    <option name="localTasksCounter" value="125" />
+    <task id="LOCAL-00125" summary="( ͡° ͜ʖ ͡°) Реализовываю различные действия с кодами содержащими разные приколямбы ( ͡° ͜ʖ ͡°)">
+      <created>1706205850133</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1706205850134</updated>
+    </task>
+    <option name="localTasksCounter" value="126" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -659,7 +653,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Переделываю CanvasEditor так как с CanvasView плюс минус разобрался&#10;Также добавил документацию для классов" />
     <MESSAGE value="Допилил CanvasView" />
     <MESSAGE value="Допилил CanvasView" />
     <MESSAGE value="Добавил в новый CanvasEditor возможность двигать и выделять объекты" />
@@ -684,7 +677,8 @@
     <MESSAGE value="Добавил изменение скругленности" />
     <MESSAGE value="Небольшие правки" />
     <MESSAGE value=" Начал делать описание кодов, дествий с ними и изменил хранимый тип в базе данных (добавил в него codeType и изменил type на ContentType) " />
-    <option name="LAST_COMMIT_MESSAGE" value=" Начал делать описание кодов, дествий с ними и изменил хранимый тип в базе данных (добавил в него codeType и изменил type на ContentType) " />
+    <MESSAGE value="( ͡° ͜ʖ ͡°) Реализовываю различные действия с кодами содержащими разные приколямбы ( ͡° ͜ʖ ͡°)" />
+    <option name="LAST_COMMIT_MESSAGE" value="( ͡° ͜ʖ ͡°) Реализовываю различные действия с кодами содержащими разные приколямбы ( ͡° ͜ʖ ͡°)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -701,6 +695,7 @@
         <PinnedItemInfo parentTag="m1k.kotik.negocards.data.serialization.serializationObject.TestSerializeObject" memberName="list" />
         <PinnedItemInfo parentTag="m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject$Tag$Text" memberName="obligatory" />
         <PinnedItemInfo parentTag="m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject$Tag$Text" memberName="tag" />
+        <PinnedItemInfo parentTag="m1k.kotik.negocards.data.qrc.CodeContentType" memberName="actionList" />
         <PinnedItemInfo parentTag="m1k.kotik.negocards.data.canvas_qrc.model.TextObject" memberName="height" />
         <PinnedItemInfo parentTag="m1k.kotik.negocards.data.canvas_qrc.model.CanvasObject$Tag$Text" memberName="default" />
         <PinnedItemInfo parentTag="m1k.kotik.negocards.data.serialization.value_converters.TestConverterSet" memberName="map" />

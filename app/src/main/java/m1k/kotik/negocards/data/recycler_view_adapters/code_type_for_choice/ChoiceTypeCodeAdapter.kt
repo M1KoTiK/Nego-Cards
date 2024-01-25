@@ -1,4 +1,4 @@
-package m1k.kotik.negocards.data.recycler_view_adapters.CodeTypeForChoice
+package m1k.kotik.negocards.data.recycler_view_adapters.code_type_for_choice
 
 import android.content.Context
 import android.view.LayoutInflater

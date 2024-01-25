@@ -10,67 +10,97 @@
 
 
     <TextView
-        android:id="@+id/textView22"
+        android:id="@+id/codeContentType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="Дата:"
-        android:textColor="@color/white_d9"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/cardView2"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="4dp"
+        android:text=" Текст"
+        android:textColor="@color/greyE"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView12"
+        app:layout_constraintStart_toEndOf="@+id/textView12"
+        app:layout_constraintTop_toTopOf="@+id/textView12" />
 
     <TextView
         android:id="@+id/textView23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:text="25.01.2024"
+        android:text="|"
         android:textColor="@color/white_d9"
-        android:textSize="14sp"
-        app:layout_constraintStart_toEndOf="@+id/textView22"
-        app:layout_constraintTop_toTopOf="@+id/textView22" />
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView22"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView22"
+        app:layout_constraintVertical_bias="0.65999997" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="7dp"
+        android:text="Дата:"
+        android:textColor="@color/white_d9"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/qrcViewerDateQRC"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/qrcViewerDateQRC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:text="25.01.2024"
+        android:textColor="@color/greyE"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView22"
+        app:layout_constraintEnd_toStartOf="@+id/textView23"
+        app:layout_constraintTop_toTopOf="@+id/textView22"
+        app:layout_constraintVertical_bias="0.9" />
 
     <TextView
         android:id="@+id/textView21"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
         android:text="Тип кода:"
         android:textColor="@color/white_d9"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/textView22"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView22"
+        app:layout_constraintStart_toEndOf="@+id/textView23"
+        app:layout_constraintTop_toTopOf="@+id/textView22"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView20"
+        android:id="@+id/QRCViewerCodeType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="7dp"
         android:text="QR-код"
-        android:textColor="@color/white_d9"
-        android:textSize="14sp"
+        android:textColor="@color/greyE"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView21"
         app:layout_constraintStart_toEndOf="@+id/textView21"
-        app:layout_constraintTop_toTopOf="@+id/textView21" />
+        app:layout_constraintTop_toTopOf="@+id/textView21"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="Содержание QRC"
+        android:text="Содержание QRC:"
         android:textColor="@color/white_d9"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/QRCValueViewer"
         app:layout_constraintStart_toStartOf="@+id/QRCValueViewer"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2"
-        app:layout_constraintVertical_bias="0.076" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
     <ImageView
         android:id="@+id/copy_btn"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="-10dp"
+        android:layout_marginTop="-50dp"
         android:background="@drawable/rounded_square_30"
         android:foreground="@drawable/rounded_square_ripple_30"
         android:scaleType="centerCrop"
@@ -82,28 +112,39 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/QRCValueViewer"
         android:layout_width="300dp"
-        android:minHeight="45dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginTop="12dp"
-        android:maxHeight="175dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/rounded_square_15"
         android:clickable="true"
         android:focusable="true"
-        android:scrollbars="vertical"
         android:focusableInTouchMode="true"
-        android:paddingStart="15dp"
         android:gravity="center_vertical"
+        android:maxHeight="175dp"
+        android:minHeight="45dp"
+        android:paddingStart="15dp"
         android:paddingEnd="15dp"
+        android:scrollbars="vertical"
         android:text="123"
         android:textColor="@color/black18"
+        android:textCursorDrawable="@color/black30"
         android:textIsSelectable="true"
         android:textSize="17sp"
-        android:textCursorDrawable="@color/black30"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/copy_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Возможные действия:"
+        android:textColor="@color/white_d9"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/QRCValueViewer"
+        app:layout_constraintTop_toBottomOf="@+id/QRCValueViewer" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
@@ -125,6 +166,7 @@
         android:id="@+id/imageView7"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginTop="4dp"
         android:background="@drawable/rounded_square_30"
         android:foreground="@drawable/rounded_square_ripple_30"
         android:padding="10dp"
@@ -135,12 +177,16 @@
         app:layout_constraintTop_toTopOf="@+id/cardView2" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/codeActionsRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/rounded_square_5"
+        android:backgroundTint="@color/black19"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/QRCValueViewer" />
+        app:layout_constraintEnd_toEndOf="@+id/QRCValueViewer"
+        app:layout_constraintStart_toStartOf="@+id/QRCValueViewer"
+        app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,7 +37,7 @@ import m1k.kotik.negocards.data.canvas_qrc.canvas_serialization.CanvasSerializat
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.CanvasObject
 import m1k.kotik.negocards.data.qrc.CodeType
 import m1k.kotik.negocards.data.qrc.barcodeFormatToCodeType
-import m1k.kotik.negocards.data.recycler_view_adapters.ScannedQrcAdapter
+import m1k.kotik.negocards.data.recycler_view_adapters.scanned_qrc.ScannedQrcAdapter
 
 
 class ScannerPageFragment : Fragment() {

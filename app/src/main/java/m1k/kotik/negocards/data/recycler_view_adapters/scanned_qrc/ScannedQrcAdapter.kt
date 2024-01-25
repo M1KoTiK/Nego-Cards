@@ -1,4 +1,4 @@
-package m1k.kotik.negocards.data.recycler_view_adapters
+package m1k.kotik.negocards.data.recycler_view_adapters.scanned_qrc
 
 import android.content.Context
 import android.content.res.ColorStateList

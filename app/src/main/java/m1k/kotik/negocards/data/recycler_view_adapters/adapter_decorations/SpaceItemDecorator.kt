@@ -1,4 +1,4 @@
-package m1k.kotik.negocards.data.recycler_view_adapters
+package m1k.kotik.negocards.data.recycler_view_adapters.adapter_decorations
 
 import android.graphics.Rect
 import android.view.View

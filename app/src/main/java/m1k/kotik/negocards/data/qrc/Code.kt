@@ -15,12 +15,12 @@ enum class CodeContentType(val typeName: String, val actionList: List<ICodeActio
 
     Reference(
         "Ссылка",
-        listOf()
+        listOf(CodeAction.OpenInBrowser)
     ),
 
     Location("Геоданные",listOf()),
 
-    Canvas("Холст",listOf(), "Позволяет сохранить визуальную информацию в виде кода"),
+    Canvas("Холст",listOf(CodeAction.OpenCanvasInWindow), "Позволяет сохранить визуальную информацию в виде кода"),
 
 }
 

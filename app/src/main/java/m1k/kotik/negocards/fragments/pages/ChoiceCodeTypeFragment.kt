@@ -10,9 +10,9 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import m1k.kotik.negocards.R
-import m1k.kotik.negocards.data.recycler_view_adapters.CodeTypeForChoice.ChoiceTypeCodeAdapter
-import m1k.kotik.negocards.data.recycler_view_adapters.CodeTypeForChoice.CodeTypeItem
-import m1k.kotik.negocards.data.recycler_view_adapters.SpaceItemDecorator
+import m1k.kotik.negocards.data.recycler_view_adapters.code_type_for_choice.ChoiceTypeCodeAdapter
+import m1k.kotik.negocards.data.recycler_view_adapters.code_type_for_choice.CodeTypeItem
+import m1k.kotik.negocards.data.recycler_view_adapters.adapter_decorations.SpaceItemDecorator
 import m1k.kotik.negocards.databinding.ChoiceQrcTypeForCreateBinding
 
 class ChoiceCodeTypeFragment: Fragment() {

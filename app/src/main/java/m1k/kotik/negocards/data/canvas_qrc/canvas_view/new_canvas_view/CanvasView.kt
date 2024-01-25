@@ -89,6 +89,7 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
     fun setBackgroundObject(backgroundObject: CanvasShape){
         setCanvasSize(backgroundObject.width,backgroundObject.height)
         _backgroundObject = backgroundObject
+        invalidate()
     }
 
     /**
@@ -189,7 +190,7 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
-        _backgroundObject!!.draw(canvas!!)
+        _backgroundObject.draw(canvas!!)
         for(obj in _objects){
             if(obj is ICanvasDrawable){
                 setZoomForObject(obj)

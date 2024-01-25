@@ -29,9 +29,23 @@ sealed class CodeAction: ICodeAction {
         }
     }
     /**
+     * Открывает ссылку в браузере
+     */
+    object OpenInBrowser: CodeAction() {
+        override val nameAction: String = "Открыть ссылку в браузере"
+        override val action: (Context, Code) -> Unit = {context, code ->
+            val browserIntent = if (
+                code.value.startsWith("http://") ||
+                code.value.startsWith("https://")
+            ) { Intent(Intent.ACTION_VIEW, Uri.parse(code.value)) }
+            else { Intent(Intent.ACTION_VIEW, Uri.parse("https://ya.ru/search/?text=" + code.value)) }
+            context.startActivity(browserIntent)
+        }
+    }
+    /**
      * Открывает окно для просмотра холста
      */
-    object OpenCanvasViewPage: CodeAction(){
+    object OpenCanvasInWindow: CodeAction(){
         override val nameAction: String = "Открыть холст"
         override val action: (Context, Code) -> Unit = {context, code ->
 
