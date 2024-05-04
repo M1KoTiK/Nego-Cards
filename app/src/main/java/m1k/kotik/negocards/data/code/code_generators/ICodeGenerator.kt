@@ -1,4 +1,4 @@
-package m1k.kotik.negocards.data.qrc.code_generators
+package m1k.kotik.negocards.data.code.code_generators
 
 import android.graphics.Bitmap
 

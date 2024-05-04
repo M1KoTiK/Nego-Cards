@@ -1,13 +1,11 @@
 package m1k.kotik.negocards.data.recycler_view_adapters.code_action
 
 import android.content.Context
-import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import m1k.kotik.negocards.data.qrc.ScannedCode
+import m1k.kotik.negocards.data.code.ScannedCode
 import m1k.kotik.negocards.databinding.CodeActionItemBinding
-import m1k.kotik.negocards.databinding.ScannedQrcItemBinding
 
 class CodeActionAdapter (val context: Context, private val scannedCode: ScannedCode):
         RecyclerView.Adapter<CodeActionAdapter.CodeActionViewHolder>() {

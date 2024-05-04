@@ -11,5 +11,4 @@ interface IWindow {
     fun show(x: Int, y: Int, width: Int, height: Int, gravity: Int)
     fun close()
     fun update()
-
 }

@@ -4,9 +4,7 @@ import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context.CLIPBOARD_SERVICE
-import android.content.Intent
 import android.content.res.ColorStateList
-import android.net.Uri
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -22,10 +20,10 @@ import m1k.kotik.negocards.R
 import m1k.kotik.negocards.custom_views.toast.showCustomToast
 import m1k.kotik.negocards.custom_views.windows.stylized_window.FloatingStylizedWindow
 import m1k.kotik.negocards.data.date.SimpleDate
-import m1k.kotik.negocards.data.qrc.CodeContentType
-import m1k.kotik.negocards.data.qrc.CodeType
-import m1k.kotik.negocards.data.qrc.ScannedCode
-import m1k.kotik.negocards.data.qrc.code_generators.QRCGenerator
+import m1k.kotik.negocards.data.code.CodeContentType
+import m1k.kotik.negocards.data.code.CodeType
+import m1k.kotik.negocards.data.code.ScannedCode
+import m1k.kotik.negocards.data.code.code_generators.QRCGenerator
 import m1k.kotik.negocards.data.recycler_view_adapters.adapter_decorations.SpaceItemDecorator
 import m1k.kotik.negocards.data.recycler_view_adapters.code_action.CodeActionAdapter
 import m1k.kotik.negocards.databinding.FragmentQrcViewerBinding
@@ -42,7 +40,7 @@ class QRCViewerFragment() : Fragment() {
         return binding!!.root
     }
     private lateinit var codeViewWindow: FloatingStylizedWindow
-
+    //Кривой костыль для отмены фокуса
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

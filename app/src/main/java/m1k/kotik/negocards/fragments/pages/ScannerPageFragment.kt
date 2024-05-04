@@ -26,17 +26,14 @@ import com.google.mlkit.vision.common.InputImage
 import m1k.kotik.negocards.CameraXViewModel
 import m1k.kotik.negocards.data.date.SimpleDate
 import m1k.kotik.negocards.data.canvas_qrc.old_govno.popup_windows.CanvasViewerPopupWindow
-import m1k.kotik.negocards.data.qrc.CodeContentType
-import m1k.kotik.negocards.data.qrc.ScannedCode
+import m1k.kotik.negocards.data.code.CodeContentType
+import m1k.kotik.negocards.data.code.ScannedCode
 import m1k.kotik.negocards.databinding.FragmentScannerPageBinding
 import m1k.kotik.negocards.data.db.QRCDB
 import java.util.*
 import java.util.concurrent.Executors
 import m1k.kotik.negocards.R
-import m1k.kotik.negocards.data.canvas_qrc.canvas_serialization.CanvasSerialization
-import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.CanvasObject
-import m1k.kotik.negocards.data.qrc.CodeType
-import m1k.kotik.negocards.data.qrc.barcodeFormatToCodeType
+import m1k.kotik.negocards.data.code.barcodeFormatToCodeType
 import m1k.kotik.negocards.data.recycler_view_adapters.scanned_qrc.ScannedQrcAdapter
 
 
@@ -72,19 +69,30 @@ class ScannerPageFragment : Fragment() {
         binding?.flashBtn?.setOnClickListener {
             setTorch()
         }
+        //Для добавления тестовых данных
+//        db.add(
+//            ScannedCode(
+//                CodeType.QRC,
+//                CodeContentType.Text,
+//                "test",
+//                SimpleDate.getCurrentDate())
+//        )
         refreshScannedQRC()
     }
 
     fun refreshScannedQRC(){
         val listScannedQRC = db.getScannedQRC().reversed()
-        val adapter = ScannedQrcAdapter(requireActivity(),listScannedQRC ).also{ scannedQrcAdapter ->
+        val adapter = ScannedQrcAdapter(requireActivity(), listScannedQRC ).also{ scannedQrcAdapter ->
             scannedQrcAdapter.itemOnClick = {
                 val bundle = Bundle()
                 val scannedQRC = listScannedQRC[it]
+                bundle.putInt("id", scannedQRC.contentType.ordinal)
                 bundle.putInt("contentType", scannedQRC.contentType.ordinal)
                 bundle.putString("value", scannedQRC.value )
                 bundle.putString("date", scannedQRC.date.toString())
                 bundle.putInt("codeType", scannedQRC.codeType.ordinal)
+                scannedQRC.isOpened = true
+                db.updateScannedQRCInDB(scannedQRC)
                 navController.navigate(R.id.QRCViewerFragment, bundle)
             }
         }
@@ -247,21 +255,14 @@ class ScannerPageFragment : Fragment() {
                                     if(rawValue.startsWith("urlto:")){
 
                                     }
-                                    if(CanvasSerialization.canvasSerializer.deserialize<CanvasObject>(rawValue)!=null){
-                                        db.add(
-                                            ScannedCode(
-                                                barcodeFormatToCodeType(barcode.format),
-                                                CodeContentType.Canvas,
-                                                rawValue,
-                                                SimpleDate.getCurrentDate()))
-                                    }
                                     else {
                                         db.add(
                                             ScannedCode(
                                                 barcodeFormatToCodeType(barcode.format),
                                                 CodeContentType.Text,
                                                 rawValue,
-                                                SimpleDate.getCurrentDate()))
+                                                SimpleDate.getCurrentDate())
+                                        )
 
                                     }
                                     refreshScannedQRC()

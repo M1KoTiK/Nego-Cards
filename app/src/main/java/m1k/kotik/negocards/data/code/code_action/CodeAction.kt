@@ -1,4 +1,4 @@
-package m1k.kotik.negocards.data.qrc.code_action
+package m1k.kotik.negocards.data.code.code_action
 
 import android.content.Context
 import android.content.Intent
@@ -10,7 +10,7 @@ import m1k.kotik.negocards.data.canvas_qrc.canvas_serialization.CanvasSerializat
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.CanvasObject
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.CanvasShape
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.new_canvas_view.CanvasView
-import m1k.kotik.negocards.data.qrc.Code
+import m1k.kotik.negocards.data.code.Code
 
 
 sealed class CodeAction: ICodeAction {
@@ -19,7 +19,7 @@ sealed class CodeAction: ICodeAction {
      */
     object SearchInBrowser: CodeAction() {
         override val nameAction: String = "Найти в браузере"
-        override val action: (Context, Code) -> Unit = {context, code ->
+        override val action: (Context, Code) -> Unit = { context, code ->
             val browserIntent = if (
                 code.value.startsWith("http://") ||
                 code.value.startsWith("https://")
@@ -33,7 +33,7 @@ sealed class CodeAction: ICodeAction {
      */
     object OpenInBrowser: CodeAction() {
         override val nameAction: String = "Открыть ссылку в браузере"
-        override val action: (Context, Code) -> Unit = {context, code ->
+        override val action: (Context, Code) -> Unit = { context, code ->
             val browserIntent = if (
                 code.value.startsWith("http://") ||
                 code.value.startsWith("https://")
@@ -47,9 +47,7 @@ sealed class CodeAction: ICodeAction {
      */
     object OpenCanvasInWindow: CodeAction(){
         override val nameAction: String = "Открыть холст"
-        override val action: (Context, Code) -> Unit = {context, code ->
-
-
+        override val action: (Context, Code) -> Unit = { context, code ->
             val height = context.resources.displayMetrics.heightPixels
             val width = context.resources.displayMetrics.widthPixels
             val canvasViewWindow: FloatingStylizedWindow = FloatingStylizedWindow(context, R.layout.fragment_canvas_viewer).also {

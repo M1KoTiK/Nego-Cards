@@ -9,7 +9,7 @@ import kotlin.reflect.full.createInstance
  * @param[parser] задает используемый парсер (ISerializationParser)
  * @param[requiredObjectMap] задает список типов сериализуемых объектов
  * @param[lengthForKey] задает максимальную длину для ключа объекта
- * @constructor Предназначен для сериализации и десериализации одного объекта.
+ * @constructor Предназначен для сериализации и десериализации объектов.
  */
 open class DefaultSerializer(
     override var parser: ISerializationParser,

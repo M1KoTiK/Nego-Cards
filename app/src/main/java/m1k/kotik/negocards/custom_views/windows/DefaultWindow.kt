@@ -48,7 +48,6 @@ abstract class DefaultWindow(
             it.addView(contentView)
         }
         rootView.requestFocus()
-
     }
     private fun detachChildView() {
         rootView.findViewById<ViewGroup>(R.id.window_content).removeAllViews()
@@ -65,7 +64,7 @@ abstract class DefaultWindow(
                 if (isInstanceMustRecreated) {
                     isContentAttached = true
                     windowManager.addView(rootView, windowParameters)
-                    if(isContentAttached){
+                    if(isContentAttached) {
                         detachChildView()
                     }
                     attachChildView()

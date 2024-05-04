@@ -11,7 +11,6 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import m1k.kotik.negocards.R
 import m1k.kotik.negocards.data.canvas_qrc.canvas_serialization.CanvasSerialization
-import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.Rectangle
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.RoundRectangle
 import m1k.kotik.negocards.databinding.FragmentMainPageBinding
 

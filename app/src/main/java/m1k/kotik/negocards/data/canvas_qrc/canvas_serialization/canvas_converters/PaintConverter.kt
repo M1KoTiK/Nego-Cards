@@ -1,16 +1,10 @@
 package m1k.kotik.negocards.data.canvas_qrc.canvas_serialization.canvas_converters
 
-import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Paint.Style
-import android.graphics.PathEffect
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.core.graphics.toColorInt
 import m1k.kotik.negocards.data.serialization.value_converters.IValueConverter
 import java.lang.StringBuilder
-import kotlin.reflect.KType
-import kotlin.reflect.typeOf
 
 class PaintConverter: IValueConverter<Paint> {
     override val valueStarts = "["

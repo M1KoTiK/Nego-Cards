@@ -6,9 +6,10 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import m1k.kotik.negocards.data.date.SimpleDate
-import m1k.kotik.negocards.data.qrc.CodeContentType
-import m1k.kotik.negocards.data.qrc.CodeType
-import m1k.kotik.negocards.data.qrc.ScannedCode
+import m1k.kotik.negocards.data.code.CodeContentType
+import m1k.kotik.negocards.data.code.CodeType
+import m1k.kotik.negocards.data.code.ScannedCode
+import m1k.kotik.negocards.data.code.ScannedCodeWithId
 
 class QRCDB(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -18,7 +19,7 @@ class QRCDB(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DA
         //Table scannedQRC-------------------------------------------
         private const val SCANNED_QRC_TABLE_NAME = "scannedQRC"
         private const val CREATE_TABLE_SCANNED_QRC =
-            "CREATE TABLE $SCANNED_QRC_TABLE_NAME (id INTEGER PRIMARY KEY AUTOINCREMENT,contentType INTEGER, value TEXT,date TEXT, codeType INTEGER)"
+            "CREATE TABLE $SCANNED_QRC_TABLE_NAME (id INTEGER PRIMARY KEY AUTOINCREMENT,contentType INTEGER, value TEXT,date TEXT, codeType INTEGER, isOpened INTEGER)"
 
         //-----------------------------------------------------------
     }
@@ -42,20 +43,34 @@ class QRCDB(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DA
         }
     }
 
-    fun getScannedQRC(): MutableList<ScannedCode>{
-        val outputList = mutableListOf<ScannedCode>()
+    fun getScannedQRC(): MutableList<ScannedCodeWithId>{
+        val outputList = mutableListOf<ScannedCodeWithId>()
         val cursor = getAll("scannedQRC") ?: return outputList
         if(cursor.count >0) {
             cursor.moveToFirst()
             do {
+                val id = cursor.getInt(1)
                 val contentType: CodeContentType = CodeContentType.values().first { it.ordinal == cursor.getInt(1) }
                 val value = cursor.getString(2)
                 val date = SimpleDate.Companion.toSimpleDate(cursor.getString(3)) ?: continue
                 val codeType = CodeType.values().first { it.ordinal == cursor.getInt(4) }
-                outputList.add(ScannedCode(CodeType.QRC,contentType, value, date))
+                outputList.add(ScannedCodeWithId(id, CodeType.QRC,contentType, value, date, false))
             } while (cursor.moveToNext())
         }
         return outputList
+    }
+    fun updateScannedQRCInDB(scannedCodeWithId: ScannedCodeWithId){
+        val values = ContentValues()
+        values.put("contentType", scannedCodeWithId.contentType.ordinal)
+        values.put("value", scannedCodeWithId.value)
+        values.put("date", scannedCodeWithId.date.toString())
+        values.put("codeType", scannedCodeWithId.codeType.ordinal)
+        val whereClause = "id=?"
+        val whereArgs = arrayOf(scannedCodeWithId.id.toString())
+        this.writableDatabase.also {
+            it.update(SCANNED_QRC_TABLE_NAME, values,whereClause, whereArgs)
+            it.close()
+        }
     }
 
     private fun getAll(tableName: String):Cursor?{
