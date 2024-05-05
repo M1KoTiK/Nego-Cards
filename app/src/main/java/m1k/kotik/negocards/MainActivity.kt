@@ -1,6 +1,7 @@
 package m1k.kotik.negocards
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.PopupMenu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
@@ -10,6 +11,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.navOptions
 import m1k.kotik.negocards.custom_views.windows.stylized_window.StaticStylizedWindow
 import m1k.kotik.negocards.databinding.ActivityMainBinding
+import m1k.kotik.negocards.fragments.pages.ScannerPageFragment
 import m1k.kotik.negocards.fragments.utils_fragment.IOnBackPressedListener
 
 

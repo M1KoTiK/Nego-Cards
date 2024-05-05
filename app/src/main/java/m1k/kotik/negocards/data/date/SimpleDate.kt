@@ -5,7 +5,7 @@ import java.util.*
 class SimpleDate(var year: String, var month: String, var day: String, var minute: String? = null, var separatorForDate: String = "-", var separatorForTime: String = ":") {
 
     override fun toString(): String {
-        return "${year}${separatorForDate}${month}${separatorForDate}${day}"
+        return "${day}${separatorForDate}${month}${separatorForDate}${year}"
     }
 
     companion object {
@@ -32,7 +32,7 @@ class SimpleDate(var year: String, var month: String, var day: String, var minut
             val c = Calendar.getInstance()
 
             val year = c.get(Calendar.YEAR).toString()
-            val month = toNormalMonthOrDayFormatting(c.get(Calendar.MONTH))
+            val month = toNormalMonthOrDayFormatting(c.get(Calendar.MONTH)) + 1
             var day = toNormalMonthOrDayFormatting(c.get(Calendar.DAY_OF_MONTH))
             val hour = c.get(Calendar.HOUR_OF_DAY)
             val minute = c.get(Calendar.MINUTE)

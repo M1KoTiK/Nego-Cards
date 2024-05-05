@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
@@ -33,6 +34,7 @@ import m1k.kotik.negocards.data.db.QRCDB
 import java.util.*
 import java.util.concurrent.Executors
 import m1k.kotik.negocards.R
+import m1k.kotik.negocards.custom_views.toast.showCustomToast
 import m1k.kotik.negocards.data.code.CodeType
 import m1k.kotik.negocards.data.code.barcodeFormatToCodeType
 import m1k.kotik.negocards.data.recycler_view_adapters.scanned_qrc.ScannedQrcAdapter
@@ -92,8 +94,10 @@ class ScannerPageFragment : Fragment() {
                 bundle.putString("value", scannedQRC.value )
                 bundle.putString("date", scannedQRC.date.toString())
                 bundle.putInt("codeType", scannedQRC.codeType.ordinal)
-                scannedQRC.isOpened = true
-                db.updateScannedQRCInDB(scannedQRC)
+                if(!scannedQRC.isOpened){
+                    scannedQRC.isOpened = true
+                    db.updateScannedQRCInDB(scannedQRC)
+                }
                 navController.navigate(R.id.QRCViewerFragment, bundle)
             }
         }
@@ -127,13 +131,27 @@ class ScannerPageFragment : Fragment() {
                 bindCameraUseCases()
             }
             else {
-                ActivityCompat.requestPermissions(
-                    requireActivity(),
+                requestPermissions(
                     arrayOf(Manifest.permission.CAMERA),
                     PERMISSION_CAMERA_REQUEST
                 )
             }
         }
+    }
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
+        if (requestCode == PERMISSION_CAMERA_REQUEST) {
+            if (isCameraPermissionGranted()) {
+                setupCamera()
+            }
+            else {
+                Log.e(TAG, "no camera permission")
+            }
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
     private fun bindCameraUseCases() {
@@ -284,21 +302,7 @@ class ScannerPageFragment : Fragment() {
             }
     }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String>,
-        grantResults: IntArray
-    ) {
-        if (requestCode == PERMISSION_CAMERA_REQUEST) {
-            if (isCameraPermissionGranted()) {
-                // start camera
-            }
-            else {
-                Log.e(TAG, "no camera permission")
-            }
-        }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-    }
+
 
     private fun isCameraPermissionGranted(): Boolean {
         return ContextCompat.checkSelfPermission(
@@ -318,8 +322,6 @@ class ScannerPageFragment : Fragment() {
 //            }
 //        }
 //        catch (e:Exception){
-//
-//        }
     private fun setTorch(){
         if (cam.cameraInfo.hasFlashUnit() ) {
             if(isLight) {
@@ -332,6 +334,9 @@ class ScannerPageFragment : Fragment() {
                 cam.cameraControl.enableTorch(true)
                 isLight = true
             }
+        }
+        else{
+            Toast(requireContext()).showCustomToast("В вашем устройстве нет фонарика", requireContext())
         }
     }
 
