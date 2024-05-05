@@ -1,4 +1,4 @@
-package m1k.kotik.negocards.data.canvas_qrc.canvas_view.new_canvas_view
+package m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_editors
 
 import android.content.Context
 import android.graphics.Canvas
@@ -6,12 +6,13 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.*
 import m1k.kotik.negocards.data.canvas_qrc.old_govno.DoubleClickChecker
+import m1k.kotik.negocards.data.serialization.serializationObject.ISerializationObject
 
 class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context, attrs) {
     //============================Публичные свойства==========================
 
     //============================Публичные методы=================================
-    fun addObject(canvasObject: CanvasObject){
+    fun addObject(canvasObject: Any){
         _objects.add(0,canvasObject)
     }
     //========================Приватные/protected свойства==========================
@@ -30,8 +31,8 @@ class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context,
 //==============================================================================
     private val doubleClickChecker = DoubleClickChecker(200) {
         val obj = currentSelectedObject
-        if(obj is ICanvasEditable){
-            obj.mode = CanvasObjectMode.Edit
+        if(obj is ICanvasSelectable){
+            obj.isSelected = true
         }
     }
 
@@ -48,26 +49,25 @@ class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context,
 
         fun editCurrentSelectedObject(){
             val obj = currentSelectedObject ?: return
-            if(obj is ICanvasEditable){
-                when(obj.mode){
-                    CanvasObjectMode.Select->{
-                        obj.x =(initialPosX + deltaX / canvasZoom).toInt().
-                            coerceIn(MIN_OBJECT_POSX.. canvasWidth - MIN_OBJECT_POSX)
-
-                        obj.y = (initialPosY + deltaY / canvasZoom).toInt().
-                        coerceIn(MIN_OBJECT_POSY.. canvasHeight- MIN_OBJECT_POSY)
-                    }
-                    CanvasObjectMode.Edit->{
-                        obj.width = (initialWidth + deltaX.toInt())
-                            .coerceIn(MIN_OBJECT_WIDTH..canvasWidth)
-
-                        obj.height = (initialHeight + deltaY.toInt())
-                            .coerceIn(MIN_OBJECT_HEIGHT..canvasHeight)
-                    }
+            if(obj is ICanvasSelectable){
+                if(obj.isSelected){
+//                    obj.x =(initialPosX + deltaX / canvasZoom).toInt().
+//                        coerceIn(MIN_OBJECT_POSX.. canvasWidth - MIN_OBJECT_POSX)
+//
+//                    obj.y = (initialPosY + deltaY / canvasZoom).toInt().
+//                    coerceIn(MIN_OBJECT_POSY.. canvasHeight- MIN_OBJECT_POSY)
+                }
+                else {
+//                    obj.width = (initialWidth + deltaX.toInt())
+//                        .coerceIn(MIN_OBJECT_WIDTH..canvasWidth)
+//
+//                    obj.height = (initialHeight + deltaY.toInt())
+//                        .coerceIn(MIN_OBJECT_HEIGHT..canvasHeight)
                 }
             }
-            invalidate()
+        invalidate()
         }
+
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
                 startX = event.x.toInt()
@@ -76,10 +76,10 @@ class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context,
                 moveSelectedItemToEndOfList()
                 doubleClickChecker.click()
                 currentSelectedObject ?: return true
-                initialPosX = currentSelectedObject!!.x
-                initialPosY = currentSelectedObject!!.y
-                initialWidth = currentSelectedObject!!.width
-                initialHeight = currentSelectedObject!!.height
+//                initialPosX = currentSelectedObject!!.x
+//                initialPosY = currentSelectedObject!!.y
+//                initialWidth = currentSelectedObject!!.width
+//                initialHeight = currentSelectedObject!!.height
             }
             MotionEvent.ACTION_UP -> {
 

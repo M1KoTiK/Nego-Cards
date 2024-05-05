@@ -15,7 +15,7 @@ class RoundRectangle(
     var rightCorner:Int = 10,
     paint: Paint = Paint()
 
-) : CanvasShape(x,y,width, height, paint) {
+) : BitmapShape(x,y,width, height, paint) {
     override val key: String = "rr"
     override fun draw(canvas: Canvas) {
         canvas.drawRoundRect(

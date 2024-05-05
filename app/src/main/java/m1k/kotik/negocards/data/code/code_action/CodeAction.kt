@@ -7,9 +7,9 @@ import android.view.Gravity
 import m1k.kotik.negocards.R
 import m1k.kotik.negocards.custom_views.windows.stylized_window.FloatingStylizedWindow
 import m1k.kotik.negocards.data.canvas_qrc.canvas_serialization.CanvasSerialization
-import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.CanvasObject
-import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.CanvasShape
-import m1k.kotik.negocards.data.canvas_qrc.canvas_view.new_canvas_view.CanvasView
+import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.CanvasSerializationObject
+import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.BitmapShape
+import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_editors.CanvasView
 import m1k.kotik.negocards.data.code.Code
 
 
@@ -53,13 +53,13 @@ sealed class CodeAction: ICodeAction {
             val canvasViewWindow: FloatingStylizedWindow = FloatingStylizedWindow(context, R.layout.fragment_canvas_viewer).also {
                 it.header = "Выбор цвета"
             }
-            val canvasObjects = CanvasSerialization.canvasSerializer.deserialize<CanvasObject>(code.value)
+            val canvasObjects = CanvasSerialization.canvasSerializer.deserialize<CanvasSerializationObject>(code.value)
             if(canvasObjects!=null) {
                canvasViewWindow.contentView.findViewById<CanvasView>(R.id.canvasViewInCanvasViewer).also {
-                   if(canvasObjects.first() !is CanvasShape){
+                   if(canvasObjects.first() !is BitmapShape){
                        //TODO исключение: бэкграунд должен быть фигурой
                    }
-                   it.setBackgroundObject(canvasObjects.first() as CanvasShape)
+                   it.setBackgroundObject(canvasObjects.first() as BitmapShape)
                    it.setObjects(canvasObjects.drop(1))
                    it.invalidate()
                }

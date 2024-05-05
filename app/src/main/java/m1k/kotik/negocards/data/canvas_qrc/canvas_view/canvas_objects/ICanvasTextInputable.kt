@@ -6,6 +6,5 @@ package m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects
  * метод SetText при переопределении должен изменять внутреннее значение свойства у объекта
  */
 interface ICanvasTextInputable {
-    fun setText(text:String)
-    fun getText(): String
+    var text: String
 }

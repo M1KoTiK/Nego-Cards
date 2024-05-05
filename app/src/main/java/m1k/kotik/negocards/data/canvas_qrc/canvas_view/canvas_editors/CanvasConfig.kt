@@ -1,14 +1,11 @@
-package m1k.kotik.negocards.data.canvas_qrc.canvas_view.new_canvas_view
+package m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_editors
 
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
-import androidx.core.graphics.toColorInt
 import m1k.kotik.negocards.R
-import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.CanvasShape
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.Line
-import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.Rectangle
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.RoundRectangle
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.texts.CanvasText
 

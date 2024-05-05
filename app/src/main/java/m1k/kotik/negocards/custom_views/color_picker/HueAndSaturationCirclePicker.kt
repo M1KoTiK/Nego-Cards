@@ -9,14 +9,11 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import androidx.core.content.res.ResourcesCompat
-import androidx.core.math.MathUtils
 import m1k.kotik.negocards.R
-import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.CanvasShape
+import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.BitmapShape
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.RoundRectangle
-import m1k.kotik.negocards.data.canvas_qrc.canvas_view.new_canvas_view.CanvasEditor
 import m1k.kotik.negocards.data.canvas_qrc.old_govno.getDistanceBetweenPoints
 import m1k.kotik.negocards.data.canvas_qrc.old_govno.isAreaContainsPoint
-import m1k.kotik.negocards.data.canvas_qrc.old_govno.parseColorFromString
 
 class HueAndSaturationCirclePicker(context: Context, attrs: AttributeSet) : View(context, attrs) {
 //================= Важные приколы для использования контрола ===========================
@@ -34,7 +31,7 @@ class HueAndSaturationCirclePicker(context: Context, attrs: AttributeSet) : View
     var cursorColor:Int = Color.parseColor("#CCCCCC")
     var cursorStrokeColor: Int = Color.parseColor("#181818")
     var cursorCorner:Int = 7
-    var cursor: CanvasShape = RoundRectangle()
+    var cursor: BitmapShape = RoundRectangle()
 
 //================ Параметры круга ================
     var circleDiameter: Int = 500
