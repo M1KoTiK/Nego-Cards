@@ -47,8 +47,8 @@ enum class CodeType(val typeName: String, val desc: String? = null){
 
 open class Code(var codeType: CodeType, var contentType: CodeContentType, var value: String)
 
-class ScannedCode(codeType: CodeType, contentType: CodeContentType, value: String, var date: SimpleDate, isOpened: Boolean = false): Code(codeType, contentType, value)
-class ScannedCodeWithId(var id:Int, codeType: CodeType, contentType: CodeContentType, value: String, var date: SimpleDate, var isOpened: Boolean = false): Code(codeType, contentType, value)
+open class ScannedCode(codeType: CodeType, contentType: CodeContentType, value: String, var date: SimpleDate, var isOpened: Boolean = false): Code(codeType, contentType, value)
+class ScannedCodeWithId(var id:Int, codeType: CodeType, contentType: CodeContentType, value: String, date: SimpleDate, isOpened: Boolean = false): ScannedCode(codeType, contentType, value, date, isOpened)
 // Потом здесь конечно же будет разграничение и для каждого типа будет свой CodeType
     fun barcodeFormatToCodeType(barcodeFormat:Int): CodeType {
         return when(barcodeFormat){

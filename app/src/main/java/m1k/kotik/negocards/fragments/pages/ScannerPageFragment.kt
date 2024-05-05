@@ -33,6 +33,7 @@ import m1k.kotik.negocards.data.db.QRCDB
 import java.util.*
 import java.util.concurrent.Executors
 import m1k.kotik.negocards.R
+import m1k.kotik.negocards.data.code.CodeType
 import m1k.kotik.negocards.data.code.barcodeFormatToCodeType
 import m1k.kotik.negocards.data.recycler_view_adapters.scanned_qrc.ScannedQrcAdapter
 
@@ -69,12 +70,12 @@ class ScannerPageFragment : Fragment() {
         binding?.flashBtn?.setOnClickListener {
             setTorch()
         }
-        //Для добавления тестовых данных
-//        db.add(
+//        Для добавления тестовых данных
+//        db.addScannedCode(
 //            ScannedCode(
 //                CodeType.QRC,
 //                CodeContentType.Text,
-//                "test",
+//                "312342343",
 //                SimpleDate.getCurrentDate())
 //        )
         refreshScannedQRC()
@@ -238,7 +239,7 @@ class ScannerPageFragment : Fragment() {
                             val lastScannedQRC = listScannedQRC.lastOrNull()
                             if( lastScannedQRC == null || lastScannedQRC.value != rawValue) {
 
-                                db.add(
+                                db.addScannedCode(
                                     ScannedCode(
                                         barcodeFormatToCodeType(barcode.format),
                                         CodeContentType.Reference,
@@ -256,7 +257,7 @@ class ScannerPageFragment : Fragment() {
 
                                     }
                                     else {
-                                        db.add(
+                                        db.addScannedCode(
                                             ScannedCode(
                                                 barcodeFormatToCodeType(barcode.format),
                                                 CodeContentType.Text,
