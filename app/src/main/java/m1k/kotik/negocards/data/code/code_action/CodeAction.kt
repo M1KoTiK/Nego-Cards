@@ -7,10 +7,10 @@ import android.view.Gravity
 import m1k.kotik.negocards.R
 import m1k.kotik.negocards.custom_views.windows.stylized_window.FloatingStylizedWindow
 import m1k.kotik.negocards.data.canvas_qrc.canvas_serialization.CanvasSerialization
-import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.CanvasSerializationObject
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.BitmapShape
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_editors.CanvasView
 import m1k.kotik.negocards.data.code.Code
+import m1k.kotik.negocards.data.serialization.serializationObject.ISerializationObject
 
 
 sealed class CodeAction: ICodeAction {
@@ -53,7 +53,7 @@ sealed class CodeAction: ICodeAction {
             val canvasViewWindow: FloatingStylizedWindow = FloatingStylizedWindow(context, R.layout.fragment_canvas_viewer).also {
                 it.header = "Выбор цвета"
             }
-            val canvasObjects = CanvasSerialization.canvasSerializer.deserialize<CanvasSerializationObject>(code.value)
+            val canvasObjects = CanvasSerialization.canvasSerializer.deserialize<ISerializationObject>(code.value)
             if(canvasObjects!=null) {
                canvasViewWindow.contentView.findViewById<CanvasView>(R.id.canvasViewInCanvasViewer).also {
                    if(canvasObjects.first() !is BitmapShape){
