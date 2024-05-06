@@ -14,5 +14,6 @@ class CanvasSerialization{
             "rr" to RoundRectangle::class
         )
         val canvasSerializer = DefaultSerializer(DefaultParser(CanvasConverterSet(), mapReqObjects))
+
     }
 }

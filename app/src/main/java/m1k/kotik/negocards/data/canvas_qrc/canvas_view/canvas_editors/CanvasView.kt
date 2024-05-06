@@ -11,6 +11,7 @@ import androidx.core.graphics.toColorInt
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.*
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.BitmapShape
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.Rectangle
+import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_tools.canvas_tools.CanvasPositionEditTool
 
 /**
  * Представляет холст на котором выводятся объекты без возможности их изменять
@@ -76,7 +77,9 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
         }
     invalidate()
     }
+    init {
 
+    }
     fun clearObject() {
         _objects.clear()
         invalidate()
@@ -106,7 +109,6 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
     protected var _objects: MutableList<Any> = mutableListOf()
     protected var _backgroundObject: BitmapShape = defaultBackgroundObject
     private var _listCurrentSelectedObjects: MutableList<Any> = mutableListOf()
-
 //=============================Приватные методы=================================
 
     private fun isCursorHoveredOver(x:Int, y:Int, obj: Any, touchZoneExpansion:Float = 2f)
@@ -115,7 +117,7 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
         if(obj is ICanvasZoomable){
             zoomValue = obj.zoomValue
         }
-        if (obj is ICanvasPositionable && obj is ICanvasBitmapMeasurable) {
+        if (obj is ICanvasMeasurable) {
             if (x >= obj.x * zoomValue - touchZoneExpansion && x <= (obj.x + obj.width) * zoomValue + touchZoneExpansion &&
                 y >= obj.y * zoomValue - touchZoneExpansion && y <= (obj.y + obj.height) * zoomValue + touchZoneExpansion
             ) {
@@ -127,9 +129,9 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
     }
     private fun clearCanvasModeForObjects(){
         for(obj in _objects){
-//            if(obj is ICanvasEditable){
-//                obj.mode = EditType.None
-//            }
+            if(obj is ICanvasSelectable){
+                obj.isSelected = true
+            }
         }
     }
     private fun setCanvasSize(width: Int, height: Int) {
@@ -144,30 +146,7 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
         }
         return false
     }
-    protected fun setSelectStrokeForSelectedObject(obj: Any, canvas: Canvas?, offset: Float = 10f): Boolean{
-//        if(obj is ICanvasEditable && obj.mode == EditType.Select){
-//            var zoomValue = 1f
-//            if(obj is ICanvasZoomable){
-//                zoomValue = obj.zoomValue
-//            }
-//            canvas!!.drawRoundRect(
-//                (obj.x - offset)*zoomValue,
-//                (obj.y - offset)*zoomValue,
-//                (obj.x + obj.width + offset)*zoomValue,
-//                (obj.y + obj.height + offset)*zoomValue,
-//                10f,
-//                10f,
-//                Paint().also {
-//                    it.color = colorForSelectedObjectStroke
-//                    it.style = Paint.Style.STROKE
-//                    it.strokeWidth = 5f
-//                    it.pathEffect = null //DashPathEffect(floatArrayOf(10f, 10f), 5f)
-//                }
-//            )
-//            return true
-//        }
-        return false
-    }
+
 //==============================================================================
 //---------------------Обработка нажатий на холсте------------------------------
 //==============================================================================
@@ -175,6 +154,7 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
     private var startY: Int = 0
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         event ?: return true
+
         val x = event.x.toInt()
         val y = event.y.toInt()
         when (event.action) {
@@ -184,17 +164,16 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
                 selectObjectBy(startX, startY)
             }
         }
+
         return true
     }
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
-
         _backgroundObject.draw(canvas!!)
         for(obj in _objects){
             if(obj is ICanvasDrawable){
-                setZoomForObject(obj)
-                setSelectStrokeForSelectedObject(obj, canvas)
+//                setZoomForObject(obj)
                 obj.draw(canvas!!)
             }
         }

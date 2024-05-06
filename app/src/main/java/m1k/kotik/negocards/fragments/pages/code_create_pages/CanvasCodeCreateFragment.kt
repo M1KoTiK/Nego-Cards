@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import m1k.kotik.negocards.R
+import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.Rectangle
 import m1k.kotik.negocards.databinding.FragmentCanvasCodeCreateBinding
 
 
@@ -21,6 +22,6 @@ class CanvasCodeCreateFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.canvasEditor.addObject(Rectangle().also {it.isSelected = true})
     }
 }

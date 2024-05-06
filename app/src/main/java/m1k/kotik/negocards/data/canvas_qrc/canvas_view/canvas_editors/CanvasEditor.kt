@@ -5,6 +5,7 @@ import android.graphics.Canvas
 import android.util.AttributeSet
 import android.view.MotionEvent
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.*
+import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_tools.canvas_tools.CanvasPositionEditTool
 import m1k.kotik.negocards.data.canvas_qrc.old_govno.DoubleClickChecker
 import m1k.kotik.negocards.data.serialization.serializationObject.ISerializationObject
 
@@ -14,6 +15,7 @@ class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context,
     //============================Публичные методы=================================
     fun addObject(canvasObject: Any){
         _objects.add(0,canvasObject)
+        listCurrentSelectedObjects.add(canvasObject)
     }
     //========================Приватные/protected свойства==========================
 
@@ -25,7 +27,7 @@ class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context,
             _objects.add(obj)
         }
     }
-
+    val canvasPositionEditTool = CanvasPositionEditTool()
 //==============================================================================
 //---------------------Обработка нажатий на холсте------------------------------
 //==============================================================================
@@ -44,50 +46,45 @@ class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context,
     private var initialHeight = 0
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         event ?: return true
-        val deltaX = event.x - startX
-        val deltaY= event.y - startY
-
-        fun editCurrentSelectedObject(){
-            val obj = currentSelectedObject ?: return
-            if(obj is ICanvasSelectable){
-                if(obj.isSelected){
-//                    obj.x =(initialPosX + deltaX / canvasZoom).toInt().
-//                        coerceIn(MIN_OBJECT_POSX.. canvasWidth - MIN_OBJECT_POSX)
+//        val deltaX = event.x - startX
+//        val deltaY= event.y - startY
+//        fun editCurrentSelectedObject(){
+//            val obj = currentSelectedObject ?: return
+//            if(obj is ICanvasSelectable){
+//                if(obj.isSelected){
 //
-//                    obj.y = (initialPosY + deltaY / canvasZoom).toInt().
-//                    coerceIn(MIN_OBJECT_POSY.. canvasHeight- MIN_OBJECT_POSY)
-                }
-                else {
-//                    obj.width = (initialWidth + deltaX.toInt())
-//                        .coerceIn(MIN_OBJECT_WIDTH..canvasWidth)
+//                    if(currentSelectedObject is ICanvasMeasurable){
 //
-//                    obj.height = (initialHeight + deltaY.toInt())
-//                        .coerceIn(MIN_OBJECT_HEIGHT..canvasHeight)
-                }
-            }
+//                    }
+//                }
+//            }
+//        invalidate()
+//        }
+//
+//        when (event.action) {
+//            MotionEvent.ACTION_DOWN -> {
+//                startX = event.x.toInt()
+//                startY = event.y.toInt()
+//                selectObjectBy(startX, startY)
+////                moveSelectedItemToEndOfList()
+////                doubleClickChecker.click()
+////                currentSelectedObject ?: return true
+////                initialPosX = currentSelectedObject!!.x
+////                initialPosY = currentSelectedObject!!.y
+////                initialWidth = currentSelectedObject!!.width
+////                initialHeight = currentSelectedObject!!.height
+//            }
+//            MotionEvent.ACTION_UP -> {
+//
+//            }
+//            MotionEvent.ACTION_MOVE -> {
+////                editCurrentSelectedObject()
+//            }
+//
+//        }
+        canvasPositionEditTool.objectsForEdit = listCurrentSelectedObjects as? List<ICanvasMeasurable> ?: listOf()
+        canvasPositionEditTool.onTouchEvent(event)
         invalidate()
-        }
-
-        when (event.action) {
-            MotionEvent.ACTION_DOWN -> {
-                startX = event.x.toInt()
-                startY = event.y.toInt()
-                selectObjectBy(startX, startY)
-                moveSelectedItemToEndOfList()
-                doubleClickChecker.click()
-                currentSelectedObject ?: return true
-//                initialPosX = currentSelectedObject!!.x
-//                initialPosY = currentSelectedObject!!.y
-//                initialWidth = currentSelectedObject!!.width
-//                initialHeight = currentSelectedObject!!.height
-            }
-            MotionEvent.ACTION_UP -> {
-
-            }
-            MotionEvent.ACTION_MOVE -> {
-                editCurrentSelectedObject()
-            }
-        }
         return true
     }
 //==============================================================================
@@ -96,10 +93,10 @@ class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context,
 
     override fun onDraw(canvas: Canvas?) {
         _backgroundObject!!.draw(canvas!!)
+        canvasPositionEditTool.draw(canvas)
         for(obj in _objects){
             if(obj is ICanvasDrawable){
                 setZoomForObject(obj)
-                setSelectStrokeForSelectedObject(obj, canvas)
                 obj.draw(canvas!!)
             }
         }

@@ -20,10 +20,11 @@ abstract class BitmapShape (
     @SerializeMember("p")
     override var paint: Paint
 
-): ICanvasDrawable, ICanvasZoomable, ICanvasBitmapMeasurable, ICanvasPositionable, ISerializationObject {
+): ICanvasDrawable, ICanvasZoomable, ICanvasMeasurable, ISerializationObject, ICanvasSelectable {
     companion object{
         const val defaultColor = "FF181818"
     }
 
+    override var isSelected: Boolean = false
     override var zoomValue = 1f
 }

@@ -18,7 +18,7 @@ class CanvasText(
     override var text: String = "Текст",
     @SerializeMember("p")
     override var paint: Paint = Paint()
-    ): ICanvasDrawable, ICanvasZoomable, ICanvasBitmapMeasurable, ICanvasPositionable, ICanvasTextInputable {
+    ): ICanvasDrawable, ICanvasZoomable, ICanvasMeasurable, ICanvasTextInputable {
 
     override fun draw(canvas: Canvas) {
         canvas.drawText(text, x.toFloat(),y.toFloat(),paint)
