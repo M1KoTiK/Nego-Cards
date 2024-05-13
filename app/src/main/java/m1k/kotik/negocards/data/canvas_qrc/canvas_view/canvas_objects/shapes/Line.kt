@@ -10,7 +10,7 @@ class Line(
     var x2: Int = 100,
     var y2: Int = 100,
     paint: Paint = Paint())
- : BitmapShape(x1,y1,x2-x1, y2-y1, paint) {
+ : BitmapShape(x1,y1,x2-x1, y2-y1, paint, 0) {
     override val key: String = "ln"
     private val path = Path()
     override fun draw(canvas: Canvas) {

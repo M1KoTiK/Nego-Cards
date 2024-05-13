@@ -22,6 +22,9 @@ class CanvasCodeCreateFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.canvasEditor.addObject(Rectangle().also {it.isSelected = true})
+        binding.canvasEditor.addObject(Rectangle().also {
+            it.x = 50
+            it.y = 50
+            it.isSelected = true})
     }
 }

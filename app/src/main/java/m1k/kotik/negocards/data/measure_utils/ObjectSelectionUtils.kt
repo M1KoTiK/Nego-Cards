@@ -1,6 +1,9 @@
 package m1k.kotik.negocards.data.measure_utils
 
 import android.graphics.Point
+import android.graphics.Rect
+import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.ICanvasMeasurable
+import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.Rectangle
 
 fun isClickOnObject(
     objX: Int,
@@ -32,4 +35,22 @@ fun displacementByDelta(
 
         val outY = (initY + deltaY / zoom)
     return Point(outX, outY)
+}
+
+fun getRectForOccupiedSpace(listObjects: List<ICanvasMeasurable>): Rectangle? {
+    if(listObjects.isNotEmpty()) {
+        val sortedByX = listObjects.sortedBy { it.x }
+        val sortedByY = listObjects.sortedBy { it.y }
+        val x = sortedByX.first().x
+        val y = sortedByY.first().y
+        val width = sortedByX.last().width
+        val height = sortedByX.last().height
+        return Rectangle().also {
+            it.x = x
+            it.y = y
+            it.width = width
+            it.height = height
+        }
+    }
+    return null
 }

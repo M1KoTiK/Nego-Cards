@@ -1,7 +1,9 @@
 package m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_tools.canvas_tools
 
+import android.content.Context
 import android.graphics.*
 import android.view.MotionEvent
+import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_editors.CanvasEditor
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.ICanvasMeasurable
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.Rectangle
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_tools.ICanvasTool
@@ -9,13 +11,12 @@ import m1k.kotik.negocards.data.canvas_qrc.old_govno.canvas_object_types.ShapeOb
 import m1k.kotik.negocards.data.measure_utils.displacementByDelta
 import m1k.kotik.negocards.data.measure_utils.isClickOnObject
 
-class CanvasPositionEditTool : ICanvasTool<ICanvasMeasurable> {
+class CanvasPositionEditTool(override val canvasEditor: CanvasEditor) : ICanvasTool<ICanvasMeasurable> {
 
     override var x: Int = 0
     override var y: Int = 0
 
     override var width: Int = 0
-
     override var height: Int = 0
 
     private var _objectForEdit: List<ICanvasMeasurable> = listOf()
@@ -28,13 +29,12 @@ class CanvasPositionEditTool : ICanvasTool<ICanvasMeasurable> {
             }
         }
 
-    var initialObjectForEdit = mutableListOf<ICanvasMeasurable>()
+    private var initialObjectForEdit = mutableListOf<ICanvasMeasurable>()
     private var startX: Int = 0
     private var startY: Int = 0
     override var onTouchEvent: (MotionEvent) -> Boolean = {
         val deltaX:Int  = it.x.toInt() - startX
         val deltaY:Int = it.y.toInt() - startY
-
 //        && isClickOnObject(this.x, this.y , this.width, this.height, it.x.toInt(), it.y.toInt())
         if (objectsForEdit.isNotEmpty()) {
             when (it.action) {
@@ -50,9 +50,6 @@ class CanvasPositionEditTool : ICanvasTool<ICanvasMeasurable> {
                             rc.height = obj.height
                         }
                     }.toMutableList()
-                }
-                MotionEvent.ACTION_UP -> {
-
                 }
                 MotionEvent.ACTION_MOVE -> {
                     for (i in 0 until initialObjectForEdit.count()){
@@ -75,8 +72,8 @@ class CanvasPositionEditTool : ICanvasTool<ICanvasMeasurable> {
             canvas.drawRoundRect(
                 x.toFloat() - 5,
                 y.toFloat() - 5,
-                width.toFloat() + 5,
-                height.toFloat() + 5,
+                x.toFloat() + width.toFloat() + 5,
+                y.toFloat() + height.toFloat() + 5,
                 5f,
                 5f,
                 Paint().also {
@@ -93,11 +90,17 @@ class CanvasPositionEditTool : ICanvasTool<ICanvasMeasurable> {
         val sortedByY = objectsForEdit.sortedBy { it.y }
         val x = sortedByX.first().x
         val y = sortedByY.first().y
-        val width = sortedByX.last().x + sortedByX.last().width
-        val height = sortedByX.last().y + sortedByX.last().height
+        val width = sortedByX.last().x + sortedByX.last().width - x
+        val height = sortedByX.last().y + sortedByX.last().height - y
         this.x = x
         this.y = y
         this.width = width
         this.height = height
     }
+
+    override var onPositioning: (List<ICanvasMeasurable>) -> Point = {
+        Point()
+    }
+
+
 }

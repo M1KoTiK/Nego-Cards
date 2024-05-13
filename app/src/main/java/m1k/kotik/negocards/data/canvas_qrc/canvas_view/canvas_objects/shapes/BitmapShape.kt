@@ -18,9 +18,11 @@ abstract class BitmapShape (
     @SerializeMember("h")
     override var height: Int,
     @SerializeMember("p")
-    override var paint: Paint
+    override var paint: Paint,
+    @SerializeMember("rd")
+    override var RotationDegree: Int
 
-): ICanvasDrawable, ICanvasZoomable, ICanvasMeasurable, ISerializationObject, ICanvasSelectable {
+): ICanvasDrawable, ICanvasZoomable, ICanvasMeasurable, ISerializationObject, ICanvasSelectable, ICanvasRotatable{
     companion object{
         const val defaultColor = "FF181818"
     }

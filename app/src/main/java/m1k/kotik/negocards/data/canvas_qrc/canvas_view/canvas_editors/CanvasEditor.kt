@@ -5,9 +5,9 @@ import android.graphics.Canvas
 import android.util.AttributeSet
 import android.view.MotionEvent
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.*
-import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_tools.canvas_tools.CanvasPositionEditTool
+import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.BitmapShape
+import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_tools.canvas_tools.BitmapShapeModifyTool
 import m1k.kotik.negocards.data.canvas_qrc.old_govno.DoubleClickChecker
-import m1k.kotik.negocards.data.serialization.serializationObject.ISerializationObject
 
 class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context, attrs) {
     //============================Публичные свойства==========================
@@ -16,6 +16,9 @@ class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context,
     fun addObject(canvasObject: Any){
         _objects.add(0,canvasObject)
         listCurrentSelectedObjects.add(canvasObject)
+    }
+    fun deleteObject(canvasObject: Any){
+        _objects.remove(canvasObject)
     }
     //========================Приватные/protected свойства==========================
 
@@ -27,7 +30,7 @@ class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context,
             _objects.add(obj)
         }
     }
-    val canvasPositionEditTool = CanvasPositionEditTool()
+    val bitmapShapeModifyTool = BitmapShapeModifyTool(this)
 //==============================================================================
 //---------------------Обработка нажатий на холсте------------------------------
 //==============================================================================
@@ -82,8 +85,8 @@ class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context,
 //            }
 //
 //        }
-        canvasPositionEditTool.objectsForEdit = listCurrentSelectedObjects as? List<ICanvasMeasurable> ?: listOf()
-        canvasPositionEditTool.onTouchEvent(event)
+        bitmapShapeModifyTool.objectsForEdit = listCurrentSelectedObjects as? List<BitmapShape> ?: listOf()
+        bitmapShapeModifyTool.onTouchEvent(event)
         invalidate()
         return true
     }
@@ -93,13 +96,13 @@ class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context,
 
     override fun onDraw(canvas: Canvas?) {
         _backgroundObject!!.draw(canvas!!)
-        canvasPositionEditTool.draw(canvas)
         for(obj in _objects){
             if(obj is ICanvasDrawable){
                 setZoomForObject(obj)
                 obj.draw(canvas!!)
             }
         }
+        bitmapShapeModifyTool.draw(canvas)
     }
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
