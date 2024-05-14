@@ -109,4 +109,9 @@
         android:name="m1k.kotik.negocards.fragments.pages.code_create_pages.CanvasCodeCreateFragment"
         android:label="fragment_canvas_code_create"
         tools:layout="@layout/fragment_canvas_code_create" />
+    <fragment
+        android:id="@+id/textCodeCreateFragment"
+        android:name="m1k.kotik.negocards.fragments.pages.code_create_pages.TextCodeCreateFragment"
+        android:label="fragment_text_code_create"
+        tools:layout="@layout/fragment_text_code_create" />
 </navigation>

@@ -39,7 +39,13 @@ class CanvasCodePreCreateFragment : Fragment() {
     override fun onSaveInstanceState(outState: Bundle) {
         //super.onSaveInstanceState(outState)
     }
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        val types = resources.getStringArray(R.array.canvas_config_size)
+        val arrayAdapter = ArrayAdapter(requireActivity(),R.layout.dropdown_item,types)
+        binding.autoCompleteTextView.setAdapter(arrayAdapter)
 
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

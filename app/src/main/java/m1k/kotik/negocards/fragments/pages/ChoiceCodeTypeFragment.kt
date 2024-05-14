@@ -33,21 +33,21 @@ class ChoiceCodeTypeFragment: Fragment() {
         codeTypes.add(
             CodeTypeItem(
                 "Текст",
-                "sdfsd",
+                "Просто код содержащий текст и ничего более",
                 ResourcesCompat.getDrawable(resources, R.drawable.text_code_type, null)!!
             )
         )
         codeTypes.add(
             CodeTypeItem(
                 "Холст",
-                "sdfsd",
+                "Код хранящий визуальное изображение (подойдет для создания визитной карты)",
                 ResourcesCompat.getDrawable(resources, R.drawable.canvas_code_type, null)!!
             )
         )
         codeTypes.add(
             CodeTypeItem(
-                "Файл",
-                "sdfsd",
+                "Текстовые данные",
+                "Включает в себя контактные данные (номер телефона, почту..), геоданные, вай-фай и другое",
                 ResourcesCompat.getDrawable(resources, R.drawable.file_code_type, null)!!
             )
         )
@@ -58,7 +58,11 @@ class ChoiceCodeTypeFragment: Fragment() {
                     if(sender.name == "Холст"){
                         navController.navigate(R.id.canvasCodePreCreateFragment)
                     }
+                    if (sender.name == "Текст"){
+                        navController.navigate(R.id.textCodeCreateFragment)
+                    }
                 }
+
 
 
                 binding.ListCodeTypeForCreate.layoutManager = LinearLayoutManager(requireActivity())

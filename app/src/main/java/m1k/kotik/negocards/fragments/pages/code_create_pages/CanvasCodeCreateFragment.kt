@@ -5,12 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import m1k.kotik.negocards.R
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.Rectangle
 import m1k.kotik.negocards.databinding.FragmentCanvasCodeCreateBinding
 
 
 class CanvasCodeCreateFragment : Fragment() {
+    lateinit var navController: NavController
     lateinit var binding: FragmentCanvasCodeCreateBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,6 +26,7 @@ class CanvasCodeCreateFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        navController = binding.root.findNavController()
         binding.canvasEditor.addObject(Rectangle().also {
             it.x = 50
             it.y = 50
