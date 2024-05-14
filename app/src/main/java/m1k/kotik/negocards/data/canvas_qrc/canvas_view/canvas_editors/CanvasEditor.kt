@@ -85,7 +85,7 @@ class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context,
 //            }
 //
 //        }
-        bitmapShapeModifyTool.objectsForEdit = listCurrentSelectedObjects as? List<BitmapShape> ?: listOf()
+        bitmapShapeModifyTool.objectsForEdit = listCurrentSelectedObjects as? MutableList<BitmapShape> ?: mutableListOf()
         bitmapShapeModifyTool.onTouchEvent(event)
         invalidate()
         return true

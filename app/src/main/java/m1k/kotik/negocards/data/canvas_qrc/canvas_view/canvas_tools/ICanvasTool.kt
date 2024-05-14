@@ -9,6 +9,6 @@ import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.ICanvasCli
 interface ICanvasTool<T>: ICanvasClickProcessed, ICanvasMeasurable {
     fun draw(canvas: Canvas)
     val canvasEditor: CanvasEditor
-    var objectsForEdit: List<T>
+    var objectsForEdit: MutableList<T>
     var onPositioning: (List<T>)-> Point
 }

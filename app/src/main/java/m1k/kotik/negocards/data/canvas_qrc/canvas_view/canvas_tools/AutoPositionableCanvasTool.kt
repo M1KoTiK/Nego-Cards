@@ -14,9 +14,11 @@ enum class PositionFlag{
 }
 
 abstract class AutoPositionableCanvasTool<T>: TouchProcessingCanvasTool<T>() {
+    override var x: Int = 0
+    override var y: Int = 0
     open var positionFlags: MutableList<PositionFlag> = mutableListOf(PositionFlag.Bottom, PositionFlag.Right, PositionFlag.XYAsCenter)
-    private var _objectForEdit: List<T> = listOf()
-    override var objectsForEdit: List<T>
+    private var _objectForEdit: MutableList<T> = mutableListOf()
+    override var objectsForEdit: MutableList<T>
         get() = _objectForEdit
         set(value) {
             if(value.isNotEmpty()) {
