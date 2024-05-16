@@ -8,6 +8,7 @@ import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.*
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.BitmapShape
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_tools.canvas_tools.BitmapShapeModifyTool
 import m1k.kotik.negocards.data.canvas_qrc.old_govno.DoubleClickChecker
+import m1k.kotik.negocards.data.measure_utils.isClickOnObject
 
 class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context, attrs) {
     //============================Публичные свойства==========================
@@ -15,10 +16,12 @@ class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context,
     //============================Публичные методы=================================
     fun addObject(canvasObject: Any){
         _objects.add(0,canvasObject)
-        listCurrentSelectedObjects.add(canvasObject)
     }
     fun deleteObject(canvasObject: Any){
         _objects.remove(canvasObject)
+    }
+    fun clearSelected(){
+        listCurrentSelectedObjects.clear()
     }
     //========================Приватные/protected свойства==========================
 
@@ -36,9 +39,6 @@ class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context,
 //==============================================================================
     private val doubleClickChecker = DoubleClickChecker(200) {
         val obj = currentSelectedObject
-        if(obj is ICanvasSelectable){
-            obj.isSelected = true
-        }
     }
 
     private var startX: Int = 0
@@ -49,44 +49,40 @@ class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context,
     private var initialHeight = 0
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         event ?: return true
-//        val deltaX = event.x - startX
-//        val deltaY= event.y - startY
-//        fun editCurrentSelectedObject(){
-//            val obj = currentSelectedObject ?: return
-//            if(obj is ICanvasSelectable){
-//                if(obj.isSelected){
-//
-//                    if(currentSelectedObject is ICanvasMeasurable){
-//
-//                    }
-//                }
-//            }
-//        invalidate()
-//        }
-//
-//        when (event.action) {
-//            MotionEvent.ACTION_DOWN -> {
-//                startX = event.x.toInt()
-//                startY = event.y.toInt()
-//                selectObjectBy(startX, startY)
-////                moveSelectedItemToEndOfList()
-////                doubleClickChecker.click()
-////                currentSelectedObject ?: return true
-////                initialPosX = currentSelectedObject!!.x
-////                initialPosY = currentSelectedObject!!.y
-////                initialWidth = currentSelectedObject!!.width
-////                initialHeight = currentSelectedObject!!.height
-//            }
-//            MotionEvent.ACTION_UP -> {
-//
-//            }
-//            MotionEvent.ACTION_MOVE -> {
-////                editCurrentSelectedObject()
-//            }
-//
-//        }
-        bitmapShapeModifyTool.objectsForEdit = listCurrentSelectedObjects as? MutableList<BitmapShape> ?: mutableListOf()
+        _objects.forEach{
+            if(it is ICanvasMeasurable){
+                if(isClickOnObject(
+                        it.x,
+                        it.y,
+                        it.width,
+                        it.height,
+                        event.x.toInt(),
+                        event.y.toInt())){
+                    listCurrentSelectedObjects.add(it)
+                }
+            }
+        }
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+
+            }
+            MotionEvent.ACTION_UP -> {
+
+            }
+            MotionEvent.ACTION_MOVE -> {
+            }
+
+        }
+        if(currentSelectedObject != null) {
+            bitmapShapeModifyTool.objectsForEdit =
+                mutableListOf(currentSelectedObject) as? MutableList<BitmapShape> ?: mutableListOf()
+        }
+        else{
+            bitmapShapeModifyTool.objectsForEdit.clear()
+        }
+            //listCurrentSelectedObjects as? MutableList<BitmapShape> ?: mutableListOf()
         bitmapShapeModifyTool.onTouchEvent(event)
+
         invalidate()
         return true
     }

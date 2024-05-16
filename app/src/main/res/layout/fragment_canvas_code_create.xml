@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/CodeCanvasCreateLayout"
     android:layout_width="match_parent"
-    android:background="@drawable/pixel_background"
     android:layout_height="match_parent"
+    android:background="@drawable/pixel_background"
     tools:context=".fragments.pages.code_create_pages.CanvasCodeCreateFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -46,6 +46,7 @@
     </m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_editors.CanvasEditor>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
@@ -53,5 +54,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/canvasEditor" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/CanvasObjectIconsForChoiceRecyclerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

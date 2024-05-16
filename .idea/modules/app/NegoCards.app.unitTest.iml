@@ -38,6 +38,7 @@
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/c814596ee38456a34060d9b5a41c4522/transformed/activity-ktx-1.5.1-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/7e65e4ad67d16c35e11d57ec2bf05674/transformed/lifecycle-viewmodel-ktx-2.5.1-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/99c485eea89234fc8cef711b16ba3373/transformed/glide-4.14.2-api.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/transforms-3/da62c60184ba5b8d8d0d071d5e402795/transformed/play-services-maps-18.1.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/ea3e5dfa425a9fbbafb7b3c02a1e76f2/transformed/navigation-ui-2.3.5-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/7b0103db98bc017135073a2b670ff921/transformed/material-1.7.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/e6f09d57ff6bc71b7431424b5d241728/transformed/appcompat-1.5.1-api.jar</arg>
@@ -45,9 +46,9 @@
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/35844d317a0ce7ac2089e0f572779803/transformed/play-services-mlkit-barcode-scanning-16.2.1-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/a5727f655c3a35312f2cf9ce75e867e9/transformed/vision-common-16.5.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/9532c73319b56fbc182c25e8c85bd39e/transformed/common-17.3.0-api.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/transforms-3/0c95e699044d64d2d2800f52172b57f2/transformed/play-services-base-17.6.0-api.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/transforms-3/6fa9a1c7000165f30510b53e2d3798d9/transformed/play-services-tasks-17.2.1-api.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/transforms-3/5b76eeebc5ae904b4e802dcc38cee707/transformed/play-services-basement-17.6.0-api.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/transforms-3/419c52f0b16540c03bcd6e23097e9fc3/transformed/play-services-base-18.0.1-api.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/transforms-3/cd83a76c03bfe9241350764e7534bf82/transformed/play-services-tasks-18.0.1-api.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/transforms-3/48648db1672b0a7a74b592f4cc8fc1dc/transformed/play-services-basement-18.0.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/84970bb0133b093340f7b240e06d9066/transformed/viewpager2-1.0.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/62629222d133a93174085fb474711b5e/transformed/navigation-fragment-2.3.5-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/de5df64dee640cb0ca9248bea64d6362/transformed/fragment-1.5.5-api.jar</arg>

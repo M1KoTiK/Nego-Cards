@@ -22,11 +22,10 @@ abstract class BitmapShape (
     @SerializeMember("rd")
     override var RotationDegree: Int
 
-): ICanvasDrawable, ICanvasZoomable, ICanvasMeasurable, ISerializationObject, ICanvasSelectable, ICanvasRotatable{
+): ICanvasDrawable, ICanvasZoomable, ICanvasMeasurable, ISerializationObject, ICanvasRotatable{
     companion object{
         const val defaultColor = "FF181818"
     }
 
-    override var isSelected: Boolean = false
     override var zoomValue = 1f
 }

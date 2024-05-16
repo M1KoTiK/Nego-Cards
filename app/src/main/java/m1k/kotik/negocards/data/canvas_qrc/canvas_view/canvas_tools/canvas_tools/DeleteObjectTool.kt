@@ -19,6 +19,8 @@ class DeleteObjectTool<T>(override val canvasEditor: CanvasEditor): CanvasButton
                 canvasEditor.deleteObject(t as Any)
             }
             objectsForEdit.clear()
+            canvasEditor.listCurrentSelectedObjects.clear()
+            canvasEditor.invalidate()
         }
     }
     override var positionFlags: MutableList<PositionFlag> = mutableListOf(PositionFlag.Top, PositionFlag.Left, PositionFlag.XYAsCenter)

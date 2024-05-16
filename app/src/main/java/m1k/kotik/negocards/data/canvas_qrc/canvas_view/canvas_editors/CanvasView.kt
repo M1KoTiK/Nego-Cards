@@ -45,6 +45,7 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
             }
             return null
         }
+
     /**Список выбранных объектов*/
     val listCurrentSelectedObjects: MutableList<Any>
         get() {
@@ -68,11 +69,8 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
                 listCurrentSelectedObjects.add(obj)
             }
             if(listCurrentSelectedObjects.isNotEmpty()) {
-                var upperSelectedObj = listCurrentSelectedObjects[0]
-                if (upperSelectedObj is ICanvasSelectable) {
-                    upperSelectedObj.isSelected = true
-                    onCurrentSelectedObjectChange.invoke()
-                }
+//              var upperSelectedObj = listCurrentSelectedObjects[0]
+                onCurrentSelectedObjectChange.invoke()
             }
         }
     invalidate()
@@ -129,9 +127,7 @@ open class CanvasView (context: Context, attrs: AttributeSet) : View(context, at
     }
     private fun clearCanvasModeForObjects(){
         for(obj in _objects){
-            if(obj is ICanvasSelectable){
-                obj.isSelected = true
-            }
+
         }
     }
     private fun setCanvasSize(width: Int, height: Int) {
