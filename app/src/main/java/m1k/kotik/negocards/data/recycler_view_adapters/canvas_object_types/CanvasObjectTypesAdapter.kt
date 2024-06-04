@@ -23,8 +23,8 @@ class CanvasObjectTypesAdapter(val context: Context, private val typeList: List<
             binding.root.setOnClickListener {
                 itemClickListener.invoke(bindingAdapterPosition, typeItem)
             }
-            binding.imageView13.setImageDrawable(canvasObjectType.icon)
-            binding.textView24.text = canvasObjectType.name
+            binding.iconCanvasObjectType.setImageDrawable(canvasObjectType.icon)
+            binding.textView24.text  = canvasObjectType.name
         }
     }
     var itemOnClick: (Int, CanvasObjectTypesViewModel) -> Unit = {_,_->}

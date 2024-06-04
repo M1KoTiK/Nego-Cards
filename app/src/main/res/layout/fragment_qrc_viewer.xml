@@ -89,7 +89,7 @@
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:text="Содержание QRC:"
         android:textColor="@color/white_d9"
         android:textSize="18sp"
@@ -139,7 +139,7 @@
         android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:text="Возможные действия:"
         android:textColor="@color/white_d9"
         android:textSize="18sp"
@@ -150,7 +150,7 @@
         android:id="@+id/cardView2"
         android:layout_width="220dp"
         android:layout_height="220dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         app:cardCornerRadius="20dp"
         app:layout_constraintStart_toStartOf="@+id/textView12"
         app:layout_constraintTop_toBottomOf="@+id/textView21">
@@ -163,16 +163,14 @@
     </androidx.cardview.widget.CardView>
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/menu_button_code_viewer"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/rounded_square_30"
-        android:foreground="@drawable/rounded_square_ripple_30"
-        android:padding="10dp"
-        android:src="@drawable/painticon"
+        android:background="@drawable/rounded_square_20"
+        android:foreground="@drawable/rounded_square_ripple_20"
+        android:src="@drawable/menu_icon_smallest"
+        android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="@+id/copy_btn"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/copy_btn"
         app:layout_constraintTop_toTopOf="@+id/cardView2" />
 

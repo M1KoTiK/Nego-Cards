@@ -11,7 +11,7 @@ import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_tools.PositionFlag
 
 class DeleteObjectTool<T>(override val canvasEditor: CanvasEditor): CanvasButtonTool<T>() {
     override var icon: Drawable? = AppCompatResources.getDrawable(canvasEditor.context, R.drawable.canvas_delete_tool_icon)
-    var isPressed = false
+//    var isPressed = false
     override val onClickDown: (x: Float, y: Float) -> Unit = {
             _ , _ ->
         if (objectsForEdit.isNotEmpty()){

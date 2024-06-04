@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/profileFragment"
+        android:title="Содержимым"
+        android:icon="@drawable/share_text_icon"/>
+
+    <item
+        android:id="@+id/mainPageFragment"
+        android:title="Кодом"
+        android:icon="@drawable/share_image_icon"/>
+
+    <item
+        android:id="@+id/settingsFragment"
+        android:title="В галерею"
+        android:icon="@drawable/save_image_icon"/>
+
+</menu>

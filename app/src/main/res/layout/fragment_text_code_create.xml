@@ -9,8 +9,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_marginTop="20dp"
         app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,19 +19,24 @@
 
         <ImageView
             android:id="@+id/qrcDisplay"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:srcCompat="@drawable/placeholder" />
     </androidx.cardview.widget.CardView>
 
     <EditText
         android:id="@+id/editTextTextPersonName11"
         android:layout_width="wrap_content"
+        android:minHeight="40dp"
+        android:minWidth="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:paddingStart="10dp"
         android:ems="10"
+        android:textColor="@color/black18"
         android:inputType="textPersonName"
         android:text="Name"
+        android:background="@drawable/rounded_square_15"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView3" />

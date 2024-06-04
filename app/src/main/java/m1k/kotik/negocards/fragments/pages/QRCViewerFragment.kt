@@ -4,21 +4,24 @@ import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context.CLIPBOARD_SERVICE
+import android.content.Intent
 import android.content.res.ColorStateList
+import android.graphics.PixelFormat
+import android.os.Build
 import android.os.Bundle
-import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.View
+import android.view.*
 import android.view.View.OnTouchListener
-import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import m1k.kotik.negocards.R
 import m1k.kotik.negocards.custom_views.toast.showCustomToast
+import m1k.kotik.negocards.custom_views.windows.StaticWindow
 import m1k.kotik.negocards.custom_views.windows.stylized_window.FloatingStylizedWindow
+import m1k.kotik.negocards.custom_views.windows.stylized_window.StaticStylizedWindow
 import m1k.kotik.negocards.data.date.SimpleDate
 import m1k.kotik.negocards.data.code.CodeContentType
 import m1k.kotik.negocards.data.code.CodeType
@@ -40,6 +43,8 @@ class QRCViewerFragment() : Fragment() {
         return binding!!.root
     }
     private lateinit var codeViewWindow: FloatingStylizedWindow
+    private lateinit var menuWindow: StaticWindow
+
     //Кривой костыль для отмены фокуса
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -93,8 +98,32 @@ class QRCViewerFragment() : Fragment() {
             }
 
         }
-
-
+        menuWindow = StaticWindow(requireContext(), R.layout.menu_for_qrc_viewer, R.layout.empty_layout).also {
+            it.windowParameters = WindowManager.LayoutParams(
+                0,
+                0,
+                0,
+                0,
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    WindowManager.LayoutParams.TYPE_APPLICATION
+                } else {
+                    WindowManager.LayoutParams.TYPE_APPLICATION
+                },
+                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+                PixelFormat.TRANSLUCENT
+            )
+        }
+        menuWindow.contentView.findViewById<LinearLayout>(R.id.share_content).setOnClickListener {
+            val intent= Intent()
+            intent.action=Intent.ACTION_SEND
+            intent.putExtra(Intent.EXTRA_TEXT,value)
+            intent.type="text/plain"
+            startActivity(Intent.createChooser(intent,"Поделиться:"))
+        }
+        binding.menuButtonCodeViewer.setOnClickListener {
+            menuWindow.show(0,0,400,400,
+                Gravity.TOP or Gravity.RIGHT)
+        }
         binding.qrcDisplay.setOnClickListener {
             codeViewWindow.show(0,0,1000,1100,
                 Gravity.CENTER_VERTICAL or Gravity.CENTER_HORIZONTAL)

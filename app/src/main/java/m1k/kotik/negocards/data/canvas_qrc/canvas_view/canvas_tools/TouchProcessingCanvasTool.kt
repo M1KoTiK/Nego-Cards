@@ -5,6 +5,9 @@ import android.view.MotionEvent
 import m1k.kotik.negocards.data.measure_utils.isClickOnObject
 
 abstract class TouchProcessingCanvasTool<T>: ICanvasTool<T> {
+    var isPressed: Boolean = false
+        private set
+
     open val onClickDown: (x:Float, y:Float) -> Unit = { _, _ ->}
     open val onClickUp: (x:Float, y:Float) -> Unit = { _, _ ->}
     open val onMovingWhenPressed: (deltaX: Float,
@@ -20,7 +23,7 @@ abstract class TouchProcessingCanvasTool<T>: ICanvasTool<T> {
 
     private var startX: Int = 0
     private var startY: Int = 0
-    private var isPressed: Boolean = false
+
     final override val onTouchEvent: (event: MotionEvent) -> Boolean ={
         if(objectsForEdit.isNotEmpty()) {
             val deltaX = it.x - startX

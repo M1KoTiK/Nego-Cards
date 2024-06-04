@@ -34,7 +34,7 @@ class CanvasPositionEditTool(override val canvasEditor: CanvasEditor) :
     private var initialObjectForEdit = mutableListOf<ICanvasMeasurable>()
     private var startX: Int = 0
     private var startY: Int = 0
-    var isPressed = false
+//    var isPressed = false
     override val onClickDown: (x: Float, y: Float) -> Unit ={ eventX, eventY ->
         startX = eventX.toInt()
         startY = eventY.toInt()

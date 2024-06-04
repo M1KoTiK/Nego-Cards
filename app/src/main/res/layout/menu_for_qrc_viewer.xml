@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/rounded_square_20"
+    android:backgroundTint="@color/black20"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Поделиться"
+        android:textSize="18sp"
+        android:textColor="@color/greyE"
+        app:layout_constraintEnd_toEndOf="@+id/share_content"
+        app:layout_constraintStart_toStartOf="@+id/share_content"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/share_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/rounded_square_15"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView26">
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="10dp"
+            app:srcCompat="@drawable/share_text_icon" />
+
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_gravity="center_vertical"
+            android:text="Содержимым"
+            android:textColor="@color/black18" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/share_image"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_square_15"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/share_content"
+        app:layout_constraintStart_toStartOf="@+id/share_content"
+        app:layout_constraintTop_toBottomOf="@+id/share_content">
+
+        <ImageView
+            android:id="@+id/imageView13"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="10dp"
+            app:srcCompat="@drawable/share_image_icon" />
+
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="16sp"
+            android:text="Изображением"
+            android:textColor="@color/black18" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Сохранить"
+        android:textSize="18sp"
+        android:textColor="@color/greyE"
+        app:layout_constraintEnd_toEndOf="@+id/save_in_gallery"
+        app:layout_constraintStart_toStartOf="@+id/save_in_gallery"
+        app:layout_constraintTop_toBottomOf="@+id/share_image" />
+
+    <LinearLayout
+        android:id="@+id/save_in_gallery"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_square_15"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/share_image"
+        app:layout_constraintStart_toStartOf="@+id/share_image"
+        app:layout_constraintTop_toBottomOf="@+id/textView28">
+
+        <ImageView
+            android:id="@+id/imageView16"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="10dp"
+            app:srcCompat="@drawable/save_image_icon" />
+
+        <TextView
+            android:id="@+id/textView29"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="В галерею"
+            android:textSize="16sp"
+            android:textColor="@color/black18" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
