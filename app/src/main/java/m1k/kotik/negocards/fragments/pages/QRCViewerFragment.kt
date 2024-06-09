@@ -167,7 +167,7 @@ class QRCViewerFragment() : Fragment() {
             }
         }
         (menuWindow.rootView as BackPressNotifyingLinearLayout).onBackPressed = {menuWindow.close()}
-        binding.menuButtonCodeViewer.setOnClickListener {
+        binding.shareCodeImageBtn.setOnClickListener {
             menuWindow.show(100,275,550,550,
                 Gravity.TOP or Gravity.RIGHT)
         }

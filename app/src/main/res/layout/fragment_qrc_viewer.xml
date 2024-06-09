@@ -153,7 +153,7 @@
         android:layout_marginTop="15dp"
         app:cardCornerRadius="20dp"
         app:layout_constraintStart_toStartOf="@+id/textView12"
-        app:layout_constraintTop_toBottomOf="@+id/textView21">
+        app:layout_constraintTop_toBottomOf="@+id/share_code_image_btn">
 
         <ImageView
             android:id="@+id/qrcDisplay"
@@ -163,16 +163,61 @@
     </androidx.cardview.widget.CardView>
 
     <ImageView
-        android:id="@+id/menu_button_code_viewer"
+        android:id="@+id/share_code_image_btn"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:background="@drawable/rounded_square_20"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/rounded_square_30"
         android:foreground="@drawable/rounded_square_ripple_20"
-        android:src="@drawable/menu_icon_smallest"
+        android:padding="5dp"
         android:scaleType="centerInside"
+        android:src="@drawable/share_image_icon"
+        app:layout_constraintStart_toStartOf="@+id/cardView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+    <ImageView
+        android:id="@+id/save_code_image_btn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/rounded_square_30"
+        android:foreground="@drawable/rounded_square_ripple_20"
+        android:padding="5dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/save_image_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/share_code_text_btn"
+        app:layout_constraintEnd_toEndOf="@+id/cardView2"
+        app:layout_constraintTop_toTopOf="@+id/share_code_text_btn" />
+
+    <ImageView
+        android:id="@+id/edit_code_image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/rounded_square_30"
+        android:foreground="@drawable/rounded_square_ripple_20"
+        android:padding="5dp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toTopOf="@+id/copy_btn"
         app:layout_constraintEnd_toEndOf="@+id/copy_btn"
-        app:layout_constraintStart_toStartOf="@+id/copy_btn"
-        app:layout_constraintTop_toTopOf="@+id/cardView2" />
+        app:tint="@color/black18"
+        app:srcCompat="@drawable/brush_icon" />
+
+    <ImageView
+        android:id="@+id/share_code_text_btn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_square_30"
+        android:foreground="@drawable/rounded_square_ripple_20"
+        android:padding="5dp"
+
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/share_code_image_btn"
+        app:layout_constraintEnd_toStartOf="@+id/save_code_image_btn"
+        app:layout_constraintStart_toEndOf="@+id/share_code_image_btn"
+        app:layout_constraintTop_toTopOf="@+id/share_code_image_btn"
+        app:srcCompat="@drawable/share_text_icon" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/codeActionsRecyclerView"

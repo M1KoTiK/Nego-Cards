@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomBar.setupWithNavController(menu, navController)
         binding.bottomBar.onItemReselected = {
-            val currentIndex = binding?.bottomBar.itemActiveIndex
+            val currentIndex = binding.bottomBar.itemActiveIndex
             val currentMenuItem = menu.getItem(currentIndex)
             val currentId = currentMenuItem.itemId
             navController.navigate(currentId)
