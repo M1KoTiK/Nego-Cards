@@ -2,8 +2,6 @@ package m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_tools.canvas_mult
 
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_tools.ICanvasTool
 
-interface ICanvasMultiTool: ICanvasTool<Any> {
-    val listChildTools: List<ICanvasTool<Any>>
-
-
+abstract class CanvasMultiTool<T>: ICanvasTool<T> {
+    abstract val listChildTools: MutableList<ICanvasTool<*>>
 }

@@ -49,21 +49,43 @@ class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context,
     private var initialHeight = 0
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         event ?: return true
-        _objects.forEach{
-            if(it is ICanvasMeasurable){
-                if(isClickOnObject(
-                        it.x,
-                        it.y,
-                        it.width,
-                        it.height,
-                        event.x.toInt(),
-                        event.y.toInt())){
-                    listCurrentSelectedObjects.add(it)
-                }
-            }
-        }
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
+                if(!bitmapShapeModifyTool.checkClickOnTools(event.x.toInt(), event.y.toInt())) {
+                    listCurrentSelectedObjects.clear()
+                    _objects.forEach {
+                        if (it is ICanvasMeasurable) {
+                            if (isClickOnObject(
+                                    it.x,
+                                    it.y,
+                                    it.width,
+                                    it.height,
+                                    event.x.toInt(),
+                                    event.y.toInt()
+                                )
+                            ) {
+                                listCurrentSelectedObjects.add(it)
+                            }
+                        }
+                    }
+                }
+                else if (listCurrentSelectedObjects.isEmpty()){
+                    _objects.forEach {
+                        if (it is ICanvasMeasurable) {
+                            if (isClickOnObject(
+                                    it.x,
+                                    it.y,
+                                    it.width,
+                                    it.height,
+                                    event.x.toInt(),
+                                    event.y.toInt()
+                                )
+                            ) {
+                                listCurrentSelectedObjects.add(it)
+                            }
+                        }
+                    }
+                }
 
             }
             MotionEvent.ACTION_UP -> {
@@ -73,9 +95,12 @@ class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context,
             }
 
         }
+
+
         if(currentSelectedObject != null) {
             bitmapShapeModifyTool.objectsForEdit =
                 mutableListOf(currentSelectedObject) as? MutableList<BitmapShape> ?: mutableListOf()
+            invalidate()
         }
         else{
             bitmapShapeModifyTool.objectsForEdit.clear()

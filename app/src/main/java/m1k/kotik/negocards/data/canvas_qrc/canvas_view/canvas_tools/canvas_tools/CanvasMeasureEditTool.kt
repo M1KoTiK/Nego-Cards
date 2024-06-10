@@ -24,7 +24,7 @@ class CanvasMeasureEditTool(override val canvasEditor: CanvasEditor): CanvasButt
     override val onClickDown: (x: Float, y: Float) -> Unit = {
         _ , _ ->
         initialObjectForEdit.clear()
-        initialObjectForEdit = objectsForEdit.map{obj ->
+        initialObjectForEdit = objectsForEdit.map {obj ->
             Rectangle().also { rc ->
                 rc.x = obj.x
                 rc.y = obj.y

@@ -132,14 +132,14 @@ class QRCViewerFragment() : Fragment() {
                 false
             }
         }
-        menuWindow.contentView.findViewById<LinearLayout>(R.id.share_content).setOnClickListener {
+        binding.shareCodeTextBtn.setOnClickListener {
             val intent= Intent()
             intent.action=Intent.ACTION_SEND
             intent.putExtra(Intent.EXTRA_TEXT,value)
             intent.type="text/plain"
             startActivity(Intent.createChooser(intent,"Поделиться текстом кода"))
         }
-        menuWindow.contentView.findViewById<LinearLayout>(R.id.share_image).setOnClickListener {
+        binding.shareCodeImageBtn.setOnClickListener {
             if (codeImage != null) {
                 try {
                     val cachePath = File(requireContext().cacheDir, "images")
@@ -162,16 +162,10 @@ class QRCViewerFragment() : Fragment() {
                     shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION) // temp permission for receiving app to read this file
                     shareIntent.setDataAndType(contentUri, requireContext().contentResolver.getType(contentUri))
                     shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri)
-                    startActivity(Intent.createChooser(shareIntent, "Choose an app"))
+                    startActivity(Intent.createChooser(shareIntent, "Поделиться изображением кода"))
                 }
             }
         }
-        (menuWindow.rootView as BackPressNotifyingLinearLayout).onBackPressed = {menuWindow.close()}
-        binding.shareCodeImageBtn.setOnClickListener {
-            menuWindow.show(100,275,550,550,
-                Gravity.TOP or Gravity.RIGHT)
-        }
-
 
         binding.qrcDisplay.setOnClickListener {
             codeViewWindow.show(0,0,1000,1100,

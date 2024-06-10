@@ -143,6 +143,7 @@
                     android:background="@drawable/rounded_square_20"
                     android:foreground="@drawable/rounded_square_ripple_20"
                     android:scaleType="centerInside"
+                    app:srcCompat="@drawable/saved_qrc_icon"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView21"
                     app:layout_constraintTop_toTopOf="parent" />

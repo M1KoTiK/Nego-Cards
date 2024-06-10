@@ -8,9 +8,11 @@ import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_editors.CanvasEdit
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.ICanvasMeasurable
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.BitmapShape
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_tools.ICanvasTool
+import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_tools.canvas_multi_tools.CanvasMultiTool
 import m1k.kotik.negocards.data.measure_utils.getRectForOccupiedSpace
+import m1k.kotik.negocards.data.measure_utils.isClickOnObject
 
-class BitmapShapeModifyTool(override val canvasEditor: CanvasEditor) : ICanvasTool<BitmapShape> {
+class BitmapShapeModifyTool(override val canvasEditor: CanvasEditor) : CanvasMultiTool<BitmapShape>() {
     override val onTouchEvent: (event: MotionEvent) -> Boolean= {
         if (objectsForEdit.isNotEmpty()) {
             if (!measureTool.onTouchEvent(it)) {
@@ -31,6 +33,10 @@ class BitmapShapeModifyTool(override val canvasEditor: CanvasEditor) : ICanvasTo
                 deleteTool.isVisible = false
             }
         }
+        else{
+            objectsForEdit.clear()
+            canvasEditor.invalidate()
+        }
             false
         }
 
@@ -43,6 +49,27 @@ class BitmapShapeModifyTool(override val canvasEditor: CanvasEditor) : ICanvasTo
     private val positionTool = CanvasPositionEditTool(canvasEditor)
     private val testTool = EditObjectTool<BitmapShape>(canvasEditor)
 
+    override val listChildTools: MutableList<ICanvasTool<*>> = mutableListOf(
+        deleteTool,
+        measureTool,
+        positionTool
+    )
+
+    fun checkClickOnTools(x: Int, y: Int):Boolean{
+        listChildTools.forEach{
+            if(isClickOnObject(
+                    it.x,
+                    it.y,
+                    it.width,
+                    it.height,
+                    x,
+                    y)
+            ){
+                return true
+            }
+        }
+        return false
+    }
     override fun draw(canvas: Canvas) {
         if(objectsForEdit.isNotEmpty()) {
             val desiredPosition = onPositioning(objectsForEdit)
@@ -66,6 +93,7 @@ class BitmapShapeModifyTool(override val canvasEditor: CanvasEditor) : ICanvasTo
         set(value) {
             if(value.isNotEmpty()) {
                 _objectForEdit = value
+                positionTool.objectsForEdit = value as MutableList<ICanvasMeasurable>
             }
         }
     override var onPositioning: (List<BitmapShape>) -> Point = {
