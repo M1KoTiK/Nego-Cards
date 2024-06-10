@@ -19,18 +19,18 @@ class QRCViewPageFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding?.imageView2?.setImageBitmap(QRCGenerator.getQRCToBitmap("Hello)"))
-        binding?.editTextTextPersonName4?.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable) {
-                if (!binding?.editTextTextPersonName4?.text.toString().trim().isEmpty()){
-                val bitmapimage = QRCGenerator.getQRCToBitmap(binding?.editTextTextPersonName4?.text.toString())
-                binding?.imageView2?.setImageBitmap(bitmapimage)
-                }
-            }
-
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
-        })
+//        binding?.imageView2?.setImageBitmap(QRCGenerator.getQRCToBitmap("Hello)"))
+//        binding?.editTextTextPersonName4?.addTextChangedListener(object : TextWatcher {
+//            override fun afterTextChanged(s: Editable) {
+//                if (!binding?.editTextTextPersonName4?.text.toString().trim().isEmpty()){
+//                val bitmapimage = QRCGenerator.getQRCToBitmap(binding?.editTextTextPersonName4?.text.toString())
+//                binding?.imageView2?.setImageBitmap(bitmapimage)
+//                }
+//            }
+//
+//            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+//            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+//        })
     }
 
 }

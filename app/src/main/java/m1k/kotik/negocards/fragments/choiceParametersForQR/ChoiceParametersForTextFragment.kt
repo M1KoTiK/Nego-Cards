@@ -91,9 +91,9 @@ class ChoiceParametersForTextFragment : Fragment() {
         currentFragment = fragment
         viewLifecycleOwner.lifecycleScope.launch {
             currentFragment.QRCValue.filterNot { it.isEmpty() }.collect { qrcString ->
-                val QRC = QRCGenerator()
-                val bitmapimage = QRCGenerator.getQRCToBitmap(qrcString)
-                binding?.imageView?.setImageBitmap(bitmapimage)
+//                val QRC = QRCGenerator()
+//                val bitmapimage = QRCGenerator.getQRCToBitmap(qrcString)
+//                binding?.imageView?.setImageBitmap(bitmapimage)
             }
         }
     }

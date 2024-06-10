@@ -3,12 +3,12 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "m1k.kotik.negocards"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -73,6 +73,9 @@ dependencies {
     implementation("androidx.camera:camera-view:1.0.0-alpha30")
     //QRC Generator
     implementation 'com.github.androidmads:QRGenerator:1.0.1'
+    implementation 'com.github.alexzhirkevich:custom-qr-generator:2.0.0-alpha01'
+
+
     //Bottom Navigation Bar
     implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.9'
 

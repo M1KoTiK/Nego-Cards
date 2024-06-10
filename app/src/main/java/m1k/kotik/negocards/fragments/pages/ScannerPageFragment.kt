@@ -72,7 +72,7 @@ class ScannerPageFragment : Fragment() {
         binding?.flashBtn?.setOnClickListener {
             setTorch()
         }
-        //Для добавления тестовых данных
+//        Для добавления тестовых данных
 //        db.addScannedCode(
 //            ScannedCode(
 //                CodeType.QRC,
