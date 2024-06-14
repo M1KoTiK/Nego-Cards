@@ -13,17 +13,20 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import m1k.kotik.negocards.R
 import m1k.kotik.negocards.custom_views.windows.stylized_window.FloatingStylizedWindow
 import m1k.kotik.negocards.data.canvas_qrc.canvas_serialization.CanvasSerialization
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.BitmapShape
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.Oval
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.Rectangle
+import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.texts.CanvasText
 import m1k.kotik.negocards.data.code.code_generators.QRCGenerator
 import m1k.kotik.negocards.data.recycler_view_adapters.adapter_decorations.SpaceItemDecorator
 import m1k.kotik.negocards.data.recycler_view_adapters.adapter_decorations.SpaceItemDecoratorHorizontal
 import m1k.kotik.negocards.data.recycler_view_adapters.canvas_object_types.CanvasObjectTypesAdapter
 import m1k.kotik.negocards.data.recycler_view_adapters.canvas_object_types.CanvasObjectTypesViewModel
+import m1k.kotik.negocards.data.recycler_view_adapters.types_canvas_object_type.TypesCanvasObjectTypeAdapter
 import m1k.kotik.negocards.data.serialization.serializationObject.ISerializationObject
 import m1k.kotik.negocards.databinding.FragmentCanvasCodeCreateBinding
 import kotlin.math.max
@@ -45,19 +48,48 @@ class CanvasCodeCreateFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = binding.root.findNavController()
-        val adapterCanvasObjectTypes = CanvasObjectTypesAdapter(requireContext(), listOf(
-            CanvasObjectTypesViewModel({Rectangle()}, AppCompatResources.getDrawable(requireContext(),R.drawable.rectangle_icon__1_), "Прямоугольник" ),
-            CanvasObjectTypesViewModel({Oval()}, AppCompatResources.getDrawable(requireContext(),R.drawable.oval_icon__1_), "Овал" ),
-        ))
-        adapterCanvasObjectTypes.itemOnClick = {
-            pos, type ->
-            binding.canvasEditor.addObject(type.getCanvasObject.invoke())
-            binding.canvasEditor.invalidate()
-        }
+
         binding.CodeCanvasCreateLayout.setOnClickListener{
             binding.canvasEditor.clearSelected()
             binding.canvasEditor.invalidate()
         }
+
+        val adapterCTypes = TypesCanvasObjectTypeAdapter(requireContext(), listOf(
+            "Фигуры", "Текстовая информация"
+        ))
+        adapterCTypes.itemOnClick = {
+                pos, type ->
+            when(type){
+                "Фигуры" ->{
+                    binding.CanvasObjectIconsForChoiceRecyclerView.adapter = CanvasObjectTypesAdapter(requireContext(), listOf(
+                        CanvasObjectTypesViewModel({Rectangle()}, AppCompatResources.getDrawable(requireContext(),R.drawable.rectangle_icon__1_), "Прямоугольник" ),
+                        CanvasObjectTypesViewModel({Oval()}, AppCompatResources.getDrawable(requireContext(),R.drawable.oval_icon__1_), "Овал" ),
+                    )).also {
+                        it.itemOnClick = {
+                                pos, type ->
+                            binding.canvasEditor.addObject(type.getCanvasObject.invoke())
+                            binding.canvasEditor.invalidate()
+                        }
+                    }
+                }
+                "Текстовая информация" ->{
+                    binding.CanvasObjectIconsForChoiceRecyclerView.adapter = CanvasObjectTypesAdapter(requireContext(), listOf(
+                        CanvasObjectTypesViewModel({CanvasText()}, AppCompatResources.getDrawable(requireContext(),R.drawable.inptexticon), "Tекст" ),
+                    )).also {
+                        it.itemOnClick = {
+                                pos, type ->
+                            binding.canvasEditor.addObject(type.getCanvasObject.invoke())
+                            binding.canvasEditor.invalidate()
+                        }
+                    }
+
+                }
+            }
+        }
+
+        binding.recyclerView.adapter = adapterCTypes
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerView.addItemDecoration(SpaceItemDecoratorHorizontal(30))
 
         codeViewWindow = FloatingStylizedWindow(requireContext(), R.layout.qrc_viewer_popup)
         codeViewWindow.windowContentViewGroup.also {
@@ -67,7 +99,6 @@ class CanvasCodeCreateFragment : Fragment() {
         }
         codeViewWindow.header = "Просмотр кода"
 
-        binding.CanvasObjectIconsForChoiceRecyclerView.adapter = adapterCanvasObjectTypes
         binding.CanvasObjectIconsForChoiceRecyclerView.layoutManager = GridLayoutManager(requireContext(), 4)
         binding.qrcViewBtn.setOnClickListener {
             val height = requireContext().resources.displayMetrics.heightPixels
