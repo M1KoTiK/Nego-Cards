@@ -10,15 +10,16 @@ class PaintConverter: IValueConverter<Paint> {
     override val valueStarts = "["
     override val valueEnds = "]"
     private val itemSeparator = ","
-    private val keyValueSeparator = ":"
     //потом можно будет реализовать c - color, s - style, sw - strokeWidth
 
     override fun serialize(value: Any): String {
         var outputString = StringBuilder()
         outputString.append(valueStarts)
         value as Paint
-        outputString.append("#" + Integer.toHexString(value.color) + itemSeparator)
-        outputString.append(styleMap.keys.find{styleMap[it] == value.style})
+        val defaultPaint = Paint()
+        if (value.color != defaultPaint.color) outputString.append("c:" + "#" + Integer.toHexString(value.color) + itemSeparator)
+        if(value.style != defaultPaint.style) outputString.append("s:" + styleMap.keys.find{styleMap[it] == value.style} + itemSeparator)
+        if(value.textSize != defaultPaint.textSize) outputString.append("ts:" + value.textSize.toInt())
         outputString.append(valueEnds)
         return outputString.toString()
     }
@@ -27,12 +28,26 @@ class PaintConverter: IValueConverter<Paint> {
         "f" to Style.FILL,
         "sf" to Style.FILL_AND_STROKE,
     )
+
+
     override fun deserialize(serializationValue: String): Paint {
         val list = serializationValue.drop(valueStarts.length).dropLast(valueEnds.length).split(itemSeparator)
-        return Paint().also {
-            it.color = list[0].toColorInt()
-            it.style = styleMap[list[1]]
+        val outPaint = Paint()
+        if (list.isNotEmpty()) {
+            list.forEach{
+                if(it.startsWith("c:")){
+                    outPaint.color = it.drop(2).toColorInt()
+                }
+                else if(it.startsWith("s:")){
+                    outPaint.style = styleMap[it.drop(2)]
+                }
+                else if (it.startsWith("ts:")){
+                    outPaint.textSize = it.drop(3).toFloat()
+                }
+            }
+
         }
+        return outPaint
     }
 
 }
