@@ -15,7 +15,6 @@ open class DefaultSerializer(
     override var parser: ISerializationParser,
     private var lengthForKey: Int = 10
 ): ISerializer {
-
     override fun serialize(listSerializeObject: List<ISerializationObject>): String? {
     var outputString:String = ""
         val listSepObject = parser.parseObject(listSerializeObject)

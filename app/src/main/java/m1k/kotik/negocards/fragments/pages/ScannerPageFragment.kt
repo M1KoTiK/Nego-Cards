@@ -274,6 +274,15 @@ class ScannerPageFragment : Fragment() {
                                     if(rawValue.startsWith("urlto:")){
 
                                     }
+                                    else if (rawValue.startsWith("canvas:")){
+                                        db.addScannedCode(
+                                            ScannedCode(
+                                                barcodeFormatToCodeType(barcode.format),
+                                                CodeContentType.Canvas,
+                                                rawValue,
+                                                SimpleDate.getCurrentDate())
+                                        )
+                                    }
                                     else {
                                         db.addScannedCode(
                                             ScannedCode(
@@ -286,6 +295,7 @@ class ScannerPageFragment : Fragment() {
                                     }
                                     refreshScannedQRC()
                                 }
+
                         }
                     }
                 }

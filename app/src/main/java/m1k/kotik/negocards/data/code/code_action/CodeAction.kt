@@ -53,7 +53,7 @@ sealed class CodeAction: ICodeAction {
             val canvasViewWindow: FloatingStylizedWindow = FloatingStylizedWindow(context, R.layout.fragment_canvas_viewer).also {
                 it.header = "Выбор цвета"
             }
-            val canvasObjects = CanvasSerialization.canvasSerializer.deserialize<ISerializationObject>(code.value)
+            val canvasObjects = CanvasSerialization.deserializeCanvas<ISerializationObject>(code.value)
             if(canvasObjects!=null) {
                canvasViewWindow.contentView.findViewById<CanvasView>(R.id.canvasViewInCanvasViewer).also {
                    if(canvasObjects.first() !is BitmapShape){

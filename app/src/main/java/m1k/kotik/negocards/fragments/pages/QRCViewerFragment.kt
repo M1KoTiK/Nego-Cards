@@ -37,6 +37,8 @@ import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
+import kotlin.math.max
+import kotlin.math.min
 
 
 class QRCViewerFragment() : Fragment() {
@@ -168,7 +170,9 @@ class QRCViewerFragment() : Fragment() {
         }
 
         binding.qrcDisplay.setOnClickListener {
-            codeViewWindow.show(0,0,1000,1100,
+            val height = requireContext().resources.displayMetrics.heightPixels
+            val width = requireContext().resources.displayMetrics.widthPixels
+            codeViewWindow.show(0,0, min(height,width),min(height,width),
                 Gravity.CENTER_VERTICAL or Gravity.CENTER_HORIZONTAL)
         }
     }

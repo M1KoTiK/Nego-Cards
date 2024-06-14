@@ -19,12 +19,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView15"
+            android:id="@+id/qrc_view_btn"
             android:layout_width="35dp"
             android:layout_height="match_parent"
             android:layout_marginEnd="25dp"
             android:padding="5dp"
-            android:src="@drawable/iconpalochki"
+            android:src="@drawable/create_qrc"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"

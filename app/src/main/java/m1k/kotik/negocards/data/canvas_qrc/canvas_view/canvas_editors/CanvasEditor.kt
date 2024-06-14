@@ -4,11 +4,13 @@ import android.content.Context
 import android.graphics.Canvas
 import android.util.AttributeSet
 import android.view.MotionEvent
+import m1k.kotik.negocards.data.canvas_qrc.canvas_serialization.CanvasSerialization
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.*
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.BitmapShape
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_tools.canvas_tools.BitmapShapeModifyTool
 import m1k.kotik.negocards.data.canvas_qrc.old_govno.DoubleClickChecker
 import m1k.kotik.negocards.data.measure_utils.isClickOnObject
+import m1k.kotik.negocards.data.serialization.serializationObject.ISerializationObject
 
 class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context, attrs) {
     //============================Публичные свойства==========================
@@ -22,6 +24,16 @@ class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context,
     }
     fun clearSelected(){
         listCurrentSelectedObjects.clear()
+    }
+    fun serialize(): String?{
+        val objectList  = mutableListOf<ISerializationObject>()
+       objectList.add(_backgroundObject)
+        _objects.forEach{
+            if(it is ISerializationObject){
+                objectList.add(it)
+            }
+        }
+        return CanvasSerialization.serializeCanvas(objectList)
     }
     //========================Приватные/protected свойства==========================
 
@@ -116,6 +128,7 @@ class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context,
 //==============================================================================
 
     override fun onDraw(canvas: Canvas?) {
+        println(serialize())
         _backgroundObject!!.draw(canvas!!)
         for(obj in _objects){
             if(obj is ICanvasDrawable){

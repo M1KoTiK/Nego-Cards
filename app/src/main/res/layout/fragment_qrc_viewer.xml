@@ -5,9 +5,7 @@
     android:id="@+id/mainLayoutQRCViewer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black18"
-    tools:layout_editor_absoluteY="25dp">
-
+    android:background="@color/black18">
 
     <TextView
         android:id="@+id/codeContentType"
@@ -120,7 +118,7 @@
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:gravity="center_vertical"
-        android:maxHeight="175dp"
+        android:maxHeight="145dp"
         android:minHeight="45dp"
         android:paddingStart="15dp"
         android:paddingEnd="15dp"
@@ -148,8 +146,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
-        android:layout_width="220dp"
-        android:layout_height="220dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_marginTop="15dp"
         app:cardCornerRadius="20dp"
         app:layout_constraintStart_toStartOf="@+id/textView12"
@@ -157,8 +155,8 @@
 
         <ImageView
             android:id="@+id/qrcDisplay"
-            android:layout_width="220dp"
-            android:layout_height="220dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             app:srcCompat="@drawable/placeholder" />
     </androidx.cardview.widget.CardView>
 
@@ -167,7 +165,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/rounded_square_30"
         android:foreground="@drawable/rounded_square_ripple_20"
         android:padding="5dp"
@@ -230,5 +228,4 @@
         app:layout_constraintEnd_toEndOf="@+id/QRCValueViewer"
         app:layout_constraintStart_toStartOf="@+id/QRCValueViewer"
         app:layout_constraintTop_toBottomOf="@+id/textView20" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
