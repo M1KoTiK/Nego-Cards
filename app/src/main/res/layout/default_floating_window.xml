@@ -5,13 +5,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout android:id="@+id/window_header"
+    <LinearLayout
+        android:id="@+id/window_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/black30"
         android:orientation="horizontal">
 
-        <TextView android:id="@+id/window_title"
+        <TextView
+            android:id="@+id/window_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="start|center_vertical"
@@ -21,10 +23,11 @@
             android:paddingEnd="8dp"
             android:paddingBottom="4dp"
             android:text="Title"
-            android:textSize="15sp"
-            android:textColor="@color/greyE" />
+            android:textColor="@color/greyE"
+            android:textSize="15sp" />
 
-        <ImageButton android:id="@+id/window_close"
+        <ImageButton
+            android:id="@+id/window_close"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_gravity="end|center_vertical"
@@ -41,8 +44,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/transparent"
-        android:gravity="center"
 
+        android:gravity="center"
         android:orientation="horizontal">
 
     </LinearLayout>

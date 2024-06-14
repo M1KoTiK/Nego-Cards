@@ -2,230 +2,249 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mainLayoutQRCViewer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black18">
 
-    <TextView
-        android:id="@+id/codeContentType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text=" Текст"
-        android:textColor="@color/greyE"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView12"
-        app:layout_constraintStart_toEndOf="@+id/textView12"
-        app:layout_constraintTop_toTopOf="@+id/textView12" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView23"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="|"
-        android:textColor="@color/white_d9"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView22"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView22"
-        app:layout_constraintVertical_bias="0.65999997" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="7dp"
-        android:text="Дата:"
-        android:textColor="@color/white_d9"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/qrcViewerDateQRC"
-        app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:id="@+id/mainLayoutQRCViewer"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/codeContentType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text=" Текст"
+                    android:textColor="@color/greyE"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView12"
+                    app:layout_constraintStart_toEndOf="@+id/textView12"
+                    app:layout_constraintTop_toTopOf="@+id/textView12" />
 
-    <TextView
-        android:id="@+id/qrcViewerDateQRC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="15dp"
-        android:text="25.01.2024"
-        android:textColor="@color/greyE"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView22"
-        app:layout_constraintEnd_toStartOf="@+id/textView23"
-        app:layout_constraintTop_toTopOf="@+id/textView22"
-        app:layout_constraintVertical_bias="0.9" />
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="|"
+                    android:textColor="@color/white_d9"
+                    android:textSize="25sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView22"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView22"
+                    app:layout_constraintVertical_bias="0.65999997" />
 
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:text="Тип кода:"
-        android:textColor="@color/white_d9"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView22"
-        app:layout_constraintStart_toEndOf="@+id/textView23"
-        app:layout_constraintTop_toTopOf="@+id/textView22"
-        app:layout_constraintVertical_bias="0.0" />
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="7dp"
+                    android:text="Дата:"
+                    android:textColor="@color/white_d9"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toStartOf="@+id/qrcViewerDateQRC"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/QRCViewerCodeType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="7dp"
-        android:text="QR-код"
-        android:textColor="@color/greyE"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView21"
-        app:layout_constraintStart_toEndOf="@+id/textView21"
-        app:layout_constraintTop_toTopOf="@+id/textView21"
-        app:layout_constraintVertical_bias="1.0" />
+                <TextView
+                    android:id="@+id/qrcViewerDateQRC"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:text="25.01.2024"
+                    android:textColor="@color/greyE"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView22"
+                    app:layout_constraintEnd_toStartOf="@+id/textView23"
+                    app:layout_constraintTop_toTopOf="@+id/textView22"
+                    app:layout_constraintVertical_bias="0.9" />
 
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Содержание QRC:"
-        android:textColor="@color/white_d9"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/QRCValueViewer"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="Тип кода:"
+                    android:textColor="@color/white_d9"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView22"
+                    app:layout_constraintStart_toEndOf="@+id/textView23"
+                    app:layout_constraintTop_toTopOf="@+id/textView22"
+                    app:layout_constraintVertical_bias="0.0" />
 
-    <ImageView
-        android:id="@+id/copy_btn"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="-50dp"
-        android:background="@drawable/rounded_square_30"
-        android:foreground="@drawable/rounded_square_ripple_30"
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="@+id/QRCValueViewer"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2"
-        app:srcCompat="@drawable/copy_logo" />
+                <TextView
+                    android:id="@+id/QRCViewerCodeType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:text="QR-код"
+                    android:textColor="@color/greyE"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView21"
+                    app:layout_constraintStart_toEndOf="@+id/textView21"
+                    app:layout_constraintTop_toTopOf="@+id/textView21"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Содержание QRC:"
+                    android:textColor="@color/white_d9"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@+id/QRCValueViewer"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+
+                <ImageView
+                    android:id="@+id/copy_btn"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="-50dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/rounded_square_30"
+                    android:foreground="@drawable/rounded_square_ripple_30"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintEnd_toEndOf="@+id/QRCValueViewer"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView2"
+                    app:srcCompat="@drawable/copy_logo" />
 
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/QRCValueViewer"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_square_15"
-        android:clickable="true"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:gravity="center_vertical"
-        android:maxHeight="145dp"
-        android:minHeight="45dp"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:scrollbars="vertical"
-        android:text="123"
-        android:textColor="@color/black18"
-        android:textCursorDrawable="@color/black30"
-        android:textIsSelectable="true"
-        android:textSize="17sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/QRCValueViewer"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/rounded_square_15"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center_vertical"
+                    android:maxHeight="145dp"
+                    android:minHeight="45dp"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
+                    android:scrollbars="vertical"
+                    android:text="123"
+                    android:textColor="@color/black18"
+                    android:textCursorDrawable="@color/black30"
+                    android:textIsSelectable="true"
+                    android:textSize="17sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.491"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
-    <TextView
-        android:id="@+id/textView20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Возможные действия:"
-        android:textColor="@color/white_d9"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/QRCValueViewer"
-        app:layout_constraintTop_toBottomOf="@+id/QRCValueViewer" />
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Возможные действия:"
+                    android:textColor="@color/white_d9"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@+id/QRCValueViewer"
+                    app:layout_constraintTop_toBottomOf="@+id/QRCValueViewer" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="15dp"
-        app:cardCornerRadius="20dp"
-        app:layout_constraintStart_toStartOf="@+id/textView12"
-        app:layout_constraintTop_toBottomOf="@+id/share_code_image_btn">
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView2"
+                    android:layout_width="220dp"
+                    android:layout_height="220dp"
+                    android:layout_marginTop="17dp"
+                    app:cardCornerRadius="20dp"
+                    app:layout_constraintStart_toStartOf="@+id/textView12"
+                    app:layout_constraintTop_toBottomOf="@+id/share_code_image_btn">
 
-        <ImageView
-            android:id="@+id/qrcDisplay"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            app:srcCompat="@drawable/placeholder" />
-    </androidx.cardview.widget.CardView>
+                    <ImageView
+                        android:id="@+id/qrcDisplay"
+                        android:layout_width="220dp"
+                        android:layout_height="220dp"
+                        app:srcCompat="@drawable/placeholder" />
+                </androidx.cardview.widget.CardView>
 
-    <ImageView
-        android:id="@+id/share_code_image_btn"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_square_30"
-        android:foreground="@drawable/rounded_square_ripple_20"
-        android:padding="5dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/share_image_icon"
-        app:layout_constraintStart_toStartOf="@+id/cardView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+                <ImageView
+                    android:id="@+id/share_code_image_btn"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/rounded_square_30"
+                    android:foreground="@drawable/rounded_square_ripple_20"
+                    android:padding="5dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/share_image_icon"
+                    app:layout_constraintStart_toStartOf="@+id/cardView2"
+                    app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
-    <ImageView
-        android:id="@+id/save_code_image_btn"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="5dp"
-        android:background="@drawable/rounded_square_30"
-        android:foreground="@drawable/rounded_square_ripple_20"
-        android:padding="11dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/download"
-        app:layout_constraintBottom_toBottomOf="@+id/share_code_text_btn"
-        app:layout_constraintEnd_toEndOf="@+id/cardView2"
-        app:layout_constraintTop_toTopOf="@+id/share_code_text_btn" />
+                <ImageView
+                    android:id="@+id/save_code_image_btn"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/rounded_square_30"
+                    android:foreground="@drawable/rounded_square_ripple_20"
+                    android:padding="11dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/download"
+                    app:layout_constraintBottom_toBottomOf="@+id/share_code_text_btn"
+                    app:layout_constraintEnd_toEndOf="@+id/cardView2"
+                    app:layout_constraintTop_toTopOf="@+id/share_code_text_btn" />
 
-    <ImageView
-        android:id="@+id/edit_code_image"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="25dp"
-        android:background="@drawable/rounded_square_30"
-        android:foreground="@drawable/rounded_square_ripple_20"
-        android:scaleType="centerInside"
-        app:layout_constraintBottom_toTopOf="@+id/copy_btn"
-        app:layout_constraintEnd_toEndOf="@+id/copy_btn"
-        app:tint="@color/black18"
-        app:srcCompat="@drawable/brush_icon" />
+                <ImageView
+                    android:id="@+id/edit_code_image"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="25dp"
+                    android:background="@drawable/rounded_square_30"
+                    android:foreground="@drawable/rounded_square_ripple_20"
+                    android:scaleType="centerInside"
+                    app:layout_constraintBottom_toTopOf="@+id/copy_btn"
+                    app:layout_constraintEnd_toEndOf="@+id/copy_btn"
+                    app:tint="@color/black18"
+                    app:srcCompat="@drawable/brush_icon" />
 
-    <ImageView
-        android:id="@+id/share_code_text_btn"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/rounded_square_30"
-        android:foreground="@drawable/rounded_square_ripple_20"
-        android:padding="5dp"
+                <ImageView
+                    android:id="@+id/share_code_text_btn"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/rounded_square_30"
+                    android:foreground="@drawable/rounded_square_ripple_20"
+                    android:padding="5dp"
 
-        android:scaleType="centerInside"
-        app:layout_constraintBottom_toBottomOf="@+id/share_code_image_btn"
-        app:layout_constraintEnd_toStartOf="@+id/save_code_image_btn"
-        app:layout_constraintStart_toEndOf="@+id/share_code_image_btn"
-        app:layout_constraintTop_toTopOf="@+id/share_code_image_btn"
-        app:srcCompat="@drawable/share_text_icon" />
+                    android:scaleType="centerInside"
+                    app:layout_constraintBottom_toBottomOf="@+id/share_code_image_btn"
+                    app:layout_constraintEnd_toStartOf="@+id/save_code_image_btn"
+                    app:layout_constraintStart_toEndOf="@+id/share_code_image_btn"
+                    app:layout_constraintTop_toTopOf="@+id/share_code_image_btn"
+                    app:srcCompat="@drawable/share_text_icon" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/codeActionsRecyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/rounded_square_5"
-        android:backgroundTint="@color/black19"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/QRCValueViewer"
-        app:layout_constraintStart_toStartOf="@+id/QRCValueViewer"
-        app:layout_constraintTop_toBottomOf="@+id/textView20" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/codeActionsRecyclerView"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/rounded_square_5"
+                    android:backgroundTint="@color/black19"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/QRCValueViewer"
+                    app:layout_constraintStart_toStartOf="@+id/QRCValueViewer"
+                    app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

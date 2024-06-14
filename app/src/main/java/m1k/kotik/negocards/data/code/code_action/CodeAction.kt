@@ -2,8 +2,13 @@ package m1k.kotik.negocards.data.code.code_action
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.net.Uri
 import android.view.Gravity
+import android.widget.LinearLayout
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet.Constraint
+import androidx.core.content.res.ResourcesCompat
 import m1k.kotik.negocards.R
 import m1k.kotik.negocards.custom_views.windows.stylized_window.FloatingStylizedWindow
 import m1k.kotik.negocards.data.canvas_qrc.canvas_serialization.CanvasSerialization
@@ -53,6 +58,12 @@ sealed class CodeAction: ICodeAction {
             val canvasViewWindow: FloatingStylizedWindow = FloatingStylizedWindow(context, R.layout.fragment_canvas_viewer).also {
                 it.header = "Выбор цвета"
             }
+            canvasViewWindow.windowContentViewGroup.also {
+                it.background =
+                    ResourcesCompat.getDrawable(context.resources, R.drawable.rounded_square_15, null)
+                it.backgroundTintList = ColorStateList.valueOf(0xFF252525.toInt())
+            }
+            canvasViewWindow.rootView.findViewById<LinearLayout>(R.id.window_content).gravity = Gravity.TOP or Gravity.CENTER_HORIZONTAL
             val canvasObjects = CanvasSerialization.deserializeCanvas<ISerializationObject>(code.value)
             if(canvasObjects!=null) {
                canvasViewWindow.contentView.findViewById<CanvasView>(R.id.canvasViewInCanvasViewer).also {

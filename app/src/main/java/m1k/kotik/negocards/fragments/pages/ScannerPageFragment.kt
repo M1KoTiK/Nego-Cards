@@ -73,6 +73,7 @@ class ScannerPageFragment : Fragment() {
             setTorch()
         }
 //        Для добавления тестовых данных
+
 //        db.addScannedCode(
 //            ScannedCode(
 //                CodeType.QRC,
@@ -80,6 +81,7 @@ class ScannerPageFragment : Fragment() {
 //                "312342343",
 //                SimpleDate.getCurrentDate())
 //        )
+
         refreshScannedQRC()
     }
 
