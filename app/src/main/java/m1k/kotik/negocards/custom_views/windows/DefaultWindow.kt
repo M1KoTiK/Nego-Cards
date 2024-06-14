@@ -20,7 +20,7 @@ abstract class DefaultWindow(
     private val layoutInflater =
         context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
     val rootView: View = layoutInflater.inflate(windowRootLayoutResource, null)
-    var contentView: View = layoutInflater.inflate(windowContentLayoutResource, rootView.findViewById(R.id.window_content))
+    var contentView: View = layoutInflater.inflate(windowContentLayoutResource, null)
 
     var isInstanceMustRecreated: Boolean = false
     var isWindowOpen = false
@@ -48,9 +48,11 @@ abstract class DefaultWindow(
             it.addView(contentView)
         }
         rootView.requestFocus()
+        isContentAttached = true
     }
     private fun detachChildView() {
         rootView.findViewById<ViewGroup>(R.id.window_content).removeAllViews()
+        isContentAttached = false
     }
 
     final override fun show(x: Int, y: Int, width: Int, height: Int, gravity: Int) {
@@ -61,24 +63,23 @@ abstract class DefaultWindow(
         windowParameters.gravity = gravity
         if(onBeforeShow()) {
             if (!isWindowOpen) {
-                if (isInstanceMustRecreated) {
-                    isContentAttached = true
-                    windowManager.addView(rootView, windowParameters)
-                    if(isContentAttached) {
-                        detachChildView()
-                    }
-                    attachChildView()
-                    isContentAttached = true
-                    isWindowOpen = true
-                } else {
-                    contentView = layoutInflater.inflate(windowContentLayoutResource, null)
+//                if (isInstanceMustRecreated) {
+//                    isContentAttached = true
+//                    windowManager.addView(rootView, windowParameters)
+//                    if(isContentAttached) {
+//                        detachChildView()
+//                    }
+//                    attachChildView()
+//                    isContentAttached = true
+//                    isWindowOpen = true
+//                } else {
                     windowManager.addView(rootView, windowParameters)
                     if(!isContentAttached){
                         attachChildView()
                     }
-                    isContentAttached = true
+
                     isWindowOpen = true
-                }
+//                }
                 onAfterShow(true)
                 return
             }

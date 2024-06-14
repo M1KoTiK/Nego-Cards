@@ -2,6 +2,7 @@ package m1k.kotik.negocards.fragments.pages.code_create_pages
 
 import android.content.res.ColorStateList
 import android.os.Bundle
+import android.provider.ContactsContract.CommonDataKinds.Im
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -91,6 +93,10 @@ class CanvasCodeCreateFragment : Fragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL, false)
         binding.recyclerView.addItemDecoration(SpaceItemDecoratorHorizontal(30))
 
+
+        binding.CanvasObjectIconsForChoiceRecyclerView.layoutManager = GridLayoutManager(requireContext(), 4)
+
+
         codeViewWindow = FloatingStylizedWindow(requireContext(), R.layout.qrc_viewer_popup)
         codeViewWindow.windowContentViewGroup.also {
             it.background =
@@ -98,15 +104,15 @@ class CanvasCodeCreateFragment : Fragment() {
             it.backgroundTintList = ColorStateList.valueOf(0xF5252525.toInt())
         }
         codeViewWindow.header = "Просмотр кода"
-
-        binding.CanvasObjectIconsForChoiceRecyclerView.layoutManager = GridLayoutManager(requireContext(), 4)
+        codeViewWindow.isInstanceMustRecreated = false
         binding.qrcViewBtn.setOnClickListener {
             val height = requireContext().resources.displayMetrics.heightPixels
             val width = requireContext().resources.displayMetrics.widthPixels
-            codeViewWindow.contentView.findViewById<ImageView>(R.id.QRCImage).setImageBitmap(QRCGenerator.getQRCToBitmap(binding.canvasEditor.serialize()!!))
+            val serObjects = binding.canvasEditor.serialize()!!
+            var qrcImage = QRCGenerator.getQRCToBitmap(serObjects)
+            codeViewWindow.contentView.findViewById<ImageView>(R.id.QRCImage).setImageBitmap(qrcImage)
             codeViewWindow.show(0,0, min(height,width),min(height,width),
                 Gravity.CENTER_VERTICAL or Gravity.CENTER_HORIZONTAL)
-
         }
 
     }
