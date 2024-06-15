@@ -88,7 +88,9 @@ class CanvasCodeCreateFragment : Fragment() {
                 }
             }
         }
-
+        binding.backArrow.setOnClickListener{
+            binding.canvasEditor.backAction()
+        }
         binding.recyclerView.adapter = adapterCTypes
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL, false)
         binding.recyclerView.addItemDecoration(SpaceItemDecoratorHorizontal(30))

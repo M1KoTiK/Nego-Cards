@@ -2,6 +2,7 @@ package m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_editors
 
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Insets
 import android.util.AttributeSet
 import android.view.MotionEvent
 import m1k.kotik.negocards.data.canvas_qrc.canvas_serialization.CanvasSerialization
@@ -11,15 +12,31 @@ import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_tools.canvas_tools
 import m1k.kotik.negocards.data.canvas_qrc.old_govno.DoubleClickChecker
 import m1k.kotik.negocards.data.measure_utils.isClickOnObject
 import m1k.kotik.negocards.data.serialization.serializationObject.ISerializationObject
+import java.util.Stack
 
 class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context, attrs) {
     //============================Публичные свойства==========================
 
     //============================Публичные методы=================================
+    fun backAction(){
+        listCurrentSelectedObjects.clear()
+        bitmapShapeModifyTool.objectsForEdit.clear()
+        invalidate()
+        if(!backstack.isNullOrEmpty()){
+            val CObjects = CanvasSerialization.deserializeCanvas<ISerializationObject>(backstack.last())
+            backstack.removeLast()
+            if (!CObjects.isNullOrEmpty()){
+                _objects = CObjects.drop(1).toMutableList()
+                this.invalidate()
+            }
+        }
+    }
     fun addObject(canvasObject: Any){
         _objects.add(0,canvasObject)
+        addToBackStack()
     }
     fun deleteObject(canvasObject: Any){
+        addToBackStack()
         _objects.remove(canvasObject)
     }
     fun clearSelected(){
@@ -45,6 +62,21 @@ class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context,
             _objects.add(obj)
         }
     }
+    private fun addToBackStack(){
+        val ser = serialize()
+        if (ser != null) {
+            if(backstack.isNotEmpty()){
+                if(backstack.last()!= ser){
+                    backstack.add(ser)
+                    forwardstack.clear()
+                }
+            }
+            else {
+                backstack.add(ser)
+                forwardstack.clear()
+            }
+        }
+    }
     val bitmapShapeModifyTool = BitmapShapeModifyTool(this)
 //==============================================================================
 //---------------------Обработка нажатий на холсте------------------------------
@@ -52,7 +84,8 @@ class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context,
     private val doubleClickChecker = DoubleClickChecker(200) {
         val obj = currentSelectedObject
     }
-
+    private val backstack = mutableListOf<String>()
+    private val forwardstack: Stack<String> = Stack()
     private var startX: Int = 0
     private var startY: Int = 0
     private var initialPosX = 0
@@ -101,7 +134,7 @@ class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context,
 
             }
             MotionEvent.ACTION_UP -> {
-
+                addToBackStack()
             }
             MotionEvent.ACTION_MOVE -> {
             }
