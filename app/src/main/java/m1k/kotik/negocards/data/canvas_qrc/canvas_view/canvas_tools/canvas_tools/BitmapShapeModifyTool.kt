@@ -47,7 +47,7 @@ class BitmapShapeModifyTool(override val canvasEditor: CanvasEditor) : CanvasMul
     private val deleteTool = DeleteObjectTool<BitmapShape>(canvasEditor)
     private val measureTool = CanvasMeasureEditTool(canvasEditor)
     private val positionTool = CanvasPositionEditTool(canvasEditor)
-    private val testTool = EditObjectTool<BitmapShape>(canvasEditor)
+    private val colorEditTool = EditObjectTool<BitmapShape>(canvasEditor)
 
     override val listChildTools: MutableList<ICanvasTool<*>> = mutableListOf(
         deleteTool,
@@ -70,6 +70,7 @@ class BitmapShapeModifyTool(override val canvasEditor: CanvasEditor) : CanvasMul
         }
         return false
     }
+
     override fun draw(canvas: Canvas) {
         if(objectsForEdit.isNotEmpty()) {
             val desiredPosition = onPositioning(objectsForEdit)

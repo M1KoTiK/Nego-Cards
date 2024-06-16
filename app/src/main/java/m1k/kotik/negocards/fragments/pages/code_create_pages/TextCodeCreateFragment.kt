@@ -28,12 +28,13 @@ class TextCodeCreateFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.editTextTextPersonName11.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {
+            }
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 if(s.toString() != "") {
                     binding.qrcDisplay.setImageBitmap(QRCGenerator.getQRCToBitmap(s.toString()))
                 }
             }
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
         })
     }
 }

@@ -14,20 +14,29 @@
         android:layout_marginTop="15dp"
         android:src="@drawable/placeholder"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView30" />
+
+    <ImageView
+        android:id="@+id/imageView1123"
+        android:layout_width="70dp"
+        android:layout_height="38dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView34"
+        app:layout_constraintStart_toStartOf="@+id/imageView14"
+        app:layout_constraintTop_toTopOf="@+id/textView34"
+        app:srcCompat="@drawable/colorselectorbuttonbackground" />
 
     <ImageView
         android:id="@+id/imageView14"
         android:layout_width="70dp"
         android:layout_height="38dp"
-        android:layout_marginStart="25dp"
+        android:layout_marginStart="60dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView32"
         app:layout_constraintStart_toEndOf="@+id/textView32"
         app:layout_constraintTop_toTopOf="@+id/textView32"
         app:srcCompat="@drawable/colorselectorbuttonbackground" />
 
     <Button
-        android:id="@+id/colorForCanvasPickButton"
+        android:id="@+id/colorForCodePickButton"
         android:layout_width="60dp"
         android:layout_height="22dp"
         android:background="@drawable/rounded_square_5"
@@ -36,6 +45,16 @@
         app:layout_constraintStart_toStartOf="@+id/imageView14"
         app:layout_constraintTop_toTopOf="@+id/imageView14" />
 
+    <Button
+        android:id="@+id/colorForBackgroundCodePickButton"
+        android:layout_width="60dp"
+        android:layout_height="22dp"
+        android:background="@drawable/rounded_square_5"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView1123"
+        app:layout_constraintEnd_toEndOf="@+id/imageView1123"
+        app:layout_constraintStart_toStartOf="@+id/imageView1123"
+        app:layout_constraintTop_toTopOf="@+id/imageView1123" />
+
     <TextView
         android:id="@+id/textView32"
         android:layout_width="wrap_content"
@@ -43,8 +62,40 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         android:text="Цвет кода"
-        android:textSize="16sp"
+        android:textSize="17sp"
         app:layout_constraintStart_toStartOf="@+id/imageView15"
         app:layout_constraintTop_toBottomOf="@+id/imageView15" />
+
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="15dp"
+        android:text="..."
+        app:layout_constraintStart_toStartOf="@+id/imageView15"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView34"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="Цвет фона"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="@+id/textView32"
+        app:layout_constraintTop_toBottomOf="@+id/textView32" />
+
+    <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/rounded_square_20"
+        android:padding="10dp"
+        android:src="@drawable/download"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView15" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

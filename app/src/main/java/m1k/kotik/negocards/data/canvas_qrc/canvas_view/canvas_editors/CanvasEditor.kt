@@ -30,6 +30,7 @@ class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context,
                 this.invalidate()
             }
         }
+
     }
     fun addObject(canvasObject: Any){
         _objects.add(0,canvasObject)
