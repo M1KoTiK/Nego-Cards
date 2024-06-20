@@ -144,8 +144,7 @@ class CanvasEditor (context: Context, attrs: AttributeSet) : CanvasView(context,
 
 
         if(currentSelectedObject != null) {
-            bitmapShapeModifyTool.objectsForEdit =
-                mutableListOf(currentSelectedObject) as? MutableList<BitmapShape> ?: mutableListOf()
+            bitmapShapeModifyTool.objectsForEdit = mutableListOf(currentSelectedObject!!)
             invalidate()
         }
         else{

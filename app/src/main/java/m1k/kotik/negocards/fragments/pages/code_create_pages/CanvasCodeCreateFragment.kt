@@ -76,7 +76,7 @@ class CanvasCodeCreateFragment : Fragment() {
                 }
                 "Текстовая информация" ->{
                     binding.CanvasObjectIconsForChoiceRecyclerView.adapter = CanvasObjectTypesAdapter(requireContext(), listOf(
-                        CanvasObjectTypesViewModel({CanvasText()}, AppCompatResources.getDrawable(requireContext(),R.drawable.inptexticon), "Tекст" ),
+                        CanvasObjectTypesViewModel({CanvasText()}, AppCompatResources.getDrawable(requireContext(),R.drawable.text_lines_icon), "Tекст" ),
                     )).also {
                         it.itemOnClick = {
                                 pos, type ->

@@ -87,15 +87,37 @@
         app:layout_constraintTop_toBottomOf="@+id/textView32" />
 
     <ImageView
-        android:id="@+id/imageView17"
+        android:id="@+id/download_qrc_in_code_editor"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="25dp"
+        android:layout_marginEnd="30dp"
         android:background="@drawable/rounded_square_20"
         android:padding="10dp"
         android:src="@drawable/download"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView15" />
+
+    <ImageView
+        android:id="@+id/share_image_qrc_in_code_editor"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/rounded_square_20"
+        android:padding="5dp"
+        android:src="@drawable/share_image_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView15"
+        app:layout_constraintStart_toStartOf="@+id/download_qrc_in_code_editor" />
+
+    <ImageView
+        android:id="@+id/share_code_text_in_code_editor"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_square_20"
+        android:padding="5dp"
+        android:src="@drawable/share_text_icon"
+        app:layout_constraintBottom_toTopOf="@+id/share_image_qrc_in_code_editor"
+        app:layout_constraintStart_toStartOf="@+id/download_qrc_in_code_editor"
+        app:layout_constraintTop_toBottomOf="@+id/download_qrc_in_code_editor" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

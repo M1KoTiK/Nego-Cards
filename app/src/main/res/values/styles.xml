@@ -72,6 +72,10 @@
         <item name="android:popupBackground">@drawable/rounded_popupmenu</item>
     </style>
 
+    <style name="WhitePointerEditText" parent="Widget.AppCompat.EditText">
+        <item name="colorControlActivated">@color/white_d9</item>
+    </style>
+
     <style name="MaterialDialogSheet" parent="@style/Theme.NegoCards">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>

@@ -32,9 +32,9 @@
             android:layout_height="25dp"
             android:layout_gravity="end|center_vertical"
             android:layout_margin="4dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:padding="0dp"
-            android:src="@drawable/rounded_square_30"
+            android:background="@drawable/rounded_square_30"
+            android:scaleType="centerInside"
+            android:src="@drawable/canvas_delete_tool_icon"
             android:tintMode="src_in" />
 
     </LinearLayout>

@@ -114,4 +114,9 @@
         android:name="m1k.kotik.negocards.fragments.pages.code_create_pages.TextCodeCreateFragment"
         android:label="fragment_text_code_create"
         tools:layout="@layout/fragment_text_code_create" />
+    <fragment
+        android:id="@+id/codeEditorFragment"
+        android:name="m1k.kotik.negocards.fragments.pages.CodeEditorFragment"
+        android:label="fragment_code_editor"
+        tools:layout="@layout/fragment_code_editor" />
 </navigation>

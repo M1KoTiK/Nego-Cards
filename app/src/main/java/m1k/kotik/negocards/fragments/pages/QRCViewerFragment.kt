@@ -19,6 +19,8 @@ import android.widget.Toast
 import androidx.core.content.FileProvider
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import m1k.kotik.negocards.R
 import m1k.kotik.negocards.custom_views.layouts.BackPressNotifyingLinearLayout
@@ -43,21 +45,23 @@ import kotlin.math.min
 
 class QRCViewerFragment() : Fragment() {
     private lateinit var binding: FragmentQrcViewerBinding
+    private lateinit var navController: NavController
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentQrcViewerBinding.inflate(inflater, container, false)
-        return binding!!.root
+        return binding.root
     }
     private lateinit var codeViewWindow: FloatingStylizedWindow
     private lateinit var menuWindow: StaticWindow
-
+    private lateinit var scannedCode: ScannedCode
     //Кривой костыль для отмены фокуса
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        navController = binding.root.findNavController()
         codeViewWindow = FloatingStylizedWindow(requireContext(), R.layout.qrc_viewer_popup)
         codeViewWindow.windowContentViewGroup.also {
             it.background =
@@ -83,7 +87,6 @@ class QRCViewerFragment() : Fragment() {
         val date: SimpleDate? = SimpleDate.toSimpleDate(bundle.getString("date") ?: "")
         val codeType: CodeType? = CodeType.values().firstOrNull { it.ordinal == bundle.getInt("codeType") }
         var codeImage: Bitmap? = null
-        var scannedCode: ScannedCode
         if (contentType != null && value != null && date != null && codeType != null) {
             scannedCode = ScannedCode(codeType,contentType, value, date)
             val codeImageView = codeViewWindow.contentView.findViewById<ImageView>(R.id.QRCImage)
@@ -107,6 +110,15 @@ class QRCViewerFragment() : Fragment() {
                 Toast(requireContext()).showCustomToast("Скопировано!", requireActivity())
             }
 
+        }
+        binding.editCodeImage.setOnClickListener{
+            val bundleForCodeEditor = Bundle()
+            bundle.putInt("id", scannedCode.contentType.ordinal)
+            bundle.putInt("contentType", scannedCode.contentType.ordinal)
+            bundle.putString("value", scannedCode.value )
+            bundle.putString("date", scannedCode.date.toString())
+            bundle.putInt("codeType", scannedCode.codeType.ordinal)
+            navController.navigate(R.id.codeEditorFragment, bundleForCodeEditor)
         }
 
         menuWindow = StaticWindow(requireContext(), R.layout.menu_for_qrc_viewer, R.layout.empty_layout).also {

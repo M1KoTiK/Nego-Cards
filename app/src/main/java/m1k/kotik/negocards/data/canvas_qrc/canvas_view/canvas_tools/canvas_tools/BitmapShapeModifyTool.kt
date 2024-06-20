@@ -7,13 +7,15 @@ import android.view.MotionEvent
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_editors.CanvasEditor
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.ICanvasMeasurable
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.BitmapShape
+import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.texts.CanvasText
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_tools.ICanvasTool
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_tools.canvas_multi_tools.CanvasMultiTool
 import m1k.kotik.negocards.data.measure_utils.getRectForOccupiedSpace
 import m1k.kotik.negocards.data.measure_utils.isClickOnObject
 
-class BitmapShapeModifyTool(override val canvasEditor: CanvasEditor) : CanvasMultiTool<BitmapShape>() {
+class BitmapShapeModifyTool(override val canvasEditor: CanvasEditor) : CanvasMultiTool<Any>() {
     override val onTouchEvent: (event: MotionEvent) -> Boolean= {
+
         if (objectsForEdit.isNotEmpty()) {
             if (!measureTool.onTouchEvent(it)) {
                 deleteTool.isVisible = true
@@ -22,6 +24,7 @@ class BitmapShapeModifyTool(override val canvasEditor: CanvasEditor) : CanvasMul
                     if (positionTool.onTouchEvent(it)) {
                         measureTool.isVisible = false
                         deleteTool.isVisible = false
+                        textEditTool.isVisible = false
                     } else {
                         measureTool.isVisible = true
                         deleteTool.isVisible = true
@@ -31,12 +34,21 @@ class BitmapShapeModifyTool(override val canvasEditor: CanvasEditor) : CanvasMul
                 }
             } else {
                 deleteTool.isVisible = false
+                textEditTool.isVisible = false
+            }
+            if (objectsForEdit.count() == 1 && objectsForEdit.first() is CanvasText){
+                textEditTool.isVisible = true
+                textEditTool.onTouchEvent(it)
+            }
+            else{
+                textEditTool.isVisible = false
             }
         }
         else{
             objectsForEdit.clear()
             canvasEditor.invalidate()
         }
+        canvasEditor.invalidate()
             false
         }
 
@@ -47,12 +59,13 @@ class BitmapShapeModifyTool(override val canvasEditor: CanvasEditor) : CanvasMul
     private val deleteTool = DeleteObjectTool<BitmapShape>(canvasEditor)
     private val measureTool = CanvasMeasureEditTool(canvasEditor)
     private val positionTool = CanvasPositionEditTool(canvasEditor)
-    private val colorEditTool = EditObjectTool<BitmapShape>(canvasEditor)
+    private val textEditTool = EditObjectTool(canvasEditor)
 
     override val listChildTools: MutableList<ICanvasTool<*>> = mutableListOf(
         deleteTool,
         measureTool,
-        positionTool
+        positionTool,
+        textEditTool
     )
 
     fun checkClickOnTools(x: Int, y: Int):Boolean{
@@ -76,20 +89,23 @@ class BitmapShapeModifyTool(override val canvasEditor: CanvasEditor) : CanvasMul
             val desiredPosition = onPositioning(objectsForEdit)
             this.x = desiredPosition.x
             this.y = desiredPosition.y
-            val occupiedRect = getRectForOccupiedSpace(objectsForEdit)
+            val canvasMeasurableObjectsForEdit = objectsForEdit as List<ICanvasMeasurable>
+            val bitmapShapeObjectsForEdit = objectsForEdit as MutableList<BitmapShape>
+            val occupiedRect = getRectForOccupiedSpace(canvasMeasurableObjectsForEdit)
             this.width = occupiedRect!!.width
             measureTool.objectsForEdit = objectsForEdit as? MutableList<ICanvasMeasurable> ?: mutableListOf()
             positionTool.objectsForEdit = objectsForEdit as? MutableList<ICanvasMeasurable> ?: mutableListOf()
-            deleteTool.objectsForEdit = objectsForEdit
-
+            deleteTool.objectsForEdit = bitmapShapeObjectsForEdit
+            textEditTool.objectsForEdit = objectsForEdit as? MutableList<CanvasText> ?: mutableListOf()
             positionTool.draw(canvas)
             measureTool.draw(canvas)
             deleteTool.draw(canvas)
+            textEditTool.draw(canvas)
 
         }
     }
-    private var _objectForEdit: MutableList<BitmapShape> = mutableListOf()
-    override var objectsForEdit: MutableList<BitmapShape>
+    private var _objectForEdit: MutableList<Any> = mutableListOf()
+    override var objectsForEdit: MutableList<Any>
         get() = _objectForEdit
         set(value) {
             if(value.isNotEmpty()) {
@@ -97,9 +113,10 @@ class BitmapShapeModifyTool(override val canvasEditor: CanvasEditor) : CanvasMul
                 positionTool.objectsForEdit = value as MutableList<ICanvasMeasurable>
             }
         }
-    override var onPositioning: (List<BitmapShape>) -> Point = {
+    override var onPositioning: (List<Any>) -> Point = {
         val outputPoint: Point = Point(0, 0)
-        val occupiedRect = getRectForOccupiedSpace(it)
+        val item = it as List<ICanvasMeasurable>
+        val occupiedRect = getRectForOccupiedSpace(item)
         if(occupiedRect!= null) {
            outputPoint.also {
                x = occupiedRect.x
