@@ -12,10 +12,16 @@ class SimpleDate(var year: String, var month: String, var day: String, var minut
         fun toSimpleDate(date: String, separator: String = "-", newSeparator: String = separator): SimpleDate? {
             val list = date.split(separator)
             try {
-                return SimpleDate(list[0], list[1], list[2], newSeparator)
+                if (list.count() == 3) {
+                    val day = list[2].toInt().toString()
+                    val month = list[1].toInt().toString()
+                    val year = list[0].toInt().toString()
+                    return SimpleDate(day, month, year, newSeparator)
+                }
+                return null
             }
             catch (e: IllegalArgumentException){
-                println("Ты передал г#в#о какое-то, а не дату")
+                println("Ты передал ##### какое-то, а не дату")
             }
             return null
         }
@@ -32,8 +38,8 @@ class SimpleDate(var year: String, var month: String, var day: String, var minut
             val c = Calendar.getInstance()
 
             val year = c.get(Calendar.YEAR).toString()
-            val month = (toNormalMonthOrDayFormatting(c.get(Calendar.MONTH)).toInt() + 1).toString()
-            var day = toNormalMonthOrDayFormatting(c.get(Calendar.DAY_OF_MONTH))
+            val month = toNormalMonthOrDayFormatting(c.get(Calendar.MONTH) + 1)
+            var day = toNormalMonthOrDayFormatting(c.get(Calendar.DAY_OF_MONTH)+1)
             val hour = c.get(Calendar.HOUR_OF_DAY)
             val minute = c.get(Calendar.MINUTE)
             val second = c.get(Calendar.SECOND)

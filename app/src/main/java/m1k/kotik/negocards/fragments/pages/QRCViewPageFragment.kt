@@ -19,11 +19,11 @@ class QRCViewPageFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        binding?.imageView2?.setImageBitmap(QRCGenerator.getQRCToBitmap("Hello)"))
+//        binding?.imageView2?.setImageBitmap(QRCGenerator.generateCodeBitmap("Hello)"))
 //        binding?.editTextTextPersonName4?.addTextChangedListener(object : TextWatcher {
 //            override fun afterTextChanged(s: Editable) {
 //                if (!binding?.editTextTextPersonName4?.text.toString().trim().isEmpty()){
-//                val bitmapimage = QRCGenerator.getQRCToBitmap(binding?.editTextTextPersonName4?.text.toString())
+//                val bitmapimage = QRCGenerator.generateCodeBitmap(binding?.editTextTextPersonName4?.text.toString())
 //                binding?.imageView2?.setImageBitmap(bitmapimage)
 //                }
 //            }

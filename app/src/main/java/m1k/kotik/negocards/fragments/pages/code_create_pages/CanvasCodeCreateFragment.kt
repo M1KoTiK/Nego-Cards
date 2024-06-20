@@ -111,7 +111,7 @@ class CanvasCodeCreateFragment : Fragment() {
             val height = requireContext().resources.displayMetrics.heightPixels
             val width = requireContext().resources.displayMetrics.widthPixels
             val serObjects = binding.canvasEditor.serialize()!!
-            var qrcImage = QRCGenerator.getQRCToBitmap(serObjects)
+            var qrcImage = QRCGenerator().generateCodeBitmap(serObjects)
             codeViewWindow.contentView.findViewById<ImageView>(R.id.QRCImage).setImageBitmap(qrcImage)
             codeViewWindow.show(0,0, min(height,width),min(height,width),
                 Gravity.CENTER_VERTICAL or Gravity.CENTER_HORIZONTAL)

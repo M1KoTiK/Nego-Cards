@@ -27,6 +27,7 @@ import m1k.kotik.negocards.custom_views.layouts.BackPressNotifyingLinearLayout
 import m1k.kotik.negocards.custom_views.toast.showCustomToast
 import m1k.kotik.negocards.custom_views.windows.StaticWindow
 import m1k.kotik.negocards.custom_views.windows.stylized_window.FloatingStylizedWindow
+import m1k.kotik.negocards.data.ViewSaver
 import m1k.kotik.negocards.data.code.CodeContentType
 import m1k.kotik.negocards.data.code.CodeType
 import m1k.kotik.negocards.data.code.ScannedCode
@@ -91,7 +92,7 @@ class QRCViewerFragment() : Fragment() {
             scannedCode = ScannedCode(codeType,contentType, value, date)
             val codeImageView = codeViewWindow.contentView.findViewById<ImageView>(R.id.QRCImage)
             binding.QRCValueViewer.text = scannedCode.value
-            codeImage = QRCGenerator.getQRCToBitmap(value)
+            codeImage = QRCGenerator().generateCodeBitmap(value)
             binding.qrcDisplay.setImageBitmap(codeImage)
             binding.qrcViewerDateQRC.text = date.toString()
             binding.QRCViewerCodeType.text = codeType.typeName
@@ -113,14 +114,21 @@ class QRCViewerFragment() : Fragment() {
         }
         binding.editCodeImage.setOnClickListener{
             val bundleForCodeEditor = Bundle()
-            bundle.putInt("id", scannedCode.contentType.ordinal)
-            bundle.putInt("contentType", scannedCode.contentType.ordinal)
-            bundle.putString("value", scannedCode.value )
-            bundle.putString("date", scannedCode.date.toString())
-            bundle.putInt("codeType", scannedCode.codeType.ordinal)
+            bundleForCodeEditor.putInt("id", scannedCode.contentType.ordinal)
+            bundleForCodeEditor.putInt("contentType", scannedCode.contentType.ordinal)
+            bundleForCodeEditor.putString("value", scannedCode.value )
+            bundleForCodeEditor.putString("date", scannedCode.date.toString())
+            bundleForCodeEditor.putInt("codeType", scannedCode.codeType.ordinal)
             navController.navigate(R.id.codeEditorFragment, bundleForCodeEditor)
         }
-
+        binding.saveCodeImageBtn.setOnClickListener{
+            val codeBitmapImage = ViewSaver.getBitmapFromView(binding.cardView2)
+            ViewSaver.saveBitmapInGallery(codeBitmapImage, requireContext())
+            Toast(requireContext()).showCustomToast(
+                "Изображение кода сохранено в галерею",
+                requireContext()
+            )
+        }
         menuWindow = StaticWindow(requireContext(), R.layout.menu_for_qrc_viewer, R.layout.empty_layout).also {
             it.windowParameters = WindowManager.LayoutParams(
                 0,

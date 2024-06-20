@@ -4,17 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/pixel_background"
     tools:context=".fragments.pages.CodeEditorFragment">
 
-    <ImageView
-        android:id="@+id/imageView15"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view_in_code_editor"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="15dp"
-        android:src="@drawable/placeholder"
+        android:layout_marginTop="25dp"
+        app:cardCornerRadius="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView30" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/Code_View_In_Code_Editor"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:src="@drawable/placeholder" />
+    </androidx.cardview.widget.CardView>
 
     <ImageView
         android:id="@+id/imageView1123"
@@ -60,11 +68,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="25dp"
         android:text="Цвет кода"
+        android:textColor="@color/white_d9"
         android:textSize="17sp"
-        app:layout_constraintStart_toStartOf="@+id/imageView15"
-        app:layout_constraintTop_toBottomOf="@+id/imageView15" />
+        app:layout_constraintStart_toStartOf="@+id/card_view_in_code_editor"
+        app:layout_constraintTop_toBottomOf="@+id/card_view_in_code_editor" />
 
     <TextView
         android:id="@+id/textView30"
@@ -73,7 +82,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="15dp"
         android:text="..."
-        app:layout_constraintStart_toStartOf="@+id/imageView15"
+        app:layout_constraintStart_toStartOf="@+id/card_view_in_code_editor"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -82,6 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
         android:text="Цвет фона"
+        android:textColor="@color/white_d9"
         android:textSize="17sp"
         app:layout_constraintStart_toStartOf="@+id/textView32"
         app:layout_constraintTop_toBottomOf="@+id/textView32" />
@@ -91,12 +101,12 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="30dp"
         android:background="@drawable/rounded_square_20"
         android:padding="10dp"
         android:src="@drawable/download"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView15" />
+        app:layout_constraintStart_toEndOf="@+id/card_view_in_code_editor"
+        app:layout_constraintTop_toTopOf="@+id/card_view_in_code_editor" />
 
     <ImageView
         android:id="@+id/share_image_qrc_in_code_editor"
@@ -106,7 +116,7 @@
         android:background="@drawable/rounded_square_20"
         android:padding="5dp"
         android:src="@drawable/share_image_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView15"
+        app:layout_constraintBottom_toBottomOf="@+id/card_view_in_code_editor"
         app:layout_constraintStart_toStartOf="@+id/download_qrc_in_code_editor" />
 
     <ImageView

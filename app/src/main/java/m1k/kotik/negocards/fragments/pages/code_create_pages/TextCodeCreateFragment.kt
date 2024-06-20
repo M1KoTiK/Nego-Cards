@@ -32,7 +32,7 @@ class TextCodeCreateFragment : Fragment() {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 if(s.toString() != "") {
-                    binding.qrcDisplay.setImageBitmap(QRCGenerator.getQRCToBitmap(s.toString()))
+                    binding.qrcDisplay.setImageBitmap(QRCGenerator().generateCodeBitmap(s.toString()))
                 }
             }
         })

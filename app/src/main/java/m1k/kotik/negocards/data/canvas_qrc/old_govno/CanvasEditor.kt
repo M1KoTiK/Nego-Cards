@@ -5,6 +5,7 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.widget.Toast
+import m1k.kotik.negocards.data.ViewSaver
 import m1k.kotik.negocards.data.canvas_qrc.old_govno.canvas_object_types.CanvasObjectType
 import m1k.kotik.negocards.data.canvas_qrc.old_govno.alert_dialogs.InputTextDialog
 import m1k.kotik.negocards.data.canvas_qrc.old_govno.canvas_object_types.TextObject
@@ -39,7 +40,7 @@ open class CanvasEditor(context: Context, attrs: AttributeSet) : CanvasView(cont
 
     fun saveInGallery(){
         clearObjectsMode()
-        CanvasSaver.saveBitmapInGallery(CanvasSaver.getBitmapFromView(this),context)
+        ViewSaver.saveBitmapInGallery(ViewSaver.getBitmapFromView(this),context)
     }
 
 

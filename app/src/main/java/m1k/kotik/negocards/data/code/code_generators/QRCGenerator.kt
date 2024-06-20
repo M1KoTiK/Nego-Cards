@@ -4,21 +4,16 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import androidmads.library.qrgenearator.QRGContents
 import androidmads.library.qrgenearator.QRGEncoder
+import m1k.kotik.negocards.data.canvas_qrc.old_govno.parseColorFromString
 
 class QRCGenerator: ICodeGenerator {
-    companion object{
-    fun getQRCToBitmap(data: String):Bitmap {
-        val qrgEncoder = QRGEncoder(data, null, QRGContents.Type.TEXT, 2000)
-        qrgEncoder.colorBlack = Color.BLACK
-        qrgEncoder.colorWhite = Color.WHITE
-        return qrgEncoder.getBitmap(2)
-    }
-    }
+    override var codeColor: Int = parseColorFromString("#181818")
+    override var backgroundColor: Int = parseColorFromString("#ffffff")
 
     override fun generateCodeBitmap(valueForCoding: String): Bitmap {
         val qrgEncoder = QRGEncoder(valueForCoding, null, QRGContents.Type.TEXT, 2000)
-        qrgEncoder.colorBlack = Color.BLACK
-        qrgEncoder.colorWhite = Color.WHITE
+        qrgEncoder.colorBlack = codeColor
+        qrgEncoder.colorWhite = backgroundColor
         return qrgEncoder.getBitmap(2)
     }
 }

@@ -78,7 +78,7 @@ class ScannerPageFragment : Fragment() {
 //            ScannedCode(
 //                CodeType.QRC,
 //                CodeContentType.Text,
-//                "312342343",
+//                "testData",
 //                SimpleDate.getCurrentDate())
 //        )
 

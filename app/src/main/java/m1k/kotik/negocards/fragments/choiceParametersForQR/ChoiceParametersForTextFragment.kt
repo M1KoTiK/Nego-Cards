@@ -44,7 +44,7 @@ class ChoiceParametersForTextFragment : Fragment() {
 
         /*
         var QRC = QRCreator()
-        val bitmapimage = QRC.getQRCToBitmap(binding?.editTextTextPersonName4?.text.toString())
+        val bitmapimage = QRC.generateCodeBitmap(binding?.editTextTextPersonName4?.text.toString())
         binding?.imageView2?.setImageBitmap(bitmapimage)
         */
     }
@@ -92,7 +92,7 @@ class ChoiceParametersForTextFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             currentFragment.QRCValue.filterNot { it.isEmpty() }.collect { qrcString ->
 //                val QRC = QRCGenerator()
-//                val bitmapimage = QRCGenerator.getQRCToBitmap(qrcString)
+//                val bitmapimage = QRCGenerator.generateCodeBitmap(qrcString)
 //                binding?.imageView?.setImageBitmap(bitmapimage)
             }
         }
