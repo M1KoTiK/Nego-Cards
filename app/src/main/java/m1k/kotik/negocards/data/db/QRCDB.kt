@@ -23,13 +23,22 @@ class QRCDB(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DA
             "CREATE TABLE $SCANNED_QRC_TABLE_NAME (id INTEGER PRIMARY KEY AUTOINCREMENT, contentType INTEGER, value TEXT,date TEXT, codeType INTEGER, isOpened INTEGER)"
 
         //-----------------------------------------------------------
+
+        //Table CanvasQRC-------------------------------------------
+        private const val CANVAS_QRC_TABLE_NAME = "canvasQRC"
+        private const val CREATE_TABLE_CANVAS_QRC =
+            "CREATE TABLE $CANVAS_QRC_TABLE_NAME (id INTEGER PRIMARY KEY AUTOINCREMENT, value TEXT, name TEXT)"
+
+        //-----------------------------------------------------------
     }
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL(CREATE_TABLE_SCANNED_QRC)
+        db?.execSQL(CREATE_TABLE_CANVAS_QRC)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         db?.execSQL("DROP TABLE IF EXISTS $SCANNED_QRC_TABLE_NAME")
+        db?.execSQL("DROP TABLE IF EXISTS $CANVAS_QRC_TABLE_NAME")
     }
 
     fun addScannedCode(ScannedCode: ScannedCode){
@@ -44,7 +53,31 @@ class QRCDB(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DA
             it.close()
         }
     }
-
+    open class SavedCanvas(var name: String, var code: String)
+    class SavedCanvasWithId(var id: Int, name: String, code: String): SavedCanvas(name, code)
+    fun addCanvas(savedCanvas: SavedCanvas){
+        val values = ContentValues()
+        values.put("value", savedCanvas.code)
+        values.put("name", savedCanvas.name)
+        this.writableDatabase.also {
+            it.insert(CANVAS_QRC_TABLE_NAME,null, values)
+            it.close()
+        }
+    }
+    fun getAllCanvas(): MutableList<SavedCanvasWithId>{
+        val outputList = mutableListOf<SavedCanvasWithId>()
+        val cursor = getAll("canvasQRC") ?: return outputList
+        if(cursor.count >0) {
+            cursor.moveToFirst()
+            do {
+                val id = cursor.getInt(0)
+                val value = cursor.getString(1)
+                val name = cursor.getString(2)
+                outputList.add(SavedCanvasWithId(id, name, value))
+            } while (cursor.moveToNext())
+        }
+        return outputList
+    }
     fun getScannedQRC(): MutableList<ScannedCodeWithId>{
         val outputList = mutableListOf<ScannedCodeWithId>()
         val cursor = getAll("scannedQRC") ?: return outputList

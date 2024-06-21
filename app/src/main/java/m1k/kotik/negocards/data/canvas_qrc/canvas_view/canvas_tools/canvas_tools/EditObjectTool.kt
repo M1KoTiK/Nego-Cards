@@ -12,24 +12,24 @@ import androidx.core.content.res.ResourcesCompat
 import m1k.kotik.negocards.R
 import m1k.kotik.negocards.custom_views.windows.stylized_window.FloatingStylizedWindow
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_editors.CanvasEditor
-import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.texts.CanvasText
+import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.texts.ICanvasText
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_tools.CanvasButtonTool
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_tools.PositionFlag
 import m1k.kotik.negocards.data.canvas_qrc.old_govno.parseColorFromString
 import m1k.kotik.negocards.data.code.code_generators.QRCGenerator
 import kotlin.math.min
 
-class EditObjectTool(override val canvasEditor: CanvasEditor): CanvasButtonTool<CanvasText>()  {
+class EditObjectTool(override val canvasEditor: CanvasEditor): CanvasButtonTool<ICanvasText>()  {
     override var positionFlags: MutableList<PositionFlag> = mutableListOf(PositionFlag.Top, PositionFlag.Right, PositionFlag.XYAsCenter)
     override var icon: Drawable? = AppCompatResources.getDrawable(canvasEditor.context, R.drawable.pen_icon)
     override var backgroundColor: Int = parseColorFromString("FFFF7777")
     override val onClickDown: (x: Float, y: Float) -> Unit = {
             _ , _ ->
-        if (objectsForEdit.isNotEmpty() && objectsForEdit.count() == 1 && canvasEditor.currentSelectedObject is CanvasText){
-            val selObj =  canvasEditor.currentSelectedObject as CanvasText
+        if (objectsForEdit.isNotEmpty() && objectsForEdit.count() == 1 && canvasEditor.currentSelectedObject is ICanvasText){
+            val selObj =  canvasEditor.currentSelectedObject as ICanvasText
             val window = FloatingStylizedWindow(canvasEditor.context, R.layout.text_input_window)
             window.contentView.findViewById<EditText>(R.id.TextInputPT).also{
-                it.setText((canvasEditor.listCurrentSelectedObjects.first() as CanvasText).text)
+                it.setText((canvasEditor.listCurrentSelectedObjects.first() as ICanvasText).text)
                 it.addTextChangedListener(object :
                     TextWatcher {
                     override fun afterTextChanged(s: Editable) {
@@ -37,7 +37,7 @@ class EditObjectTool(override val canvasEditor: CanvasEditor): CanvasButtonTool<
                     override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
                     override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                         if(s.toString() != "") {
-                            (canvasEditor.listCurrentSelectedObjects.first() as CanvasText).text = s.toString()
+                            (canvasEditor.listCurrentSelectedObjects.first() as ICanvasText).text = s.toString()
                             canvasEditor.invalidate()
                         }
                     }

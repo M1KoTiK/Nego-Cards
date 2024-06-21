@@ -3,13 +3,10 @@ package m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.texts
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Rect
-import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.*
-import m1k.kotik.negocards.data.serialization.serializationObject.ISerializationObject
 import m1k.kotik.negocards.data.serialization.serializationObject.SerializeMember
-import kotlin.math.abs
 
-class CanvasText(
-    override val key: String = "ctx",
+class Phone(
+    override val key: String = "ph",
     @SerializeMember("x")
     override var x: Int = 0,
     @SerializeMember("y")
@@ -29,7 +26,7 @@ class CanvasText(
             field = paint.measureText(text).toInt()
         }
     @SerializeMember("t")
-    override var text: String = "text"
+    override var text: String = "number"
         set(value) {
             field = value
             width = paint.measureText(value).toInt()
@@ -60,7 +57,4 @@ class CanvasText(
         paint.textSize = height.toFloat() + offset
         width = paint.measureText(text).toInt()
     }
-
-
-
 }

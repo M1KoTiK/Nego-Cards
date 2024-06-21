@@ -56,7 +56,7 @@ sealed class CodeAction: ICodeAction {
             val height = context.resources.displayMetrics.heightPixels
             val width = context.resources.displayMetrics.widthPixels
             val canvasViewWindow: FloatingStylizedWindow = FloatingStylizedWindow(context, R.layout.fragment_canvas_viewer).also {
-                it.header = "Выбор цвета"
+                it.header = "Просмотр холста"
             }
             canvasViewWindow.windowContentViewGroup.also {
                 it.background =

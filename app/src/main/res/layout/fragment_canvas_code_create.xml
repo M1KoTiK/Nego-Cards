@@ -24,7 +24,7 @@
             android:layout_height="match_parent"
             android:layout_marginEnd="25dp"
             android:foreground="@drawable/rounded_square_ripple_15"
-            android:padding="5dp"
+            android:padding="4dp"
             android:src="@drawable/create_qrc"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -54,6 +54,27 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:tint="@color/white_d9" />
+
+        <ImageView
+            android:id="@+id/save_canvas_to_db"
+            android:layout_width="38dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="45dp"
+            android:foreground="@drawable/rounded_square_ripple_15"
+            android:padding="5dp"
+            android:src="@drawable/download"
+            app:layout_constraintEnd_toStartOf="@+id/qrc_view_btn"
+            app:tint="@color/white_d9" />
+
+        <ImageView
+            android:id="@+id/share_canvas"
+            android:layout_width="38dp"
+            android:layout_height="match_parent"
+            android:foreground="@drawable/rounded_square_ripple_15"
+            android:src="@drawable/share_image_icon"
+            app:layout_constraintEnd_toStartOf="@+id/save_canvas_to_db"
+            app:layout_constraintStart_toEndOf="@+id/forward_arrow"
+            app:tint="@color/white_d9" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_editors.CanvasEditor
@@ -72,7 +93,7 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="5dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"

@@ -7,7 +7,7 @@ import android.view.MotionEvent
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_editors.CanvasEditor
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.ICanvasMeasurable
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.BitmapShape
-import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.texts.CanvasText
+import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.texts.ICanvasText
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_tools.ICanvasTool
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_tools.canvas_multi_tools.CanvasMultiTool
 import m1k.kotik.negocards.data.measure_utils.getRectForOccupiedSpace
@@ -36,7 +36,7 @@ class BitmapShapeModifyTool(override val canvasEditor: CanvasEditor) : CanvasMul
                 deleteTool.isVisible = false
                 textEditTool.isVisible = false
             }
-            if (objectsForEdit.count() == 1 && objectsForEdit.first() is CanvasText){
+            if (objectsForEdit.count() == 1 && objectsForEdit.first() is ICanvasText){
                 textEditTool.isVisible = true
                 textEditTool.onTouchEvent(it)
             }
@@ -96,7 +96,7 @@ class BitmapShapeModifyTool(override val canvasEditor: CanvasEditor) : CanvasMul
             measureTool.objectsForEdit = objectsForEdit as? MutableList<ICanvasMeasurable> ?: mutableListOf()
             positionTool.objectsForEdit = objectsForEdit as? MutableList<ICanvasMeasurable> ?: mutableListOf()
             deleteTool.objectsForEdit = bitmapShapeObjectsForEdit
-            textEditTool.objectsForEdit = objectsForEdit as? MutableList<CanvasText> ?: mutableListOf()
+            textEditTool.objectsForEdit = objectsForEdit as? MutableList<ICanvasText> ?: mutableListOf()
             positionTool.draw(canvas)
             measureTool.draw(canvas)
             deleteTool.draw(canvas)
