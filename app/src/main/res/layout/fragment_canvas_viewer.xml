@@ -38,6 +38,7 @@
         app:srcCompat="@drawable/share_image_icon" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_list_text_in_object"
         android:layout_width="409dp"
         android:layout_height="354dp"
         android:layout_marginTop="15dp"

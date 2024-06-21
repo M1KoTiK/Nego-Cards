@@ -16,6 +16,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.FileProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import m1k.kotik.negocards.R
@@ -74,8 +75,11 @@ class CodeEditorFragment : Fragment() {
         codeImage = cGen.generateCodeBitmap(scannedCode.value)
 
     }
+    
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
         val bundle: Bundle = this.requireArguments()
         val contentType: CodeContentType? = CodeContentType.values().firstOrNull { it.ordinal == bundle.getInt("contentType") }
         val value: String? = bundle.getString("value")

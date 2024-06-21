@@ -9,12 +9,15 @@ import android.widget.LinearLayout
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet.Constraint
 import androidx.core.content.res.ResourcesCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import m1k.kotik.negocards.R
 import m1k.kotik.negocards.custom_views.windows.stylized_window.FloatingStylizedWindow
 import m1k.kotik.negocards.data.canvas_qrc.canvas_serialization.CanvasSerialization
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_objects.shapes.BitmapShape
 import m1k.kotik.negocards.data.canvas_qrc.canvas_view.canvas_editors.CanvasView
 import m1k.kotik.negocards.data.code.Code
+import m1k.kotik.negocards.data.recycler_view_adapters.text_object_in_canvas.TextObjectInCanvasAdapter
 import m1k.kotik.negocards.data.serialization.serializationObject.ISerializationObject
 
 
@@ -73,6 +76,11 @@ sealed class CodeAction: ICodeAction {
                    it.setBackgroundObject(canvasObjects.first() as BitmapShape)
                    it.setObjects(canvasObjects.drop(1))
                    it.invalidate()
+                   val rec = canvasViewWindow.contentView.findViewById<RecyclerView>(R.id.recycler_list_text_in_object)
+                   rec.adapter = TextObjectInCanvasAdapter(context, canvasObjects)
+                   rec.layoutManager = LinearLayoutManager(context)
+
+
                }
             }
 

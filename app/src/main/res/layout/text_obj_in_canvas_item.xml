@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@drawable/rounded_square_20"
+    android:foreground="@drawable/rounded_square_ripple_20">
+
+    <TextView
+        android:id="@+id/text_in_text_obj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="15dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/copy_in_text_object_canvas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:background="@drawable/rounded_square_20"
+        android:backgroundTint="#90909090"
+        android:id="@+id/copy_in_text_object_canvas"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/copy_logo" />
+</androidx.constraintlayout.widget.ConstraintLayout>
